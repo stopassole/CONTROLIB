@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="580.0" prefWidth="450.0" styleClass="bg-primary" stylesheets="./css/login.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <Pane layoutX="132.0" layoutY="35.0" prefHeight="150.0" prefWidth="186.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="186.0" layoutX="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutY="207.0" prefHeight="47.0" prefWidth="450.0">
+         <children>
+            <Separator layoutX="51.0" layoutY="21.0" prefHeight="5.0" prefWidth="118.0" />
+            <Separator layoutX="281.0" layoutY="21.0" prefHeight="5.0" prefWidth="118.0" />
+            <Label alignment="TOP_CENTER" layoutX="177.0" prefHeight="26.0" prefWidth="96.0" styleClass="text-primary" stylesheets="@../../css/login.css" text="Login" textAlignment="CENTER">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutY="285.0" prefHeight="75.0" prefWidth="451.0">
+         <children>
+            <Label layoutX="61.0" layoutY="6.0" prefHeight="17.0" prefWidth="44.0" styleClass="font-sm" stylesheets="@../../css/login.css" text="E-mail:" />
+            <TextField fx:id="idUsuario" alignment="TOP_LEFT" layoutX="46.0" layoutY="25.0" prefHeight="25.0" prefWidth="360.0" stylesheets="@../../css/login.css">
+               <styleClass>
+                  <String fx:value="input-rounded" />
+                  <String fx:value="font-md" />
+               </styleClass></TextField>
+         </children>
+      </Pane>
+      <Pane layoutY="348.0" prefHeight="75.0" prefWidth="451.0">
+         <children>
+            <Label layoutX="61.0" layoutY="6.0" styleClass="font-sm" stylesheets="@../../css/login.css" text="Senha:" />
+            <PasswordField fx:id="idSenha" layoutX="46.0" layoutY="25.0" prefHeight="25.0" prefWidth="360.0">
+               <font>
+                  <Font name="Bell MT" size="12.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="input-rounded" />
+                  <String fx:value="font-md" />
+               </styleClass></PasswordField>
+         </children>
+      </Pane>
+      <Pane layoutX="15.0" layoutY="410.0" prefHeight="47.0" prefWidth="420.0">
+         <children>
+            <CheckBox fx:id="idLembrarSenha" layoutX="41.0" layoutY="6.0" mnemonicParsing="false" styleClass="checkbox" stylesheets="@../../css/login.css" text="Lembrar-me" textFill="WHITE" />
+            <Hyperlink fx:id="idCadastro" layoutX="317.0" layoutY="3.0" onAction="#cadastrar" prefHeight="23.0" prefWidth="73.0" text="Cadastre-se" />
+            <Hyperlink fx:id="idRecuperarSenha" layoutX="265.0" layoutY="3.0" onAction="#recuperar" text="Esqueci minha senha" />
+         </children>
+      </Pane>
+      <Pane layoutY="476.0" prefHeight="96.0" prefWidth="451.0" stylesheets="@../../css/login.css">
+         <children>
+            <Button fx:id="btnEntrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="46.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="360.0" styleClass="btn-primary" stylesheets="@../../css/login.css" text="ENTRAR">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
