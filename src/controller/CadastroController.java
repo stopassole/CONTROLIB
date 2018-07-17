@@ -3,12 +3,17 @@ package controller;
 import dao.UsuarioDAO;
 import entity.Usuario;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import resource.Inicio;
 import util.CriptoUtil;
 import util.ValidatorCPF;
 
@@ -58,6 +63,13 @@ public class CadastroController {
 				alert.showAndWait();
 			}
 		}
+	}
+	
+	@FXML
+	private void voltar(Event event) throws Exception {
+		Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
+		Scene scene = new Scene(root);
+		Inicio.myStage.setScene(scene);
 	}
 
 	private boolean verificaVazio() {

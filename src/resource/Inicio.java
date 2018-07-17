@@ -61,7 +61,7 @@ public class Inicio extends Application {
 
 			startButton.setTranslateX(560);
 			startButton.setTranslateY(500);
-			startButton.setStyle("-fx-background-radius: 5; -fx-text-fill: white; -fx-background-color: linear-gradient(to right, rgb(107, 193, 255) 20%, #00b3b8);");
+			startButton.setStyle("-fx-cursor:hand; -fx-background-radius: 5; -fx-text-fill: white; -fx-background-color: linear-gradient(to right, rgb(107, 193, 255) 20%, #00b3b8);");
 			startButton.setScaleX(3);
 			startButton.setScaleY(2);
 			startButton.setVisible(false);

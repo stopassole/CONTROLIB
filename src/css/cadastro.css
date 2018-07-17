@@ -12,6 +12,7 @@
 }
 
 .btn {
+	-fx-cursor:hand;
     -fx-display: inline-block;
     -fx-font-weight: 400;
     -fx-text-align: center;
@@ -32,6 +33,7 @@
 }
 
 .btn-primary {
+	-fx-cursor:hand;
     -fx-color: #fff;
     -fx-background-color: #00b3b8;
     -fx-background-color: linear-gradient(to right, rgb(107, 193, 255) 20%, #00b3b8);
