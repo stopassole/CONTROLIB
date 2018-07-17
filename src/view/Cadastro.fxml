@@ -15,7 +15,7 @@
 
 <TextFlow styleClass="bg-primary" stylesheets="@../css/cadastro.css" textAlignment="CENTER" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.CadastroController">
    <children>
-      <AnchorPane prefHeight="580.0" prefWidth="450.0" styleClass="bg-primary" stylesheets="./css/cadastro.css">
+      <AnchorPane prefHeight="580.0" prefWidth="450.0" styleClass="bg-primary" stylesheets="@../css/cadastro.css">
          <children>
             <Pane layoutX="3.0" layoutY="26.0" prefHeight="75.0" prefWidth="124.0">
                <children>
