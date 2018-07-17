@@ -22,7 +22,6 @@
     -fx--moz-user-select: none;
     -fx--ms-user-select: none;
     -fx-user-select: none;
-    -fx-border: 1px solid transparent;
     -fx-padding: 6px 0 0 12px;
     -fx-font-size: 16px;
     -fx-line-height: 1.5;
@@ -55,7 +54,6 @@
 .input-rounded {
     -fx-border-radius:25;
     -fx-background-radius: 25;
-    -fx-border: 1px solid #F5F5F5;
     -fx-border-color: #F5F5F5;
     -fx-background-color: transparent;
     /*   top bot right left    */

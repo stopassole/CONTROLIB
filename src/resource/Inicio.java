@@ -1,11 +1,13 @@
 package resource;
 
 import java.io.FileOutputStream;
-import java.sql.DriverManager;
+import java.sql.Connection;
 
 import org.apache.log4j.Logger;
+import org.postgresql.util.PSQLException;
 
 import banco.CreateDatabase;
+import dao.DAO;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,37 +24,38 @@ import javafx.stage.Stage;
 public class Inicio extends Application {
 
 	public static Stage myStage = new Stage();
-	
+
 	public static final String END_POINT = "Inicio";
 
 	private static final Logger log = Logger.getLogger(Inicio.END_POINT);
 
+	@SuppressWarnings("unused")
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-							
+
 		try {
-			@SuppressWarnings({ "unused", "resource" })
+			@SuppressWarnings({"resource" })
 			FileOutputStream file = new FileOutputStream("C:\\Users\\Alisson Stopassole\\Desktop\\LogCONTROLIB.log");
-			
+
 			log.info(END_POINT + "/verificabanco -> Inicio");
 
-			Class.forName("org.postgresql.Driver");
-			DriverManager.getConnection("jdbc:postgresql://localhost:5432/catalogolivros", "postgres", "postgres");
+			DAO dao = new DAO();
+			Connection conexao = dao.conexaoUsuario();
+
 			startLogin();
-			
+
 			log.info(END_POINT + "/verificabanco -> Fim");
-			
-		} catch (Exception e) {
-			
+
+		} catch (PSQLException e) {
 			log.error(e);
 
 			log.info(END_POINT + "/criarbanco -> Inicio");
-			
+
 			final ProgressBar progressBar = new ProgressBar(0);
 			progressBar.setScaleX(5);
 			progressBar.setScaleY(5);
 			progressBar.setScaleZ(5);
-			String css = this.getClass().getResource("/css/progress.css").toExternalForm(); 
+			String css = this.getClass().getResource("/css/progress.css").toExternalForm();
 			progressBar.getStylesheets().add(css);
 			progressBar.setTranslateX(650);
 			progressBar.setTranslateY(300);
@@ -94,7 +97,7 @@ public class Inicio extends Application {
 			root.setHgap(10);
 
 			root.getChildren().addAll(progressBar, startButton);
-			
+
 			root.setStyle("-fx-background-color: #1d2026");
 
 			Scene scene = new Scene(root, 1024, 700);
@@ -104,11 +107,9 @@ public class Inicio extends Application {
 			myStage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
 			myStage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
 			myStage.show();
-			
+
 			log.info(END_POINT + "/criarbanco -> Fim");
-
-		}
-
+		} 
 	}
 
 	public static void main(String[] args) {
@@ -116,11 +117,11 @@ public class Inicio extends Application {
 	}
 
 	public void startLogin() throws Exception {
-		
+
 		log.info(END_POINT + "/login -> Inicio");
 
 		try {
-			
+
 			Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 			myStage.setScene(new Scene(root));
 			myStage.setTitle("CONTROLIB");
@@ -128,11 +129,11 @@ public class Inicio extends Application {
 			myStage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
 			myStage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
 			myStage.show();
-			
+
 		} catch (Exception e) {
 			log.error(e);
 		}
-		
+
 		log.info(END_POINT + "/login -> Fim");
 
 	}
