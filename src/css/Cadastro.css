@@ -13,20 +13,10 @@
 
 .btn {
 	-fx-cursor:hand;
-    -fx-display: inline-block;
     -fx-font-weight: 400;
-    -fx-text-align: center;
-    -fx-white-space: nowrap;
-    -fx-vertical-align: middle;
-    -fx--webkit-user-select: none;
-    -fx--moz-user-select: none;
-    -fx--ms-user-select: none;
-    -fx-user-select: none;
     -fx-padding: 6px 0 0 12px;
     -fx-font-size: 16px;
-    -fx-line-height: 1.5;
     -fx-border-radius: 4px;
-    -fx-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     -fx-text-fill: white;
     -fx-background-color: #1d2026;
 }
@@ -58,8 +48,6 @@
     -fx-background-color: transparent;
     /*   top bot right left    */
     -fx-padding: 2px 0 0 12px; 
-    -fx--webkit-transition: all .2s ease;
-    -fx-transition: all .2s ease;
     -fx-color: #F5F5F5;
     -fx-text-fill: white;
     
