@@ -1,0 +1,87 @@
+* {
+ 
+}
+
+.bg-primary{
+    -fx-background-color: #1d2026;
+}
+
+.bg-secondary{
+    -fx-background-color: #00b3b8;
+     -fx-background-color: linear-gradient(to right, rgb(107, 193, 255) 20%, #00b3b8);
+}
+
+.btn {
+	-fx-cursor:hand;
+   
+    -fx-padding: 6px 0 0 12px;
+    -fx-font-size: 16px;
+    -fx-border-radius: 4px;
+    -fx-text-fill: white
+}
+
+.btn-primary {
+	-fx-cursor:hand;
+    -fx-color: #fff;
+    -fx-background-color: #00b3b8;
+    -fx-background-color: linear-gradient(to right, rgb(107, 193, 255) 20%, #00b3b8);
+    -fx-text-fill: white;
+}
+
+.btn-dash {
+    -fx-color: #fff;
+    -fx-background-color: #1d2026;
+}
+
+.btn-dash :hover{
+    -fx-color: #fff;
+    -fx-background-color: #1d2026;
+    -fx-border-radius: 25px;
+    -fx-opacity: 0.8;
+}
+
+.input-rounded {
+    -fx-border-radius:25;
+    -fx-background-radius: 25;
+    -fx-border-color: #F5F5F5;
+    -fx-background-color: transparent;
+    /*   top bot right left    */
+    -fx-padding: 2px 0 0 12px; 
+    -fx-color: #F5F5F5;
+    -fx-text-fill: white;
+    
+}
+
+.form-control {
+    -fx-padding: 6px 0 0 12px;
+    -fx-color: #495057;
+    -fx-background-color: #fff;
+    -fx-text-fill: white
+}
+.checkbox .box{
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-background-color: transparent;
+    -fx-border-color: #fff;
+    -fx-text-fill: #fff;
+}
+.text-primary {
+    -fx-text-fill:  #00b3b8;
+    
+}
+
+.font-sm {
+    -fx-font-size: 12px;
+    -fx-text-fill: white
+}
+
+.font-md {
+    -fx-font-size: 16px;
+    -fx-text-fill: white
+}
+
+.font-lg {
+    -fx-font-size: 24px;
+    -fx-text-fill: white
+}
+
