@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -53,6 +54,9 @@ public class CadastroController {
 
 					Alert alert = new Alert(Alert.AlertType.INFORMATION, "Salvo com sucesso.");
 					alert.setGraphic(new ImageView(this.getClass().getResource("/images/sucess.jpg").toString()));
+					DialogPane dialogPane = alert.getDialogPane();
+					dialogPane.getStylesheets().add(getClass().getResource("teste.css").toExternalForm());
+				
 					alert.showAndWait();
 				} else {
 					Alert alert = new Alert(Alert.AlertType.WARNING, "Insira um CPF válido.");

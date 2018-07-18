@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow styleClass="bg-primary" stylesheets="@../css/cadastro.css" textAlignment="CENTER" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.CadastroController">
+<TextFlow styleClass="bg-primary" stylesheets="@../css/Cadastro.css" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroController">
    <children>
       <AnchorPane prefHeight="580.0" prefWidth="450.0" styleClass="bg-primary" stylesheets="@../css/cadastro.css">
          <children>
@@ -50,7 +50,7 @@
             <Pane layoutX="8.0" layoutY="277.0" prefHeight="75.0" prefWidth="451.0">
                <children>
                   <Label layoutX="55.0" layoutY="8.0" prefHeight="17.0" prefWidth="132.0" styleClass="font-sm" text="E-mail:" />
-                  <TextField fx:id="idUsuario" layoutX="41.0" layoutY="23.0" prefHeight="29.0" prefWidth="370.0" text="vv">
+                  <TextField fx:id="idUsuario" layoutX="41.0" layoutY="23.0" prefHeight="29.0" prefWidth="370.0">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />
@@ -61,7 +61,7 @@
             <Pane layoutX="8.0" layoutY="339.0" prefHeight="75.0" prefWidth="451.0">
                <children>
                   <Label layoutX="55.0" layoutY="7.0" prefHeight="17.0" prefWidth="132.0" styleClass="font-sm" text="CPF:" />
-                  <TextField fx:id="idCPF" layoutX="41.0" layoutY="23.0" onKeyReleased="#tbCpf" prefHeight="29.0" prefWidth="370.0" text="cc">
+                  <TextField fx:id="idCPF" layoutX="41.0" layoutY="23.0" onKeyReleased="#tbCpf" prefHeight="29.0" prefWidth="370.0">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />
@@ -72,7 +72,7 @@
             <Pane layoutX="6.0" layoutY="400.0" prefHeight="75.0" prefWidth="215.0">
                <children>
                   <Label layoutX="58.0" layoutY="7.0" prefHeight="17.0" prefWidth="132.0" styleClass="font-sm" text="Senha:" />
-                  <PasswordField fx:id="idSenha" layoutX="43.0" layoutY="23.0" prefHeight="29.0" prefWidth="167.0" text="vbvb">
+                  <PasswordField fx:id="idSenha" layoutX="43.0" layoutY="23.0" prefHeight="29.0" prefWidth="167.0">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />
@@ -83,7 +83,7 @@
             <Pane layoutX="228.0" layoutY="402.0" prefHeight="75.0" prefWidth="215.0">
                <children>
                   <Label layoutX="38.0" layoutY="6.0" prefHeight="17.0" prefWidth="132.0" styleClass="font-sm" text="Confirme sua senha:" />
-                  <PasswordField fx:id="idConfirmaSenha" layoutX="23.0" layoutY="23.0" prefHeight="29.0" prefWidth="168.0" text="cvbcvb">
+                  <PasswordField fx:id="idConfirmaSenha" layoutX="23.0" layoutY="23.0" prefHeight="29.0" prefWidth="168.0">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />
