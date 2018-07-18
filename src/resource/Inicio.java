@@ -55,7 +55,7 @@ public class Inicio extends Application {
 			progressBar.setScaleX(5);
 			progressBar.setScaleY(5);
 			progressBar.setScaleZ(5);
-			String css = this.getClass().getResource("/css/progress.css").toExternalForm();
+			String css = this.getClass().getResource("/css/Progress.css").toExternalForm();
 			progressBar.getStylesheets().add(css);
 			progressBar.setTranslateX(650);
 			progressBar.setTranslateY(300);

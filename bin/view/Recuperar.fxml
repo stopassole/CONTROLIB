@@ -93,7 +93,7 @@
             </Pane>
             <Pane layoutX="10.0" layoutY="479.0" prefHeight="107.0" prefWidth="451.0">
                <children>
-                  <Button fx:id="btnCadastrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="44.0" layoutY="13.0" mnemonicParsing="false" onAction="#salvarUsuario" prefHeight="65.0" prefWidth="370.0" styleClass="btn-primary" text="CONFIRMAR">
+                  <Button fx:id="btnCadastrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="44.0" layoutY="13.0" mnemonicParsing="false" onAction="#alterarSenha" prefHeight="65.0" prefWidth="370.0" styleClass="btn-primary" text="CONFIRMAR">
                      <font>
                         <Font size="30.0" />
                      </font>
