@@ -18,7 +18,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.FlowPane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class Inicio extends Application {
@@ -104,8 +103,6 @@ public class Inicio extends Application {
 			myStage.setTitle("Carregando");
 			myStage.setScene(scene);
 			myStage.centerOnScreen();
-			myStage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
-			myStage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
 			myStage.show();
 
 			log.info(END_POINT + "/criarbanco -> Fim");
@@ -126,8 +123,6 @@ public class Inicio extends Application {
 			myStage.setScene(new Scene(root));
 			myStage.setTitle("CONTROLIB");
 			myStage.centerOnScreen();
-			myStage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());
-			myStage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
 			myStage.show();
 
 		} catch (Exception e) {
