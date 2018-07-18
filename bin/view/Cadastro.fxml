@@ -15,9 +15,9 @@
 
 <TextFlow styleClass="bg-primary" stylesheets="@../css/Cadastro.css" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroController">
    <children>
-      <AnchorPane prefHeight="580.0" prefWidth="450.0" styleClass="bg-primary" stylesheets="@../css/cadastro.css">
+      <AnchorPane prefHeight="600.0" prefWidth="500.0" styleClass="bg-primary" stylesheets="@../css/cadastro.css">
          <children>
-            <Pane layoutX="3.0" layoutY="26.0" prefHeight="75.0" prefWidth="124.0">
+            <Pane layoutX="13.0" layoutY="26.0" prefHeight="75.0" prefWidth="124.0">
                <children>
                   <Button fx:id="btnVoltarLogin" layoutX="7.0" layoutY="-3.0" mnemonicParsing="false" onAction="#voltar" prefHeight="81.0" prefWidth="84.0" style="-fx-cursor: hand;" styleClass="btn" />
                   <ImageView fitHeight="36.0" fitWidth="18.0" layoutX="46.0" layoutY="19.0" onMouseClicked="#voltar" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
@@ -27,16 +27,16 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="142.0" layoutY="45.0" prefHeight="150.0" prefWidth="186.0">
+            <Pane layoutX="152.0" layoutY="45.0" prefHeight="150.0" prefWidth="186.0">
                <children>
-                  <ImageView fitHeight="135.0" fitWidth="177.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="135.0" fitWidth="177.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/logo.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="10.0" layoutY="217.0" prefHeight="47.0" prefWidth="450.0">
+            <Pane layoutX="20.0" layoutY="217.0" prefHeight="47.0" prefWidth="450.0">
                <children>
                   <Separator layoutX="45.0" layoutY="21.0" prefHeight="5.0" prefWidth="94.0" />
                   <Separator layoutX="314.0" layoutY="21.0" prefHeight="5.0" prefWidth="94.0" />
@@ -47,7 +47,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="8.0" layoutY="277.0" prefHeight="75.0" prefWidth="451.0">
+            <Pane layoutX="18.0" layoutY="277.0" prefHeight="75.0" prefWidth="451.0">
                <children>
                   <Label layoutX="55.0" layoutY="8.0" prefHeight="17.0" prefWidth="132.0" styleClass="font-sm" text="E-mail:" />
                   <TextField fx:id="idUsuario" layoutX="41.0" layoutY="23.0" prefHeight="29.0" prefWidth="370.0">
@@ -58,7 +58,7 @@
                   </TextField>
                </children>
             </Pane>
-            <Pane layoutX="8.0" layoutY="339.0" prefHeight="75.0" prefWidth="451.0">
+            <Pane layoutX="18.0" layoutY="339.0" prefHeight="75.0" prefWidth="451.0">
                <children>
                   <Label layoutX="55.0" layoutY="7.0" prefHeight="17.0" prefWidth="132.0" styleClass="font-sm" text="CPF:" />
                   <TextField fx:id="idCPF" layoutX="41.0" layoutY="23.0" onKeyReleased="#tbCpf" prefHeight="29.0" prefWidth="370.0">
@@ -69,7 +69,7 @@
                   </TextField>
                </children>
             </Pane>
-            <Pane layoutX="6.0" layoutY="400.0" prefHeight="75.0" prefWidth="215.0">
+            <Pane layoutX="16.0" layoutY="400.0" prefHeight="75.0" prefWidth="215.0">
                <children>
                   <Label layoutX="58.0" layoutY="7.0" prefHeight="17.0" prefWidth="132.0" styleClass="font-sm" text="Senha:" />
                   <PasswordField fx:id="idSenha" layoutX="43.0" layoutY="23.0" prefHeight="29.0" prefWidth="167.0">
@@ -80,7 +80,7 @@
                   </PasswordField>
                </children>
             </Pane>
-            <Pane layoutX="228.0" layoutY="402.0" prefHeight="75.0" prefWidth="215.0">
+            <Pane layoutX="238.0" layoutY="402.0" prefHeight="75.0" prefWidth="215.0">
                <children>
                   <Label layoutX="38.0" layoutY="6.0" prefHeight="17.0" prefWidth="132.0" styleClass="font-sm" text="Confirme sua senha:" />
                   <PasswordField fx:id="idConfirmaSenha" layoutX="23.0" layoutY="23.0" prefHeight="29.0" prefWidth="168.0">
@@ -91,9 +91,9 @@
                   </PasswordField>
                </children>
             </Pane>
-            <Pane layoutX="10.0" layoutY="479.0" prefHeight="107.0" prefWidth="451.0">
+            <Pane layoutX="20.0" layoutY="479.0" prefHeight="107.0" prefWidth="451.0">
                <children>
-                  <Button fx:id="btnCadastrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="39.0" layoutY="14.0" mnemonicParsing="false" onAction="#salvarUsuario" prefHeight="65.0" prefWidth="370.0" styleClass="btn-primary" text="CADASTRAR">
+                  <Button fx:id="btnCadastrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="39.0" layoutY="14.0" mnemonicParsing="false" onAction="#salvarUsuario" prefHeight="37.0" prefWidth="370.0" styleClass="btn-primary" text="CADASTRAR">
                      <font>
                         <Font size="30.0" />
                      </font>
