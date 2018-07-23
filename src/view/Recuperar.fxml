@@ -15,85 +15,59 @@
 
 <TextFlow styleClass="bg-primary" stylesheets="@../css/Recuperar.css" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RecuperarController">
    <children>
-      <AnchorPane prefHeight="600.0" prefWidth="500.0" styleClass="bg-primary" stylesheets="@../css/Recuperar.css">
+      <AnchorPane prefHeight="800.0" prefWidth="640.0" styleClass="bg-primary" stylesheets="@../css/Recuperar.css">
          <children>
-            <Pane layoutX="3.0" layoutY="26.0" prefHeight="75.0" prefWidth="480.0">
+            <Pane prefHeight="800.0" prefWidth="640.0">
                <children>
-                  <Button fx:id="btnVoltarLogin" layoutX="58.0" layoutY="22.0" mnemonicParsing="false" onAction="#voltar" prefHeight="35.0" prefWidth="36.0" style="-fx-cursor: hand;" styleClass="btn" />
-                  <ImageView fitHeight="36.0" fitWidth="18.0" layoutX="58.0" layoutY="23.0" onMouseClicked="#voltar" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
- 						<image>
-                        <Image url="@../images/voltar.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Pane layoutX="164.0" layoutY="46.0" prefHeight="155.0" prefWidth="183.0">
-               <children>
-                  <ImageView fitHeight="136.0" fitWidth="177.0" layoutX="7.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <Button fx:id="btnVoltarLogin" layoutX="71.0" layoutY="70.58" mnemonicParsing="false" onAction="#voltar" prefHeight="30.0" prefWidth="18.0" style="-fx-cursor: hand;" styleClass="btn">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="18.0" onMouseClicked="#voltar" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+       						<image>
+                              <Image url="@../images/voltar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <ImageView fitHeight="140.0" fitWidth="180.0" layoutX="230.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/logo.png" />
                      </image>
                   </ImageView>
-               </children>
-            </Pane>
-            <Pane layoutX="2.0" layoutY="217.0" prefHeight="47.0" prefWidth="480.0">
-               <children>
-                  <Separator layoutX="59.0" layoutY="21.0" prefHeight="5.0" prefWidth="69.0" />
-                  <Separator layoutX="370.0" layoutY="15.0" prefHeight="17.0" prefWidth="69.0" />
-                  <Label alignment="TOP_CENTER" layoutX="128.0" layoutY="6.0" prefHeight="35.0" prefWidth="243.0" styleClass="text-primary" text="RECUPERAR SENHA" textAlignment="CENTER">
+                  <Separator layoutX="70.5" layoutY="293.0" prefHeight="5.0" prefWidth="110.0" />
+                  <Label alignment="TOP_CENTER" layoutX="213.0" layoutY="276.0" prefHeight="44.0" prefWidth="214.0" styleClass="text-primary" text="RECUPERAR" textAlignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-               </children>
-            </Pane>
-            <Pane layoutY="278.0" prefHeight="75.0" prefWidth="500.0">
-               <children>
-                  <Label layoutX="76.0" layoutY="6.0" prefHeight="17.0" prefWidth="132.0" styleClass="font-sm" text="E-mail:" />
-                  <TextField fx:id="idUsuario" layoutX="61.0" layoutY="23.0" prefHeight="29.0" prefWidth="380.0">
+                  <Separator layoutX="460.5" layoutY="293.0" prefHeight="5.0" prefWidth="110.0" />
+                  <Label layoutX="93.0" layoutY="352.0" prefHeight="20.0" prefWidth="170.0" styleClass="font-sm" text="E-mail:" />
+                  <TextField fx:id="idUsuario" layoutX="70.0" layoutY="376.0" prefHeight="60.0" prefWidth="500.0">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />
                      </styleClass>
                   </TextField>
-               </children>
-            </Pane>
-            <Pane layoutX="-3.0" layoutY="344.0" prefHeight="75.0" prefWidth="500.0">
-               <children>
-                  <Label layoutX="75.0" layoutY="8.0" prefHeight="17.0" prefWidth="132.0" styleClass="font-sm" text="CPF:" />
-                  <TextField fx:id="idCPF" layoutX="62.0" layoutY="23.0" onKeyReleased="#tbCpf" prefHeight="29.0" prefWidth="380.0">
+                  <Label layoutX="93.0" layoutY="446.0" prefHeight="20.0" prefWidth="150.0" styleClass="font-sm" text="CPF:" />
+                  <TextField fx:id="idCPF" layoutX="71.0" layoutY="471.0" onKeyReleased="#tbCpf" prefHeight="60.0" prefWidth="500.0">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />
                      </styleClass>
                   </TextField>
-               </children>
-            </Pane>
-            <Pane layoutX="2.0" layoutY="406.0" prefHeight="75.0" prefWidth="250.0">
-               <children>
-                  <Label layoutX="74.0" layoutY="9.0" prefHeight="17.0" prefWidth="132.0" styleClass="font-sm" text="Informe sua nova senha:" />
-                  <PasswordField fx:id="idSenha" layoutX="59.0" layoutY="23.0" prefHeight="29.0" prefWidth="173.0">
+                  <Label layoutX="93.0" layoutY="541.0" prefHeight="20.0" prefWidth="105.0" styleClass="font-sm" text="Informe sua nova senha:" />
+                  <PasswordField fx:id="idSenha" layoutX="71.0" layoutY="566.0" prefHeight="60.0" prefWidth="240.0">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />
                      </styleClass>
                   </PasswordField>
-               </children>
-            </Pane>
-            <Pane layoutX="250.0" layoutY="406.0" prefHeight="75.0" prefWidth="250.0">
-               <children>
-                  <Label layoutX="30.0" layoutY="6.0" prefHeight="17.0" prefWidth="139.0" styleClass="font-sm" text="Confirme sua nova senha:" />
-                  <PasswordField fx:id="idConfirmaSenha" layoutX="14.0" layoutY="23.0" prefHeight="29.0" prefWidth="173.0">
+                  <Label layoutX="350.0" layoutY="541.0" prefHeight="20.0" prefWidth="159.0" styleClass="font-sm" text="Confirme sua nova senha:" />
+                  <PasswordField fx:id="idConfirmaSenha" layoutX="330.0" layoutY="566.0" prefHeight="60.0" prefWidth="240.0">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />
                      </styleClass>
                   </PasswordField>
-               </children>
-            </Pane>
-            <Pane layoutY="475.0" prefHeight="107.0" prefWidth="500.0">
-               <children>
-                  <Button fx:id="btnCadastrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="60.0" layoutY="21.0" mnemonicParsing="false" onAction="#alterarSenha" prefHeight="37.0" prefWidth="380.0" styleClass="btn-primary" text="CONFIRMAR">
+                  <Button fx:id="btnCadastrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="70.0" layoutY="679.0" mnemonicParsing="false" onAction="#alterarSenha" prefHeight="60.0" prefWidth="500.0" styleClass="btn-primary" text="CONFIRMAR">
                      <font>
                         <Font size="30.0" />
                      </font>

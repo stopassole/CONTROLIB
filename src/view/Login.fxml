@@ -17,43 +17,31 @@
 
 <TextFlow styleClass="bg-primary" stylesheets="@../css/Login.css" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="500.0" styleClass="bg-primary" stylesheets="@../css/login.css">
+      <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="640.0" styleClass="bg-primary" stylesheets="@../css/login.css">
          <children>
-            <Pane layoutY="40.0" prefHeight="150.0" prefWidth="500.0">
+            <Pane prefHeight="800.0" prefWidth="640.0">
                <children>
-                  <ImageView fitHeight="136.0" fitWidth="177.0" layoutX="166.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="140.0" fitWidth="180.0" layoutX="230.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/logo.png" />
                      </image>
                   </ImageView>
-               </children>
-            </Pane>
-            <Pane layoutY="207.0" prefHeight="47.0" prefWidth="500.0">
-               <children>
-                  <Separator layoutX="70.0" layoutY="21.0" prefHeight="5.0" prefWidth="118.0" />
-                  <Separator layoutX="310.0" layoutY="21.0" prefHeight="5.0" prefWidth="118.0" />
-                  <Label alignment="CENTER" layoutX="184.0" prefHeight="47.0" prefWidth="126.0" styleClass="text-primary" text="Login" textAlignment="CENTER">
+                  <Separator layoutX="70.5" layoutY="298.0" prefHeight="5.0" prefWidth="159.0" />
+                  <Separator layoutX="411.5" layoutY="298.0" prefHeight="5.0" prefWidth="159.0" />
+                  <Label alignment="CENTER" layoutX="263.0" layoutY="276.0" prefHeight="44.0" prefWidth="115.0" styleClass="text-primary" text="Login" textAlignment="CENTER">
                      <font>
                         <Font size="32.0" />
                      </font>
                   </Label>
-               </children>
-            </Pane>
-            <Pane layoutY="285.0" prefHeight="75.0" prefWidth="500.0">
-               <children>
-                  <Label layoutX="75.0" layoutY="6.0" prefHeight="17.0" prefWidth="44.0" styleClass="font-sm" text="E-mail:" />
-                  <TextField fx:id="idUsuario" alignment="TOP_LEFT" layoutX="60.0" layoutY="23.0" prefHeight="25.0" prefWidth="380.0">
+                  <Label layoutX="93.0" layoutY="372.0" prefHeight="20.0" prefWidth="62.0" styleClass="font-sm" text="E-mail:" />
+                  <TextField fx:id="idUsuario" alignment="TOP_LEFT" layoutX="70.0" layoutY="400.0" prefHeight="60.0" prefWidth="500.0">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />
                      </styleClass>
                   </TextField>
-               </children>
-            </Pane>
-            <Pane layoutY="348.0" prefHeight="75.0" prefWidth="500.0">
-               <children>
-                  <Label layoutX="75.0" layoutY="6.0" styleClass="font-sm" text="Senha:" />
-                  <PasswordField fx:id="idSenha" layoutX="60.0" layoutY="23.0" prefHeight="29.0" prefWidth="380.0">
+                  <Label layoutX="93.0" layoutY="489.0" prefHeight="20.0" prefWidth="62.0" styleClass="font-sm" text="Senha:" />
+                  <PasswordField fx:id="idSenha" layoutX="70.0" layoutY="517.0" prefHeight="60.0" prefWidth="500.0">
                      <font>
                         <Font name="Bell MT" size="12.0" />
                      </font>
@@ -62,18 +50,10 @@
                         <String fx:value="font-md" />
                      </styleClass>
                   </PasswordField>
-               </children>
-            </Pane>
-            <Pane layoutY="410.0" prefHeight="47.0" prefWidth="500.0">
-               <children>
-                  <CheckBox fx:id="idLembrarSenha" layoutX="75.0" layoutY="6.0" mnemonicParsing="false" styleClass="checkbox" text="Lembrar-me" textFill="WHITE" />
-                  <Hyperlink fx:id="idCadastro" layoutX="362.0" layoutY="4.0" onAction="#cadastrar" prefHeight="23.0" prefWidth="73.0" text="Cadastre-se" />
-                  <Hyperlink fx:id="idRecuperarSenha" layoutX="316.0" layoutY="4.0" onAction="#recuperar" text="Esqueci minha senha" />
-               </children>
-            </Pane>
-            <Pane layoutY="476.0" prefHeight="96.0" prefWidth="500.0">
-               <children>
-                  <Button fx:id="btnEntrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="60.0" layoutY="7.0" mnemonicParsing="false" onAction="#entrar" prefHeight="37.0" prefWidth="380.0" styleClass="btn-primary" text="ENTRAR">
+                  <Hyperlink fx:id="idCadastro" layoutX="456.0" layoutY="606.0" onAction="#cadastrar" prefHeight="18.0" prefWidth="92.0" text="Cadastre-se" />
+                  <Hyperlink fx:id="idRecuperarSenha" layoutX="409.0" layoutY="606.0" onAction="#recuperar" text="Esqueci minha senha" />
+                  <CheckBox fx:id="idLembrarSenha" layoutX="93.0" layoutY="606.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="124.0" styleClass="checkbox" text="Lembrar-me" textFill="WHITE" />
+                  <Button fx:id="btnEntrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="70.0" layoutY="679.0" mnemonicParsing="false" onAction="#entrar" prefHeight="60.0" prefWidth="500.0" styleClass="btn-primary" text="ENTRAR">
                      <font>
                         <Font size="27.0" />
                      </font>

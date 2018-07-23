@@ -5,15 +5,20 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
 <AnchorPane prefHeight="168.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AlertFalha">
    <children>
-      <Label fx:id="idText" alignment="CENTER" layoutX="110.0" layoutY="16.0" prefHeight="93.0" prefWidth="252.0" style="-fx-font-weight: bold;" textAlignment="CENTER" />
-      <ImageView fitHeight="72.0" fitWidth="78.0" layoutX="38.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/falha.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="idConfirma" alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="108.0" mnemonicParsing="false" onAction="#done" prefHeight="31.0" prefWidth="217.0" styleClass="btn" stylesheets="@../css/Alert.css" text="OK" textAlignment="CENTER" />
+      <Pane prefHeight="239.0" prefWidth="560.0" styleClass="background" stylesheets="@../css/Alert.css">
+         <children>
+            <Label fx:id="idText1" alignment="CENTER" layoutX="186.0" layoutY="104.0" prefHeight="31.0" prefWidth="208.0" style="-fx-font-weight: bold;" textAlignment="CENTER" />
+            <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="259.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/falha.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="idConfirma1" layoutX="232.0" layoutY="167.0" mnemonicParsing="false" onAction="#done" prefHeight="40.0" prefWidth="115.0" styleClass="btn" stylesheets="@../css/Alert.css" text="OK" textAlignment="CENTER" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
