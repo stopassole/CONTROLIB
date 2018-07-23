@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow styleClass="bg-primary" stylesheets="@../css/Login.css" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<TextFlow styleClass="bg-primary" stylesheets="@../css/Login.css" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="640.0" styleClass="bg-primary" stylesheets="@../css/login.css">
          <children>
@@ -28,7 +28,7 @@
                   </ImageView>
                   <Separator layoutX="70.5" layoutY="298.0" prefHeight="5.0" prefWidth="159.0" />
                   <Separator layoutX="411.5" layoutY="298.0" prefHeight="5.0" prefWidth="159.0" />
-                  <Label alignment="CENTER" layoutX="263.0" layoutY="276.0" prefHeight="44.0" prefWidth="115.0" styleClass="text-primary" text="Login" textAlignment="CENTER">
+                  <Label alignment="CENTER" layoutX="263.0" layoutY="276.0" prefHeight="44.0" prefWidth="115.0" styleClass="text-primary" text="LOGIN" textAlignment="CENTER">
                      <font>
                         <Font size="32.0" />
                      </font>
@@ -50,10 +50,10 @@
                         <String fx:value="font-md" />
                      </styleClass>
                   </PasswordField>
-                  <Hyperlink fx:id="idCadastro" layoutX="456.0" layoutY="606.0" onAction="#cadastrar" prefHeight="18.0" prefWidth="92.0" text="Cadastre-se" />
-                  <Hyperlink fx:id="idRecuperarSenha" layoutX="409.0" layoutY="606.0" onAction="#recuperar" text="Esqueci minha senha" />
+                  <Hyperlink fx:id="idCadastro" layoutX="456.0" layoutY="606.0" onAction="#cadastrar" onKeyPressed="#enterPressedCadastar" prefHeight="18.0" prefWidth="92.0" text="Cadastre-se" />
+                  <Hyperlink fx:id="idRecuperarSenha" layoutX="409.0" layoutY="606.0" onAction="#recuperar" onKeyPressed="#enterPressedRecuperar" text="Esqueci minha senha" />
                   <CheckBox fx:id="idLembrarSenha" layoutX="93.0" layoutY="606.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="124.0" styleClass="checkbox" text="Lembrar-me" textFill="WHITE" />
-                  <Button fx:id="btnEntrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="70.0" layoutY="679.0" mnemonicParsing="false" onAction="#entrar" prefHeight="60.0" prefWidth="500.0" styleClass="btn-primary" text="ENTRAR">
+                  <Button fx:id="btnEntrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="70.0" layoutY="679.0" mnemonicParsing="false" onAction="#entrar" onKeyPressed="#enterPressedEntrar" prefHeight="60.0" prefWidth="500.0" styleClass="btn-primary" text="ENTRAR">
                      <font>
                         <Font size="27.0" />
                      </font>

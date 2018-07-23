@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -67,5 +68,11 @@ public class AlertSucesso extends Application implements Initializable {
 	@FXML
 	private void done() {
 		fechar();
+	}
+	
+	public void enterPressed(KeyEvent e) throws Exception {
+		if (e.getCode().toString().equals("ENTER")) {
+			fechar();
+		}
 	}
 }

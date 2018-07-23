@@ -30,7 +30,8 @@ public class CreateDatabase extends Task<Void> {
 			
 			Connection conexao = dao.conexaoUsuario();
 			String sql = "CREATE TABLE usuario(_id serial NOT NULL,\r\n" + 
-					"					usuario character varying(50) not null,\r\n" + 
+					"					email character varying(50) not null,\r\n" + 
+					"					empresa character varying(50) not null,\r\n" + 
 					"					cpf character varying(50) not null,\r\n" + 
 					"					senha character varying(50) not null,\r\n" + 
 					"					lembrarSenha boolean default false,\r\n" + 
@@ -60,7 +61,7 @@ public class CreateDatabase extends Task<Void> {
 
 			Class.forName("org.postgresql.Driver");
 			Connection conexao = DriverManager.getConnection(url, usuario, senha);
-			PreparedStatement stmt = conexao.prepareStatement("CREATE DATABASE catalogolivros");
+			PreparedStatement stmt = conexao.prepareStatement("CREATE DATABASE controlib");
 			stmt.execute();
 			this.updateProgress(20, 100);
 			

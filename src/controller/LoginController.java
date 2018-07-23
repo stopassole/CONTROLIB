@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import org.apache.log4j.Logger;
 
 import dao.UsuarioDAO;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +17,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import resource.Inicio;
 import util.CriptoUtil;
@@ -84,7 +84,7 @@ public class LoginController implements Initializable {
 
 	@SuppressWarnings("static-access")
 	@FXML
-	private void entrar(ActionEvent event) throws Exception {
+	private void entrar() throws Exception {
 		if (verificaVazio()) {
 			String retorno = dao.getValidaUsuario(idUsuario.getText(), cripto.getSenhaCriptografada(idSenha.getText()));
 			if (retorno != null) {
@@ -126,4 +126,22 @@ public class LoginController implements Initializable {
 		}
 
 	}
+	
+	public void enterPressedEntrar(KeyEvent e) throws Exception {
+        if (e.getCode().toString().equals("ENTER")) {
+            entrar();
+        }
+    }
+	
+	public void enterPressedCadastar(KeyEvent e) throws Exception {
+        if (e.getCode().toString().equals("ENTER")) {
+            cadastrar();
+        }
+    }
+	
+	public void enterPressedRecuperar(KeyEvent e) throws Exception {
+        if (e.getCode().toString().equals("ENTER")) {
+            recuperar();
+        }
+    }
 }

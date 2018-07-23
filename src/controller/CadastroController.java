@@ -2,8 +2,6 @@ package controller;
 
 import dao.UsuarioDAO;
 import entity.Usuario;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import resource.Inicio;
 import util.CriptoUtil;
@@ -18,9 +17,11 @@ import util.ValidatorCPF;
 
 public class CadastroController {
 	@FXML
-	private TextField idUsuario;
+	private TextField idEmail;
 	@FXML
 	private TextField idCPF;
+	@FXML
+	private TextField idEmpresa;
 	@FXML
 	private PasswordField idSenha;
 	@FXML
@@ -35,7 +36,7 @@ public class CadastroController {
 
 	@SuppressWarnings("static-access")
 	@FXML
-	public void salvarUsuario(ActionEvent event) throws Exception {
+	public void salvarUsuario() throws Exception {
 		if (verificaVazio()) {
 			AlertFalha falha = new AlertFalha();
 			falha.text = "Algum campo está vazio";
@@ -44,9 +45,10 @@ public class CadastroController {
 		} else {
 			if (senhaValida()) {
 				if (new ValidatorCPF(idCPF).isValidCPF(idCPF.getText())) {
-					Usuario u = new Usuario(null, null, null, null, null);
+					Usuario u = new Usuario(null, null, null, null, null, null);
 
-					u.setUsuario(idUsuario.getText());
+					u.setEmail(idEmail.getText());
+					u.setEmpresa(idEmpresa.getText());
 					u.setCpf(idCPF.getText());
 					u.setSenha(cripto.getSenhaCriptografada(idSenha.getText()));
 
@@ -77,15 +79,15 @@ public class CadastroController {
 	}
 
 	@FXML
-	private void voltar(Event event) throws Exception {
+	private void voltar() throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
 	}
 
 	private boolean verificaVazio() {
-		return idUsuario.getText().isEmpty() || idConfirmaSenha.getText().isEmpty() || idCPF.getText().isEmpty()
-				|| idSenha.getText().isEmpty();
+		return idEmail.getText().isEmpty() || idConfirmaSenha.getText().isEmpty() || idCPF.getText().isEmpty()
+				|| idSenha.getText().isEmpty() || idEmpresa.getText().isEmpty();
 	}
 
 	private boolean senhaValida() {
@@ -99,6 +101,18 @@ public class CadastroController {
 	@FXML
 	private void tbCpf() {
 		new ValidatorCPF(idCPF);
+	}
+
+	public void enterPressedSalvar(KeyEvent e) throws Exception {
+		if (e.getCode().toString().equals("ENTER")) {
+			salvarUsuario();
+		}
+	}
+	
+	public void enterPressedVoltar(KeyEvent e) throws Exception {
+		if (e.getCode().toString().equals("ENTER")) {
+			voltar();
+		}
 	}
 
 }

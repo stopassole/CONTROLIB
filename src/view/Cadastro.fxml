@@ -13,13 +13,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow styleClass="bg-primary" stylesheets="@../css/Cadastro.css" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroController">
+<TextFlow styleClass="bg-primary" stylesheets="@../css/Cadastro.css" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroController">
    <children>
       <AnchorPane prefHeight="800.0" prefWidth="640.0" styleClass="bg-primary" stylesheets="@../css/cadastro.css">
          <children>
             <Pane prefHeight="800.0" prefWidth="640.0">
                <children>
-                  <Button fx:id="btnVoltarLogin" layoutX="71.0" layoutY="70.58" mnemonicParsing="false" onAction="#voltar" prefHeight="30.0" prefWidth="18.0" style="-fx-cursor: hand;" styleClass="btn" />
+                  <Button fx:id="btnVoltarLogin" layoutX="71.0" layoutY="70.58" mnemonicParsing="false" onAction="#voltar" onKeyPressed="#enterPressedVoltar" prefHeight="30.0" prefWidth="18.0" style="-fx-cursor: hand;" styleClass="btn" />
                   <ImageView fitHeight="30.0" fitWidth="18.0" layoutX="71.0" layoutY="70.58" onMouseClicked="#voltar" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
  						<image>
                         <Image url="@../images/voltar.png" />
@@ -38,7 +38,7 @@
                   </Label>
                   <Separator layoutX="460.5" layoutY="298.0" prefHeight="5.0" prefWidth="110.0" />
                   <Label layoutX="93.0" layoutY="352.0" prefHeight="20.0" prefWidth="65.0" styleClass="font-sm" text="E-mail:" />
-                  <TextField fx:id="idUsuario" layoutX="70.0" layoutY="376.0" prefHeight="60.0" prefWidth="500.0">
+                  <TextField fx:id="idEmail" layoutX="70.0" layoutY="376.0" prefHeight="60.0" prefWidth="500.0">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />
@@ -52,7 +52,7 @@
                      </styleClass>
                   </TextField>
                   <Label layoutX="350.0" layoutY="446.0" prefHeight="20.0" prefWidth="80.0" styleClass="font-sm" text="Empresa:" />
-                  <TextField fx:id="idCPF1" layoutX="330.0" layoutY="471.0" onKeyReleased="#tbCpf" prefHeight="60.0" prefWidth="240.0">
+                  <TextField fx:id="idEmpresa" layoutX="330.0" layoutY="471.0" prefHeight="60.0" prefWidth="240.0">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />
@@ -72,7 +72,7 @@
                         <String fx:value="font-md" />
                      </styleClass>
                   </PasswordField>
-                  <Button fx:id="btnCadastrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="70.0" layoutY="679.0" mnemonicParsing="false" onAction="#salvarUsuario" prefHeight="60.0" prefWidth="500.0" styleClass="btn-primary" text="CADASTRAR">
+                  <Button fx:id="btnCadastrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="70.0" layoutY="679.0" mnemonicParsing="false" onAction="#salvarUsuario" onKeyPressed="#enterPressedSalvar" prefHeight="60.0" prefWidth="500.0" styleClass="btn-primary" text="CADASTRAR">
                      <font>
                         <Font size="30.0" />
                      </font>

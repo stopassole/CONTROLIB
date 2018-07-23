@@ -39,35 +39,38 @@ public class UsuarioDAO {
 		log.info(END_POINT + "/salvarusuario -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
-		PreparedStatement stmt = conexao.prepareStatement("INSERT INTO Usuario(usuario,cpf,senha) VALUES (?, ?, ?)");
-		stmt.setString(1, usuario.getUsuario());
-		stmt.setString(2, usuario.getCpf());
-		stmt.setString(3, usuario.getSenha());
+		PreparedStatement stmt = conexao
+				.prepareStatement("INSERT INTO Usuario(email,empresa,cpf,senha) VALUES (?, ?, ?, ?)");
+		stmt.setString(1, usuario.getEmail());
+		stmt.setString(2, usuario.getEmpresa());
+		stmt.setString(3, usuario.getCpf());
+		stmt.setString(4, usuario.getSenha());
 
 		stmt.executeUpdate();
 
 		log.info(END_POINT + "/salvarusuario -> Fim");
 	}
 
-	public void alterarSenha(String usuario, String cpf, String senhaCriptografada) throws Exception {
+	public void alterarSenha(String email, String cpf, String senhaCriptografada) throws Exception {
 		log.info(END_POINT + "/alterarsenha -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
-		PreparedStatement stmt = conexao.prepareStatement("UPDATE usuario SET senha = ? WHERE cpf = ? AND usuario = ?");
+		PreparedStatement stmt = conexao.prepareStatement("UPDATE usuario SET senha = ? WHERE cpf = ? AND email = ?");
 
 		stmt.setString(1, senhaCriptografada);
 		stmt.setString(2, cpf);
-		stmt.setString(3, usuario);
+		stmt.setString(3, email);
 
 		stmt.executeUpdate();
 
 		log.info(END_POINT + "/alterarsenha -> Fim");
 	}
-	
-	public String getValida(String usuario, String cpf) throws Exception {
+
+	public String getValida(String email, String cpf) throws Exception {
 		Connection conexao = dao.conexaoUsuario();
-		PreparedStatement stmt = conexao.prepareStatement("SELECT _id FROM usuario WHERE usuario.usuario= ? AND usuario.cpf = ?;");
-		stmt.setString(1, usuario);
+		PreparedStatement stmt = conexao
+				.prepareStatement("SELECT _id FROM usuario WHERE usuario.email= ? AND usuario.cpf = ?;");
+		stmt.setString(1, email);
 		stmt.setString(2, cpf);
 
 		ResultSet rs = stmt.executeQuery();
@@ -76,13 +79,14 @@ public class UsuarioDAO {
 		if (rs.next()) {
 			valor = rs.getString("_id");
 		}
-		return valor; 
+		return valor;
 	}
 
-	public String getValidaUsuario(String usuario, String senha) throws Exception {
+	public String getValidaUsuario(String email, String senha) throws Exception {
 		Connection conexao = dao.conexaoUsuario();
-		PreparedStatement stmt = conexao.prepareStatement("SELECT _id FROM usuario WHERE usuario.usuario= ? AND usuario.senha = ?;");
-		stmt.setString(1, usuario);
+		PreparedStatement stmt = conexao
+				.prepareStatement("SELECT _id FROM usuario WHERE usuario.email= ? AND usuario.senha = ?;");
+		stmt.setString(1, email);
 		stmt.setString(2, senha);
 
 		ResultSet rs = stmt.executeQuery();
@@ -91,6 +95,6 @@ public class UsuarioDAO {
 		if (rs.next()) {
 			valor = rs.getString("_id");
 		}
-		return valor; 
+		return valor;
 	}
 }

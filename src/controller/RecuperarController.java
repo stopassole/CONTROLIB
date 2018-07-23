@@ -1,8 +1,6 @@
 package controller;
 
 import dao.UsuarioDAO;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import resource.Inicio;
 import util.CriptoUtil;
@@ -19,7 +18,7 @@ public class RecuperarController {
 	@FXML
 	private Button btnVoltarLogin;
 	@FXML
-	private TextField idUsuario;
+	private TextField idEmail;
 	@FXML
 	private TextField idCPF;
 	@FXML
@@ -33,7 +32,7 @@ public class RecuperarController {
 	UsuarioDAO dao = new UsuarioDAO();
 
 	@FXML
-	private void voltar(Event event) throws Exception {
+	private void voltar() throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
@@ -46,7 +45,7 @@ public class RecuperarController {
 
 	@SuppressWarnings("static-access")
 	@FXML
-	public void alterarSenha(ActionEvent event) throws Exception {
+	public void alterarSenha() throws Exception {
 		if (verificaVazio()) {
 			AlertFalha falha = new AlertFalha();
 			falha.text = "Algum campo está vazio";
@@ -56,11 +55,11 @@ public class RecuperarController {
 			if (senhaValida()) {
 				if (new ValidatorCPF(idCPF).isValidCPF(idCPF.getText())) {
 
-					String retorno = dao.getValida(idUsuario.getText(), idCPF.getText());
+					String retorno = dao.getValida(idEmail.getText(), idCPF.getText());
 
 					if (retorno != null) {
 						
-						dao.alterarSenha(idUsuario.getText(), idCPF.getText(),cripto.getSenhaCriptografada(idSenha.getText()));
+						dao.alterarSenha(idEmail.getText(), idCPF.getText(),cripto.getSenhaCriptografada(idSenha.getText()));
 
 						Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 						Scene scene = new Scene(root);
@@ -94,7 +93,7 @@ public class RecuperarController {
 	}
 
 	private boolean verificaVazio() {
-		return idUsuario.getText().isEmpty() || idConfirmaSenha.getText().isEmpty() || idCPF.getText().isEmpty()
+		return idEmail.getText().isEmpty() || idConfirmaSenha.getText().isEmpty() || idCPF.getText().isEmpty()
 				|| idSenha.getText().isEmpty();
 	}
 
@@ -105,4 +104,16 @@ public class RecuperarController {
 			return true;
 		}
 	}
+	
+	public void enterPressedVoltar(KeyEvent e) throws Exception {
+        if (e.getCode().toString().equals("ENTER")) {
+        	voltar();
+        }
+    }
+	
+	public void enterPressedAlterar(KeyEvent e) throws Exception {
+        if (e.getCode().toString().equals("ENTER")) {
+        	alterarSenha();
+        }
+    }
 }
