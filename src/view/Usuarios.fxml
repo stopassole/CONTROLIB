@@ -59,7 +59,7 @@
                   <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="312.16" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="USUÁRIOS                    " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/Group%2035.png" />
+                        <Image url="@../images/group-profile-users.png" />
                      </image>
                   </ImageView>
                </children>
