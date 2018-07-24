@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import org.apache.log4j.Logger;
 
 import dao.UsuarioDAO;
+import entity.Usuario;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,7 +27,7 @@ public class LoginController implements Initializable {
 	@FXML
 	private PasswordField idSenha;
 	@FXML
-	private TextField idUsuario;
+	private TextField idEmail;
 	@FXML
 	private CheckBox idLembrarSenha;
 	@FXML
@@ -52,7 +53,7 @@ public class LoginController implements Initializable {
 
 		int cont = 5;
 		try {
-			cont = dao.buscarUsuario();
+			cont = dao.contUsuario();
 		} catch (Exception e) {
 			log.error(e);
 		}
@@ -63,6 +64,17 @@ public class LoginController implements Initializable {
 		} else {
 			idCadastro.setVisible(false);
 			idRecuperarSenha.setVisible(true);
+		}
+
+		try {
+			Usuario usuario = dao.buscarUsuario();
+			if (usuario != null && usuario.getLembraSenha() == true) {
+				idEmail.setText(usuario.getEmail());
+				idSenha.setText(usuario.getSenha());
+				idLembrarSenha.setSelected(true);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		log.info(END_POINT + "/validalogin -> Fim");
@@ -86,8 +98,17 @@ public class LoginController implements Initializable {
 	@FXML
 	private void entrar() throws Exception {
 		if (verificaVazio()) {
-			String retorno = dao.getValidaUsuario(idUsuario.getText(), cripto.getSenhaCriptografada(idSenha.getText()));
-			if (retorno != null) {
+			String result = dao.getValidaUsuario(idEmail.getText(), cripto.getSenhaCriptografada(idSenha.getText()));
+			if(result == null) {
+				result = dao.getValidaUsuario(idEmail.getText(), idSenha.getText());
+				if(result != null) {
+					dao.alterarLembrarSenha(idEmail.getText(), idSenha.getText(),idLembrarSenha.isSelected());
+				}
+			} else {
+				dao.alterarLembrarSenha(idEmail.getText(), cripto.getSenhaCriptografada(idSenha.getText()), idLembrarSenha.isSelected());	
+			}
+			
+			if (result != null) {			
 				Parent root = FXMLLoader.load(getClass().getResource("/view/Dashboard.fxml"));
 				Scene scene = new Scene(root);
 				Inicio.myStage.setScene(scene);
@@ -103,13 +124,13 @@ public class LoginController implements Initializable {
 
 	@SuppressWarnings("static-access")
 	private boolean verificaVazio() {
-		if (idUsuario.getText().isEmpty() && idSenha.getText().isEmpty()) {
+		if (idEmail.getText().isEmpty() && idSenha.getText().isEmpty()) {
 			AlertFalha falha = new AlertFalha();
 			falha.text = "Campos obrigatórios não informados";
 			falha.btnClicado = btnEntrar;
 			falha.start(new Stage());
 			return false;
-		} else if (idUsuario.getText().isEmpty()) {
+		} else if (idEmail.getText().isEmpty()) {
 			AlertFalha falha1 = new AlertFalha();
 			falha1.text = "usuário não informado";
 			falha1.btnClicado = btnEntrar;
@@ -126,22 +147,22 @@ public class LoginController implements Initializable {
 		}
 
 	}
-	
+
 	public void enterPressedEntrar(KeyEvent e) throws Exception {
-        if (e.getCode().toString().equals("ENTER")) {
-            entrar();
-        }
-    }
-	
+		if (e.getCode().toString().equals("ENTER")) {
+			entrar();
+		}
+	}
+
 	public void enterPressedCadastar(KeyEvent e) throws Exception {
-        if (e.getCode().toString().equals("ENTER")) {
-            cadastrar();
-        }
-    }
-	
+		if (e.getCode().toString().equals("ENTER")) {
+			cadastrar();
+		}
+	}
+
 	public void enterPressedRecuperar(KeyEvent e) throws Exception {
-        if (e.getCode().toString().equals("ENTER")) {
-            recuperar();
-        }
-    }
+		if (e.getCode().toString().equals("ENTER")) {
+			recuperar();
+		}
+	}
 }

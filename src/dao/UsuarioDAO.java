@@ -16,9 +16,9 @@ public class UsuarioDAO {
 
 	DAO dao = new DAO();
 
-	public int buscarUsuario() throws Exception {
+	public int contUsuario() throws Exception {
 
-		log.info(END_POINT + "/buscarusuario -> Inicio");
+		log.info(END_POINT + "/contusuario -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
 		String sql = "SELECT count(*) FROM usuario";
@@ -29,7 +29,7 @@ public class UsuarioDAO {
 		if (resultSet.next()) {
 			cont = resultSet.getInt(1);
 		}
-		log.info(END_POINT + "/buscarusuario -> Fim");
+		log.info(END_POINT + "/contusuario -> Fim");
 
 		return cont;
 	}
@@ -40,7 +40,7 @@ public class UsuarioDAO {
 
 		Connection conexao = dao.conexaoUsuario();
 		PreparedStatement stmt = conexao
-				.prepareStatement("INSERT INTO Usuario(email,empresa,cpf,senha) VALUES (?, ?, ?, ?)");
+				.prepareStatement("INSERT INTO Usuario(email,empresa,cpf,senha, lengthSenha) VALUES (?, ?, ?, ?)");
 		stmt.setString(1, usuario.getEmail());
 		stmt.setString(2, usuario.getEmpresa());
 		stmt.setString(3, usuario.getCpf());
@@ -97,4 +97,44 @@ public class UsuarioDAO {
 		}
 		return valor;
 	}
+
+	public void alterarLembrarSenha(String email, String senha, Boolean lembrarSenha) throws Exception {
+		log.info(END_POINT + "/alterarlembrarsenha -> Inicio");
+
+		Connection conexao = dao.conexaoUsuario();
+		PreparedStatement stmt = conexao.prepareStatement("UPDATE usuario SET lembrarSenha = ? WHERE senha = ? AND email = ?");
+
+		stmt.setBoolean(1, lembrarSenha);
+		stmt.setString(2, senha);
+		stmt.setString(3, email);
+
+		stmt.executeUpdate();
+
+		log.info(END_POINT + "/alterarlembrarsenha -> Fim");
+	}
+
+	public Usuario buscarUsuario() throws Exception {
+		log.info(END_POINT + "/buscarusuario -> Inicio");
+
+		Connection conexao = dao.conexaoUsuario();
+		PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM usuario");
+
+		ResultSet rs = stmt.executeQuery();
+
+		Usuario usuario = new Usuario(null, null, null, null, null, null);
+
+		if (rs.next()) {
+			usuario.set_id(rs.getString("_id"));
+			usuario.setCpf(rs.getString("cpf"));
+			usuario.setEmail(rs.getString("email"));
+			usuario.setEmpresa(rs.getString("empresa"));
+			usuario.setLembraSenha(rs.getBoolean("lembrarSenha"));
+			usuario.setSenha(rs.getString("senha"));
+		}
+
+		log.info(END_POINT + "/buscarusuario -> Fim");
+
+		return usuario;
+	}
+
 }
