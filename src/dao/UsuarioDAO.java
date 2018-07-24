@@ -39,8 +39,7 @@ public class UsuarioDAO {
 		log.info(END_POINT + "/salvarusuario -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
-		PreparedStatement stmt = conexao
-				.prepareStatement("INSERT INTO Usuario(email,empresa,cpf,senha, lengthSenha) VALUES (?, ?, ?, ?)");
+		PreparedStatement stmt = conexao.prepareStatement("INSERT INTO Usuario(email,empresa,cpf,senha) VALUES (?, ?, ?, ?)");
 		stmt.setString(1, usuario.getEmail());
 		stmt.setString(2, usuario.getEmpresa());
 		stmt.setString(3, usuario.getCpf());
