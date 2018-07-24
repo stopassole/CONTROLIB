@@ -62,21 +62,20 @@ public class LoginController implements Initializable {
 			idCadastro.setVisible(true);
 			idRecuperarSenha.setVisible(false);
 		} else {
-			idCadastro.setVisible(false);
-			idRecuperarSenha.setVisible(true);
-		}
-
-		try {
-			Usuario usuario = dao.buscarUsuario();
+			Usuario usuario = null;
+			try {
+				usuario = dao.buscarUsuario();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			if (usuario != null && usuario.getLembraSenha() == true) {
 				idEmail.setText(usuario.getEmail());
 				idSenha.setText(usuario.getSenha());
 				idLembrarSenha.setSelected(true);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+			idCadastro.setVisible(false);
+			idRecuperarSenha.setVisible(true);
 		}
-
 		log.info(END_POINT + "/validalogin -> Fim");
 	}
 
