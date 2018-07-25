@@ -44,9 +44,33 @@
     -fx-text-fill: white;
     
 }
+.input-search {
+    -fx-border-radius:25;
+    -fx-background-radius: 25;
+    -fx-border-color: #707070;
+        /*   top bot right left    */
+    -fx-padding: 2px 0 0 20px; 
+    -fx-background-color: transparent;
+    -fx-color: #707070;
+    -fx-text-fill: #707070;
+    
+}
+.bnt-search{
+	-fx-background-color: transparent;
+}
 .text-primary {
     -fx-text-fill:  #00b3b8;
     
+}
+.separator{
+	-fx-border-style: solid;
+    -fx-border-width: 0 0 1 0; /* its make really one-pixel-border */
+    -fx-border-color: black;
+}
+.separator2{
+	-fx-border-style: solid;
+    -fx-border-width: 0 0 1 0; /* its make really one-pixel-border */
+    -fx-border-color: #1D2026;
 }
 
 .font-sm {
@@ -55,13 +79,23 @@
 }
 
 .font-md {
-    -fx-font-size: 16px;
+    -fx-font: 22px "Segoe UI";
     -fx-text-fill: white;
-    -fx-font-weight: bold;
+}
+.font-md-search {
+    -fx-font-size: 18px;
+    -fx-text-fill: #707070;
 }
 
 .font-lg {
-    -fx-font-size: 24px;
-    -fx-text-fill: white
+    -fx-font: 30px "Segoe UI";
+    -fx-text-fill: black;
 }
-
+.font-head-list{
+	-fx-font: 22px "Segoe UI";
+    -fx-text-fill: #6ED1D8;
+}
+.font-body-list{
+    -fx-text-fill: black;
+     -fx-font: 20px "Segoe UI";
+}
