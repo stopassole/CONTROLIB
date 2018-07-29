@@ -33,7 +33,6 @@
     -fx-text-fill: white;
 }
 
-
 .input-rounded {
     -fx-border-radius:25;
     -fx-background-radius: 25;
@@ -63,16 +62,6 @@
     -fx-text-fill:  #00b3b8;
     
 }
-.separator{
-	-fx-border-style: solid;
-    -fx-border-width: 0 0 1 0; /* its make really one-pixel-border */
-    -fx-border-color: black;
-}
-.separator2{
-	-fx-border-style: solid;
-    -fx-border-width: 0 0 1 0; /* its make really one-pixel-border */
-    -fx-border-color: #1D2026;
-}
 
 .font-sm {
     -fx-font-size: 12px;
@@ -80,23 +69,17 @@
 }
 
 .font-md {
-    -fx-font: 22px "Segoe UI";
-    -fx-text-fill: white;
-}
-.font-md-search {
-    -fx-font-size: 18px;
-    -fx-text-fill: #707070;
+    -fx-font: 18px "Segoe UI";
+    -fx-text-fill: black;
 }
 
 .font-lg {
-    -fx-font: 30px "Segoe UI";
+    -fx-font: 36px "Segoe UI";
     -fx-text-fill: black;
 }
-.font-head-list{
-	-fx-font: 22px "Segoe UI";
-    -fx-text-fill: #6ED1D8;
-}
-.font-body-list{
-    -fx-text-fill: black;
-     -fx-font: 20px "Segoe UI";
+
+.font-emprestimo{
+    -fx-text-fill: #2CDE6D;
+     -fx-font: 18px "Segoe UI";
+     
 }

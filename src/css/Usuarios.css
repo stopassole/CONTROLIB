@@ -33,6 +33,7 @@
     -fx-text-fill: white;
 }
 
+
 .input-rounded {
     -fx-border-radius:25;
     -fx-background-radius: 25;
