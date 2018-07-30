@@ -71,7 +71,7 @@
             <Pane layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white;" stylesheets="@../css/Emprestimos.css">
                <children>
                   <Label layoutX="24.0" layoutY="23.0" prefHeight="48.0" prefWidth="199.0" styleClass="font-lg" text="USUÁRIOS" />
-                  <TextField layoutX="24.0" layoutY="104.0" prefHeight="50.0" prefWidth="320.0" stylesheets="@../css/Emprestimos.css" text="Pesquisar">
+                  <TextField layoutX="24.0" layoutY="104.0" prefHeight="50.0" prefWidth="750.0" stylesheets="@../css/Livros.css" text="Pesquisar">
                      <styleClass>
                         <String fx:value="input-search" />
                         <String fx:value="font-md-search" />
@@ -103,18 +103,6 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TextField layoutX="368.0" layoutY="104.0" prefHeight="50.0" prefWidth="200.0" text="Pesquisar">
-                     <styleClass>
-                        <String fx:value="input-search" />
-                        <String fx:value="font-md-search" />
-                     </styleClass>
-                  </TextField>
-                  <TextField layoutX="585.0" layoutY="104.0" prefHeight="50.0" prefWidth="200.0" text="Pesquisar">
-                     <styleClass>
-                        <String fx:value="input-search" />
-                        <String fx:value="font-md-search" />
-                     </styleClass>
-                  </TextField>
                </children></Pane>
          </children>
       </AnchorPane>
