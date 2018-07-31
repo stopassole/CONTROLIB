@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow styleClass="bg-primary" stylesheets="@../css/Recuperar.css" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RecuperarController">
+<TextFlow styleClass="bg-primary" stylesheets="@../css/Recuperar.css" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RecuperarController">
    <children>
       <AnchorPane prefHeight="800.0" prefWidth="640.0" styleClass="bg-primary" stylesheets="@../css/Recuperar.css">
          <children>
@@ -39,28 +39,28 @@
                      </font>
                   </Label>
                   <Separator layoutX="460.5" layoutY="293.0" prefHeight="5.0" prefWidth="110.0" />
-                  <Label layoutX="93.0" layoutY="352.0" prefHeight="20.0" prefWidth="170.0" styleClass="font-sm" text="E-mail:" />
+                  <Label layoutX="93.0" layoutY="352.0" prefHeight="20.0" prefWidth="170.0" styleClass="font-sm" text="E-mail: *" />
                   <TextField fx:id="idEmail" layoutX="70.0" layoutY="376.0" prefHeight="60.0" prefWidth="500.0">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />
                      </styleClass>
                   </TextField>
-                  <Label layoutX="93.0" layoutY="446.0" prefHeight="20.0" prefWidth="150.0" styleClass="font-sm" text="CPF:" />
+                  <Label layoutX="93.0" layoutY="446.0" prefHeight="20.0" prefWidth="150.0" styleClass="font-sm" text="CPF: *" />
                   <TextField fx:id="idCPF" layoutX="71.0" layoutY="471.0" onKeyReleased="#tbCpf" prefHeight="60.0" prefWidth="500.0">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />
                      </styleClass>
                   </TextField>
-                  <Label layoutX="93.0" layoutY="541.0" prefHeight="20.0" prefWidth="133.0" styleClass="font-sm" text="Informe sua nova senha:" />
+                  <Label layoutX="93.0" layoutY="541.0" prefHeight="20.0" prefWidth="143.0" styleClass="font-sm" text="Informe sua nova senha: *" />
                   <PasswordField fx:id="idSenha" layoutX="71.0" layoutY="566.0" prefHeight="60.0" prefWidth="240.0">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />
                      </styleClass>
                   </PasswordField>
-                  <Label layoutX="350.0" layoutY="541.0" prefHeight="20.0" prefWidth="159.0" styleClass="font-sm" text="Confirme sua nova senha:" />
+                  <Label layoutX="350.0" layoutY="541.0" prefHeight="20.0" prefWidth="159.0" styleClass="font-sm" text="Confirme sua nova senha: *" />
                   <PasswordField fx:id="idConfirmaSenha" layoutX="330.0" layoutY="566.0" prefHeight="60.0" prefWidth="240.0">
                      <styleClass>
                         <String fx:value="input-rounded" />

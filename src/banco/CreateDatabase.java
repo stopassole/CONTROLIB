@@ -63,7 +63,7 @@ public class CreateDatabase extends Task<Void> {
 					"					email character varying(255),\r\n" + 
 					"					telefone character varying(255),\r\n" + 
 					"					cpf character varying(255),\r\n" + 
-					"					dataNascimento date,\r\n" + 
+					"					dataNascimento date not null,\r\n" + 
 					"					idTipo integer not null,\r\n" + 
 					"					dataCadastro date default now(),\r\n" + 
 					"					CONSTRAINT usuario_pkey PRIMARY KEY (_id)) ";

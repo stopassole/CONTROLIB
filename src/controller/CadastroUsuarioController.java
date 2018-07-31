@@ -60,21 +60,71 @@ public class CadastroUsuarioController extends DashboardController implements In
 	public void salvar() throws Exception {
 		Usuario usuario = new Usuario(null, null, null, null, null, null, null, null, null, null);
 
-		usuario.setNome(idNome.getText());
-		usuario.setSobrenome(idSobrenome.getText());
-		usuario.setEndereco(idEndereco.getText());
-		usuario.setEmail(idEmail.getText());
-		usuario.setTelefone(idTelefone.getText());
-		usuario.setCPF(idCPF.getText());
-		usuario.setDataNascimento(idDataNasc.getText());
-		usuario.setIdTipo("1");
+		if (!verificaVazio()) {
+			if (validaObrigatorios()) {
+				usuario.setNome(idNome.getText());
+				usuario.setSobrenome(idSobrenome.getText());
+				usuario.setEndereco(idEndereco.getText());
+				usuario.setEmail(idEmail.getText());
+				usuario.setTelefone(idTelefone.getText());
+				usuario.setCPF(idCPF.getText());
+				usuario.setDataNascimento(idDataNasc.getText());
+				usuario.setIdTipo("1");
 
-		dao.salvarUsuario(usuario);
-		fechar();
-		AlertSucesso sucesso = new AlertSucesso();
-		sucesso.text = "Salvo com sucesso";
-		sucesso.btnClicado = btnSalvar;
-		sucesso.start(new Stage());
+				dao.salvarUsuario(usuario);
+				fechar();
+				AlertSucesso sucesso = new AlertSucesso();
+				sucesso.text = "Salvo com sucesso";
+				sucesso.btnClicado = btnSalvar;
+				sucesso.start(new Stage());
+			}
+		} else {
+			AlertFalha falha = new AlertFalha();
+			falha.text = "Campos obrigatórios não informados";
+			falha.btnClicado = btnSalvar;
+			falha.start(new Stage());
+		}
+	}
+
+	@SuppressWarnings("static-access")
+	private boolean validaObrigatorios() {
+		Boolean retornoCPF = false;
+		Boolean retornoData = false;
+		Boolean retorno = false;
+
+		if (idCPF.getText().length() > 0) {
+			if (new ValidatorCPF(idCPF).isValidCPF(idCPF.getText())) {
+				retornoCPF = true;
+			} else {
+				AlertFalha falha = new AlertFalha();
+				falha.text = "Infome um CPF válido";
+				falha.btnClicado = btnSalvar;
+				falha.start(new Stage());
+				return false;
+			}
+		}else {
+			retornoCPF = true;
+		}
+		
+		if (date.isValidDate(idDataNasc.getText())) {
+			retornoData = true;
+		} else {
+			AlertFalha falha = new AlertFalha();
+			falha.text = "Infome uma data de nascimento válida";
+			falha.btnClicado = btnSalvar;
+			falha.start(new Stage());
+			return false;
+		}
+
+		if (retornoCPF && retornoData) {
+			retorno = true;
+		}
+		return retorno;
+	}
+
+	private boolean verificaVazio() {
+		return idNome.getText().isEmpty() || idSobrenome.getText().isEmpty() || idDataNasc.getText().isEmpty();
+				//|| idTipo.getValue().isEmpty();
 	}
 
 	@Override
