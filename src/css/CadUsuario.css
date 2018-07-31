@@ -43,9 +43,18 @@
     -fx-color: black;
     -fx-text-fill: black;
     -fx-font-size: 16px;
-    
-    
 }
+
+.combobox-rounded {
+    -fx-border-radius:25;
+    -fx-background-radius: 25;
+    -fx-border-color: #707070;
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 0 21px;
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+}
+
 .button-salve {
     -fx-border-radius:10;
     -fx-background-radius: 10;

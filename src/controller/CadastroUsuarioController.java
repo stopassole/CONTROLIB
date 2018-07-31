@@ -1,8 +1,11 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import dao.UsuarioDAO;
+import entity.Tipo;
 import entity.Usuario;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,7 +45,7 @@ public class CadastroUsuarioController extends DashboardController implements In
 	@FXML
 	private ImageView bntCancelar;
 	@FXML
-	private ComboBox<String> idTipo;
+	private ComboBox<Tipo> idTipo;
 
 	UsuarioDAO dao = new UsuarioDAO();
 
@@ -69,7 +72,7 @@ public class CadastroUsuarioController extends DashboardController implements In
 				usuario.setTelefone(idTelefone.getText());
 				usuario.setCPF(idCPF.getText());
 				usuario.setDataNascimento(idDataNasc.getText());
-				usuario.setIdTipo("1");
+				usuario.setIdTipo(idTipo.getValue().get_id());
 
 				dao.salvarUsuario(usuario);
 				fechar();
@@ -102,10 +105,10 @@ public class CadastroUsuarioController extends DashboardController implements In
 				falha.start(new Stage());
 				return false;
 			}
-		}else {
+		} else {
 			retornoCPF = true;
 		}
-		
+
 		if (date.isValidDate(idDataNasc.getText())) {
 			retornoData = true;
 		} else {
@@ -123,13 +126,33 @@ public class CadastroUsuarioController extends DashboardController implements In
 	}
 
 	private boolean verificaVazio() {
-		return idNome.getText().isEmpty() || idSobrenome.getText().isEmpty() || idDataNasc.getText().isEmpty();
-				//|| idTipo.getValue().isEmpty();
+		return idNome.getText().isEmpty() || idSobrenome.getText().isEmpty() || idDataNasc.getText().isEmpty()
+				|| idTelefone.getText().isEmpty() || idEmail.getText().isEmpty()
+				|| idTipo.getValue().get_id().equals(null);
 	}
 
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
+		getTipos();
+	}
 
+	private void getTipos() {
+		List<Tipo> tipos = new ArrayList<>();
+		Tipo t1 = new Tipo(null, null);
+		t1.set_id("1");
+		t1.setDescricao("Aluno");
+		tipos.add(t1);
+		Tipo t2 = new Tipo(null, null);
+		t2.set_id("2");
+		t2.setDescricao("Funcionário");
+		tipos.add(t2);
+		Tipo t3 = new Tipo(null, null);
+		t3.set_id("3");
+		t3.setDescricao("Outros");
+		tipos.add(t3);
+
+		idTipo.getItems().addAll(tipos);
+		idTipo.setValue(tipos.get(0));
 	}
 
 	@SuppressWarnings("static-access")
