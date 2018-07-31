@@ -6,6 +6,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+
 public class DateUtil {
 
 	public String getDataInicio() {
@@ -109,4 +112,36 @@ public class DateUtil {
 		}
 	}
 
+	public static void mascaraData(KeyEvent event, TextField textfield) {
+		if ("0123456789".contains(event.getCharacter()) == false) {
+			event.consume();
+		}
+
+		if (event.getCharacter().trim().length() == 0) { // apagando
+
+			if (textfield.getText().length() == 3) {
+				textfield.setText(textfield.getText().substring(0, 2));
+				textfield.positionCaret(textfield.getText().length());
+			}
+			if (textfield.getText().length() == 6) {
+				textfield.setText(textfield.getText().substring(0, 5));
+				textfield.positionCaret(textfield.getText().length());
+			}
+
+		} else { // escrevendo
+
+			if (textfield.getText().length() == 10)
+				event.consume();
+
+			if (textfield.getText().length() == 2) {
+				textfield.setText(textfield.getText() + "/");
+				textfield.positionCaret(textfield.getText().length());
+			}
+			if (textfield.getText().length() == 5) {
+				textfield.setText(textfield.getText() + "/");
+				textfield.positionCaret(textfield.getText().length());
+			}
+
+		}
+	}
 }

@@ -1,6 +1,6 @@
 package controller;
 
-import dao.UsuarioDAO;
+import dao.CadastroDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,7 +29,7 @@ public class RecuperarController {
 	private Button btnCadastrar;
 
 	CriptoUtil cripto = new CriptoUtil();
-	UsuarioDAO dao = new UsuarioDAO();
+	CadastroDAO dao = new CadastroDAO();
 
 	@FXML
 	private void voltar() throws Exception {

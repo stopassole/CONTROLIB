@@ -89,9 +89,9 @@
                   <TableView layoutX="24.0" layoutY="179.0" prefHeight="427.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="font-md-search">
                       <columns>
                       <TableColumn prefWidth="194.0" text="Nome" />
-                      <TableColumn minWidth="0.0" prefWidth="387.0" style="-fx-text-fill: blue;" text="E-mail" />
-                        <TableColumn prefWidth="214.0" text="Tipo" />
-                        <TableColumn />
+                      <TableColumn minWidth="0.0" prefWidth="340.0" style="-fx-text-fill: blue;" text="E-mail" />
+                        <TableColumn prefWidth="226.0" text="Tipo" />
+                        <TableColumn prefWidth="88.0" />
                     </columns>
                   </TableView>
                   <Button fx:id="btnNovoUsuario" layoutX="797.0" layoutY="18.0" mnemonicParsing="false" onAction="#novoUsuario" style="-fx-background-color: trasnparent; -fx-cursor: hand;">

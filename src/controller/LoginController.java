@@ -6,8 +6,8 @@ import java.util.ResourceBundle;
 
 import org.apache.log4j.Logger;
 
-import dao.UsuarioDAO;
-import entity.Usuario;
+import dao.CadastroDAO;
+import entity.Cadastro;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,7 +41,7 @@ public class LoginController implements Initializable {
 
 	private static final Logger log = Logger.getLogger(Inicio.END_POINT);
 
-	UsuarioDAO dao = new UsuarioDAO();
+	CadastroDAO dao = new CadastroDAO();
 	CriptoUtil cripto = new CriptoUtil();
 
 	@Override
@@ -49,11 +49,11 @@ public class LoginController implements Initializable {
 
 		log.info(END_POINT + "/validalogin -> Inicio");
 
-		UsuarioDAO dao = new UsuarioDAO();
+		CadastroDAO dao = new CadastroDAO();
 
 		int cont = 5;
 		try {
-			cont = dao.contUsuario();
+			cont = dao.contCadastro();
 		} catch (Exception e) {
 			log.error(e);
 		}
@@ -62,15 +62,15 @@ public class LoginController implements Initializable {
 			idCadastro.setVisible(true);
 			idRecuperarSenha.setVisible(false);
 		} else {
-			Usuario usuario = null;
+			Cadastro cadastro = null;
 			try {
-				usuario = dao.buscarUsuario();
+				cadastro = dao.buscarCadastro();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			if (usuario != null && usuario.getLembraSenha() == true) {
-				idEmail.setText(usuario.getEmail());
-				idSenha.setText(usuario.getSenha());
+			if (cadastro != null && cadastro.getLembraSenha() == true) {
+				idEmail.setText(cadastro.getEmail());
+				idSenha.setText(cadastro.getSenha());
 				idLembrarSenha.setSelected(true);
 			}
 			idCadastro.setVisible(false);
@@ -97,9 +97,9 @@ public class LoginController implements Initializable {
 	@FXML
 	private void entrar() throws Exception {
 		if (verificaVazio()) {
-			String result = dao.getValidaUsuario(idEmail.getText(), cripto.getSenhaCriptografada(idSenha.getText()));
+			String result = dao.getValidaCadastro(idEmail.getText(), cripto.getSenhaCriptografada(idSenha.getText()));
 			if(result == null) {
-				result = dao.getValidaUsuario(idEmail.getText(), idSenha.getText());
+				result = dao.getValidaCadastro(idEmail.getText(), idSenha.getText());
 				if(result != null) {
 					dao.alterarLembrarSenha(idEmail.getText(), idSenha.getText(),idLembrarSenha.isSelected());
 				}

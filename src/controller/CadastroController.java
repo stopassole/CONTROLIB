@@ -1,7 +1,7 @@
 package controller;
 
-import dao.UsuarioDAO;
-import entity.Usuario;
+import dao.CadastroDAO;
+import entity.Cadastro;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -32,7 +32,7 @@ public class CadastroController {
 	private Button btnVoltarLogin;
 
 	CriptoUtil cripto = new CriptoUtil();
-	UsuarioDAO dao = new UsuarioDAO();
+	CadastroDAO dao = new CadastroDAO();
 
 	@SuppressWarnings("static-access")
 	@FXML
@@ -45,14 +45,14 @@ public class CadastroController {
 		} else {
 			if (senhaValida()) {
 				if (new ValidatorCPF(idCPF).isValidCPF(idCPF.getText())) {
-					Usuario u = new Usuario(null, null, null, null, null, null);
+					Cadastro c = new Cadastro(null, null, null, null, null, null, null);
 
-					u.setEmail(idEmail.getText());
-					u.setEmpresa(idEmpresa.getText());
-					u.setCpf(idCPF.getText());
-					u.setSenha(cripto.getSenhaCriptografada(idSenha.getText()));
+					c.setEmail(idEmail.getText());
+					c.setEmpresa(idEmpresa.getText());
+					c.setCpf(idCPF.getText());
+					c.setSenha(cripto.getSenhaCriptografada(idSenha.getText()));
 
-					dao.salvarUsuario(u);
+					dao.salvarCadastro(c);
 
 					Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 					Scene scene = new Scene(root);

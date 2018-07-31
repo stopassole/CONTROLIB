@@ -1,2 +1,7 @@
-/view/
+/banco/
 /controller/
+/dao/
+/entity/
+/resource/
+/util/
+/view/

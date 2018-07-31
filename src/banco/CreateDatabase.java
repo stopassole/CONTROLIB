@@ -23,6 +23,33 @@ public class CreateDatabase extends Task<Void> {
 		this.button = button;
 	}
 
+	public void createTableCadastro() {
+		try {
+			
+			log.info(END_POINT + "/criartabelacadastro -> Inicio");
+			
+			Connection conexao = dao.conexaoUsuario();
+			String sql = "CREATE TABLE cadastro(_id serial NOT NULL,\r\n" + 
+					"					email character varying(255) not null,\r\n" + 
+					"					empresa character varying(255) not null,\r\n" + 
+					"					cpf character varying(255) not null,\r\n" + 
+					"					senha character varying(255) not null,\r\n" + 
+					"					lembrarSenha boolean default false,\r\n" + 
+					"					dataCadastro date default now(),\r\n" + 
+					"					CONSTRAINT cadastro_pkey PRIMARY KEY (_id)) ";
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+			stmt.executeQuery();
+			
+			log.info(END_POINT + "/criartabelacadastro -> Fim");
+			
+		} catch (Exception e) {
+
+		} finally {
+			this.updateProgress(50, 100);
+			createTableUsuario();
+		}
+	}
+	
 	public void createTableUsuario() {
 		try {
 			
@@ -30,11 +57,15 @@ public class CreateDatabase extends Task<Void> {
 			
 			Connection conexao = dao.conexaoUsuario();
 			String sql = "CREATE TABLE usuario(_id serial NOT NULL,\r\n" + 
-					"					email character varying(50) not null,\r\n" + 
-					"					empresa character varying(50) not null,\r\n" + 
-					"					cpf character varying(50) not null,\r\n" + 
-					"					senha character varying(50) not null,\r\n" + 
-					"					lembrarSenha boolean default false,\r\n" + 
+					"					nome character varying(255) not null,\r\n" + 
+					"					sobrenome character varying(255) not null,\r\n" + 
+					"					endereco character varying(255),\r\n" + 
+					"					email character varying(255),\r\n" + 
+					"					telefone character varying(255),\r\n" + 
+					"					cpf character varying(255),\r\n" + 
+					"					dataNascimento date,\r\n" + 
+					"					idTipo integer not null,\r\n" + 
+					"					dataCadastro date default now(),\r\n" + 
 					"					CONSTRAINT usuario_pkey PRIMARY KEY (_id)) ";
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 			stmt.executeQuery();
@@ -71,7 +102,7 @@ public class CreateDatabase extends Task<Void> {
 
 		} finally {
 			this.updateProgress(10, 100);
-			createTableUsuario();
+			createTableCadastro();
 			button.setVisible(true);
 		}
 
