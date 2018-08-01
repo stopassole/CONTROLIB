@@ -62,8 +62,7 @@ public class ListUsuariosController extends DashboardController implements Initi
 	}
 
 	public void confTabela() {
-		columnNome.setCellValueFactory(celula -> new SimpleStringProperty(
-				celula.getValue().getNome() + " " + celula.getValue().getSobrenome()));
+		columnNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome() + " " + celula.getValue().getSobrenome()));
 		columnEmail.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getEmail()));
 		columnTipo.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getIdTipo()));
 
@@ -74,8 +73,7 @@ public class ListUsuariosController extends DashboardController implements Initi
 					ImageView img = new ImageView("./images/Group 131.png");
 					Button button = new Button();
 					{
-						img.setFitHeight(50);
-						img.setFitWidth(50);
+					//	button.setId();
 						button.setGraphic(img);
 						button.setMaxSize(50, 50);
 						button.setStyle("-fx-background-color:transparent; -fx-cursor:hand");
@@ -100,9 +98,8 @@ public class ListUsuariosController extends DashboardController implements Initi
 			public void handle(ActionEvent e) {
 				Parent root = null;
 				try {
-
-					// String id = tbUsuarios.getSelectionModel().getSelectedItem().get_id();
-					// System.out.println("AQui " + id);
+					String id = tbUsuarios.getSelectionModel().getSelectedItem().get_id();
+					System.out.println("AQui " + id);
 					root = FXMLLoader.load(getClass().getResource("/view/InfoUsuario.fxml"));
 				} catch (IOException e1) {
 
