@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,8 @@ import java.util.ResourceBundle;
 import dao.UsuarioDAO;
 import entity.Usuario;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,6 +22,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import resource.Inicio;
 
@@ -58,7 +62,8 @@ public class ListUsuariosController extends DashboardController implements Initi
 	}
 
 	public void confTabela() {
-		columnNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome() + " " + celula.getValue().getSobrenome()));
+		columnNome.setCellValueFactory(celula -> new SimpleStringProperty(
+				celula.getValue().getNome() + " " + celula.getValue().getSobrenome()));
 		columnEmail.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getEmail()));
 		columnTipo.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getIdTipo()));
 
@@ -66,18 +71,38 @@ public class ListUsuariosController extends DashboardController implements Initi
 
 			@Override
 			public TableCell<Usuario, ImageView> call(TableColumn<Usuario, ImageView> p) {
+				Button btVisualizar = new Button();
 				ImageView img = new ImageView("./images/Group 131.png");
 				img.setFitHeight(50);
 				img.setFitWidth(50);
 
 				TableCell<Usuario, ImageView> cell = new TableCell<Usuario, ImageView>() {
-					
+
 				};
-				cell.setGraphic(img);
+				btVisualizar.setStyle("-fx-background-color:transparent; -fx-cursor:hand");
+				btVisualizar.setGraphic(img);
+				btVisualizar.setOnMouseClicked(visualizar(btVisualizar));
+				cell.setGraphic(btVisualizar);
 				cell.setAlignment(Pos.CENTER);
 				return cell;
 			}
 		});
+	}
+
+	private EventHandler<? super MouseEvent> visualizar(Button button) {
+		button.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				Parent root = null;
+				try {
+					root = FXMLLoader.load(getClass().getResource("/view/InfoUsuario.fxml"));
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				Scene scene = new Scene(root);
+				Inicio.myStage.setScene(scene);
+			}
+		});
+		return null;
 	}
 
 	public void populaTabela() {

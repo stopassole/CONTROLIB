@@ -140,7 +140,7 @@
                         <Button fx:id="btnSalvar" layoutX="502.0" layoutY="580.0" mnemonicParsing="false" onAction="#salvar" prefHeight="50.0" prefWidth="125.0" style="-fx-cursor: hand;" styleClass="button-salve" text="SALVAR" />
                         <Button fx:id="btnCancelar" layoutX="659.0" layoutY="8.0" mnemonicParsing="false" onAction="#fechar" prefHeight="18.0" prefWidth="16.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
                            <graphic>
-                              <ImageView fx:id="bntCancelar" fitHeight="20.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="20.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/x.png" />
                                  </image>

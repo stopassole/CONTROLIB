@@ -4,6 +4,7 @@
 
 .bg-primary{
     -fx-background-color: #1d2026;
+    -fx-cursor:hand;
 }
 
 .bg-secondary{
@@ -36,24 +37,40 @@
 .input-rounded {
     -fx-border-radius:25;
     -fx-background-radius: 25;
-    -fx-border-color: #F5F5F5;
+    -fx-border-color: #707070;
     -fx-background-color: transparent;
     /*   top bot right left    */
-    -fx-padding: 2px 0 0 12px; 
-    -fx-color: #F5F5F5;
-    -fx-text-fill: white;
-    
+    -fx-padding: 0 0 0 21px; 
+    -fx-color: black;
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
 }
-.input-search {
+
+.combobox-rounded {
     -fx-border-radius:25;
     -fx-background-radius: 25;
     -fx-border-color: #707070;
-        /*   top bot right left    */
-    -fx-padding: 2px 0 0 20px; 
     -fx-background-color: transparent;
-    -fx-color: #707070;
-    -fx-text-fill: #707070;
-    
+    -fx-padding: 0 0 0 21px;
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+}
+
+.button-salve {
+    -fx-border-radius:10;
+    -fx-background-radius: 10;
+    -fx-background-color: #6ED1D8; 
+    -fx-text-fill: white;
+    -fx-font: 16px "Segoe UI";
+    -fx-font-weight: bold;
+}
+.button-cancel {
+    -fx-border-radius:10;
+    -fx-background-radius: 10;
+    -fx-background-color: #D44343; 
+    -fx-text-fill: white;
+    -fx-font: 16px "Segoe UI";
+    -fx-font-weight: bold;
 }
 .bnt-search{
 	-fx-background-color: transparent;
@@ -62,24 +79,40 @@
     -fx-text-fill:  #00b3b8;
     
 }
-
+.font-emprestimo{
+    -fx-text-fill: #2CDE6D;
+    -fx-font: 18px "Segoe UI";
+}
 .font-sm {
     -fx-font-size: 12px;
     -fx-text-fill: white
 }
 
 .font-md {
-    -fx-font: 18px "Segoe UI";
+    -fx-font: 16px "Segoe UI";
     -fx-text-fill: black;
 }
 
 .font-lg {
-    -fx-font: 36px "Segoe UI";
+    -fx-font: 28px "Segoe UI";
     -fx-text-fill: black;
 }
 
-.font-emprestimo{
-    -fx-text-fill: #2CDE6D;
-     -fx-font: 18px "Segoe UI";
-     
+.button-edit {
+    -fx-border-radius:10;
+    -fx-background-radius: 10;
+    -fx-background-color: #6ED1D8; 
+    -fx-text-fill: white;
+    -fx-font: 16px "Segoe UI";
+    -fx-font-weight: bold;
 }
+
+.button-edit{
+    -fx-border-radius:10;
+    -fx-background-radius: 10;
+    -fx-background-color: #6ED1D8; 
+    -fx-text-fill: white;
+    -fx-font: 16px "Segoe UI";
+    -fx-font-weight: bold;
+}
+

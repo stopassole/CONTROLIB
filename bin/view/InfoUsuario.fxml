@@ -4,21 +4,22 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow prefHeight="800.0" prefWidth="1280.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
+<TextFlow prefHeight="800.0" prefWidth="1280.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InfoUsuarioController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #EEF1F8;">
          <children>
-            <Pane prefHeight="250.0" prefWidth="1280.0" styleClass="bg-secondary" stylesheets="@../css/Usuarios.css">
+            <Pane prefHeight="250.0" prefWidth="1280.0" styleClass="bg-secondary" stylesheets="@../css/InfoUsuario.css">
                <children>
-                  <Label layoutX="348.0" layoutY="40.0" prefHeight="30.0" prefWidth="109.0" styleClass="font-md" text="USUÁRIOS" />
+                  <Label layoutX="348.0" layoutY="40.0" prefHeight="30.0" prefWidth="146.0" styleClass="font-md" text="USUÁRIOS" />
                   <Button layoutX="1191.0" layoutY="46.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -39,7 +40,7 @@
                   </Button>
                </children>
             </Pane>
-            <Pane prefHeight="800.0" prefWidth="280.0" styleClass="bg-primary" stylesheets="@../css/Usuarios.css">
+            <Pane prefHeight="800.0" prefWidth="280.0" styleClass="bg-primary" stylesheets="@../css/Livros.css">
                <children>
                   <ImageView fitHeight="70.0" fitWidth="90.0" layoutX="95.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -47,19 +48,19 @@
                      </image>
                   </ImageView>
                   <Separator layoutX="34.9" layoutY="131.3" prefHeight="5.0" prefWidth="209.6" />
-                  <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="164.16" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="EMPRÉSTIMOS              " textAlignment="JUSTIFY" />
+                  <Button fx:id="btnEmprestimos" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="164.16" mnemonicParsing="false" onAction="#menuEmprestimos" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="EMPRÉSTIMOS              " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/Group%2035.png" />
                      </image>
                   </ImageView>
-                  <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="238.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="LIVROS                          " textAlignment="JUSTIFY" />
+                  <Button fx:id="btnLivros" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="238.0" mnemonicParsing="false" onAction="#menuLivros" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="LIVROS                          " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/books-stack.png" />
                      </image>
                   </ImageView>
-                  <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="312.16" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="USUÁRIOS                    " textAlignment="JUSTIFY" />
+                  <Button fx:id="btnUsuarios" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="312.0" mnemonicParsing="false" onAction="#menuUsuarios" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="USUÁRIOS                    " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/group-profile-users.png" />
@@ -67,148 +68,72 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white;">
+            <Pane layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white;" stylesheets="@../css/Emprestimos.css">
                <children>
-                  <Label layoutX="24.0" layoutY="23.0" prefHeight="48.0" prefWidth="167.0" styleClass="font-lg" stylesheets="@../css/Usuarios.css" text="USUÁRIOS" />
-                  <TextField layoutX="24.0" layoutY="104.0" prefHeight="50.0" prefWidth="750.0" stylesheets="@../css/Usuarios.css" text="Pesquisar">
+                  <Label layoutX="24.0" layoutY="23.0" prefHeight="48.0" prefWidth="199.0" styleClass="font-lg" text="USUÁRIOS" />
+                  <TextField layoutX="24.0" layoutY="104.0" prefHeight="50.0" prefWidth="320.0" stylesheets="@../css/Emprestimos.css" text="Pesquisar">
                      <styleClass>
                         <String fx:value="input-search" />
                         <String fx:value="font-md-search" />
                      </styleClass>
                   </TextField>
-                  <Button layoutX="804.0" layoutY="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="bnt-search" stylesheets="@../css/Usuarios.css">
+                  <Button layoutX="797.0" layoutY="100.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" style="-fx-cursor: hand;" styleClass="bnt-search" stylesheets="@../css/Livros.css">
                      <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="809.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="809.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@../images/Group%20136.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Label layoutX="25.0" layoutY="184.0" prefHeight="30.0" prefWidth="60.0" styleClass="font-head-list" stylesheets="@../css/Usuarios.css" text="Nome" />
-                  <Label layoutX="304.0" layoutY="184.0" prefHeight="30.0" prefWidth="61.0" styleClass="font-head-list" stylesheets="@../css/Usuarios.css" text="E-mail" />
-                  <Label layoutX="670.0" layoutY="184.0" prefHeight="30.0" prefWidth="43.0" styleClass="font-head-list" stylesheets="@../css/Usuarios.css" text="Tipo" />
-                  <Label layoutX="17.0" layoutY="274.0" prefHeight="1.0" prefWidth="850.0" styleClass="separator2" stylesheets="@../css/Usuarios.css" />
-                  <Label layoutX="17.0" layoutY="203.0" prefHeight="5.0" prefWidth="850.0" styleClass="separator" stylesheets="@../css/Usuarios.css" />
-                  <Label layoutX="304.0" layoutY="246.0" prefWidth="280.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="BLABLABLA@BLAAAAA" />
-                  <Label layoutX="670.0" layoutY="246.0" prefHeight="27.0" prefWidth="52.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="ARG" />
-                  <Label layoutX="25.0" layoutY="243.0" prefHeight="27.0" prefWidth="206.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="BLA BLA BLA BLA">
-                     <font>
-                        <Font name="Segoe UI" size="20.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="807.0" layoutY="237.0" mnemonicParsing="false" styleClass="bnt-search" stylesheets="@../css/Usuarios.css">
+                  <TableView layoutX="24.0" layoutY="179.0" prefHeight="427.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="font-md-search">
+                      <columns>
+                      <TableColumn prefWidth="194.0" text="Nome" />
+                      <TableColumn minWidth="0.0" prefWidth="387.0" style="-fx-text-fill: blue;" text="E-mail" />
+                        <TableColumn prefWidth="214.0" text="Tipo" />
+                        <TableColumn />
+                    </columns>
+                  </TableView>
+                  <Button layoutX="797.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: trasnparent; -fx-cursor: hand;">
                      <graphic>
-                        <ImageView fitHeight="38.0" fitWidth="45.0" layoutX="811.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
-                              <Image url="@../images/Group%20131.png" />
+                              <Image url="@../images/Group%20137.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Label layoutX="17.0" layoutY="345.0" prefHeight="1.0" prefWidth="850.0" styleClass="separator2" stylesheets="@../css/Usuarios.css" />
-                  <Label layoutX="304.0" layoutY="317.0" prefWidth="280.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="BLABLABLA@BLAAAAA" />
-                  <Label layoutX="670.0" layoutY="317.0" prefHeight="27.0" prefWidth="52.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="ARG" />
-                  <Label layoutX="25.0" layoutY="314.0" prefHeight="27.0" prefWidth="206.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="BLA BLA BLA BLA">
-                     <font>
-                        <Font name="Segoe UI" size="20.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="807.0" layoutY="308.0" mnemonicParsing="false" styleClass="bnt-search" stylesheets="@../css/Usuarios.css">
-                     <graphic>
-                        <ImageView fitHeight="38.0" fitWidth="45.0" layoutX="811.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/Group%20131.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Label layoutX="17.0" layoutY="416.0" prefHeight="1.0" prefWidth="850.0" styleClass="separator2" stylesheets="@../css/Usuarios.css" />
-                  <Label layoutX="304.0" layoutY="388.0" prefWidth="280.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="BLABLABLA@BLAAAAA" />
-                  <Label layoutX="670.0" layoutY="388.0" prefHeight="27.0" prefWidth="52.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="ARG" />
-                  <Label layoutX="25.0" layoutY="385.0" prefHeight="27.0" prefWidth="206.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="BLA BLA BLA BLA">
-                     <font>
-                        <Font name="Segoe UI" size="20.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="807.0" layoutY="379.0" mnemonicParsing="false" styleClass="bnt-search" stylesheets="@../css/Usuarios.css">
-                     <graphic>
-                        <ImageView fitHeight="38.0" fitWidth="45.0" layoutX="811.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/Group%20131.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Label layoutX="17.0" layoutY="487.0" prefHeight="1.0" prefWidth="850.0" styleClass="separator2" stylesheets="@../css/Usuarios.css" />
-                  <Label layoutX="304.0" layoutY="459.0" prefWidth="280.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="BLABLABLA@BLAAAAA" />
-                  <Label layoutX="670.0" layoutY="459.0" prefHeight="27.0" prefWidth="52.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="ARG" />
-                  <Label layoutX="25.0" layoutY="456.0" prefHeight="27.0" prefWidth="206.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="BLA BLA BLA BLA">
-                     <font>
-                        <Font name="Segoe UI" size="20.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="807.0" layoutY="450.0" mnemonicParsing="false" styleClass="bnt-search" stylesheets="@../css/Usuarios.css">
-                     <graphic>
-                        <ImageView fitHeight="38.0" fitWidth="45.0" layoutX="811.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/Group%20131.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Label layoutX="17.0" layoutY="558.0" prefHeight="1.0" prefWidth="850.0" styleClass="separator2" stylesheets="@../css/Usuarios.css" />
-                  <Label layoutX="304.0" layoutY="530.0" prefWidth="280.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="BLABLABLA@BLAAAAA" />
-                  <Label layoutX="670.0" layoutY="530.0" prefHeight="27.0" prefWidth="52.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="ARG" />
-                  <Label layoutX="25.0" layoutY="527.0" prefHeight="27.0" prefWidth="206.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="BLA BLA BLA BLA">
-                     <font>
-                        <Font name="Segoe UI" size="20.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="807.0" layoutY="521.0" mnemonicParsing="false" styleClass="bnt-search" stylesheets="@../css/Usuarios.css">
-                     <graphic>
-                        <ImageView fitHeight="38.0" fitWidth="45.0" layoutX="811.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/Group%20131.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Label layoutX="304.0" layoutY="601.0" prefWidth="280.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="BLABLABLA@BLAAAAA" />
-                  <Label layoutX="670.0" layoutY="601.0" prefHeight="27.0" prefWidth="52.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="ARG" />
-                  <Label layoutX="25.0" layoutY="598.0" prefHeight="27.0" prefWidth="206.0" styleClass="font-body-list" stylesheets="@../css/Usuarios.css" text="BLA BLA BLA BLA">
-                     <font>
-                        <Font name="Segoe UI" size="20.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="807.0" layoutY="592.0" mnemonicParsing="false" styleClass="bnt-search" stylesheets="@../css/Usuarios.css">
-                     <graphic>
-                        <ImageView fitHeight="38.0" fitWidth="45.0" layoutX="811.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/Group%20131.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  <TextField layoutX="368.0" layoutY="104.0" prefHeight="50.0" prefWidth="200.0" text="Pesquisar">
+                     <styleClass>
+                        <String fx:value="input-search" />
+                        <String fx:value="font-md-search" />
+                     </styleClass>
+                  </TextField>
+                  <TextField layoutX="585.0" layoutY="104.0" prefHeight="50.0" prefWidth="200.0" text="Pesquisar">
+                     <styleClass>
+                        <String fx:value="input-search" />
+                        <String fx:value="font-md-search" />
+                     </styleClass>
+                  </TextField>
                   <Pane layoutX="-69.0" layoutY="-102.0" opacity="0.43" prefHeight="800.0" prefWidth="1002.0" style="-fx-background-color: black;" />
                   <Pane layoutX="85.0" layoutY="71.0" prefHeight="370.0" prefWidth="688.0" style="-fx-background-color: white; -fx-background-radius: 5;" stylesheets="@../css/InfoUsuario.css">
                      <children>
-                        <Label layoutX="49.0" layoutY="25.0" prefHeight="30.0" prefWidth="513.0" styleClass="font-lg" text="CUZAO LEAL DE FARIA - 00001" />
+                        <Label layoutX="49.0" layoutY="25.0" prefHeight="30.0" prefWidth="513.0" styleClass="font-lg" />
                         <Label layoutX="51.0" layoutY="91.0" prefHeight="30.0" prefWidth="60.0" style="-fx-font-weight: bold;" styleClass="font-md" text="E-mail:" />
                         <Label layoutX="50.0" layoutY="161.0" prefHeight="30.0" prefWidth="43.0" style="-fx-font-weight: bold;" styleClass="font-md" text="CPF:" />
                         <Label layoutX="50.0" layoutY="231.0" prefHeight="30.0" prefWidth="86.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Endereço:" />
                         <Label layoutX="50.0" layoutY="306.0" prefHeight="30.0" prefWidth="200.0" style="-fx-font-weight: bold;" styleClass="font-emprestimo" text="Total de Empréstimos:" />
-                        <Label layoutX="420.0" layoutY="91.0" prefHeight="30.0" prefWidth="141.0" styleClass="font-md" text="(46) 9 9999-9999" />
+                        <Label layoutX="420.0" layoutY="91.0" prefHeight="30.0" prefWidth="141.0" styleClass="font-md" />
                         <Label layoutX="248.0" layoutY="160.0" prefHeight="30.0" prefWidth="43.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Tipo:" />
                         <Label layoutX="387.0" layoutY="160.0" prefHeight="30.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Data Nascimento:" />
-                        <Label layoutX="112.0" layoutY="91.0" prefHeight="30.0" prefWidth="228.0" styleClass="font-md" text="Exemple@exemple.com" />
+                        <Label layoutX="112.0" layoutY="91.0" prefHeight="30.0" prefWidth="228.0" styleClass="font-md" />
                         <Label layoutX="387.0" layoutY="91.0" prefHeight="30.0" prefWidth="31.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Tel:" />
-                        <Label layoutX="294.0" layoutY="160.0" prefHeight="30.0" prefWidth="52.0" styleClass="font-md" text="Aluno" />
-                        <Label layoutX="136.0" layoutY="231.0" prefHeight="30.0" prefWidth="493.0" styleClass="font-md" text="rua bla bla" />
-                        <Label layoutX="242.0" layoutY="307.0" prefHeight="30.0" prefWidth="167.0" styleClass="font-emprestimo" text="05" />
-                        <Label layoutX="538.0" layoutY="161.0" prefHeight="30.0" prefWidth="100.0" styleClass="font-md" text="11/55/5555" />
-                        <Label layoutX="89.0" layoutY="161.0" prefHeight="30.0" prefWidth="150.0" styleClass="font-md" text="555.888.888-22" />
-                        <Button layoutX="661.0" layoutY="1.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="16.0" style="-fx-background-color: transparent;">
+                        <Label layoutX="294.0" layoutY="160.0" prefHeight="30.0" prefWidth="52.0" styleClass="font-md" />
+                        <Label layoutX="136.0" layoutY="231.0" prefHeight="30.0" prefWidth="493.0" styleClass="font-md" />
+                        <Label layoutX="242.0" layoutY="307.0" prefHeight="30.0" prefWidth="167.0" styleClass="font-emprestimo" />
+                        <Label layoutX="538.0" layoutY="161.0" prefHeight="30.0" prefWidth="100.0" styleClass="font-md" />
+                        <Label layoutX="89.0" layoutY="161.0" prefHeight="30.0" prefWidth="150.0" styleClass="font-md" />
+                        <Button fx:id="bntCancelar" layoutX="661.0" layoutY="1.0" mnemonicParsing="false" onAction="#fechar" prefHeight="18.0" prefWidth="16.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -217,7 +142,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="455.0" layoutY="303.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="167.0" styleClass="btn-primary" text="EDITAR" />
+                        <Button fx:id="btnEditar" layoutX="471.0" layoutY="304.0" mnemonicParsing="false" onAction="#editar" prefHeight="37.0" prefWidth="167.0" style="-fx-font-weight: bold;" styleClass="btn-primary" text="EDITAR" />
                      </children>
                   </Pane>
                </children></Pane>

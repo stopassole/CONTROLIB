@@ -15,7 +15,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import resource.Inicio;
@@ -43,7 +42,7 @@ public class CadastroUsuarioController extends DashboardController implements In
 	@FXML
 	private Button btnSalvar;
 	@FXML
-	private ImageView bntCancelar;
+	private Button bntCancelar;
 	@FXML
 	private ComboBox<Tipo> idTipo;
 
