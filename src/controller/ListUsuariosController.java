@@ -68,25 +68,31 @@ public class ListUsuariosController extends DashboardController implements Initi
 		columnTipo.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getIdTipo()));
 
 		columnImage.setCellFactory(new Callback<TableColumn<Usuario, ImageView>, TableCell<Usuario, ImageView>>() {
-
 			@Override
-			public TableCell<Usuario, ImageView> call(TableColumn<Usuario, ImageView> p) {
-				Button btVisualizar = new Button();
-				ImageView img = new ImageView("./images/Group 131.png");
-				img.setFitHeight(50);
-				img.setFitWidth(50);
+			public TableCell<Usuario, ImageView> call(TableColumn<Usuario, ImageView> columnImage) {
+				return new TableCell<Usuario, ImageView>() {
+					ImageView img = new ImageView("./images/Group 131.png");
+					Button button = new Button();
+					{
+						img.setFitHeight(50);
+						img.setFitWidth(50);
+						button.setGraphic(img);
+						button.setMaxSize(50, 50);
+						button.setStyle("-fx-background-color:transparent; -fx-cursor:hand");
+						button.setOnMouseClicked(visualizar(button));
+					}
 
-				TableCell<Usuario, ImageView> cell = new TableCell<Usuario, ImageView>() {
-
+					public void updateItem(ImageView img, boolean empty) {
+						super.updateItem(img, empty);
+						if (!empty) {
+							setGraphic(button);
+							setAlignment(Pos.CENTER);
+						}
+					}
 				};
-				btVisualizar.setStyle("-fx-background-color:transparent; -fx-cursor:hand");
-				btVisualizar.setGraphic(img);
-				btVisualizar.setOnMouseClicked(visualizar(btVisualizar));
-				cell.setGraphic(btVisualizar);
-				cell.setAlignment(Pos.CENTER);
-				return cell;
 			}
 		});
+
 	}
 
 	private EventHandler<? super MouseEvent> visualizar(Button button) {
@@ -94,8 +100,12 @@ public class ListUsuariosController extends DashboardController implements Initi
 			public void handle(ActionEvent e) {
 				Parent root = null;
 				try {
+
+					// String id = tbUsuarios.getSelectionModel().getSelectedItem().get_id();
+					// System.out.println("AQui " + id);
 					root = FXMLLoader.load(getClass().getResource("/view/InfoUsuario.fxml"));
 				} catch (IOException e1) {
+
 					e1.printStackTrace();
 				}
 				Scene scene = new Scene(root);
