@@ -11,6 +11,7 @@ public class Usuario {
 	private String dataNascimento;
 	private String idTipo;
 	private String dataCadastro;
+	private Boolean deletado;
 	
 	public String get_id() {
 		return _id;
@@ -72,7 +73,14 @@ public class Usuario {
 	public void setDataCadastro(String dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-	public Usuario(String _id, String nome, String sobrenome, String endereco, String email, String telefone,String cPF, String dataNascimento, String idTipo, String dataCadastro) {
+	public Boolean getDeletado() {
+		return deletado;
+	}
+	public void setDeletado(Boolean deletado) {
+		this.deletado = deletado;
+	}
+	
+	public Usuario(String _id, String nome, String sobrenome, String endereco, String email, String telefone,String cPF, String dataNascimento, String idTipo, String dataCadastro, Boolean deletado) {
 		this._id = _id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
@@ -83,6 +91,7 @@ public class Usuario {
 		this.dataNascimento = dataNascimento;
 		this.idTipo = idTipo;
 		this.dataCadastro = dataCadastro;
+		this.deletado = deletado;
 	}
 	
 	@Override

@@ -61,7 +61,7 @@ public class CadastroUsuarioController extends DashboardController implements In
 	@SuppressWarnings("static-access")
 	@FXML
 	public void salvar() throws Exception {
-		Usuario usuario = new Usuario(null, null, null, null, null, null, null, null, null, null);
+		Usuario usuario = new Usuario(null, null, null, null, null, null, null, null, null, null, null);
 
 		if (!verificaVazio()) {
 			if (validaObrigatorios()) {

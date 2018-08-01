@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow prefHeight="800.0" prefWidth="1280.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListUsuariosController">
+<TextFlow prefHeight="800.0" prefWidth="1280.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListLivrosController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #EEF1F8;">
          <children>
             <Pane prefHeight="250.0" prefWidth="1280.0" styleClass="bg-secondary" stylesheets="@../css/Livros.css">
                <children>
-                  <Label layoutX="348.0" layoutY="40.0" prefHeight="30.0" prefWidth="146.0" styleClass="font-md" text="USUÁRIOS" />
+                  <Label layoutX="348.0" layoutY="40.0" prefHeight="30.0" prefWidth="109.0" styleClass="font-md" text="Livros" />
                   <Button layoutX="1191.0" layoutY="46.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -60,7 +60,7 @@
                         <Image url="@../images/books-stack.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnUsuarios" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="312.0" mnemonicParsing="false" onAction="#menuUsuarios" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="USUÁRIOS                    " textAlignment="JUSTIFY" />
+                  <Button fx:id="btnUsuarios" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="312.16" mnemonicParsing="false" onAction="#menuUsuarios" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="USUÁRIOS                    " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/group-profile-users.png" />
@@ -68,25 +68,16 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white;" stylesheets="@../css/Emprestimos.css">
+            <Pane layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white;" stylesheets="@../css/Livros.css">
                <children>
-                  <Label layoutX="24.0" layoutY="23.0" prefHeight="48.0" prefWidth="199.0" styleClass="font-lg" text="USUÁRIOS" />
+                  <Label layoutX="24.0" layoutY="23.0" prefHeight="48.0" prefWidth="167.0" styleClass="font-lg" text="LIVROS" />
                   <TextField layoutX="24.0" layoutY="104.0" prefHeight="50.0" prefWidth="750.0" stylesheets="@../css/Livros.css" text="Pesquisar">
                      <styleClass>
                         <String fx:value="input-search" />
                         <String fx:value="font-md-search" />
                      </styleClass>
                   </TextField>
-                  <Button fx:id="btnNovoUsuario" layoutX="797.0" layoutY="18.0" mnemonicParsing="false" onAction="#novoUsuario" style="-fx-background-color: trasnparent; -fx-cursor: hand;">
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                           <image>
-                              <Image url="@../images/Group%20137.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button layoutX="797.0" layoutY="100.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" style="-fx-cursor: hand;" styleClass="bnt-search" stylesheets="@../css/Livros.css">
+                  <Button layoutX="797.0" layoutY="100.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" styleClass="bnt-search" stylesheets="@../css/Livros.css">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="809.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
@@ -95,14 +86,23 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TableView fx:id="tbUsuarios" layoutX="24.0" layoutY="179.0" prefHeight="427.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="font-md-search">
-                      <columns>
-                      <TableColumn fx:id="columnNome" prefWidth="194.0" text="Nome" />
-                      <TableColumn fx:id="columnEmail" minWidth="0.0" prefWidth="340.0" style="-fx-text-fill: blue;" text="E-mail" />
-                        <TableColumn fx:id="columnTipo" prefWidth="226.0" text="Tipo" />
-                        <TableColumn fx:id="columnImage" prefWidth="88.0" />
+                  <TableView layoutX="24.0" layoutY="179.0" prefHeight="427.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="font-md-search">
+                    <columns>
+                      <TableColumn prefWidth="194.0" text="Título" />
+                      <TableColumn minWidth="0.0" prefWidth="177.0" style="-fx-text-fill: blue;" text="Autor" />
+                        <TableColumn prefWidth="149.0" text="Gênero" />
+                        <TableColumn prefWidth="198.0" text="Disponível" />
                     </columns>
                   </TableView>
+                  <Button layoutX="797.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: trasnparent;">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <image>
+                              <Image url="@../images/Group%20137.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children></Pane>
          </children>
       </AnchorPane>

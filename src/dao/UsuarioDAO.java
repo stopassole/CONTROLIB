@@ -3,7 +3,10 @@ package dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
@@ -37,5 +40,32 @@ public class UsuarioDAO {
 		stmt.executeUpdate();
 
 		log.info(END_POINT + "/salvarusuairo -> Fim");
+	}
+
+	public List<Usuario> buscarUsuarios() throws Exception {
+		Connection conexao = dao.conexaoUsuario();
+		PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM usuario WHERE deletado = false;");
+		ResultSet rs = stmt.executeQuery();
+
+		List<Usuario> list = new ArrayList<>();
+
+		while (rs.next()) {
+			Usuario u = new Usuario(null, null, null, null, null, null, null, null, null, null, null);
+		
+			u.set_id(rs.getString("_id"));
+			u.setNome(rs.getString("nome"));
+			u.setSobrenome(rs.getString("sobrenome"));
+			u.setEndereco(rs.getString("endereco"));
+			u.setEmail(rs.getString("email"));
+			u.setTelefone(rs.getString("telefone"));
+			u.setCPF(rs.getString("cpf"));
+			u.setDataNascimento(String.valueOf(rs.getDate("datanascimento")));
+			u.setIdTipo(rs.getString("idtipo"));
+			u.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
+			u.setDeletado(rs.getBoolean("deletado"));
+			
+			list.add(u);
+		}
+		return list;
 	}
 }

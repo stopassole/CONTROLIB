@@ -60,12 +60,13 @@ public class CreateDatabase extends Task<Void> {
 					"					nome character varying(255) not null,\r\n" + 
 					"					sobrenome character varying(255) not null,\r\n" + 
 					"					endereco character varying(255),\r\n" + 
-					"					email character varying(255),\r\n" + 
-					"					telefone character varying(255),\r\n" + 
+					"					email character varying(255) not null,\r\n" + 
+					"					telefone character varying(255) not null,\r\n" + 
 					"					cpf character varying(255),\r\n" + 
 					"					dataNascimento date not null,\r\n" + 
 					"					idTipo integer not null,\r\n" + 
 					"					dataCadastro date default now(),\r\n" + 
+					"					deletado boolean default false,\r\n" + 
 					"					CONSTRAINT usuario_pkey PRIMARY KEY (_id)) ";
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 			stmt.executeQuery();
