@@ -153,6 +153,16 @@ public class CadastroUsuarioController extends DashboardController implements In
 		idTipo.getItems().addAll(tipos);
 		idTipo.setValue(tipos.get(0));
 	}
+	
+	public String validaTipoUsuario(String idTipo){
+		if(idTipo.equals("1")) {
+			return "Aluno";
+		}else if(idTipo.equals("2")) {
+			return "Funcionário";
+		}else {
+			return "Outros";
+		}
+	}
 
 	@SuppressWarnings("static-access")
 	@FXML

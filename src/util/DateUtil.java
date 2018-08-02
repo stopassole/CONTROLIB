@@ -100,6 +100,15 @@ public class DateUtil {
 
 		return retorno;
 	}
+	
+	public static String dataFormatoYYYYMMDD(String data) throws Exception {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date date = format.parse(data);
+		SimpleDateFormat format2 = new SimpleDateFormat("dd/MM/yyyy");
+		String retorno = format2.format(date);
+		
+		return retorno;
+	}
 
 	public static boolean isValidDate(String data) {
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");

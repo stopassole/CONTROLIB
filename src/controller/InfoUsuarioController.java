@@ -11,21 +11,44 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import resource.Inicio;
+import util.DateUtil;
 
-public class InfoUsuarioController extends DashboardController implements Initializable{
-	
+public class InfoUsuarioController extends DashboardController implements Initializable {
+
+	@FXML
+	private Label idDataNasc;
+	@FXML
+	private Label idNomeCodigo;
+	@FXML
+	private Label idTipo;
+	@FXML
+	private Label idEndereco;
+	@FXML
+	private Label idEmail;
+	@FXML
+	private Label idTelefone;
+	@FXML
+	private Label idCPF;
+	@FXML
+	private Label idTotalEmprestimo;
 	@FXML
 	private Button bntCancelar;
+	@FXML
+	private Button btnEditar;
+
 	UsuarioDAO dao = new UsuarioDAO();
 	
+	CadastroUsuarioController cadastroUsuario = new CadastroUsuarioController();
+
 	@FXML
 	public void fechar() throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/ListUsuario.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
 	}
-	
+
 	@FXML
 	public void editar() throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/CadastroUsuario.fxml"));
@@ -36,8 +59,27 @@ public class InfoUsuarioController extends DashboardController implements Initia
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		String idUsuario = ListUsuariosController.idUsuario;
-		Usuario usuario = dao.getByIdUsuario(idUsuario);
+		try {
+			Usuario usuario = dao.getByIdUsuario(idUsuario);
+			popularInformacao(usuario);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-	
-	
+
+	@SuppressWarnings("static-access")
+	private void popularInformacao(Usuario usuario) throws Exception {
+		DateUtil dateUtil = new DateUtil();
+		if(usuario != null) {
+			idCPF.setText(usuario.getCPF());
+			idDataNasc.setText(dateUtil.dataFormatoYYYYMMDD(usuario.getDataNascimento()));
+			idEmail.setText(usuario.getEmail());
+			idEndereco.setText(usuario.getEndereco());
+			idNomeCodigo.setText(usuario.getNome() + " " + usuario.get_id());
+			idTelefone.setText(usuario.getTelefone());
+			idTipo.setText(cadastroUsuario.validaTipoUsuario(usuario.getIdTipo()));
+			idTotalEmprestimo.setText("0");
+		}
+	}
+
 }

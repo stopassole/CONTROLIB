@@ -49,6 +49,8 @@ public class ListUsuariosController extends DashboardController implements Initi
 	private List<Usuario> usuarios = new ArrayList<>();
 
 	public static String idUsuario = null;
+	
+	CadastroUsuarioController cadastroUsuario = new CadastroUsuarioController();
 
 	@FXML
 	private void novoUsuario() throws Exception {
@@ -69,7 +71,7 @@ public class ListUsuariosController extends DashboardController implements Initi
 				idUsuario = celula.getValue().get_id();
 				return new SimpleStringProperty(celula.getValue().getEmail());
 		});
-		columnTipo.setCellValueFactory(celula ->  new SimpleStringProperty(celula.getValue().getIdTipo()));
+		columnTipo.setCellValueFactory(celula ->  new SimpleStringProperty(cadastroUsuario.validaTipoUsuario(celula.getValue().getIdTipo())));
 
 		columnImage.setCellFactory(new Callback<TableColumn<Usuario, ImageView>, TableCell<Usuario, ImageView>>() {
 			@Override

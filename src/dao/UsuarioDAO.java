@@ -69,8 +69,28 @@ public class UsuarioDAO {
 		return list;
 	}
 
-	public Usuario getByIdUsuario(String idUsuario) {
-		// TODO Auto-generated method stub
-		return null;
+	public Usuario getByIdUsuario(String idUsuario) throws Exception {
+
+		Connection conexao = dao.conexaoUsuario();
+		PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM usuario WHERE deletado = false and _id = \'" + idUsuario + "\';");
+		ResultSet rs = stmt.executeQuery();
+
+		Usuario u = new Usuario(null, null, null, null, null, null, null, null, null, null, null);
+		
+		if (rs.next()) {
+				
+			u.set_id(rs.getString("_id"));
+			u.setNome(rs.getString("nome"));
+			u.setSobrenome(rs.getString("sobrenome"));
+			u.setEndereco(rs.getString("endereco"));
+			u.setEmail(rs.getString("email"));
+			u.setTelefone(rs.getString("telefone"));
+			u.setCPF(rs.getString("cpf"));
+			u.setDataNascimento(String.valueOf(rs.getDate("datanascimento")));
+			u.setIdTipo(rs.getString("idtipo"));
+			u.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
+			u.setDeletado(rs.getBoolean("deletado"));
+		}
+		return u;
 	}
 }
