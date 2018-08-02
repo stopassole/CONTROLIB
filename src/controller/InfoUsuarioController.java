@@ -78,9 +78,9 @@ public class InfoUsuarioController extends DashboardController implements Initia
 			idDataNasc.setText(dateUtil.dataFormatoYYYYMMDD(usuario.getDataNascimento()));
 			idEmail.setText(usuario.getEmail());
 			idEndereco.setText(usuario.getEndereco());
-			idNomeCodigo.setText(usuario.getNome() + " " + usuario.get_id());
+			idNomeCodigo.setText(usuario.getNome() + " " +usuario.getSobrenome()+ " " + usuario.get_id());
 			idTelefone.setText(usuario.getTelefone());
-			idTipo.setText(cadastroUsuario.validaTipoUsuario(usuario.getIdTipo()));
+			idTipo.setText(usuario.getTipo());
 			idTotalEmprestimo.setText("0");
 		}
 	}

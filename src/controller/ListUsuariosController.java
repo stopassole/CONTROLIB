@@ -21,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
@@ -30,6 +31,12 @@ public class ListUsuariosController extends DashboardController implements Initi
 
 	@FXML
 	private Button btnNovoUsuario;
+
+	@FXML
+	private Button btnPesquisar;
+
+	@FXML
+	private TextField idPesquisar;
 
 	@FXML
 	private TableView<Usuario> tbUsuarios;
@@ -49,7 +56,7 @@ public class ListUsuariosController extends DashboardController implements Initi
 	private List<Usuario> usuarios = new ArrayList<>();
 
 	public static String idUsuario = null;
-	
+
 	CadastroUsuarioController cadastroUsuario = new CadastroUsuarioController();
 
 	@FXML
@@ -69,10 +76,11 @@ public class ListUsuariosController extends DashboardController implements Initi
 	public void confTabela() {
 		columnNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome() + " " + celula.getValue().getSobrenome()));
 		columnEmail.setCellValueFactory(celula -> {
-				idUsuario = celula.getValue().get_id();
-				return new SimpleStringProperty(celula.getValue().getEmail());
+			idUsuario = celula.getValue().get_id();
+			return new SimpleStringProperty(celula.getValue().getEmail());
 		});
-		columnTipo.setCellValueFactory(celula ->  new SimpleStringProperty(cadastroUsuario.validaTipoUsuario(celula.getValue().getIdTipo())));
+		columnTipo.setCellValueFactory(
+				celula -> new SimpleStringProperty(celula.getValue().getTipo()));
 
 		columnImage.setCellFactory(new Callback<TableColumn<Usuario, ImageView>, TableCell<Usuario, ImageView>>() {
 			@Override
@@ -80,7 +88,7 @@ public class ListUsuariosController extends DashboardController implements Initi
 				return new TableCell<Usuario, ImageView>() {
 					ImageView img = new ImageView("./images/Group 131.png");
 					Button button = new Button();
-					{						
+					{
 						button.setGraphic(img);
 						button.setMaxSize(50, 50);
 						button.setStyle("-fx-background-color:transparent; -fx-cursor:hand");
@@ -129,5 +137,16 @@ public class ListUsuariosController extends DashboardController implements Initi
 		if (!usuarios.isEmpty()) {
 			tbUsuarios.getItems().addAll(usuarios);
 		}
+	}
+
+	public void pesquisar() throws Exception {
+		UsuarioDAO dao = new UsuarioDAO();
+		if (!idPesquisar.getText().isEmpty()) {
+			usuarios = dao.buscarUsuariosFiltro(idPesquisar.getText());
+		} else {
+			usuarios = dao.buscarUsuarios();
+		}
+		tbUsuarios.getItems().setAll(usuarios);
+		confTabela();
 	}
 }

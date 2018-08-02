@@ -73,7 +73,7 @@ public class CadastroUsuarioController extends DashboardController implements In
 				usuario.setTelefone(idTelefone.getText());
 				usuario.setCPF(idCPF.getText());
 				usuario.setDataNascimento(idDataNasc.getText());
-				usuario.setIdTipo(idTipo.getValue().get_id());
+				usuario.setTipo(idTipo.getValue().getDescricao());
 
 				if (InfoUsuarioController.idUsuarioEditar == null) {
 					dao.salvarUsuario(usuario);
@@ -138,7 +138,7 @@ public class CadastroUsuarioController extends DashboardController implements In
 	private boolean verificaVazio() {
 		return idNome.getText().isEmpty() || idSobrenome.getText().isEmpty() || idDataNasc.getText().isEmpty()
 				|| idTelefone.getText().isEmpty() || idEmail.getText().isEmpty()
-				|| idTipo.getValue().get_id().equals(null);
+				|| idTipo.getValue().getDescricao().equals(null);
 	}
 
 	@Override
@@ -165,21 +165,18 @@ public class CadastroUsuarioController extends DashboardController implements In
 			idEmail.setText(usuario.getEmail());
 			idTelefone.setText(usuario.getTelefone());
 			idCPF.setText(usuario.getCPF());
-			idTipo.setValue(validaComboBoxPosicao(usuario.getIdTipo()));
+			idTipo.setValue(validaComboBoxPosicao(usuario.getTipo()));
 		}
 	}
 
 	public void getTipos() {
-		Tipo t1 = new Tipo(null, null);
-		t1.set_id("1");
+		Tipo t1 = new Tipo( null);
 		t1.setDescricao("Aluno");
 		tipos.add(t1);
-		Tipo t2 = new Tipo(null, null);
-		t2.set_id("2");
+		Tipo t2 = new Tipo(null);
 		t2.setDescricao("Funcionário");
 		tipos.add(t2);
-		Tipo t3 = new Tipo(null, null);
-		t3.set_id("3");
+		Tipo t3 = new Tipo(null);
 		t3.setDescricao("Outros");
 		tipos.add(t3);
 
@@ -187,20 +184,11 @@ public class CadastroUsuarioController extends DashboardController implements In
 		idTipo.setValue(tipos.get(0));
 	}
 
-	public String validaTipoUsuario(String idTipo) {
-		if (idTipo.equals("1")) {
-			return "Aluno";
-		} else if (idTipo.equals("2")) {
-			return "Funcionário";
-		} else {
-			return "Outros";
-		}
-	}
 
 	public Tipo validaComboBoxPosicao(String idTipo) {
-		if (idTipo.equals("1")) {
+		if (idTipo.equals("Aluno")) {
 			return tipos.get(0);
-		} else if (idTipo.equals("2")) {
+		} else if (idTipo.equals("Funcionário")) {
 			return tipos.get(1);
 		} else {
 			return tipos.get(2);

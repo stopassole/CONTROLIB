@@ -9,7 +9,7 @@ public class Usuario {
 	private String telefone;
 	private String CPF;
 	private String dataNascimento;
-	private String idTipo;
+	private String tipo;
 	private String dataCadastro;
 	private Boolean deletado;
 	
@@ -61,11 +61,11 @@ public class Usuario {
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	public String getIdTipo() {
-		return idTipo;
+	public String getTipo() {
+		return tipo;
 	}
-	public void setIdTipo(String idTipo) {
-		this.idTipo = idTipo;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 	public String getDataCadastro() {
 		return dataCadastro;
@@ -80,7 +80,7 @@ public class Usuario {
 		this.deletado = deletado;
 	}
 	
-	public Usuario(String _id, String nome, String sobrenome, String endereco, String email, String telefone,String cPF, String dataNascimento, String idTipo, String dataCadastro, Boolean deletado) {
+	public Usuario(String _id, String nome, String sobrenome, String endereco, String email, String telefone,String cPF, String dataNascimento, String tipo, String dataCadastro, Boolean deletado) {
 		this._id = _id;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
@@ -89,7 +89,7 @@ public class Usuario {
 		this.telefone = telefone;
 		this.CPF = cPF;
 		this.dataNascimento = dataNascimento;
-		this.idTipo = idTipo;
+		this.tipo = tipo;
 		this.dataCadastro = dataCadastro;
 		this.deletado = deletado;
 	}

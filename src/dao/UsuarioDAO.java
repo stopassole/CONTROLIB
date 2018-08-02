@@ -24,7 +24,7 @@ public class UsuarioDAO {
 		log.info(END_POINT + "/salvarusuairo -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
-		PreparedStatement stmt = conexao.prepareStatement("INSERT INTO usuario(nome,sobrenome,endereco,email,telefone,cpf,dataNascimento, idTipo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+		PreparedStatement stmt = conexao.prepareStatement("INSERT INTO usuario(nome,sobrenome,endereco,email,telefone,cpf,dataNascimento, tipo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 		stmt.setString(1, usuario.getNome());
 		stmt.setString(2, usuario.getSobrenome());
 		stmt.setString(3, usuario.getEndereco());
@@ -35,7 +35,7 @@ public class UsuarioDAO {
 		java.util.Date date = dataOriginal.parse(usuario.getDataNascimento());
 		SimpleDateFormat novaData = new SimpleDateFormat("yyyy-MM-dd");
 		stmt.setDate(7, Date.valueOf(novaData.format(date)));
-		stmt.setInt(8, Integer.valueOf(usuario.getIdTipo()));
+		stmt.setString(8, usuario.getTipo());
 
 		stmt.executeUpdate();
 
@@ -60,7 +60,7 @@ public class UsuarioDAO {
 			u.setTelefone(rs.getString("telefone"));
 			u.setCPF(rs.getString("cpf"));
 			u.setDataNascimento(String.valueOf(rs.getDate("datanascimento")));
-			u.setIdTipo(rs.getString("idtipo"));
+			u.setTipo(rs.getString("tipo"));
 			u.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 			u.setDeletado(rs.getBoolean("deletado"));
 			
@@ -89,7 +89,7 @@ public class UsuarioDAO {
 			u.setTelefone(rs.getString("telefone"));
 			u.setCPF(rs.getString("cpf"));
 			u.setDataNascimento(String.valueOf(rs.getDate("datanascimento")));
-			u.setIdTipo(rs.getString("idtipo"));
+			u.setTipo(rs.getString("tipo"));
 			u.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 			u.setDeletado(rs.getBoolean("deletado"));
 		}
@@ -103,7 +103,7 @@ public class UsuarioDAO {
 		log.info(END_POINT + "/editarusuario -> Inicio");
 		
 		Connection conexao = dao.conexaoUsuario();
-		PreparedStatement stmt = conexao.prepareStatement("UPDATE usuario SET nome = ?, sobrenome = ?, endereco = ?, email = ?, telefone = ?, cpf = ?, datanascimento = ?, idTipo = ? WHERE _id = \'" + idUsuarioEditar + "\';");
+		PreparedStatement stmt = conexao.prepareStatement("UPDATE usuario SET nome = ?, sobrenome = ?, endereco = ?, email = ?, telefone = ?, cpf = ?, datanascimento = ?, tipo = ? WHERE _id = \'" + idUsuarioEditar + "\';");
 		stmt.setString(1, usuario.getNome());
 		stmt.setString(2, usuario.getSobrenome());
 		stmt.setString(3, usuario.getEndereco());
@@ -114,10 +114,37 @@ public class UsuarioDAO {
 		java.util.Date date = dataOriginal.parse(usuario.getDataNascimento());
 		SimpleDateFormat novaData = new SimpleDateFormat("yyyy-MM-dd");
 		stmt.setDate(7, Date.valueOf(novaData.format(date)));
-		stmt.setInt(8, Integer.valueOf(usuario.getIdTipo()));
+		stmt.setString(8, usuario.getTipo());
 
 		stmt.executeUpdate();
 		
 		log.info(END_POINT + "/editarusuario -> Fim");
+	}
+
+	public List<Usuario> buscarUsuariosFiltro(String text) throws Exception {
+		Connection conexao = dao.conexaoUsuario();
+		PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM usuario WHERE deletado = false and usuario.nome LIKE '%" + text + "%' or usuario.sobrenome LIKE '%" + text + "%' or usuario.email LIKE  '%" + text + "%' or usuario.tipo LIKE  '%" + text + "%';");
+		ResultSet rs = stmt.executeQuery();
+
+		List<Usuario> list = new ArrayList<>();
+
+		while (rs.next()) {
+			Usuario u = new Usuario(null, null, null, null, null, null, null, null, null, null, null);
+		
+			u.set_id(rs.getString("_id"));
+			u.setNome(rs.getString("nome"));
+			u.setSobrenome(rs.getString("sobrenome"));
+			u.setEndereco(rs.getString("endereco"));
+			u.setEmail(rs.getString("email"));
+			u.setTelefone(rs.getString("telefone"));
+			u.setCPF(rs.getString("cpf"));
+			u.setDataNascimento(String.valueOf(rs.getDate("datanascimento")));
+			u.setTipo(rs.getString("tipo"));
+			u.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
+			u.setDeletado(rs.getBoolean("deletado"));
+			
+			list.add(u);
+		}
+		return list;
 	}
 }
