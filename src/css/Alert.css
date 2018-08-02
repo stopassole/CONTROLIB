@@ -7,6 +7,7 @@
 	-fx-background-color: linear-gradient(to right, rgb(107, 193, 255) 20%,
 		#00b3b8);
 }
+
 .background{
 	-fx-border-radius: 25px;
 	-fx-background-radius: 25px;

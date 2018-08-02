@@ -224,5 +224,17 @@ public class CadastroUsuarioController extends DashboardController implements In
 	private void tbTelefone() {
 		new ValidatorTelefone(idTelefone);
 	}
+	
+	public void enterPressedSalvar(KeyEvent e) throws Exception {
+        if (e.getCode().toString().equals("ENTER")) {
+        	salvar();
+        }
+    }
+	
+	public void enterPressedFechar(KeyEvent e) throws Exception {
+        if (e.getCode().toString().equals("ENTER")) {
+        	fechar();
+        }
+    }
 
 }

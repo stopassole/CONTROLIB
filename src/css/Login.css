@@ -8,15 +8,14 @@
 
 .bg-secondary{
     -fx-background-color: #00b3b8;
-     -fx-background-color: linear-gradient(to right, rgb(107, 193, 255) 20%, #00b3b8);
+     -fx-background-color: linear-gradient(to right, rgb(107.0, 193.0, 255.0) 20.0%, #00b3b8);
 }
 
 .btn {
 	-fx-cursor:hand;
-   
-    -fx-padding: 6px 0 0 12px;
-    -fx-font-size: 16px;
-    -fx-border-radius: 4px;
+    -fx-padding: 6.0px 0.0 0.0 12.0px;
+    -fx-font-size: 16.0px;
+    -fx-border-radius: 4.0px;
     -fx-text-fill: white
 }
 
@@ -24,8 +23,12 @@
 	-fx-cursor:hand;
     -fx-color: #fff;
     -fx-background-color: #00b3b8;
-    -fx-background-color: linear-gradient(to right, rgb(107, 193, 255) 20%, #00b3b8);
+    -fx-background-color: linear-gradient(to right, rgb(107.0, 193.0, 255.0) 20.0%, #00b3b8);
     -fx-text-fill: white;
+}
+
+.tab .tab-close-button:hover {
+	-fx-border-color: yellow 
 }
 
 .btn-dash {
@@ -36,31 +39,31 @@
 .btn-dash :hover{
     -fx-color: #fff;
     -fx-background-color: #1d2026;
-    -fx-border-radius: 25px;
+    -fx-border-radius: 25.0px;
     -fx-opacity: 0.8;
 }
 
 .input-rounded {
-    -fx-border-radius:25;
-    -fx-background-radius: 25;
+    -fx-border-radius:25.0;
+    -fx-background-radius: 25.0;
     -fx-border-color: #F5F5F5;
     -fx-background-color: transparent;
     /*   top bot right left    */
-    -fx-padding: 2px 0 0 12px; 
+    -fx-padding: 2.0px 0.0 0.0 12.0px; 
     -fx-color: #F5F5F5;
     -fx-text-fill: white;
     
 }
 
 .form-control {
-    -fx-padding: 6px 0 0 12px;
+    -fx-padding: 6.0px 0.0 0.0 12.0px;
     -fx-color: #495057;
     -fx-background-color: #fff;
     -fx-text-fill: white
 }
 .checkbox .box{
-    -fx-background-radius: 5px;
-    -fx-border-radius: 5px;
+    -fx-background-radius: 5.0px;
+    -fx-border-radius: 5.0px;
     -fx-background-color: transparent;
     -fx-border-color: #fff;
     -fx-text-fill: #fff;
@@ -71,17 +74,17 @@
 }
 
 .font-sm {
-    -fx-font-size: 12px;
+    -fx-font-size: 12.0px;
     -fx-text-fill: white
 }
 
 .font-md {
-    -fx-font-size: 16px;
+    -fx-font-size: 16.0px;
     -fx-text-fill: white
 }
 
 .font-lg {
-    -fx-font-size: 24px;
+    -fx-font-size: 24.0px;
     -fx-text-fill: white
 }
 

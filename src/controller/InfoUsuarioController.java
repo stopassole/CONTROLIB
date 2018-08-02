@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import resource.Inicio;
 import util.DateUtil;
 
@@ -84,5 +85,16 @@ public class InfoUsuarioController extends DashboardController implements Initia
 			idTotalEmprestimo.setText("0");
 		}
 	}
+	
+	public void enterPressedFechar(KeyEvent e) throws Exception {
+        if (e.getCode().toString().equals("ENTER")) {
+        	fechar();
+        }
+    }
 
+	public void enterPressedEditar(KeyEvent e) throws Exception {
+        if (e.getCode().toString().equals("ENTER")) {
+        	editar();
+        }
+    }
 }

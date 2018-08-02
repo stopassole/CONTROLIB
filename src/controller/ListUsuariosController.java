@@ -23,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import resource.Inicio;
@@ -74,13 +75,13 @@ public class ListUsuariosController extends DashboardController implements Initi
 	}
 
 	public void confTabela() {
-		columnNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome() + " " + celula.getValue().getSobrenome()));
+		columnNome.setCellValueFactory(celula -> new SimpleStringProperty(
+				celula.getValue().getNome() + " " + celula.getValue().getSobrenome()));
 		columnEmail.setCellValueFactory(celula -> {
 			idUsuario = celula.getValue().get_id();
 			return new SimpleStringProperty(celula.getValue().getEmail());
 		});
-		columnTipo.setCellValueFactory(
-				celula -> new SimpleStringProperty(celula.getValue().getTipo()));
+		columnTipo.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getTipo()));
 
 		columnImage.setCellFactory(new Callback<TableColumn<Usuario, ImageView>, TableCell<Usuario, ImageView>>() {
 			@Override
@@ -106,7 +107,6 @@ public class ListUsuariosController extends DashboardController implements Initi
 				};
 			}
 		});
-
 	}
 
 	private EventHandler<? super MouseEvent> visualizar(Button button) {
@@ -148,5 +148,17 @@ public class ListUsuariosController extends DashboardController implements Initi
 		}
 		tbUsuarios.getItems().setAll(usuarios);
 		confTabela();
+	}
+
+	public void enterPressedNovoUsuario(KeyEvent e) throws Exception {
+		if (e.getCode().toString().equals("ENTER")) {
+			novoUsuario();
+		}
+	}
+
+	public void enterPressedPesquisar(KeyEvent e) throws Exception {
+		if (e.getCode().toString().equals("ENTER")) {
+			pesquisar();
+		}
 	}
 }
