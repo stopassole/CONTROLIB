@@ -22,6 +22,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import resource.Inicio;
 import util.CriptoUtil;
+import util.ValidarEmail;
 
 public class LoginController implements Initializable {
 	@FXML
@@ -42,6 +43,7 @@ public class LoginController implements Initializable {
 	private static final Logger log = Logger.getLogger(Inicio.END_POINT);
 
 	CadastroDAO dao = new CadastroDAO();
+	ValidarEmail validarEmail = new ValidarEmail();
 	CriptoUtil cripto = new CriptoUtil();
 
 	@Override
@@ -97,28 +99,35 @@ public class LoginController implements Initializable {
 	@FXML
 	private void entrar() throws Exception {
 		if (verificaVazio()) {
-			String result = dao.getValidaCadastro(idEmail.getText(), cripto.getSenhaCriptografada(idSenha.getText()));
-			if(result == null) {
-				result = dao.getValidaCadastro(idEmail.getText(), idSenha.getText());
-				if(result != null) {
-					dao.alterarLembrarSenha(idEmail.getText(), idSenha.getText(),idLembrarSenha.isSelected());
+			if (validarEmail.validar(idEmail.getText())) {
+				String result = dao.getValidaCadastro(idEmail.getText(),cripto.getSenhaCriptografada(idSenha.getText()));
+				if (result == null) {
+					result = dao.getValidaCadastro(idEmail.getText(), idSenha.getText());
+					if (result != null) {
+						dao.alterarLembrarSenha(idEmail.getText(), idSenha.getText(), idLembrarSenha.isSelected());
+					}
+				} else {
+					dao.alterarLembrarSenha(idEmail.getText(), cripto.getSenhaCriptografada(idSenha.getText()),idLembrarSenha.isSelected());
 				}
-			} else {
-				dao.alterarLembrarSenha(idEmail.getText(), cripto.getSenhaCriptografada(idSenha.getText()), idLembrarSenha.isSelected());	
-			}
-			
-			if (result != null) {			
-				Parent root = FXMLLoader.load(getClass().getResource("/view/Dashboard.fxml"));
-				Scene scene = new Scene(root);
-				Inicio.myStage.setScene(scene);
+
+				if (result != null) {
+					Parent root = FXMLLoader.load(getClass().getResource("/view/Dashboard.fxml"));
+					Scene scene = new Scene(root);
+					Inicio.myStage.setScene(scene);
+				} else {
+					AlertFalha falha = new AlertFalha();
+					falha.text = "Usuário não encontrado";
+					falha.btnClicado = btnEntrar;
+					falha.start(new Stage());
+				}
+
 			} else {
 				AlertFalha falha = new AlertFalha();
-				falha.text = "Usuário não encontrado";
+				falha.text = "Infome um email válido";
 				falha.btnClicado = btnEntrar;
 				falha.start(new Stage());
 			}
-
-		}
+		} 
 	}
 
 	@SuppressWarnings("static-access")

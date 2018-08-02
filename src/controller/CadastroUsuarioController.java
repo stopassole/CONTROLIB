@@ -19,6 +19,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import resource.Inicio;
 import util.DateUtil;
+import util.ValidarEmail;
 import util.ValidatorCPF;
 import util.ValidatorTelefone;
 
@@ -50,6 +51,8 @@ public class CadastroUsuarioController extends DashboardController implements In
 
 	DateUtil date = new DateUtil();
 	
+	ValidarEmail validarEmail = new ValidarEmail();
+	
 	List<Tipo> tipos = new ArrayList<>();
 
 	@FXML
@@ -77,19 +80,19 @@ public class CadastroUsuarioController extends DashboardController implements In
 
 				if (InfoUsuarioController.idUsuarioEditar == null) {
 					dao.salvarUsuario(usuario);
+					fechar();
 					AlertSucesso sucesso = new AlertSucesso();
 					sucesso.text = "Salvo com sucesso";
 					sucesso.btnClicado = btnSalvar;
 					sucesso.start(new Stage());
 				} else {
 					dao.editarUsuario(InfoUsuarioController.idUsuarioEditar, usuario);
+					fechar();
 					AlertSucesso sucesso = new AlertSucesso();
 					sucesso.text = "Editado com sucesso";
 					sucesso.btnClicado = btnSalvar;
 					sucesso.start(new Stage());
 				}
-
-				fechar();
 			}
 		} else {
 			AlertFalha falha = new AlertFalha();
@@ -103,6 +106,7 @@ public class CadastroUsuarioController extends DashboardController implements In
 	private boolean validaObrigatorios() {
 		Boolean retornoCPF = false;
 		Boolean retornoData = false;
+		Boolean retornoEmail = false;
 		Boolean retorno = false;
 
 		if (idCPF.getText().length() > 0) {
@@ -128,8 +132,18 @@ public class CadastroUsuarioController extends DashboardController implements In
 			falha.start(new Stage());
 			return false;
 		}
+		
+		if(validarEmail.validar(idEmail.getText())) {
+			retornoEmail = true;
+		}else {
+			AlertFalha falha = new AlertFalha();
+			falha.text = "Infome um email válido";
+			falha.btnClicado = btnSalvar;
+			falha.start(new Stage());
+			return false;
+		}
 
-		if (retornoCPF && retornoData) {
+		if (retornoCPF && retornoData && retornoEmail) {
 			retorno = true;
 		}
 		return retorno;
