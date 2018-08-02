@@ -48,6 +48,8 @@ public class ListUsuariosController extends DashboardController implements Initi
 
 	private List<Usuario> usuarios = new ArrayList<>();
 
+	public static String idUsuario = null;
+
 	@FXML
 	private void novoUsuario() throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/CadastroUsuario.fxml"));
@@ -63,8 +65,11 @@ public class ListUsuariosController extends DashboardController implements Initi
 
 	public void confTabela() {
 		columnNome.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome() + " " + celula.getValue().getSobrenome()));
-		columnEmail.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getEmail()));
-		columnTipo.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getIdTipo()));
+		columnEmail.setCellValueFactory(celula -> {
+				idUsuario = celula.getValue().get_id();
+				return new SimpleStringProperty(celula.getValue().getEmail());
+		});
+		columnTipo.setCellValueFactory(celula ->  new SimpleStringProperty(celula.getValue().getIdTipo()));
 
 		columnImage.setCellFactory(new Callback<TableColumn<Usuario, ImageView>, TableCell<Usuario, ImageView>>() {
 			@Override
@@ -72,8 +77,7 @@ public class ListUsuariosController extends DashboardController implements Initi
 				return new TableCell<Usuario, ImageView>() {
 					ImageView img = new ImageView("./images/Group 131.png");
 					Button button = new Button();
-					{
-					//	button.setId();
+					{						
 						button.setGraphic(img);
 						button.setMaxSize(50, 50);
 						button.setStyle("-fx-background-color:transparent; -fx-cursor:hand");
@@ -83,6 +87,7 @@ public class ListUsuariosController extends DashboardController implements Initi
 					public void updateItem(ImageView img, boolean empty) {
 						super.updateItem(img, empty);
 						if (!empty) {
+							button.setId(idUsuario);
 							setGraphic(button);
 							setAlignment(Pos.CENTER);
 						}
@@ -98,8 +103,7 @@ public class ListUsuariosController extends DashboardController implements Initi
 			public void handle(ActionEvent e) {
 				Parent root = null;
 				try {
-					String id = tbUsuarios.getSelectionModel().getSelectedItem().get_id();
-					System.out.println("AQui " + id);
+					idUsuario = button.getId();
 					root = FXMLLoader.load(getClass().getResource("/view/InfoUsuario.fxml"));
 				} catch (IOException e1) {
 

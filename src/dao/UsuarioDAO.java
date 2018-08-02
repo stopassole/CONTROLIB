@@ -68,4 +68,9 @@ public class UsuarioDAO {
 		}
 		return list;
 	}
+
+	public Usuario getByIdUsuario(String idUsuario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
