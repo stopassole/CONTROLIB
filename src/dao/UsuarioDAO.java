@@ -70,6 +70,8 @@ public class UsuarioDAO {
 	}
 
 	public Usuario getByIdUsuario(String idUsuario) throws Exception {
+		
+		log.info(END_POINT + "/buscarusuariobyid -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
 		PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM usuario WHERE deletado = false and _id = \'" + idUsuario + "\';");
@@ -91,6 +93,31 @@ public class UsuarioDAO {
 			u.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 			u.setDeletado(rs.getBoolean("deletado"));
 		}
+		
+		log.info(END_POINT + "/buscarusuariobyid -> Fim");
 		return u;
+	}
+
+	public void editarUsuario(String idUsuarioEditar, Usuario usuario) throws Exception {
+		
+		log.info(END_POINT + "/editarusuario -> Inicio");
+		
+		Connection conexao = dao.conexaoUsuario();
+		PreparedStatement stmt = conexao.prepareStatement("UPDATE usuario SET nome = ?, sobrenome = ?, endereco = ?, email = ?, telefone = ?, cpf = ?, datanascimento = ?, idTipo = ? WHERE _id = \'" + idUsuarioEditar + "\';");
+		stmt.setString(1, usuario.getNome());
+		stmt.setString(2, usuario.getSobrenome());
+		stmt.setString(3, usuario.getEndereco());
+		stmt.setString(4, usuario.getEmail());
+		stmt.setString(5, usuario.getTelefone());
+		stmt.setString(6, usuario.getCPF());
+		SimpleDateFormat dataOriginal = new SimpleDateFormat("dd/MM/yyyy");
+		java.util.Date date = dataOriginal.parse(usuario.getDataNascimento());
+		SimpleDateFormat novaData = new SimpleDateFormat("yyyy-MM-dd");
+		stmt.setDate(7, Date.valueOf(novaData.format(date)));
+		stmt.setInt(8, Integer.valueOf(usuario.getIdTipo()));
+
+		stmt.executeUpdate();
+		
+		log.info(END_POINT + "/editarusuario -> Fim");
 	}
 }

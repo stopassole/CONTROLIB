@@ -41,6 +41,8 @@ public class InfoUsuarioController extends DashboardController implements Initia
 	UsuarioDAO dao = new UsuarioDAO();
 	
 	CadastroUsuarioController cadastroUsuario = new CadastroUsuarioController();
+	
+	public static String idUsuarioEditar = null;
 
 	@FXML
 	public void fechar() throws Exception {
@@ -69,8 +71,9 @@ public class InfoUsuarioController extends DashboardController implements Initia
 
 	@SuppressWarnings("static-access")
 	private void popularInformacao(Usuario usuario) throws Exception {
-		DateUtil dateUtil = new DateUtil();
 		if(usuario != null) {
+			DateUtil dateUtil = new DateUtil();
+			idUsuarioEditar = usuario.get_id();
 			idCPF.setText(usuario.getCPF());
 			idDataNasc.setText(dateUtil.dataFormatoYYYYMMDD(usuario.getDataNascimento()));
 			idEmail.setText(usuario.getEmail());

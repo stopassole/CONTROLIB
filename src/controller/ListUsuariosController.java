@@ -54,6 +54,7 @@ public class ListUsuariosController extends DashboardController implements Initi
 
 	@FXML
 	private void novoUsuario() throws Exception {
+		InfoUsuarioController.idUsuarioEditar = null;
 		Parent root = FXMLLoader.load(getClass().getResource("/view/CadastroUsuario.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);

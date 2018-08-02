@@ -49,6 +49,8 @@ public class CadastroUsuarioController extends DashboardController implements In
 	UsuarioDAO dao = new UsuarioDAO();
 
 	DateUtil date = new DateUtil();
+	
+	List<Tipo> tipos = new ArrayList<>();
 
 	@FXML
 	public void fechar() throws Exception {
@@ -73,12 +75,21 @@ public class CadastroUsuarioController extends DashboardController implements In
 				usuario.setDataNascimento(idDataNasc.getText());
 				usuario.setIdTipo(idTipo.getValue().get_id());
 
-				dao.salvarUsuario(usuario);
+				if (InfoUsuarioController.idUsuarioEditar == null) {
+					dao.salvarUsuario(usuario);
+					AlertSucesso sucesso = new AlertSucesso();
+					sucesso.text = "Salvo com sucesso";
+					sucesso.btnClicado = btnSalvar;
+					sucesso.start(new Stage());
+				} else {
+					dao.editarUsuario(InfoUsuarioController.idUsuarioEditar, usuario);
+					AlertSucesso sucesso = new AlertSucesso();
+					sucesso.text = "Editado com sucesso";
+					sucesso.btnClicado = btnSalvar;
+					sucesso.start(new Stage());
+				}
+
 				fechar();
-				AlertSucesso sucesso = new AlertSucesso();
-				sucesso.text = "Salvo com sucesso";
-				sucesso.btnClicado = btnSalvar;
-				sucesso.start(new Stage());
 			}
 		} else {
 			AlertFalha falha = new AlertFalha();
@@ -133,10 +144,32 @@ public class CadastroUsuarioController extends DashboardController implements In
 	@Override
 	public void initialize(java.net.URL location, ResourceBundle resources) {
 		getTipos();
+		if (InfoUsuarioController.idUsuarioEditar != null) {
+			try {
+				Usuario usuario = dao.getByIdUsuario(InfoUsuarioController.idUsuarioEditar);
+				populaEdicao(usuario);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
-	private void getTipos() {
-		List<Tipo> tipos = new ArrayList<>();
+	@SuppressWarnings("static-access")
+	public void populaEdicao(Usuario usuario) throws Exception {
+		if (usuario != null) {
+			DateUtil dateUtil = new DateUtil();
+			idDataNasc.setText(dateUtil.dataFormatoYYYYMMDD(usuario.getDataNascimento()));
+			idNome.setText(usuario.getNome());
+			idSobrenome.setText(usuario.getSobrenome());
+			idEndereco.setText(usuario.getEndereco());
+			idEmail.setText(usuario.getEmail());
+			idTelefone.setText(usuario.getTelefone());
+			idCPF.setText(usuario.getCPF());
+			idTipo.setValue(validaComboBoxPosicao(usuario.getIdTipo()));
+		}
+	}
+
+	public void getTipos() {
 		Tipo t1 = new Tipo(null, null);
 		t1.set_id("1");
 		t1.setDescricao("Aluno");
@@ -153,14 +186,24 @@ public class CadastroUsuarioController extends DashboardController implements In
 		idTipo.getItems().addAll(tipos);
 		idTipo.setValue(tipos.get(0));
 	}
-	
-	public String validaTipoUsuario(String idTipo){
-		if(idTipo.equals("1")) {
+
+	public String validaTipoUsuario(String idTipo) {
+		if (idTipo.equals("1")) {
 			return "Aluno";
-		}else if(idTipo.equals("2")) {
+		} else if (idTipo.equals("2")) {
 			return "Funcionário";
-		}else {
+		} else {
 			return "Outros";
+		}
+	}
+
+	public Tipo validaComboBoxPosicao(String idTipo) {
+		if (idTipo.equals("1")) {
+			return tipos.get(0);
+		} else if (idTipo.equals("2")) {
+			return tipos.get(1);
+		} else {
+			return tipos.get(2);
 		}
 	}
 
