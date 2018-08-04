@@ -34,7 +34,7 @@ public class Inicio extends Application {
 
 		try {
 			@SuppressWarnings({"resource" })
-			FileOutputStream file = new FileOutputStream("C:\\Users\\Alisson Stopassole\\Desktop\\LogCONTROLIB.log");
+			FileOutputStream file = new FileOutputStream("C:\\CONTROLIB\\LogCONTROLIB.log");
 
 			log.info(END_POINT + "/verificabanco -> Inicio");
 
