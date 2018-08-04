@@ -141,7 +141,7 @@
                         </Button>
                         <Button fx:id="btnEditar" layoutX="497.0" layoutY="298.0" mnemonicParsing="false" onAction="#editar" onKeyPressed="#enterPressedEditar" prefHeight="48.0" prefWidth="141.0" style="-fx-font-weight: bold;" styleClass="button-edit" text="EDITAR" />
                         <Button fx:id="btnExcluir" layoutX="418.0" layoutY="298.0" mnemonicParsing="false" onAction="#deletarUsuario" prefHeight="48.0" prefWidth="66.0" styleClass="btn-exclud" />
-                        <ImageView fitHeight="38.0" fitWidth="40.0" layoutX="434.0" layoutY="303.0" onMouseClicked="#deletarUsuario" pickOnBounds="true" preserveRatio="true" styleClass="btn-exclud">
+                        <ImageView fx:id="imgExcluir" fitHeight="38.0" fitWidth="40.0" layoutX="434.0" layoutY="303.0" onMouseClicked="#deletarUsuario" pickOnBounds="true" preserveRatio="true" styleClass="btn-exclud">
                            <image>
                               <Image url="@../images/lixeira.png" />
                            </image>

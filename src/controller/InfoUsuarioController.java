@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import resource.Inicio;
@@ -41,6 +42,8 @@ public class InfoUsuarioController extends DashboardController implements Initia
 	private Button btnEditar;
 	@FXML
 	private Button btnExcluir;
+	@FXML
+	private ImageView imgExcluir;
 
 	UsuarioDAO dao = new UsuarioDAO();
 
@@ -65,20 +68,10 @@ public class InfoUsuarioController extends DashboardController implements Initia
 	@SuppressWarnings("static-access")
 	@FXML
 	public void deletarUsuario() throws Exception {
-		try {
-			dao.excluirUsuario(ListUsuariosController.idUsuario);
-			fechar();
-			AlertSucesso sucesso = new AlertSucesso();
-			sucesso.text = "Excluido com sucesso";
-			sucesso.btnClicado = btnExcluir;
-			sucesso.start(new Stage());
-		} catch (Exception e) {
-			fechar();
-			AlertFalha sucesso = new AlertFalha();
-			sucesso.text = "Falha ao excluir";
-			sucesso.btnClicado = btnExcluir;
-			sucesso.start(new Stage());
-		}
+		Deletar deletar = new Deletar();
+		deletar.btnClicado = btnExcluir;
+		deletar.img = imgExcluir;
+		deletar.start(new Stage());
 	}
 
 	@Override
