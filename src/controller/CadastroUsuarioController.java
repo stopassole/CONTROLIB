@@ -50,9 +50,9 @@ public class CadastroUsuarioController extends DashboardController implements In
 	UsuarioDAO dao = new UsuarioDAO();
 
 	DateUtil date = new DateUtil();
-	
+
 	ValidarEmail validarEmail = new ValidarEmail();
-	
+
 	List<Tipo> tipos = new ArrayList<>();
 
 	@FXML
@@ -79,12 +79,20 @@ public class CadastroUsuarioController extends DashboardController implements In
 				usuario.setTipo(idTipo.getValue().getDescricao());
 
 				if (InfoUsuarioController.idUsuarioEditar == null) {
-					dao.salvarUsuario(usuario);
-					fechar();
-					AlertSucesso sucesso = new AlertSucesso();
-					sucesso.text = "Salvo com sucesso";
-					sucesso.btnClicado = btnSalvar;
-					sucesso.start(new Stage());
+					int cont = dao.validaUsuario(usuario);
+					if (cont == 0) {
+						dao.salvarUsuario(usuario);
+						fechar();
+						AlertSucesso sucesso = new AlertSucesso();
+						sucesso.text = "Salvo com sucesso";
+						sucesso.btnClicado = btnSalvar;
+						sucesso.start(new Stage());
+					} else {
+						AlertFalha falha = new AlertFalha();
+						falha.text = "Usuário com estes dados já cadastrado";
+						falha.btnClicado = btnSalvar;
+						falha.start(new Stage());
+					}
 				} else {
 					dao.editarUsuario(InfoUsuarioController.idUsuarioEditar, usuario);
 					fechar();
@@ -132,10 +140,10 @@ public class CadastroUsuarioController extends DashboardController implements In
 			falha.start(new Stage());
 			return false;
 		}
-		
-		if(validarEmail.validar(idEmail.getText())) {
+
+		if (validarEmail.validar(idEmail.getText())) {
 			retornoEmail = true;
-		}else {
+		} else {
 			AlertFalha falha = new AlertFalha();
 			falha.text = "Infome um email válido";
 			falha.btnClicado = btnSalvar;
@@ -184,7 +192,7 @@ public class CadastroUsuarioController extends DashboardController implements In
 	}
 
 	public void getTipos() {
-		Tipo t1 = new Tipo( null);
+		Tipo t1 = new Tipo(null);
 		t1.setDescricao("Aluno");
 		tipos.add(t1);
 		Tipo t2 = new Tipo(null);
@@ -197,7 +205,6 @@ public class CadastroUsuarioController extends DashboardController implements In
 		idTipo.getItems().addAll(tipos);
 		idTipo.setValue(tipos.get(0));
 	}
-
 
 	public Tipo validaComboBoxPosicao(String idTipo) {
 		if (idTipo.equals("Aluno")) {
@@ -224,17 +231,17 @@ public class CadastroUsuarioController extends DashboardController implements In
 	private void tbTelefone() {
 		new ValidatorTelefone(idTelefone);
 	}
-	
+
 	public void enterPressedSalvar(KeyEvent e) throws Exception {
-        if (e.getCode().toString().equals("ENTER")) {
-        	salvar();
-        }
-    }
-	
+		if (e.getCode().toString().equals("ENTER")) {
+			salvar();
+		}
+	}
+
 	public void enterPressedFechar(KeyEvent e) throws Exception {
-        if (e.getCode().toString().equals("ENTER")) {
-        	fechar();
-        }
-    }
+		if (e.getCode().toString().equals("ENTER")) {
+			fechar();
+		}
+	}
 
 }

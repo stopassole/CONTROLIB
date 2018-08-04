@@ -24,7 +24,8 @@ public class UsuarioDAO {
 		log.info(END_POINT + "/salvarusuairo -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
-		PreparedStatement stmt = conexao.prepareStatement("INSERT INTO usuario(nome,sobrenome,endereco,email,telefone,cpf,dataNascimento, tipo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+		PreparedStatement stmt = conexao.prepareStatement(
+				"INSERT INTO usuario(nome,sobrenome,endereco,email,telefone,cpf,dataNascimento, tipo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 		stmt.setString(1, usuario.getNome());
 		stmt.setString(2, usuario.getSobrenome());
 		stmt.setString(3, usuario.getEndereco());
@@ -43,6 +44,9 @@ public class UsuarioDAO {
 	}
 
 	public List<Usuario> buscarUsuarios() throws Exception {
+		
+		log.info(END_POINT + "/buscarusuarios -> Inicio");
+
 		Connection conexao = dao.conexaoUsuario();
 		PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM usuario WHERE deletado = false;");
 		ResultSet rs = stmt.executeQuery();
@@ -51,7 +55,7 @@ public class UsuarioDAO {
 
 		while (rs.next()) {
 			Usuario u = new Usuario(null, null, null, null, null, null, null, null, null, null, null);
-		
+
 			u.set_id(rs.getString("_id"));
 			u.setNome(rs.getString("nome"));
 			u.setSobrenome(rs.getString("sobrenome"));
@@ -63,24 +67,28 @@ public class UsuarioDAO {
 			u.setTipo(rs.getString("tipo"));
 			u.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 			u.setDeletado(rs.getBoolean("deletado"));
-			
+
 			list.add(u);
 		}
+		
+		log.info(END_POINT + "/buscarusuarios -> Fim");
+		
 		return list;
 	}
 
 	public Usuario getByIdUsuario(String idUsuario) throws Exception {
-		
+
 		log.info(END_POINT + "/buscarusuariobyid -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
-		PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM usuario WHERE deletado = false and _id = \'" + idUsuario + "\';");
+		PreparedStatement stmt = conexao
+				.prepareStatement("SELECT * FROM usuario WHERE deletado = false and _id = \'" + idUsuario + "\';");
 		ResultSet rs = stmt.executeQuery();
 
 		Usuario u = new Usuario(null, null, null, null, null, null, null, null, null, null, null);
-		
+
 		if (rs.next()) {
-				
+
 			u.set_id(rs.getString("_id"));
 			u.setNome(rs.getString("nome"));
 			u.setSobrenome(rs.getString("sobrenome"));
@@ -93,17 +101,19 @@ public class UsuarioDAO {
 			u.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 			u.setDeletado(rs.getBoolean("deletado"));
 		}
-		
+
 		log.info(END_POINT + "/buscarusuariobyid -> Fim");
 		return u;
 	}
 
 	public void editarUsuario(String idUsuarioEditar, Usuario usuario) throws Exception {
-		
+
 		log.info(END_POINT + "/editarusuario -> Inicio");
-		
+
 		Connection conexao = dao.conexaoUsuario();
-		PreparedStatement stmt = conexao.prepareStatement("UPDATE usuario SET nome = ?, sobrenome = ?, endereco = ?, email = ?, telefone = ?, cpf = ?, datanascimento = ?, tipo = ? WHERE _id = \'" + idUsuarioEditar + "\';");
+		PreparedStatement stmt = conexao.prepareStatement(
+				"UPDATE usuario SET nome = ?, sobrenome = ?, endereco = ?, email = ?, telefone = ?, cpf = ?, datanascimento = ?, tipo = ? WHERE _id = \'"
+						+ idUsuarioEditar + "\';");
 		stmt.setString(1, usuario.getNome());
 		stmt.setString(2, usuario.getSobrenome());
 		stmt.setString(3, usuario.getEndereco());
@@ -117,20 +127,26 @@ public class UsuarioDAO {
 		stmt.setString(8, usuario.getTipo());
 
 		stmt.executeUpdate();
-		
+
 		log.info(END_POINT + "/editarusuario -> Fim");
 	}
 
 	public List<Usuario> buscarUsuariosFiltro(String text) throws Exception {
+		
+		log.info(END_POINT + "/buscarusuariosfiltro -> Inicio");
+		
 		Connection conexao = dao.conexaoUsuario();
-		PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM usuario WHERE deletado = false and usuario.nome LIKE '%" + text + "%' or usuario.sobrenome LIKE '%" + text + "%' or usuario.email LIKE  '%" + text + "%' or usuario.tipo LIKE  '%" + text + "%';");
+		PreparedStatement stmt = conexao
+				.prepareStatement("SELECT * FROM usuario WHERE deletado = false and usuario.nome LIKE '%" + text
+						+ "%' or usuario.sobrenome LIKE '%" + text + "%' or usuario.email LIKE  '%" + text
+						+ "%' or usuario.tipo LIKE  '%" + text + "%';");
 		ResultSet rs = stmt.executeQuery();
 
 		List<Usuario> list = new ArrayList<>();
 
 		while (rs.next()) {
 			Usuario u = new Usuario(null, null, null, null, null, null, null, null, null, null, null);
-		
+
 			u.set_id(rs.getString("_id"));
 			u.setNome(rs.getString("nome"));
 			u.setSobrenome(rs.getString("sobrenome"));
@@ -142,9 +158,38 @@ public class UsuarioDAO {
 			u.setTipo(rs.getString("tipo"));
 			u.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 			u.setDeletado(rs.getBoolean("deletado"));
-			
+
 			list.add(u);
 		}
+		log.info(END_POINT + "/buscarusuariosfiltro -> Fim");
+		
 		return list;
+	}
+
+	public int validaUsuario(Usuario usuario) throws Exception {
+		
+		log.info(END_POINT + "/velidausuario -> Inicio");
+		
+		SimpleDateFormat dataOriginal = new SimpleDateFormat("dd/MM/yyyy");
+		java.util.Date date = dataOriginal.parse(usuario.getDataNascimento());
+		SimpleDateFormat novaData = new SimpleDateFormat("yyyy-MM-dd");
+		
+		Connection conexao = dao.conexaoUsuario();
+		String sql = "SELECT count(*) FROM usuario WHERE usuario.nome= \'" + usuario.getNome()
+				+ "\'AND usuario.sobrenome =\'" + usuario.getSobrenome() + "\'AND usuario.email =\'"
+				+ usuario.getEmail() + "\'AND usuario.telefone =\'" + usuario.getTelefone()
+				+ "\'AND usuario.datanascimento =\'" + Date.valueOf(novaData.format(date))
+				+ "\'AND usuario.tipo =\'" + usuario.getTipo()+ "\';";
+		PreparedStatement stmt = conexao.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+		ResultSet resultSet = stmt.executeQuery();
+		int cont = 0;
+		if (resultSet.next()) {
+			cont = resultSet.getInt(1);
+		}
+		
+		log.info(END_POINT + "/velidausuario -> Fim");
+		
+		return cont;
 	}
 }
