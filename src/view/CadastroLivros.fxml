@@ -13,13 +13,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow prefHeight="800.0" prefWidth="1280.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListLivrosController">
+<TextFlow prefHeight="800.0" prefWidth="1280.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #EEF1F8;">
          <children>
-            <Pane prefHeight="250.0" prefWidth="1280.0" styleClass="bg-secondary" stylesheets="@../css/Livros.css">
+            <Pane layoutX="32.0" prefHeight="250.0" prefWidth="1280.0" styleClass="bg-secondary" stylesheets="@../css/CadastroLivros.css">
                <children>
-                  <Label layoutX="348.0" layoutY="40.0" prefHeight="30.0" prefWidth="109.0" styleClass="font-md" text="LIVROS" />
                   <Button layoutX="1191.0" layoutY="46.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -38,9 +37,10 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Label layoutX="315.0" layoutY="39.0" prefHeight="30.0" prefWidth="109.0" styleClass="font-md" stylesheets="@../css/CadastroLivros.css" text="LIVROS" />
                </children>
             </Pane>
-            <Pane prefHeight="800.0" prefWidth="280.0" styleClass="bg-primary" stylesheets="@../css/Livros.css">
+            <Pane prefHeight="800.0" prefWidth="280.0" styleClass="bg-primary" stylesheets="@../css/CadastroLivros.css">
                <children>
                   <ImageView fitHeight="70.0" fitWidth="90.0" layoutX="95.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -48,19 +48,19 @@
                      </image>
                   </ImageView>
                   <Separator layoutX="34.9" layoutY="131.3" prefHeight="5.0" prefWidth="209.6" />
-                  <Button fx:id="btnEmprestimos" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="164.16" mnemonicParsing="false" onAction="#menuEmprestimos" onKeyPressed="#enterPressedEmprestimos" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="EMPRÉSTIMOS              " textAlignment="JUSTIFY" />
+                  <Button fx:id="btnEmprestimos" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="164.16" mnemonicParsing="false" onAction="#menuEmprestimos" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="EMPRÉSTIMOS              " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/Group%2035.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnLivros" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="238.0" mnemonicParsing="false" onAction="#menuLivros" onKeyPressed="#enterPressedLivros" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="LIVROS                          " textAlignment="JUSTIFY" />
+                  <Button fx:id="btnLivros" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="238.0" mnemonicParsing="false" onAction="#menuLivros" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="LIVROS                          " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/books-stack.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnUsuarios" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="312.16" mnemonicParsing="false" onAction="#menuUsuarios" onKeyPressed="#enterPressedUsuarios" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="USUÁRIOS                    " textAlignment="JUSTIFY" />
+                  <Button fx:id="btnUsuarios" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="312.16" mnemonicParsing="false" onAction="#menuUsuarios" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="USUÁRIOS                    " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/group-profile-users.png" />
@@ -87,12 +87,12 @@
                      </graphic>
                   </Button>
                   <TableView layoutX="24.0" layoutY="179.0" prefHeight="427.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="font-md-search">
-                    <columns>
-                      <TableColumn prefWidth="194.0" text="Título" />
-                      <TableColumn minWidth="0.0" prefWidth="177.0" style="-fx-text-fill: blue;" text="Autor" />
+                     <columns>
+                        <TableColumn prefWidth="194.0" text="Título" />
+                        <TableColumn minWidth="0.0" prefWidth="177.0" style="-fx-text-fill: blue;" text="Autor" />
                         <TableColumn prefWidth="149.0" text="Gênero" />
                         <TableColumn prefWidth="198.0" text="Disponível" />
-                    </columns>
+                     </columns>
                   </TableView>
                   <Button layoutX="797.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: trasnparent;">
                      <graphic>
@@ -103,7 +103,35 @@
                         </ImageView>
                      </graphic>
                   </Button>
-               </children></Pane>
+               </children>
+            </Pane>
+            <Pane layoutX="280.0" opacity="0.5" prefHeight="801.0" prefWidth="1035.0" style="-fx-background-color: black;" />
+            <Pane layoutX="458.0" layoutY="175.0" prefHeight="450.0" prefWidth="650.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="-" stylesheets="@../css/CadastroLivros.css">
+               <children>
+                  <Label layoutX="35.0" layoutY="43.0" prefHeight="30.0" prefWidth="305.0" styleClass="font-lg" text="CADASTRO DE LIVROS" />
+                  <Label layoutX="51.0" layoutY="123.0" prefHeight="28.0" prefWidth="57.0" styleClass="font-md" text="Nome:" />
+                  <Label layoutX="358.0" layoutY="123.0" prefHeight="24.0" prefWidth="48.0" styleClass="font-md" text="Autor:" />
+                  <TextField layoutX="35.0" layoutY="149.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
+                  <TextField layoutX="340.0" layoutY="149.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
+                  <Label layoutX="51.0" layoutY="225.0" prefHeight="28.0" prefWidth="57.0" styleClass="font-md" text="Gênero:" />
+                  <TextField layoutX="35.0" layoutY="251.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
+                  <Label layoutX="356.0" layoutY="225.0" prefHeight="28.0" prefWidth="57.0" styleClass="font-md" text="Editora:" />
+                  <TextField layoutX="340.0" layoutY="251.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
+                  <Label layoutX="54.0" layoutY="331.0" prefHeight="28.0" prefWidth="96.0" styleClass="font-md" text="Quantidade:" />
+                  <TextField layoutX="156.0" layoutY="325.0" prefHeight="40.0" prefWidth="40.0" styleClass="input-qtd" text="10" />
+                  <Button layoutX="343.0" layoutY="376.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="125.0" styleClass="button-cancel" text="CANCELAR" />
+                  <Button layoutX="487.0" layoutY="376.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="125.0" styleClass="button-salve" text="CADASTRAR" />
+                  <Button fx:id="btnCancelar" layoutX="615.0" layoutY="14.0" mnemonicParsing="false" onAction="#fechar" prefHeight="18.0" prefWidth="16.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="12.0" onKeyPressed="#enterPressedFechar" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/x.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </children>
