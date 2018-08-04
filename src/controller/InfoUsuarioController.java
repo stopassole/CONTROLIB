@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 import resource.Inicio;
 import util.DateUtil;
 
@@ -38,11 +39,13 @@ public class InfoUsuarioController extends DashboardController implements Initia
 	private Button bntCancelar;
 	@FXML
 	private Button btnEditar;
+	@FXML
+	private Button btnExcluir;
 
 	UsuarioDAO dao = new UsuarioDAO();
-	
+
 	CadastroUsuarioController cadastroUsuario = new CadastroUsuarioController();
-	
+
 	public static String idUsuarioEditar = null;
 
 	@FXML
@@ -59,6 +62,25 @@ public class InfoUsuarioController extends DashboardController implements Initia
 		Inicio.myStage.setScene(scene);
 	}
 
+	@SuppressWarnings("static-access")
+	@FXML
+	public void deletarUsuario() throws Exception {
+		try {
+			dao.excluirUsuario(ListUsuariosController.idUsuario);
+			fechar();
+			AlertSucesso sucesso = new AlertSucesso();
+			sucesso.text = "Excluido com sucesso";
+			sucesso.btnClicado = btnExcluir;
+			sucesso.start(new Stage());
+		} catch (Exception e) {
+			fechar();
+			AlertFalha sucesso = new AlertFalha();
+			sucesso.text = "Falha ao excluir";
+			sucesso.btnClicado = btnExcluir;
+			sucesso.start(new Stage());
+		}
+	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		String idUsuario = ListUsuariosController.idUsuario;
@@ -72,29 +94,29 @@ public class InfoUsuarioController extends DashboardController implements Initia
 
 	@SuppressWarnings("static-access")
 	private void popularInformacao(Usuario usuario) throws Exception {
-		if(usuario != null) {
+		if (usuario != null) {
 			DateUtil dateUtil = new DateUtil();
 			idUsuarioEditar = usuario.get_id();
 			idCPF.setText(usuario.getCPF());
 			idDataNasc.setText(dateUtil.dataFormatoYYYYMMDD(usuario.getDataNascimento()));
 			idEmail.setText(usuario.getEmail());
 			idEndereco.setText(usuario.getEndereco());
-			idNomeCodigo.setText(usuario.getNome() + " " +usuario.getSobrenome()+ " " + usuario.get_id());
+			idNomeCodigo.setText(usuario.getNome() + " " + usuario.getSobrenome() + " " + usuario.get_id());
 			idTelefone.setText(usuario.getTelefone());
 			idTipo.setText(usuario.getTipo());
 			idTotalEmprestimo.setText("0");
 		}
 	}
-	
+
 	public void enterPressedFechar(KeyEvent e) throws Exception {
-        if (e.getCode().toString().equals("ENTER")) {
-        	fechar();
-        }
-    }
+		if (e.getCode().toString().equals("ENTER")) {
+			fechar();
+		}
+	}
 
 	public void enterPressedEditar(KeyEvent e) throws Exception {
-        if (e.getCode().toString().equals("ENTER")) {
-        	editar();
-        }
-    }
+		if (e.getCode().toString().equals("ENTER")) {
+			editar();
+		}
+	}
 }

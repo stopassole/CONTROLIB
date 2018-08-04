@@ -23,7 +23,6 @@
 }
 .btn:hover{
 	-fx-background-color: #7A7B7F;
-	
 }
 
 .btn-primary {
@@ -108,11 +107,21 @@
 }
 
 .button-edit{
+	-fx-cursor:hand;
     -fx-border-radius:10;
     -fx-background-radius: 10;
     -fx-background-color: #6ED1D8; 
     -fx-text-fill: white;
     -fx-font: 16px "Segoe UI";
     -fx-font-weight: bold;
+}
+
+.btn-exclud{
+	-fx-cursor:hand;
+    -fx-font-weight: 400;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-background-radius: 25px;
 }
 

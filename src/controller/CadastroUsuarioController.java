@@ -109,7 +109,7 @@ public class CadastroUsuarioController extends DashboardController implements In
 			falha.start(new Stage());
 		}
 	}
-
+	
 	@SuppressWarnings("static-access")
 	private boolean validaObrigatorios() {
 		Boolean retornoCPF = false;

@@ -168,7 +168,7 @@ public class UsuarioDAO {
 
 	public int validaUsuario(Usuario usuario) throws Exception {
 		
-		log.info(END_POINT + "/velidausuario -> Inicio");
+		log.info(END_POINT + "/validausuario -> Inicio");
 		
 		SimpleDateFormat dataOriginal = new SimpleDateFormat("dd/MM/yyyy");
 		java.util.Date date = dataOriginal.parse(usuario.getDataNascimento());
@@ -179,7 +179,8 @@ public class UsuarioDAO {
 				+ "\'AND usuario.sobrenome =\'" + usuario.getSobrenome() + "\'AND usuario.email =\'"
 				+ usuario.getEmail() + "\'AND usuario.telefone =\'" + usuario.getTelefone()
 				+ "\'AND usuario.datanascimento =\'" + Date.valueOf(novaData.format(date))
-				+ "\'AND usuario.tipo =\'" + usuario.getTipo()+ "\';";
+				+ "\'AND usuario.tipo =\'" + usuario.getTipo()
+				+ "\'AND usuario.deletado =\'" + false + "\';";
 		PreparedStatement stmt = conexao.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE,
 				ResultSet.CONCUR_READ_ONLY);
 		ResultSet resultSet = stmt.executeQuery();
@@ -188,8 +189,19 @@ public class UsuarioDAO {
 			cont = resultSet.getInt(1);
 		}
 		
-		log.info(END_POINT + "/velidausuario -> Fim");
+		log.info(END_POINT + "/validausuario -> Fim");
 		
 		return cont;
+	}
+	
+	public void excluirUsuario(String idUsuario) throws Exception {
+		log.info(END_POINT + "/excluirusuario -> Inicio");
+
+		Connection conexao = dao.conexaoUsuario();
+		PreparedStatement stmt = conexao.prepareStatement("UPDATE usuario SET deletado = true WHERE _id = \'" + idUsuario + "\';");
+
+		stmt.executeUpdate();
+
+		log.info(END_POINT + "/excluirusuario -> Fim");
 	}
 }

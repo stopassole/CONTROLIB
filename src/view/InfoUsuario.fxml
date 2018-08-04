@@ -127,7 +127,7 @@
                         <Label layoutX="387.0" layoutY="91.0" prefHeight="30.0" prefWidth="31.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Tel:" />
                         <Label fx:id="idTipo" layoutX="294.0" layoutY="160.0" prefHeight="30.0" prefWidth="52.0" styleClass="font-md" />
                         <Label fx:id="idEndereco" layoutX="136.0" layoutY="231.0" prefHeight="30.0" prefWidth="493.0" styleClass="font-md" />
-                        <Label fx:id="idTotalEmprestimo" layoutX="242.0" layoutY="307.0" prefHeight="30.0" prefWidth="167.0" styleClass="font-emprestimo" />
+                        <Label fx:id="idTotalEmprestimo" layoutX="242.0" layoutY="307.0" prefHeight="30.0" prefWidth="134.0" styleClass="font-emprestimo" />
                         <Label fx:id="idDataNasc" layoutX="538.0" layoutY="161.0" prefHeight="30.0" prefWidth="100.0" styleClass="font-md" />
                         <Label fx:id="idCPF" layoutX="89.0" layoutY="161.0" prefHeight="30.0" prefWidth="150.0" styleClass="font-md" />
                         <Button fx:id="bntCancelar" layoutX="661.0" layoutY="1.0" mnemonicParsing="false" onAction="#fechar" onKeyPressed="#enterPressedFechar" prefHeight="18.0" prefWidth="16.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
@@ -139,7 +139,13 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btnEditar" layoutX="471.0" layoutY="304.0" mnemonicParsing="false" onAction="#editar" onKeyPressed="#enterPressedEditar" prefHeight="37.0" prefWidth="167.0" style="-fx-font-weight: bold;" styleClass="btn-primary" text="EDITAR" />
+                        <Button fx:id="btnEditar" layoutX="497.0" layoutY="298.0" mnemonicParsing="false" onAction="#editar" onKeyPressed="#enterPressedEditar" prefHeight="48.0" prefWidth="141.0" style="-fx-font-weight: bold;" styleClass="button-edit" text="EDITAR" />
+                        <Button fx:id="btnExcluir" layoutX="418.0" layoutY="298.0" mnemonicParsing="false" onAction="#deletarUsuario" prefHeight="48.0" prefWidth="66.0" styleClass="btn-exclud" />
+                        <ImageView fitHeight="38.0" fitWidth="40.0" layoutX="434.0" layoutY="303.0" onMouseClicked="#deletarUsuario" pickOnBounds="true" preserveRatio="true" styleClass="btn-exclud">
+                           <image>
+                              <Image url="@../images/lixeira.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
                </children></Pane>
