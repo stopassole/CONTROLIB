@@ -126,7 +126,7 @@ public class LivroDAO {
 		Connection conexao = dao.conexaoUsuario();
 		PreparedStatement stmt = conexao
 				.prepareStatement("SELECT * FROM livro WHERE deletado = false and livro.nome LIKE '%" + text
-						+ "%' or livro.autor LIKE '%" + text + "%' or livro.genero LIKE  '%" + text + ";");
+						+ "%' or livro.autor LIKE '%" + text + "%' or livro.genero LIKE '%" + text + "%';");
 		ResultSet rs = stmt.executeQuery();
 
 		List<Livro> list = new ArrayList<>();

@@ -29,7 +29,7 @@ import javafx.util.Callback;
 import resource.Inicio;
 
 public class ListLivrosController extends DashboardController implements Initializable {
-	
+
 	@FXML
 	private Button btnNovoLivro;
 	@FXML
@@ -52,7 +52,7 @@ public class ListLivrosController extends DashboardController implements Initial
 	private List<Livro> livros = new ArrayList<>();
 
 	public static String idLivro = null;
-	
+
 	private static Integer disponivel = null;
 
 	CadastroLivroController cadastroLivro = new CadastroLivroController();
@@ -79,7 +79,7 @@ public class ListLivrosController extends DashboardController implements Initial
 			return new SimpleStringProperty(celula.getValue().getAutor());
 		});
 		columnGenero.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getGenero()));
-		
+
 		columnDisponivel.setCellFactory(new Callback<TableColumn<Livro, ImageView>, TableCell<Livro, ImageView>>() {
 			@Override
 			public TableCell<Livro, ImageView> call(TableColumn<Livro, ImageView> columnImage) {
@@ -95,9 +95,9 @@ public class ListLivrosController extends DashboardController implements Initial
 					public void updateItem(ImageView img, boolean empty) {
 						super.updateItem(img, empty);
 						if (!empty) {
-							if(disponivel > 0) {
+							if (disponivel > 0) {
 								button.setGraphic(img1);
-							}else {
+							} else {
 								button.setGraphic(img2);
 							}
 							button.setId(idLivro);
@@ -175,16 +175,16 @@ public class ListLivrosController extends DashboardController implements Initial
 		tbLivros.getItems().setAll(livros);
 		confTabela();
 	}
+
 	public void enterPressedNovoLivro(KeyEvent e) throws Exception {
 		if (e.getCode().toString().equals("ENTER")) {
 			novoLivro();
 		}
 	}
-	
+
 	public void enterPressedPesquisar(KeyEvent e) throws Exception {
 		if (e.getCode().toString().equals("ENTER")) {
 			pesquisar();
 		}
 	}
- 
 }
