@@ -14,12 +14,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import resource.Inicio;
 import util.DateUtil;
 
 public class InfoUsuarioController extends DashboardController implements Initializable {
 
+	@FXML
+	private TextFlow idTextFlow;
 	@FXML
 	private Label idDataNasc;
 	@FXML
@@ -69,8 +72,7 @@ public class InfoUsuarioController extends DashboardController implements Initia
 	@FXML
 	public void deletarUsuario() throws Exception {
 		Deletar deletar = new Deletar();
-		deletar.btnClicado = btnExcluir;
-		deletar.img = imgExcluir;
+		deletar.clicado = idTextFlow;
 		deletar.start(new Stage());
 	}
 

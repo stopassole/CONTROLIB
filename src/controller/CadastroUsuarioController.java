@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import resource.Inicio;
 import util.DateUtil;
@@ -24,6 +25,8 @@ import util.ValidatorCPF;
 import util.ValidatorTelefone;
 
 public class CadastroUsuarioController extends DashboardController implements Initializable {
+	@FXML
+	private TextFlow idTextFlow;
 	@FXML
 	private TextField idDataNasc;
 	@FXML
@@ -85,12 +88,12 @@ public class CadastroUsuarioController extends DashboardController implements In
 						fechar();
 						AlertSucesso sucesso = new AlertSucesso();
 						sucesso.text = "Salvo com sucesso";
-						sucesso.btnClicado = btnSalvar;
+						sucesso.clicado = idTextFlow;
 						sucesso.start(new Stage());
 					} else {
 						AlertFalha falha = new AlertFalha();
 						falha.text = "Usuário com estes dados já cadastrado";
-						falha.btnClicado = btnSalvar;
+						falha.clicado = idTextFlow;
 						falha.start(new Stage());
 					}
 				} else {
@@ -98,14 +101,14 @@ public class CadastroUsuarioController extends DashboardController implements In
 					fechar();
 					AlertSucesso sucesso = new AlertSucesso();
 					sucesso.text = "Editado com sucesso";
-					sucesso.btnClicado = btnSalvar;
+					sucesso.clicado = idTextFlow;
 					sucesso.start(new Stage());
 				}
 			}
 		} else {
 			AlertFalha falha = new AlertFalha();
 			falha.text = "Campos obrigatórios não informados";
-			falha.btnClicado = btnSalvar;
+			falha.clicado = idTextFlow;
 			falha.start(new Stage());
 		}
 	}
@@ -123,7 +126,7 @@ public class CadastroUsuarioController extends DashboardController implements In
 			} else {
 				AlertFalha falha = new AlertFalha();
 				falha.text = "Infome um CPF válido";
-				falha.btnClicado = btnSalvar;
+				falha.clicado = idTextFlow;
 				falha.start(new Stage());
 				return false;
 			}
@@ -136,7 +139,7 @@ public class CadastroUsuarioController extends DashboardController implements In
 		} else {
 			AlertFalha falha = new AlertFalha();
 			falha.text = "Infome uma data de nascimento válida";
-			falha.btnClicado = btnSalvar;
+			falha.clicado = idTextFlow;
 			falha.start(new Stage());
 			return false;
 		}
@@ -146,7 +149,7 @@ public class CadastroUsuarioController extends DashboardController implements In
 		} else {
 			AlertFalha falha = new AlertFalha();
 			falha.text = "Infome um email válido";
-			falha.btnClicado = btnSalvar;
+			falha.clicado = idTextFlow;
 			falha.start(new Stage());
 			return false;
 		}

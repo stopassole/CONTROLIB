@@ -13,10 +13,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 import resource.Inicio;
 
 public class InfoLivroController extends DashboardController implements Initializable{
-	
+	@FXML
+	private TextFlow idTextFlow;
 	@FXML
 	private Label idNome;
 	@FXML
@@ -50,6 +53,14 @@ public class InfoLivroController extends DashboardController implements Initiali
 		Parent root = FXMLLoader.load(getClass().getResource("/view/CadastroLivro.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+	}
+	
+	@SuppressWarnings("static-access")
+	@FXML
+	public void deletarLivro() throws Exception {
+		Deletar deletar = new Deletar();
+		deletar.clicado = idTextFlow;
+		deletar.start(new Stage());
 	}
 
 	@Override

@@ -9,12 +9,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import resource.Inicio;
 import util.CriptoUtil;
 import util.ValidatorCPF;
 
 public class RecuperarController {
+	@FXML
+	private TextFlow idTextFlow;
 	@FXML
 	private Button btnVoltarLogin;
 	@FXML
@@ -49,7 +52,7 @@ public class RecuperarController {
 		if (verificaVazio()) {
 			AlertFalha falha = new AlertFalha();
 			falha.text = "Algum campo está vazio";
-			falha.btnClicado = btnCadastrar;
+			falha.clicado = idTextFlow;
 			falha.start(new Stage());
 		} else {
 			if (senhaValida()) {
@@ -67,26 +70,26 @@ public class RecuperarController {
 
 						AlertSucesso sucesso = new AlertSucesso();
 						sucesso.text = "Salvo com sucesso";
-						sucesso.btnClicado = btnCadastrar;
+						sucesso.clicado = idTextFlow;
 						sucesso.start(new Stage());
 						
 					} else {
 						AlertFalha falha = new AlertFalha();
 						falha.text = "Usuário não encontrado";
-						falha.btnClicado = btnCadastrar;
+						falha.clicado = idTextFlow;
 						falha.start(new Stage());
 					}
 
 				} else {
 					AlertFalha falha = new AlertFalha();
 					falha.text = "Infome um CPF válido";
-					falha.btnClicado = btnCadastrar;
+					falha.clicado = idTextFlow;
 					falha.start(new Stage());
 				}
 			} else {
 				AlertFalha falha = new AlertFalha();
 				falha.text = "As senhas estão diferentes";
-				falha.btnClicado = btnCadastrar;
+				falha.clicado = idTextFlow;
 				falha.start(new Stage());
 			}
 		}

@@ -14,11 +14,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import resource.Inicio;
 
 public class CadastroLivroController extends DashboardController implements Initializable {
-
+	@FXML
+	private TextFlow idTextFlow;
 	@FXML
 	private TextField idNome;
 	@FXML
@@ -65,12 +67,12 @@ public class CadastroLivroController extends DashboardController implements Init
 					fechar();
 					AlertSucesso sucesso = new AlertSucesso();
 					sucesso.text = "Salvo com sucesso";
-					sucesso.btnClicado = btnSalvar;
+					sucesso.clicado = idTextFlow;
 					sucesso.start(new Stage());
 				} else {
 					AlertFalha falha = new AlertFalha();
 					falha.text = "Livro com estes dados já cadastrado";
-					falha.btnClicado = btnSalvar;
+					falha.clicado = idTextFlow;
 					falha.start(new Stage());
 				}
 			} else {
@@ -78,14 +80,14 @@ public class CadastroLivroController extends DashboardController implements Init
 				fechar();
 				AlertSucesso sucesso = new AlertSucesso();
 				sucesso.text = "Editado com sucesso";
-				sucesso.btnClicado = btnSalvar;
+				sucesso.clicado = idTextFlow;
 				sucesso.start(new Stage());
 			}
 
 		} else {
 			AlertFalha falha = new AlertFalha();
 			falha.text = "Campos obrigatórios não informados";
-			falha.btnClicado = btnSalvar;
+			falha.clicado = idTextFlow;
 			falha.start(new Stage());
 		}
 	}

@@ -13,8 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -28,10 +28,8 @@ public class Deletar extends Application implements Initializable {
 	private Button idCancelar;
 
 	private static Stage stage;
-
-	public static Button btnClicado;
-
-	public static ImageView img;
+	
+	static TextFlow clicado;
 
 	UsuarioDAO dao = new UsuarioDAO();
 
@@ -42,8 +40,7 @@ public class Deletar extends Application implements Initializable {
 		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			@Override
 			public void handle(WindowEvent t) {
-				img.setDisable(false);
-				btnClicado.setDisable(false);
+				clicado.setDisable(false);
 				t.consume();
 				stage.close();
 			}
@@ -64,8 +61,7 @@ public class Deletar extends Application implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		img.setDisable(true);
-		btnClicado.setDisable(true);
+		clicado.setDisable(true);
 	}
 
 	@SuppressWarnings("static-access")
@@ -77,21 +73,20 @@ public class Deletar extends Application implements Initializable {
 			info.fechar();
 			AlertSucesso sucesso = new AlertSucesso();
 			sucesso.text = "Excluido com sucesso";
-			sucesso.btnClicado = btnClicado;
+			sucesso.clicado = clicado;
 			sucesso.start(new Stage());
 		} catch (Exception e) {
 			fechar();
 			info.fechar();
 			AlertFalha sucesso = new AlertFalha();
 			sucesso.text = "Falha ao excluir";
-			sucesso.btnClicado = btnClicado;
+			sucesso.clicado = clicado;
 			sucesso.start(new Stage());
 		}
 	}
 
 	public static void fechar() {
-		img.setDisable(false);
-		btnClicado.setDisable(false);
+		clicado.setDisable(false);
 		Deletar.stage.close();
 		Deletar.stage = null;
 	}

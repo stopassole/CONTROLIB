@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -27,7 +28,7 @@ public class AlertSucesso extends Application implements Initializable {
 	
 	public static String text;
 	
-	public static Button btnClicado;
+	static TextFlow clicado;
 
 	@Override
 	public void start(Stage stage) {
@@ -36,7 +37,7 @@ public class AlertSucesso extends Application implements Initializable {
             @Override
             public void handle(WindowEvent t) {
             	   t.consume();
-                   btnClicado.setDisable(false);
+            	   clicado.setDisable(false);
                    stage.close();
             }
         });
@@ -54,14 +55,14 @@ public class AlertSucesso extends Application implements Initializable {
 	}
 
 	public static void fechar() {
-		btnClicado.setDisable(false);
+		clicado.setDisable(false);
 		AlertSucesso.stage.close();
 		AlertSucesso.stage = null;
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		btnClicado.setDisable(true);
+		clicado.setDisable(true);
 		idText.setText(text);
 	}
 

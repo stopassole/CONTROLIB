@@ -19,12 +19,15 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import resource.Inicio;
 import util.CriptoUtil;
 import util.ValidarEmail;
 
 public class LoginController implements Initializable {
+	@FXML
+	private TextFlow idTextFlow;
 	@FXML
 	private PasswordField idSenha;
 	@FXML
@@ -117,14 +120,14 @@ public class LoginController implements Initializable {
 				} else {
 					AlertFalha falha = new AlertFalha();
 					falha.text = "Usuário não encontrado";
-					falha.btnClicado = btnEntrar;
+					falha.clicado = idTextFlow;
 					falha.start(new Stage());
 				}
 
 			} else {
 				AlertFalha falha = new AlertFalha();
 				falha.text = "Infome um email válido";
-				falha.btnClicado = btnEntrar;
+				falha.clicado = idTextFlow;
 				falha.start(new Stage());
 			}
 		} 
@@ -135,19 +138,19 @@ public class LoginController implements Initializable {
 		if (idEmail.getText().isEmpty() && idSenha.getText().isEmpty()) {
 			AlertFalha falha = new AlertFalha();
 			falha.text = "Campos obrigatórios não informados";
-			falha.btnClicado = btnEntrar;
+			falha.clicado = idTextFlow;
 			falha.start(new Stage());
 			return false;
 		} else if (idEmail.getText().isEmpty()) {
 			AlertFalha falha1 = new AlertFalha();
 			falha1.text = "usuário não informado";
-			falha1.btnClicado = btnEntrar;
+			falha1.clicado = idTextFlow;
 			falha1.start(new Stage());
 			return false;
 		} else if (idSenha.getText().isEmpty()) {
 			AlertFalha falha2 = new AlertFalha();
 			falha2.text = "Senha não informada";
-			falha2.btnClicado = btnEntrar;
+			falha2.clicado = idTextFlow;
 			falha2.start(new Stage());
 			return false;
 		} else {
