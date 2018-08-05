@@ -13,31 +13,31 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow prefHeight="800.0" prefWidth="1280.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
+<TextFlow prefHeight="800.0" prefWidth="1280.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InfoLivroController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #EEF1F8;">
          <children>
             <Pane layoutX="32.0" prefHeight="250.0" prefWidth="1280.0" styleClass="bg-secondary" stylesheets="@../css/InfoLivros.css">
                <children>
-                  <Button layoutX="1191.0" layoutY="46.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                  <Button disable="true" layoutX="1191.0" layoutY="46.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView disable="true" fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/Group%2038.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="1212.67" layoutY="53.8" mnemonicParsing="false" prefHeight="6.0" prefWidth="10.0" style="-fx-background-color: transparent;">
+                  <Button disable="true" layoutX="1212.67" layoutY="53.8" mnemonicParsing="false" prefHeight="6.0" prefWidth="10.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fitHeight="6.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView disable="true" fitHeight="6.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/Group%2041.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Label layoutX="315.0" layoutY="39.0" prefHeight="30.0" prefWidth="109.0" styleClass="font-md" stylesheets="@../css/CadastroLivros.css" text="LIVROS" />
+                  <Label disable="true" layoutX="315.0" layoutY="39.0" prefHeight="30.0" prefWidth="109.0" styleClass="font-md" stylesheets="@../css/CadastroLivros.css" text="LIVROS" />
                </children>
             </Pane>
             <Pane prefHeight="800.0" prefWidth="280.0" styleClass="bg-primary" stylesheets="@../css/InfoLivros.css">
@@ -68,25 +68,25 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white;" stylesheets="@../css/InfoLivros.css">
+            <Pane disable="true" layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white;" stylesheets="@../css/InfoLivros.css">
                <children>
-                  <Label layoutX="24.0" layoutY="23.0" prefHeight="48.0" prefWidth="167.0" styleClass="font-lg" text="LIVROS" />
-                  <TextField layoutX="24.0" layoutY="104.0" prefHeight="50.0" prefWidth="750.0" stylesheets="@../css/Livros.css" text="Pesquisar">
+                  <Label disable="true" layoutX="24.0" layoutY="23.0" prefHeight="48.0" prefWidth="167.0" styleClass="font-lg" text="LIVROS" />
+                  <TextField disable="true" layoutX="24.0" layoutY="104.0" prefHeight="50.0" prefWidth="750.0" stylesheets="@../css/Livros.css" text="Pesquisar">
                      <styleClass>
                         <String fx:value="input-search" />
                         <String fx:value="font-md-search" />
                      </styleClass>
                   </TextField>
-                  <Button layoutX="797.0" layoutY="100.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" styleClass="bnt-search" stylesheets="@../css/Livros.css">
+                  <Button disable="true" layoutX="797.0" layoutY="100.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" styleClass="bnt-search" stylesheets="@../css/Livros.css">
                      <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="809.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                        <ImageView disable="true" fitHeight="50.0" fitWidth="50.0" layoutX="809.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@../images/Group%20136.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TableView layoutX="24.0" layoutY="179.0" prefHeight="427.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="font-md-search">
+                  <TableView disable="true" layoutX="24.0" layoutY="179.0" prefHeight="427.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="font-md-search">
                      <columns>
                         <TableColumn prefWidth="194.0" text="Título" />
                         <TableColumn minWidth="0.0" prefWidth="177.0" style="-fx-text-fill: blue;" text="Autor" />
@@ -94,9 +94,9 @@
                         <TableColumn prefWidth="198.0" text="Disponível" />
                      </columns>
                   </TableView>
-                  <Button layoutX="797.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: trasnparent;">
+                  <Button disable="true" layoutX="797.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: trasnparent;">
                      <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                        <ImageView disable="true" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@../images/Group%20137.png" />
                            </image>
@@ -105,14 +105,14 @@
                   </Button>
                </children>
             </Pane>
-            <Pane layoutX="280.0" opacity="0.5" prefHeight="801.0" prefWidth="1035.0" style="-fx-background-color: black;" stylesheets="@../css/InfoLivros.css" />
-            <Pane layoutX="458.0" layoutY="175.0" prefHeight="350.0" prefWidth="600.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="-" stylesheets="@../css/InfoLivros.css">
+            <Pane disable="true" layoutX="280.0" opacity="0.5" prefHeight="801.0" prefWidth="1035.0" style="-fx-background-color: black;" stylesheets="@../css/InfoLivros.css" />
+            <Pane layoutX="458.0" layoutY="175.0" prefHeight="359.0" prefWidth="600.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="-" stylesheets="@../css/InfoLivros.css">
                <children>
-                  <Label layoutX="41.0" layoutY="39.0" prefHeight="48.0" prefWidth="520.0" styleClass="font-lg" text="DOM CASBURRO - 0001" />
-                  <Label layoutX="41.0" layoutY="123.0" prefHeight="28.0" prefWidth="55.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Autor:" />
-                  <Label layoutX="325.0" layoutY="123.0" prefHeight="24.0" prefWidth="101.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Publicação:" />
-                  <Label layoutX="40.0" layoutY="182.0" prefHeight="28.0" prefWidth="75.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Gênero:" />
-                  <Label layoutX="325.0" layoutY="182.0" prefHeight="28.0" prefWidth="75.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Editora:" />
+                  <Label fx:id="idNome" layoutX="41.0" layoutY="39.0" prefHeight="48.0" prefWidth="520.0" styleClass="font-lg" />
+                  <Label layoutX="38.0" layoutY="111.0" prefHeight="28.0" prefWidth="55.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Autor:" />
+                  <Label layoutX="322.0" layoutY="111.0" prefHeight="24.0" prefWidth="101.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Publicação:" />
+                  <Label layoutX="37.0" layoutY="170.0" prefHeight="28.0" prefWidth="75.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Gênero:" />
+                  <Label layoutX="322.0" layoutY="170.0" prefHeight="28.0" prefWidth="75.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Editora:" />
                   <Button fx:id="btnCancelar" layoutX="563.0" layoutY="11.0" mnemonicParsing="false" onAction="#fechar" prefHeight="18.0" prefWidth="16.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="12.0" onKeyPressed="#enterPressedFechar" pickOnBounds="true" preserveRatio="true">
@@ -122,15 +122,16 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Label layoutX="99.0" layoutY="123.0" prefHeight="28.0" prefWidth="210.0" styleClass="font-md" text="bkbkbkgjgjgj" />
-                  <Label layoutX="427.0" layoutY="121.0" prefHeight="28.0" prefWidth="146.0" styleClass="font-md" text="bkbkbkgjgjgj" />
-                  <Label layoutX="111.0" layoutY="182.0" prefHeight="28.0" prefWidth="202.0" styleClass="font-md" text="bkbkbkgjgjgj" />
-                  <Label layoutX="397.0" layoutY="182.0" prefHeight="28.0" prefWidth="182.0" styleClass="font-md" text="bkbkbkgjgjgj" />
-                  <Separator layoutX="40.0" layoutY="222.0" prefHeight="24.0" prefWidth="520.0" style="-fx-border-color: WHITE;" />
-                  <Label layoutX="40.0" layoutY="263.0" prefHeight="30.0" prefWidth="153.0" style="-fx-font-weight: bold;" styleClass="font-emprestimo" stylesheets="@../css/InfoLivros.css" text="Quantidade total:" />
-                  <Label fx:id="idTotalEmprestimo" layoutX="193.0" layoutY="263.0" prefHeight="30.0" prefWidth="48.0" styleClass="font-emprestimo" text="4533" />
-                  <Label layoutX="325.0" layoutY="263.0" prefHeight="30.0" prefWidth="202.0" style="-fx-font-weight: bold;" styleClass="font-emprestimo" stylesheets="@../css/InfoLivros.css" text="Quantidade disponivel:" />
-                  <Label fx:id="idTotalEmprestimo1" layoutX="526.0" layoutY="263.0" prefHeight="30.0" prefWidth="48.0" styleClass="font-emprestimo" text="225" />
+                  <Label fx:id="idAutor" layoutX="96.0" layoutY="111.0" prefHeight="28.0" prefWidth="210.0" styleClass="font-md" />
+                  <Label fx:id="idPublicacao" layoutX="423.0" layoutY="109.0" prefHeight="28.0" prefWidth="146.0" styleClass="font-md" />
+                  <Label fx:id="idGenero" layoutX="108.0" layoutY="170.0" prefHeight="28.0" prefWidth="202.0" styleClass="font-md" />
+                  <Label fx:id="idEditora" layoutX="394.0" layoutY="170.0" prefHeight="28.0" prefWidth="182.0" styleClass="font-md" />
+                  <Separator layoutX="37.0" layoutY="210.0" prefHeight="24.0" prefWidth="530.0" style="-fx-border-color: WHITE;" />
+                  <Label layoutX="41.0" layoutY="251.0" prefHeight="30.0" prefWidth="153.0" style="-fx-font-weight: bold;" styleClass="font-emprestimo" stylesheets="@../css/InfoLivros.css" text="Quantidade total:" />
+                  <Label fx:id="idQuantidadeTotal" layoutX="191.0" layoutY="251.0" prefHeight="30.0" prefWidth="48.0" styleClass="font-emprestimo" />
+                  <Label layoutX="323.0" layoutY="251.0" prefHeight="30.0" prefWidth="202.0" style="-fx-font-weight: bold;" styleClass="font-emprestimo" stylesheets="@../css/InfoLivros.css" text="Quantidade disponivel:" />
+                  <Label fx:id="idQuantidadeDisponivel" layoutX="523.0" layoutY="251.0" prefHeight="30.0" prefWidth="48.0" styleClass="font-emprestimo" />
+                  <Button fx:id="btnEditar" layoutX="449.0" layoutY="295.0" mnemonicParsing="false" onAction="#editar" onKeyPressed="#enterPressedEditar" prefHeight="41.0" prefWidth="121.0" styleClass="btn-edit" text="Editar" />
                </children>
             </Pane>
          </children>

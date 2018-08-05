@@ -96,7 +96,7 @@
 
 .font-md {
     -fx-font: 16px "Segoe UI";
-    -fx-text-fill: #707070;
+    -fx-text-fill: black;
 }
 .font-md-search {
     -fx-font-size: 18px;

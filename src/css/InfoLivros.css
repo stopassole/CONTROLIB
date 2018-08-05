@@ -119,3 +119,22 @@
     -fx-text-fill: #2CDE6D;
     -fx-font: 18px "Segoe UI";
 }
+
+.btn-edit{
+	-fx-cursor:hand;
+    -fx-border-radius:10;
+    -fx-background-radius: 10;
+    -fx-background-color: #6ED1D8; 
+    -fx-text-fill: white;
+    -fx-font: 16px "Segoe UI";
+    -fx-font-weight: bold;
+}
+
+.btn-exclud{
+	-fx-cursor:hand;
+    -fx-font-weight: 400;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-background-radius: 25px;
+}

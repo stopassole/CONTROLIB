@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow prefHeight="800.0" prefWidth="1280.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListLivrosController">
+<TextFlow prefHeight="800.0" prefWidth="1280.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListLivrosController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #EEF1F8;">
          <children>
@@ -71,32 +71,33 @@
             <Pane layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white;" stylesheets="@../css/Livros.css">
                <children>
                   <Label layoutX="24.0" layoutY="23.0" prefHeight="48.0" prefWidth="167.0" styleClass="font-lg" text="LIVROS" />
-                  <TextField layoutX="24.0" layoutY="104.0" prefHeight="50.0" prefWidth="750.0" stylesheets="@../css/Livros.css" text="Pesquisar">
+                  <TextField fx:id="idPesquisar" layoutX="24.0" layoutY="104.0" onKeyPressed="#enterPressedPesquisar" prefHeight="50.0" prefWidth="750.0" promptText="Pesquisar" stylesheets="@../css/Livros.css">
                      <styleClass>
                         <String fx:value="input-search" />
                         <String fx:value="font-md-search" />
                      </styleClass>
                   </TextField>
-                  <Button layoutX="797.0" layoutY="100.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" styleClass="bnt-search" stylesheets="@../css/Livros.css">
+                  <Button fx:id="btnPesquisar" layoutX="797.0" layoutY="100.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" style="-fx-cursor: hand;" styleClass="bnt-search" stylesheets="@../css/Livros.css">
                      <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="809.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="809.0" layoutY="104.0" onKeyPressed="#enterPressedPesquisar" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@../images/Group%20136.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TableView layoutX="24.0" layoutY="179.0" prefHeight="427.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="font-md-search">
+                  <TableView fx:id="tbLivros" layoutX="24.0" layoutY="179.0" prefHeight="427.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="font-md-search">
                     <columns>
-                      <TableColumn prefWidth="194.0" text="Título" />
-                      <TableColumn minWidth="0.0" prefWidth="177.0" style="-fx-text-fill: blue;" text="Autor" />
-                        <TableColumn prefWidth="149.0" text="Gênero" />
-                        <TableColumn prefWidth="198.0" text="Disponível" />
+                      <TableColumn fx:id="columnTitulo" prefWidth="194.0" text="Título" />
+                      <TableColumn fx:id="columnAutor" minWidth="0.0" prefWidth="207.0" style="-fx-text-fill: blue;" text="Autor" />
+                        <TableColumn fx:id="columnGenero" prefWidth="199.0" text="Gênero" />
+                        <TableColumn fx:id="columnDisponivel" prefWidth="135.0" text="Disponível" />
+                        <TableColumn fx:id="columnImage" prefWidth="114.0" />
                     </columns>
                   </TableView>
-                  <Button layoutX="797.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: trasnparent;">
+                  <Button fx:id="btnNovoLivro" layoutX="797.0" layoutY="18.0" mnemonicParsing="false" onAction="#novoLivro" style="-fx-background-color: trasnparent; -fx-cursor: hand;">
                      <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onKeyPressed="#enterPressedNovoLivro" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@../images/Group%20137.png" />
                            </image>
