@@ -1,0 +1,104 @@
+* {
+ 
+}
+
+.bg-primary{
+    -fx-background-color: #1d2026;
+}
+
+.bg-secondary{
+    -fx-background-color: #00b3b8;
+     -fx-background-color: linear-gradient(to right, #7AEBFB 20%, #386A73);
+}
+
+.btn {
+	-fx-cursor:hand;
+    -fx-font-weight: 400;
+    -fx-font-size: 16px;
+    -fx-border-radius: 25px;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-background-radius: 25px;
+}
+.btn:hover{
+	-fx-background-color: #7A7B7F;
+	
+}
+
+.btn-primary {
+	-fx-cursor:hand;
+    -fx-color: #fff;
+    -fx-background-color: #00b3b8;
+    -fx-background-color: linear-gradient(to right, rgb(107, 193, 255) 20%, #00b3b8);
+    -fx-text-fill: white;
+}
+
+
+.input-rounded {
+    -fx-border-radius:25;
+    -fx-background-radius: 25;
+    -fx-border-color: black;
+    -fx-background-color: transparent;
+    /*   top bot right left    */
+    -fx-padding: 0px 0 0 19px; 
+    -fx-color: #F5F5F5;
+    -fx-text-fill: black;
+    
+}
+.input-search {
+    -fx-border-radius:25;
+    -fx-background-radius: 25;
+    -fx-border-color: #707070;
+        /*   top bot right left    */
+    -fx-padding: 2px 0 0 20px; 
+    -fx-background-color: transparent;
+    -fx-color: #707070;
+    -fx-text-fill: #707070;
+    
+}
+.bnt-search{
+	-fx-background-color: transparent;
+}
+.text-primary {
+    -fx-text-fill:  #00b3b8;
+    
+}
+
+.separator2{
+	-fx-border-style: solid;
+    -fx-border-width: 0 0 1 0; /* its make really one-pixel-border */
+    -fx-border-color: #1D2026;
+}
+
+.font-sm {
+    -fx-font-size: 12px;
+    -fx-text-fill: white
+}
+
+.font-md-bold {
+    -fx-font: 18px "Segoe UI";
+    -fx-font-weight: bold;
+    
+}
+.font-md {
+    -fx-font: 18px "Segoe UI";
+    
+}
+.font-md-search {
+    -fx-font-size: 18px;
+    -fx-text-fill: #707070;
+}
+.font-md-button {
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    
+}
+.button-devolver{
+	-fx-background-color: #6ED1D8;
+	-fx-background-radius:10px;
+}
+.font-lg {
+    -fx-font: 28px "Segoe UI";
+    -fx-text-fill: black;
+}
