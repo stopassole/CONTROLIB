@@ -2,7 +2,10 @@
 	-fx-cursor:hand;
 	-fx-font-size: 20px;
 	-fx-text-fill: white;
-	-fx-border-radius: 4px;
+	  -fx-font: 16px "Segoe UI";
+    -fx-font-weight: bold;
+    -fx-border-radius:10;
+    -fx-background-radius: 10;
 	-fx-cursor: hand;
 	-fx-background-color: linear-gradient(to right, rgb(107, 193, 255) 20%,
 		#00b3b8);
@@ -17,4 +20,15 @@
 	-fx-background-color: transparent ;
 		-fx-border-radius: 25px;
 	-fx-background-radius: 25px;
+}
+
+.btn-exclud{
+	-fx-cursor:hand;
+    -fx-border-radius:10;
+    -fx-background-radius: 10;
+    -fx-background-color: #FF0000; 
+    -fx-text-fill: white;
+    -fx-font: 16px "Segoe UI";
+    -fx-font-weight: bold;
+    -fx-opacity:0.7;
 }

@@ -132,9 +132,11 @@
 
 .btn-exclud{
 	-fx-cursor:hand;
-    -fx-font-weight: 400;
-    -fx-font-size: 16px;
+    -fx-border-radius:10;
+    -fx-background-radius: 10;
+    -fx-background-color: #FF0000; 
     -fx-text-fill: white;
-    -fx-background-color: transparent;
-    -fx-background-radius: 25px;
+    -fx-font: 16px "Segoe UI";
+    -fx-font-weight: bold;
+    -fx-opacity:0.7;
 }

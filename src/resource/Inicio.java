@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
@@ -120,6 +121,7 @@ public class Inicio extends Application {
 		try {
 
 			Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
+			myStage.getIcons().add(new  Image(getClass().getResourceAsStream("../images/logo.png")));
 			myStage.setScene(new Scene(root));
 			myStage.setTitle("CONTROLIB");
 			myStage.centerOnScreen();

@@ -39,6 +39,8 @@ public class InfoLivroController extends DashboardController implements Initiali
 	private Button btnCancelar;
 	@FXML
 	private Button btnEditar;
+	@FXML
+	private Button btnExcluir;
 
 	public static String idLivroEditar = null;
 
@@ -60,9 +62,10 @@ public class InfoLivroController extends DashboardController implements Initiali
 
 	@SuppressWarnings("static-access")
 	@FXML
-	public void deletarLivro() throws Exception {
+	public void excluir() throws Exception {
 		Deletar deletar = new Deletar();
 		deletar.clicado = idTextFlow;
+		deletar.classe = "Livro";
 		deletar.start(new Stage());
 	}
 
@@ -106,6 +109,12 @@ public class InfoLivroController extends DashboardController implements Initiali
 	public void enterPressedEditar(KeyEvent e) throws Exception {
 		if (e.getCode().toString().equals("ENTER")) {
 			editar();
+		}
+	}
+
+	public void enterPressedExcluir(KeyEvent e) throws Exception {
+		if (e.getCode().toString().equals("ENTER")) {
+			excluir();
 		}
 	}
 }

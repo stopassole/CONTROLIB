@@ -10,8 +10,8 @@
       <Pane prefHeight="239.0" prefWidth="560.0" styleClass="background" stylesheets="@../css/Alert.css">
          <children>
             <Label fx:id="idText" alignment="CENTER" layoutX="77.0" layoutY="67.0" prefHeight="31.0" prefWidth="407.0" style="-fx-font-weight: bold;" text="DESEJA REALMETE EXCLUIR ESTE REGISTRO?" textAlignment="CENTER" />
-            <Button fx:id="idConfirma" layoutX="342.0" layoutY="162.0" mnemonicParsing="false" onAction="#deletarUsuario" onKeyPressed="#enterPressedDeletar" prefHeight="44.0" prefWidth="155.0" styleClass="btn" stylesheets="@../css/Alert.css" text="Confirmar" textAlignment="CENTER" />
-            <Button fx:id="idCancelar" layoutX="88.0" layoutY="162.0" mnemonicParsing="false" onAction="#done" onKeyPressed="#enterPressedCnacelar" prefHeight="44.0" prefWidth="155.0" styleClass="btn" stylesheets="@../css/Alert.css" text="Cancelar" textAlignment="CENTER" />
+            <Button fx:id="idConfirma" layoutX="342.0" layoutY="162.0" mnemonicParsing="false" onAction="#deletar" onKeyPressed="#enterPressedDeletar" prefHeight="44.0" prefWidth="155.0" styleClass="btn-exclud" stylesheets="@../css/Alert.css" text="Confirmar" textAlignment="CENTER" />
+            <Button fx:id="idCancelar" layoutX="88.0" layoutY="162.0" mnemonicParsing="false" onAction="#done" onKeyPressed="#enterPressedCancelar" prefHeight="44.0" prefWidth="155.0" styleClass="btn" stylesheets="@../css/Alert.css" text="Cancelar" textAlignment="CENTER" />
          </children>
       </Pane>
    </children>

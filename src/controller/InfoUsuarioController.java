@@ -70,9 +70,10 @@ public class InfoUsuarioController extends DashboardController implements Initia
 
 	@SuppressWarnings("static-access")
 	@FXML
-	public void deletarUsuario() throws Exception {
+	public void excluir() throws Exception {
 		Deletar deletar = new Deletar();
 		deletar.clicado = idTextFlow;
+		deletar.classe = "Usuario";
 		deletar.start(new Stage());
 	}
 
@@ -112,6 +113,12 @@ public class InfoUsuarioController extends DashboardController implements Initia
 	public void enterPressedEditar(KeyEvent e) throws Exception {
 		if (e.getCode().toString().equals("ENTER")) {
 			editar();
+		}
+	}
+
+	public void enterPressedExcluir(KeyEvent e) throws Exception {
+		if (e.getCode().toString().equals("ENTER")) {
+			excluir();
 		}
 	}
 }

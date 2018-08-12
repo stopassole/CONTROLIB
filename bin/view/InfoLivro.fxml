@@ -110,8 +110,8 @@
                <children>
                   <Label fx:id="idNome" layoutX="37.0" layoutY="39.0" prefHeight="48.0" prefWidth="520.0" styleClass="font-lg" />
                   <Label layoutX="38.0" layoutY="111.0" prefHeight="28.0" prefWidth="55.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Autor:" />
-                  <Label layoutX="322.0" layoutY="111.0" prefHeight="24.0" prefWidth="101.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Publicação:" />
-                  <Label layoutX="37.0" layoutY="170.0" prefHeight="28.0" prefWidth="75.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Gênero:" />
+                  <Label layoutX="38.0" layoutY="172.0" prefHeight="24.0" prefWidth="101.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Publicação:" />
+                  <Label layoutX="322.0" layoutY="111.0" prefHeight="28.0" prefWidth="75.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Gênero:" />
                   <Label layoutX="322.0" layoutY="170.0" prefHeight="28.0" prefWidth="75.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Editora:" />
                   <Button fx:id="btnCancelar" layoutX="563.0" layoutY="11.0" mnemonicParsing="false" onAction="#fechar" prefHeight="18.0" prefWidth="16.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
                      <graphic>
@@ -122,16 +122,17 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Label fx:id="idAutor" layoutX="96.0" layoutY="111.0" prefHeight="28.0" prefWidth="210.0" styleClass="font-md" />
-                  <Label fx:id="idPublicacao" layoutX="423.0" layoutY="109.0" prefHeight="28.0" prefWidth="146.0" styleClass="font-md" />
-                  <Label fx:id="idGenero" layoutX="108.0" layoutY="170.0" prefHeight="28.0" prefWidth="202.0" styleClass="font-md" />
+                  <Label fx:id="idAutor" layoutX="107.0" layoutY="111.0" prefHeight="28.0" prefWidth="210.0" styleClass="font-md" />
+                  <Label fx:id="idPublicacao" layoutX="139.0" layoutY="170.0" prefHeight="28.0" prefWidth="146.0" styleClass="font-md" />
+                  <Label fx:id="idGenero" layoutX="393.0" layoutY="111.0" prefHeight="28.0" prefWidth="182.0" styleClass="font-md" />
                   <Label fx:id="idEditora" layoutX="394.0" layoutY="170.0" prefHeight="28.0" prefWidth="182.0" styleClass="font-md" />
                   <Separator layoutX="37.0" layoutY="210.0" prefHeight="24.0" prefWidth="530.0" style="-fx-border-color: WHITE;" />
                   <Label layoutX="41.0" layoutY="251.0" prefHeight="30.0" prefWidth="153.0" style="-fx-font-weight: bold;" styleClass="font-emprestimo" stylesheets="@../css/InfoLivros.css" text="Quantidade total:" />
                   <Label fx:id="idQuantidadeTotal" layoutX="191.0" layoutY="251.0" prefHeight="30.0" prefWidth="48.0" styleClass="font-emprestimo" />
-                  <Label layoutX="323.0" layoutY="251.0" prefHeight="30.0" prefWidth="202.0" style="-fx-font-weight: bold;" styleClass="font-emprestimo" stylesheets="@../css/InfoLivros.css" text="Quantidade disponivel:" />
+                  <Label layoutX="322.0" layoutY="251.0" prefHeight="30.0" prefWidth="202.0" style="-fx-font-weight: bold;" styleClass="font-emprestimo" stylesheets="@../css/InfoLivros.css" text="Quantidade disponivel:" />
                   <Label fx:id="idQuantidadeDisponivel" layoutX="523.0" layoutY="251.0" prefHeight="30.0" prefWidth="48.0" styleClass="font-emprestimo" />
-                  <Button fx:id="btnEditar" layoutX="449.0" layoutY="295.0" mnemonicParsing="false" onAction="#editar" onKeyPressed="#enterPressedEditar" prefHeight="41.0" prefWidth="121.0" styleClass="btn-edit" text="Editar" />
+                  <Button fx:id="btnEditar" layoutX="450.0" layoutY="304.0" mnemonicParsing="false" onAction="#editar" onKeyPressed="#enterPressedEditar" prefHeight="41.0" prefWidth="121.0" styleClass="btn-edit" text="Editar" />
+                  <Button fx:id="btnExcluir" layoutX="310.0" layoutY="304.0" mnemonicParsing="false" onAction="#excluir" onKeyPressed="#enterPressedExcluir" prefHeight="41.0" prefWidth="121.0" styleClass="btn-exclud" text="Excluir" />
                </children>
             </Pane>
          </children>

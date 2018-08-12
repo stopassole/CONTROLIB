@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow prefHeight="794.0" prefWidth="1281.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroEmprestimoController">
+<TextFlow fx:id="idTextFlow" prefHeight="794.0" prefWidth="1281.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroEmprestimoController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #EEF1F8;">
          <children>
@@ -136,25 +136,25 @@
                      </graphic>
                   </Button>
                   <Label layoutX="54.0" layoutY="138.0" styleClass="font-md" text="Cod. Usuário:" />
-                  <TextField layoutX="33.0" layoutY="164.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" text="000001" />
+                  <TextField layoutX="33.0" layoutY="164.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <Label layoutX="359.0" layoutY="138.0" styleClass="font-md" text="Ref. Livro:" />
-                  <TextField layoutX="338.0" layoutY="164.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" text="12548" />
+                  <TextField layoutX="338.0" layoutY="164.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <Label layoutX="54.0" layoutY="244.0" styleClass="font-md" text="Nome Usuário:" />
-                  <TextField layoutX="33.0" layoutY="270.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" text="asd" />
+                  <TextField layoutX="33.0" layoutY="270.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <Label layoutX="359.0" layoutY="244.0" styleClass="font-md" text="Nome Livro:" />
-                  <TextField layoutX="338.0" layoutY="270.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" text="Alice no pais das maravilhas " />
+                  <TextField layoutX="338.0" layoutY="270.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <Label layoutX="54.0" layoutY="350.0" styleClass="font-md" text="CPF:" />
-                  <TextField layoutX="33.0" layoutY="376.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" text="999.999.999-99" />
+                  <TextField layoutX="33.0" layoutY="376.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <Label layoutX="359.0" layoutY="350.0" styleClass="font-md" text="?????????" />
-                  <TextField layoutX="338.0" layoutY="376.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" text="??????" />
+                  <TextField layoutX="338.0" layoutY="376.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <Label layoutX="54.0" layoutY="456.0" styleClass="font-md" text="Tipo:" />
-                  <TextField layoutX="33.0" layoutY="482.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" text="Aluno" />
+                  <TextField layoutX="33.0" layoutY="482.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <Label layoutX="54.0" layoutY="562.0" styleClass="font-md" text="Data Empréstimo:" />
-                  <TextField layoutX="33.0" layoutY="588.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" text="99/99/9999" />
+                  <TextField layoutX="33.0" layoutY="588.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <Label layoutX="359.0" layoutY="456.0" styleClass="font-md" text="?????" />
-                  <TextField layoutX="338.0" layoutY="482.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" text="???????" />
+                  <TextField layoutX="338.0" layoutY="482.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <Label layoutX="359.0" layoutY="562.0" styleClass="font-md" text="Data Vencimento:" />
-                  <TextField layoutX="338.0" layoutY="588.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" text="99/99/9999" />
+                  <TextField layoutX="338.0" layoutY="588.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <Button fx:id="btnCancelar" layoutX="195.0" layoutY="677.0" mnemonicParsing="false" onAction="#fechar" onKeyPressed="#enterPressedFechar" prefHeight="50.0" prefWidth="200.0" style="-fx-cursor: hand;" text="CACELAR">
                      <styleClass>
                         <String fx:value="font-md-button" />

@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
@@ -44,6 +45,7 @@ public class AlertSucesso extends Application implements Initializable {
 		try {
 			AlertSucesso.stage = stage;
 			Parent root = FXMLLoader.load(getClass().getResource("/view/AlertSucesso.fxml"));
+			stage.getIcons().add(new  Image(getClass().getResourceAsStream("../images/logo.png")));
 			Scene scene = new Scene(root);
 			stage.setTitle("CONTROLIB - SUCESSO");
 			stage.setResizable(false);

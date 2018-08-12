@@ -134,7 +134,7 @@
                   <Label layoutX="51.0" layoutY="196.0" prefHeight="28.0" prefWidth="66.0" styleClass="font-md" text="Autor: *" />
                   <TextField fx:id="idAutor" layoutX="35.0" layoutY="224.0" onKeyPressed="#enterPressedSalvar" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <Label layoutX="358.0" layoutY="101.0" prefHeight="28.0" prefWidth="109.0" styleClass="font-md" text=" Ref / Código:" />
-                  <TextField fx:id="idCodigo" layoutX="340.0" layoutY="127.0" onKeyPressed="#enterPressedSalvar" onKeyTyped="#configuraQuantidade" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
+                  <TextField fx:id="idCodigo" layoutX="340.0" layoutY="127.0" onInputMethodTextChanged="#configuraQuantidade" onKeyPressed="#enterPressedSalvar" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                </children>
             </Pane>
          </children>
