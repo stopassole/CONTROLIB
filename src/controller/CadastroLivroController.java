@@ -137,7 +137,9 @@ public class CadastroLivroController extends DashboardController implements Init
 	@SuppressWarnings("static-access")
 	private void populaEdicao(Livro livro) throws Exception {
 		DateUtil dateUtil = new DateUtil();
-		idPublicacao.setText(dateUtil.dataFormatoYYYYMMDD(livro.getPublicacao()));
+		if (!livro.getPublicacao().equals("null")) {
+			idPublicacao.setText(dateUtil.dataFormatoYYYYMMDD(livro.getPublicacao()));
+		}
 		idNome.setText(livro.getNome());
 		idCodigo.setText(livro.getCodigo());
 		idAutor.setText(livro.getAutor());

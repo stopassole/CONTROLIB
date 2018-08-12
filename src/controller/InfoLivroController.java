@@ -85,7 +85,7 @@ public class InfoLivroController extends DashboardController implements Initiali
 		if (livro != null) {
 			DateUtil dateUtil = new DateUtil();
 			idLivroEditar = livro.get_id();
-			if (livro.getCodigo() != null) {
+			if (livro.getCodigo() != null && !livro.getCodigo().equals("")) {
 				idNome.setText(livro.getNome() + " - " + livro.getCodigo());
 			} else {
 				idNome.setText(livro.getNome() + " - " + livro.get_id());
@@ -93,7 +93,9 @@ public class InfoLivroController extends DashboardController implements Initiali
 			idAutor.setText(livro.getAutor());
 			idGenero.setText(livro.getGenero());
 			idEditora.setText(livro.getEditora());
-			idPublicacao.setText(dateUtil.dataFormatoYYYYMMDD(livro.getPublicacao()));
+			if (!livro.getPublicacao().equals("null")) {
+				idPublicacao.setText(dateUtil.dataFormatoYYYYMMDD(livro.getPublicacao()));
+			}
 			idQuantidadeTotal.setText(String.valueOf(livro.getQuantidadeTotal()));
 			idQuantidadeDisponivel.setText(String.valueOf(livro.getQuantidadeDisponivel()));
 		}

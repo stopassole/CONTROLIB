@@ -36,7 +36,7 @@ public class LivroDAO {
 			java.util.Date date = dataOriginal.parse(livro.getPublicacao());
 			SimpleDateFormat novaData = new SimpleDateFormat("yyyy-MM-dd");
 			stmt.setDate(6, Date.valueOf(novaData.format(date)));
-		}else {
+		} else {
 			stmt.setDate(6, null);
 		}
 		stmt.setInt(7, livro.getQuantidadeTotal());
@@ -52,9 +52,11 @@ public class LivroDAO {
 	public void editarLivro(String idLivroEditar, Livro livro) throws Exception {
 		log.info(END_POINT + "/editarlivro -> Inicio");
 
+		Livro usuarioEditar = getByIdLivro(idLivroEditar);
+		
 		Connection conexao = dao.conexaoUsuario();
 		PreparedStatement stmt = conexao.prepareStatement(
-				"UPDATE livro SET nome = ?, codigo = ?, autor = ?,  genero = ?, editora = ? , publicacao = ?, quantidadeTotal = ?  WHERE _id = \'"
+				"UPDATE livro SET nome = ?, codigo = ?, autor = ?,  genero = ?, editora = ? , publicacao = ?, quantidadeTotal = ?, quantidadeDisponivel = ?  WHERE _id = \'"
 						+ idLivroEditar + "\';");
 
 		stmt.setString(1, livro.getNome());
@@ -67,10 +69,11 @@ public class LivroDAO {
 			java.util.Date date = dataOriginal.parse(livro.getPublicacao());
 			SimpleDateFormat novaData = new SimpleDateFormat("yyyy-MM-dd");
 			stmt.setDate(6, Date.valueOf(novaData.format(date)));
-		}else {
+		} else {
 			stmt.setDate(6, null);
 		}
 		stmt.setInt(7, livro.getQuantidadeTotal());
+		stmt.setInt(8, livro.getQuantidadeTotal() - (usuarioEditar.getQuantidadeTotal() - usuarioEditar.getQuantidadeDisponivel()));
 
 		stmt.executeUpdate();
 
@@ -96,7 +99,8 @@ public class LivroDAO {
 		Connection conexao = dao.conexaoUsuario();
 		String sql = "SELECT count(*) FROM livro WHERE livro.nome= \'" + livro.getNome() + "\'AND livro.autor =\'"
 				+ livro.getAutor() + "\'AND livro.quantidadetotal =\'" + livro.getQuantidadeTotal()
-				+ "\'AND livro.deletado =\'" + false + "\';";
+				+ "\'AND livro.deletado =\'" + false
+				+ "\';";
 		PreparedStatement stmt = conexao.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE,
 				ResultSet.CONCUR_READ_ONLY);
 		ResultSet resultSet = stmt.executeQuery();
@@ -147,9 +151,9 @@ public class LivroDAO {
 		log.info(END_POINT + "/buscarlivrosfiltro -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
-		PreparedStatement stmt = conexao
-				.prepareStatement("SELECT * FROM livro WHERE deletado = false and livro.nome LIKE '%" + text
-						+ "%' or livro.autor LIKE '%" + text + "%' or livro.genero LIKE '%" + text + "%';");
+		PreparedStatement stmt = conexao.prepareStatement(
+				"SELECT * FROM livro WHERE deletado = false and livro.nome LIKE '%" + text + "%' or livro.autor LIKE '%"
+						+ text + "%' or livro.genero LIKE '%" + text + "%' or livro.codigo LIKE '%" + text + "%';");
 		ResultSet rs = stmt.executeQuery();
 
 		List<Livro> list = new ArrayList<>();
