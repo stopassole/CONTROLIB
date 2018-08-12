@@ -29,7 +29,8 @@ import javafx.util.Callback;
 import resource.Inicio;
 
 public class ListLivrosController extends DashboardController implements Initializable {
-
+	@FXML
+	private Button idSair;
 	@FXML
 	private Button btnNovoLivro;
 	@FXML
@@ -67,6 +68,7 @@ public class ListLivrosController extends DashboardController implements Initial
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		idSair.setVisible(false);
 		populaTabela();
 		confTabela();
 	}
@@ -186,5 +188,15 @@ public class ListLivrosController extends DashboardController implements Initial
 		if (e.getCode().toString().equals("ENTER")) {
 			pesquisar();
 		}
+	}
+	
+	@FXML
+	public void change() {
+		if(idSair.isVisible()) {
+			idSair.setVisible(false);
+		}else {
+			idSair.setVisible(true);
+		}
+
 	}
 }

@@ -29,28 +29,22 @@ import javafx.util.Callback;
 import resource.Inicio;
 
 public class ListUsuariosController extends DashboardController implements Initializable {
-
+	@FXML
+	private Button idSair;
 	@FXML
 	private Button btnNovoUsuario;
-
 	@FXML
 	private Button btnPesquisar;
-
 	@FXML
 	private TextField idPesquisar;
-
 	@FXML
 	private TableView<Usuario> tbUsuarios;
-
 	@FXML
 	private TableColumn<Usuario, String> columnNome;
-
 	@FXML
 	private TableColumn<Usuario, String> columnEmail;
-
 	@FXML
 	private TableColumn<Usuario, String> columnTipo;
-
 	@FXML
 	private TableColumn<Usuario, ImageView> columnImage;
 
@@ -70,6 +64,7 @@ public class ListUsuariosController extends DashboardController implements Initi
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		idSair.setVisible(false);
 		populaTabela();
 		confTabela();
 	}
@@ -160,5 +155,15 @@ public class ListUsuariosController extends DashboardController implements Initi
 		if (e.getCode().toString().equals("ENTER")) {
 			pesquisar();
 		}
+	}
+	
+	@FXML
+	public void change() {
+		if(idSair.isVisible()) {
+			idSair.setVisible(false);
+		}else {
+			idSair.setVisible(true);
+		}
+
 	}
 }

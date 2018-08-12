@@ -20,7 +20,7 @@
             <Pane prefHeight="250.0" prefWidth="1280.0" styleClass="bg-secondary" stylesheets="@../css/Livros.css">
                <children>
                   <Label layoutX="348.0" layoutY="40.0" prefHeight="30.0" prefWidth="146.0" styleClass="font-md" text="USUÁRIOS" />
-                  <Button layoutX="1191.0" layoutY="46.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                    <Button layoutX="1191.0" layoutY="46.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -29,15 +29,17 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="1212.67" layoutY="53.8" mnemonicParsing="false" prefHeight="6.0" prefWidth="10.0" style="-fx-background-color: transparent;">
+                  <Button layoutX="1212.67" layoutY="53.8" mnemonicParsing="false" onAction="#change" prefHeight="6.0" prefWidth="10.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
                      <graphic>
-                        <ImageView fitHeight="6.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="6.0" fitWidth="10.0" onMouseClicked="#change" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@../images/Group%2041.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Button fx:id="idSair" layoutX="1181.0" layoutY="73.0" mnemonicParsing="false" onAction="#sair" prefHeight="25.0" prefWidth="52.0" style="-fx-background-color: white; -fx-font-weight: bold; -fx-cursor: hand;" text="SAIR" />
+               
                </children>
             </Pane>
             <Pane prefHeight="800.0" prefWidth="280.0" styleClass="bg-primary" stylesheets="@../css/Livros.css">

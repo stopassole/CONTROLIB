@@ -17,6 +17,13 @@ public class DashboardController {
 	private Button btnUsuarios;
 	
 	@FXML
+	private void sair() throws Exception {
+		Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
+		Scene scene = new Scene(root);
+		Inicio.myStage.setScene(scene);
+	}
+	
+	@FXML
 	private void menuUsuarios() throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/ListUsuario.fxml"));
 		Scene scene = new Scene(root);
@@ -52,6 +59,12 @@ public class DashboardController {
 	public void enterPressedUsuarios(KeyEvent e) throws Exception {
         if (e.getCode().toString().equals("ENTER")) {
         	menuUsuarios();
+        }
+    }
+	
+	public void enterPressedSair(KeyEvent e) throws Exception {
+        if (e.getCode().toString().equals("ENTER")) {
+        	sair();
         }
     }
 }
