@@ -17,6 +17,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import resource.Inicio;
+import util.DateUtil;
 
 public class CadastroLivroController extends DashboardController implements Initializable {
 	@FXML
@@ -24,7 +25,11 @@ public class CadastroLivroController extends DashboardController implements Init
 	@FXML
 	private TextField idNome;
 	@FXML
+	private TextField idCodigo;
+	@FXML
 	private TextField idAutor;
+	@FXML
+	private TextField idPublicacao;
 	@FXML
 	private TextField idGenero;
 	@FXML
@@ -40,6 +45,8 @@ public class CadastroLivroController extends DashboardController implements Init
 
 	LivroDAO dao = new LivroDAO();
 
+	DateUtil date = new DateUtil();
+
 	@FXML
 	public void fechar() throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/ListLivros.fxml"));
@@ -50,52 +57,71 @@ public class CadastroLivroController extends DashboardController implements Init
 	@SuppressWarnings("static-access")
 	@FXML
 	public void salvarLivro() throws Exception {
-		Livro livro = new Livro(null, null, null, null, null, null, null, null, null);
+		Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null, null);
+		Boolean ok = true;
 
-		if (!verificaVazio()) {
+		if (!idPublicacao.getText().isEmpty() && !validaPublicacao()) {
+			ok = false;
+		}
+		if (ok) {
+			if (!verificaVazio()) {
+				livro.setNome(idNome.getText());
+				livro.setCodigo(idCodigo.getText());
+				livro.setAutor(idAutor.getText());
+				livro.setPublicacao(idPublicacao.getText());
+				livro.setEditora(idEditora.getText());
+				livro.setGenero(idGenero.getText());
+				livro.setQuantidadeTotal(idQuantidade.getValue());
 
-			livro.setNome(idNome.getText());
-			livro.setAutor(idAutor.getText());
-			livro.setEditora(idEditora.getText());
-			livro.setGenero(idGenero.getText());
-			livro.setQuantidadeTotal(idQuantidade.getValue());
-
-			if (InfoLivroController.idLivroEditar == null) {
-				int cont = dao.validaLivro(livro);
-				if (cont == 0) {
-					dao.salvarLivro(livro);
+				if (InfoLivroController.idLivroEditar == null) {
+					int cont = dao.validaLivro(livro);
+					if (cont == 0) {
+						dao.salvarLivro(livro);
+						fechar();
+						AlertSucesso sucesso = new AlertSucesso();
+						sucesso.text = "Salvo com sucesso";
+						sucesso.clicado = idTextFlow;
+						sucesso.start(new Stage());
+					} else {
+						AlertFalha falha = new AlertFalha();
+						falha.text = "Livro com estes dados já cadastrado";
+						falha.clicado = idTextFlow;
+						falha.start(new Stage());
+					}
+				} else {
+					dao.editarLivro(InfoLivroController.idLivroEditar, livro);
 					fechar();
 					AlertSucesso sucesso = new AlertSucesso();
-					sucesso.text = "Salvo com sucesso";
+					sucesso.text = "Editado com sucesso";
 					sucesso.clicado = idTextFlow;
 					sucesso.start(new Stage());
-				} else {
-					AlertFalha falha = new AlertFalha();
-					falha.text = "Livro com estes dados já cadastrado";
-					falha.clicado = idTextFlow;
-					falha.start(new Stage());
 				}
 			} else {
-				dao.editarLivro(InfoLivroController.idLivroEditar, livro);
-				fechar();
-				AlertSucesso sucesso = new AlertSucesso();
-				sucesso.text = "Editado com sucesso";
-				sucesso.clicado = idTextFlow;
-				sucesso.start(new Stage());
+				AlertFalha falha = new AlertFalha();
+				falha.text = "Campos obrigatórios não informados";
+				falha.clicado = idTextFlow;
+				falha.start(new Stage());
 			}
+		}
+	}
 
+	@SuppressWarnings("static-access")
+	private boolean validaPublicacao() {
+		if (date.isValidDate(idPublicacao.getText())) {
+			return true;
 		} else {
 			AlertFalha falha = new AlertFalha();
-			falha.text = "Campos obrigatórios não informados";
+			falha.text = "Infome uma data de nascimento válida";
 			falha.clicado = idTextFlow;
 			falha.start(new Stage());
+			return false;
 		}
 	}
 
 	private boolean verificaVazio() {
 		return idNome.getText().isEmpty() || idAutor.getText().isEmpty() || idQuantidade.getValue() == null;
 	}
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		if (InfoLivroController.idLivroEditar != null) {
@@ -108,12 +134,27 @@ public class CadastroLivroController extends DashboardController implements Init
 		}
 	}
 
-	private void populaEdicao(Livro livro) {
+	@SuppressWarnings("static-access")
+	private void populaEdicao(Livro livro) throws Exception {
+		DateUtil dateUtil = new DateUtil();
+		idPublicacao.setText(dateUtil.dataFormatoYYYYMMDD(livro.getPublicacao()));
 		idNome.setText(livro.getNome());
+		idCodigo.setText(livro.getCodigo());
 		idAutor.setText(livro.getAutor());
 		idGenero.setText(livro.getGenero());
 		idEditora.setText(livro.getEditora());
 		idQuantidade.getValueFactory().setValue(livro.getQuantidadeTotal());
+		configuraQuantidade();
+	}
+	
+	@FXML
+	public void configuraQuantidade() {
+		if(!idCodigo.getText().isEmpty()) {
+			idQuantidade.getValueFactory().setValue(1);
+			idQuantidade.setDisable(true);
+		}else {
+			idQuantidade.setDisable(false);
+		}
 	}
 
 	@FXML
@@ -128,5 +169,11 @@ public class CadastroLivroController extends DashboardController implements Init
 		if (e.getCode().toString().equals("ENTER")) {
 			salvarLivro();
 		}
+	}
+
+	@SuppressWarnings("static-access")
+	@FXML
+	public void tbData(KeyEvent event) {
+		date.mascaraData(event, idPublicacao);
 	}
 }

@@ -89,9 +89,11 @@ public class CreateDatabase extends Task<Void> {
 			Connection conexao = dao.conexaoUsuario();
 			String sql = "CREATE TABLE livro(_id serial NOT NULL,\r\n"
 					+ "					nome character varying(255) not null,\r\n"
+					+ "					codigo character varying(255),\r\n"	
 					+ "					autor character varying(255) not null,\r\n"
 					+ "					genero character varying(255),\r\n"
 					+ "					editora character varying(255),\r\n"
+					+ "					publicacao date,\r\n"
 					+ "					quantidadetotal integer not null,\r\n"
 					+ "					quantidadedisponivel integer not null,\r\n"
 					+ "					dataCadastro date default now(),\r\n"

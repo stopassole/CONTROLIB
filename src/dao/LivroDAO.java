@@ -1,8 +1,10 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,14 +25,23 @@ public class LivroDAO {
 
 		Connection conexao = dao.conexaoUsuario();
 		PreparedStatement stmt = conexao.prepareStatement(
-				"INSERT INTO livro(nome,autor,genero,editora,quantidadeTotal,quantidadeDisponivel) VALUES (?, ?, ?, ?, ?, ?)");
+				"INSERT INTO livro(nome,codigo,autor,genero,editora, publicacao, quantidadeTotal,quantidadeDisponivel) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 		stmt.setString(1, livro.getNome());
-		stmt.setString(2, livro.getAutor());
-		stmt.setString(3, livro.getGenero());
-		stmt.setString(4, livro.getEditora());
-		stmt.setInt(5, livro.getQuantidadeTotal());
+		stmt.setString(2, livro.getCodigo());
+		stmt.setString(3, livro.getAutor());
+		stmt.setString(4, livro.getGenero());
+		stmt.setString(5, livro.getEditora());
+		if (livro.getPublicacao() != null && !livro.getPublicacao().equals("")) {
+			SimpleDateFormat dataOriginal = new SimpleDateFormat("dd/MM/yyyy");
+			java.util.Date date = dataOriginal.parse(livro.getPublicacao());
+			SimpleDateFormat novaData = new SimpleDateFormat("yyyy-MM-dd");
+			stmt.setDate(6, Date.valueOf(novaData.format(date)));
+		}else {
+			stmt.setDate(6, null);
+		}
+		stmt.setInt(7, livro.getQuantidadeTotal());
 		// A quantidade disponível Inicial é a mesma da quantidade total;
-		stmt.setInt(6, livro.getQuantidadeTotal());
+		stmt.setInt(8, livro.getQuantidadeTotal());
 
 		stmt.executeUpdate();
 
@@ -43,13 +54,23 @@ public class LivroDAO {
 
 		Connection conexao = dao.conexaoUsuario();
 		PreparedStatement stmt = conexao.prepareStatement(
-				"UPDATE livro SET nome = ?, autor = ?, genero = ?, editora = ?, quantidadeTotal = ?, quantidadeDisponivel = ? WHERE _id = \'"
+				"UPDATE livro SET nome = ?, codigo = ?, autor = ?,  genero = ?, editora = ? , publicacao = ?, quantidadeTotal = ?  WHERE _id = \'"
 						+ idLivroEditar + "\';");
+
 		stmt.setString(1, livro.getNome());
-		stmt.setString(2, livro.getAutor());
-		stmt.setString(3, livro.getGenero());
-		stmt.setString(4, livro.getEditora());
-		stmt.setInt(5, livro.getQuantidadeTotal());
+		stmt.setString(2, livro.getCodigo());
+		stmt.setString(3, livro.getAutor());
+		stmt.setString(4, livro.getGenero());
+		stmt.setString(5, livro.getEditora());
+		if (livro.getPublicacao() != null && !livro.getPublicacao().equals("")) {
+			SimpleDateFormat dataOriginal = new SimpleDateFormat("dd/MM/yyyy");
+			java.util.Date date = dataOriginal.parse(livro.getPublicacao());
+			SimpleDateFormat novaData = new SimpleDateFormat("yyyy-MM-dd");
+			stmt.setDate(6, Date.valueOf(novaData.format(date)));
+		}else {
+			stmt.setDate(6, null);
+		}
+		stmt.setInt(7, livro.getQuantidadeTotal());
 
 		stmt.executeUpdate();
 
@@ -100,13 +121,15 @@ public class LivroDAO {
 		List<Livro> list = new ArrayList<>();
 
 		while (rs.next()) {
-			Livro livro = new Livro(null, null, null, null, null, null, null, null, null);
+			Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null, null);
 
 			livro.set_id(rs.getString("_id"));
 			livro.setNome(rs.getString("nome"));
+			livro.setCodigo(rs.getString("codigo"));
 			livro.setAutor(rs.getString("autor"));
 			livro.setGenero(rs.getString("genero"));
 			livro.setEditora(rs.getString("editora"));
+			livro.setPublicacao(String.valueOf(rs.getDate("publicacao")));
 			livro.setQuantidadeTotal(rs.getInt("quantidadetotal"));
 			livro.setQuantidadeDisponivel(rs.getInt("quantidadedisponivel"));
 			livro.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
@@ -132,13 +155,15 @@ public class LivroDAO {
 		List<Livro> list = new ArrayList<>();
 
 		while (rs.next()) {
-			Livro livro = new Livro(null, null, null, null, null, null, null, null, null);
+			Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null, null);
 
 			livro.set_id(rs.getString("_id"));
 			livro.setNome(rs.getString("nome"));
+			livro.setCodigo(rs.getString("codigo"));
 			livro.setAutor(rs.getString("autor"));
 			livro.setGenero(rs.getString("genero"));
 			livro.setEditora(rs.getString("editora"));
+			livro.setPublicacao(String.valueOf(rs.getDate("publicacao")));
 			livro.setQuantidadeTotal(rs.getInt("quantidadetotal"));
 			livro.setQuantidadeDisponivel(rs.getInt("quantidadedisponivel"));
 			livro.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
@@ -171,15 +196,17 @@ public class LivroDAO {
 				.prepareStatement("SELECT * FROM livro WHERE deletado = false and _id = \'" + idLivro + "\';");
 		ResultSet rs = stmt.executeQuery();
 
-		Livro livro = new Livro(null, null, null, null, null, null, null, null, null);
+		Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null, null);
 
 		if (rs.next()) {
 
 			livro.set_id(rs.getString("_id"));
 			livro.setNome(rs.getString("nome"));
+			livro.setCodigo(rs.getString("codigo"));
 			livro.setAutor(rs.getString("autor"));
 			livro.setGenero(rs.getString("genero"));
 			livro.setEditora(rs.getString("editora"));
+			livro.setPublicacao(String.valueOf(rs.getDate("publicacao")));
 			livro.setQuantidadeTotal(rs.getInt("quantidadetotal"));
 			livro.setQuantidadeDisponivel(rs.getInt("quantidadedisponivel"));
 			livro.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));

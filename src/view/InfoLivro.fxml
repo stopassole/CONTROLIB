@@ -108,7 +108,7 @@
             <Pane disable="true" layoutX="280.0" opacity="0.5" prefHeight="801.0" prefWidth="1035.0" style="-fx-background-color: black;" stylesheets="@../css/InfoLivros.css" />
             <Pane layoutX="458.0" layoutY="175.0" prefHeight="359.0" prefWidth="600.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="-" stylesheets="@../css/InfoLivros.css">
                <children>
-                  <Label fx:id="idNome" layoutX="41.0" layoutY="39.0" prefHeight="48.0" prefWidth="520.0" styleClass="font-lg" />
+                  <Label fx:id="idNome" layoutX="37.0" layoutY="39.0" prefHeight="48.0" prefWidth="520.0" styleClass="font-lg" />
                   <Label layoutX="38.0" layoutY="111.0" prefHeight="28.0" prefWidth="55.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Autor:" />
                   <Label layoutX="322.0" layoutY="111.0" prefHeight="24.0" prefWidth="101.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Publicação:" />
                   <Label layoutX="37.0" layoutY="170.0" prefHeight="28.0" prefWidth="75.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Gênero:" />

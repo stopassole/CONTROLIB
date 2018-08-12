@@ -71,13 +71,13 @@
             <Pane layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white;" stylesheets="@../css/Emprestimos.css">
                <children>
                   <Label layoutX="24.0" layoutY="23.0" prefHeight="48.0" prefWidth="199.0" styleClass="font-lg" text="EMPRÉSTIMOS" />
-                  <TextField layoutX="24.0" layoutY="104.0" prefHeight="50.0" prefWidth="320.0" stylesheets="@../css/Emprestimos.css" text="Pesquisar">
+                  <TextField fx:id="idPesquisar" layoutX="24.0" layoutY="104.0" prefHeight="50.0" prefWidth="320.0" promptText="Pesquisar" stylesheets="@../css/Emprestimos.css">
                      <styleClass>
                         <String fx:value="input-search" />
                         <String fx:value="font-md-search" />
                      </styleClass>
                   </TextField>
-                  <Button layoutX="797.0" layoutY="100.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" styleClass="bnt-search" stylesheets="@../css/Livros.css">
+                  <Button fx:id="btnPesquisar" layoutX="797.0" layoutY="100.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" style="-fx-cursor: hand;" styleClass="bnt-search" stylesheets="@../css/Livros.css">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="809.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
@@ -94,22 +94,22 @@
                         <TableColumn prefWidth="198.0" text="Vencimento" />
                     </columns>
                   </TableView>
-                  <Button layoutX="797.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: trasnparent;">
+                  <Button  fx:id="btnNovoEmprestimo" onAction="#novoEmprestimo" onKeyPressed="#enterPressedNovoEmprestimo" layoutX="797.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: trasnparent; -fx-cursor: hand;">
                      <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                        <ImageView  fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@../images/Group%20137.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TextField layoutX="368.0" layoutY="104.0" prefHeight="50.0" prefWidth="200.0" text="Pesquisar">
+                  <TextField fx:id="idDataInicio" layoutX="368.0" layoutY="104.0" prefHeight="50.0" prefWidth="200.0" promptText="Data Inicio">
                      <styleClass>
                         <String fx:value="input-search" />
                         <String fx:value="font-md-search" />
                      </styleClass>
                   </TextField>
-                  <TextField layoutX="585.0" layoutY="104.0" prefHeight="50.0" prefWidth="200.0" text="Pesquisar">
+                  <TextField fx:id="idDataFim" layoutX="585.0" layoutY="104.0" prefHeight="50.0" prefWidth="200.0" promptText="Data Fim">
                      <styleClass>
                         <String fx:value="input-search" />
                         <String fx:value="font-md-search" />

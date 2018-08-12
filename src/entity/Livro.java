@@ -3,12 +3,14 @@ package entity;
 public class Livro {
 	private String _id;
 	private String nome;
+	private String codigo;
 	private String autor;
 	private String genero;
 	private String editora;
 	private Integer quantidadeTotal;
 	private Integer quantidadeDisponivel;
 	private String dataCadastro;
+	private String publicacao;
 	private Boolean deletado;
 	
 	public String get_id() {
@@ -22,6 +24,12 @@ public class Livro {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 	public String getAutor() {
 		return autor;
@@ -59,6 +67,12 @@ public class Livro {
 	public void setDataCadastro(String dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
+	public String getPublicacao() {
+		return publicacao;
+	}
+	public void setPublicacao(String publicacao) {
+		this.publicacao = publicacao;
+	}
 	public Boolean getDeletado() {
 		return deletado;
 	}
@@ -66,19 +80,21 @@ public class Livro {
 		this.deletado = deletado;
 	}
 	
-	public Livro(String _id, String nome, String autor, String genero, String editora, Integer quantidadeTotal,
-			Integer quantidadeDisponivel, String dataCadastro, Boolean deletado) {
+	public Livro(String _id, String nome, String codigo, String autor, String genero, String editora,
+			Integer quantidadeTotal, Integer quantidadeDisponivel, String dataCadastro, String publicacao,
+			Boolean deletado) {
 		this._id = _id;
 		this.nome = nome;
+		this.codigo = codigo;
 		this.autor = autor;
 		this.genero = genero;
 		this.editora = editora;
 		this.quantidadeTotal = quantidadeTotal;
 		this.quantidadeDisponivel = quantidadeDisponivel;
 		this.dataCadastro = dataCadastro;
+		this.publicacao = publicacao;
 		this.deletado = deletado;
 	}
-	
 	@Override
 	public String toString() {
 		return "Livro [nome=" + nome + "]";

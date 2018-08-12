@@ -114,7 +114,7 @@ public class LoginController implements Initializable {
 				}
 
 				if (result != null) {
-					Parent root = FXMLLoader.load(getClass().getResource("/view/Dashboard.fxml"));
+					Parent root = FXMLLoader.load(getClass().getResource("/view/ListEmprestimos.fxml"));
 					Scene scene = new Scene(root);
 					Inicio.myStage.setScene(scene);
 				} else {
