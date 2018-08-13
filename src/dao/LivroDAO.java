@@ -45,6 +45,8 @@ public class LivroDAO {
 
 		stmt.executeUpdate();
 
+		conexao.close();
+
 		log.info(END_POINT + "/salvarlivro -> Fim");
 
 	}
@@ -53,7 +55,7 @@ public class LivroDAO {
 		log.info(END_POINT + "/editarlivro -> Inicio");
 
 		Livro usuarioEditar = getByIdLivro(idLivroEditar);
-		
+
 		Connection conexao = dao.conexaoUsuario();
 		PreparedStatement stmt = conexao.prepareStatement(
 				"UPDATE livro SET nome = ?, codigo = ?, autor = ?,  genero = ?, editora = ? , publicacao = ?, quantidadeTotal = ?, quantidadeDisponivel = ?  WHERE _id = \'"
@@ -73,9 +75,12 @@ public class LivroDAO {
 			stmt.setDate(6, null);
 		}
 		stmt.setInt(7, livro.getQuantidadeTotal());
-		stmt.setInt(8, livro.getQuantidadeTotal() - (usuarioEditar.getQuantidadeTotal() - usuarioEditar.getQuantidadeDisponivel()));
+		stmt.setInt(8, livro.getQuantidadeTotal()
+				- (usuarioEditar.getQuantidadeTotal() - usuarioEditar.getQuantidadeDisponivel()));
 
 		stmt.executeUpdate();
+
+		conexao.close();
 
 		log.info(END_POINT + "/editarlivro -> Fim");
 	}
@@ -90,6 +95,8 @@ public class LivroDAO {
 
 		stmt.executeUpdate();
 
+		conexao.close();
+
 		log.info(END_POINT + "/editarquatidadedisponivel -> Fim");
 	}
 
@@ -99,8 +106,7 @@ public class LivroDAO {
 		Connection conexao = dao.conexaoUsuario();
 		String sql = "SELECT count(*) FROM livro WHERE livro.nome= \'" + livro.getNome() + "\'AND livro.autor =\'"
 				+ livro.getAutor() + "\'AND livro.quantidadetotal =\'" + livro.getQuantidadeTotal()
-				+ "\'AND livro.deletado =\'" + false
-				+ "\';";
+				+ "\'AND livro.deletado =\'" + false + "\';";
 		PreparedStatement stmt = conexao.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE,
 				ResultSet.CONCUR_READ_ONLY);
 		ResultSet resultSet = stmt.executeQuery();
@@ -109,6 +115,8 @@ public class LivroDAO {
 		if (resultSet.next()) {
 			cont = resultSet.getInt(1);
 		}
+
+		conexao.close();
 
 		log.info(END_POINT + "/validalivro -> Fim");
 
@@ -141,6 +149,8 @@ public class LivroDAO {
 
 			list.add(livro);
 		}
+
+		conexao.close();
 
 		log.info(END_POINT + "/buscarlivros -> Fim");
 
@@ -175,6 +185,9 @@ public class LivroDAO {
 
 			list.add(livro);
 		}
+
+		conexao.close();
+
 		log.info(END_POINT + "/buscarlivrosfiltro -> Fim");
 
 		return list;
@@ -188,6 +201,8 @@ public class LivroDAO {
 				.prepareStatement("UPDATE livro SET deletado = true WHERE _id = \'" + idLivro + "\';");
 
 		stmt.executeUpdate();
+
+		conexao.close();
 
 		log.info(END_POINT + "/excluirlivro -> Fim");
 	}
@@ -217,7 +232,10 @@ public class LivroDAO {
 			livro.setDeletado(rs.getBoolean("deletado"));
 		}
 
+		conexao.close();
+
 		log.info(END_POINT + "/buscarlivrobyid  -> Fim");
+
 		return livro;
 	}
 

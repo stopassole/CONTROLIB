@@ -17,7 +17,7 @@
    <children>
       <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #EEF1F8;">
          <children>
-            <Pane prefHeight="250.0" prefWidth="1280.0" styleClass="bg-secondary" stylesheets="@../css/Livros.css">
+            <Pane prefHeight="250.0" prefWidth="1280.0" styleClass="bg-secondary" stylesheets="@../css/Usuarios.css">
                <children>
                   <Label layoutX="348.0" layoutY="40.0" prefHeight="30.0" prefWidth="146.0" styleClass="font-md" text="USUÁRIOS" />
                     <Button layoutX="1191.0" layoutY="46.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
@@ -42,7 +42,7 @@
                
                </children>
             </Pane>
-            <Pane prefHeight="800.0" prefWidth="280.0" styleClass="bg-primary" stylesheets="@../css/Livros.css">
+            <Pane prefHeight="800.0" prefWidth="280.0" styleClass="bg-primary" stylesheets="@../css/Usuarios.css">
                <children>
                   <ImageView fitHeight="70.0" fitWidth="90.0" layoutX="95.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,7 +70,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white;" stylesheets="@../css/Emprestimos.css">
+            <Pane layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white;" stylesheets="@../css/Usuarios.css">
                <children>
                   <Label layoutX="24.0" layoutY="23.0" prefHeight="48.0" prefWidth="199.0" styleClass="font-lg" text="USUÁRIOS" />
                   <TextField fx:id="idPesquisar" layoutX="24.0" layoutY="104.0" onKeyPressed="#enterPressedPesquisar" prefHeight="50.0" prefWidth="750.0" promptText="Pesquisar" stylesheets="@../css/Livros.css">

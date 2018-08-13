@@ -38,14 +38,14 @@
                   </Label>
                   <Separator layoutX="460.5" layoutY="298.0" prefHeight="5.0" prefWidth="110.0" />
                   <Label layoutX="93.0" layoutY="352.0" prefHeight="20.0" prefWidth="65.0" styleClass="font-sm" text="E-mail: *" />
-                  <TextField fx:id="idEmail" layoutX="70.0" layoutY="376.0" onKeyPressed="#enterPressedSalvar" prefHeight="60.0" prefWidth="500.0">
+                  <TextField fx:id="idEmail" layoutX="70.0" layoutY="376.0" onKeyPressed="#enterPressedSalvar" prefHeight="60.0" prefWidth="500.0" promptText="exemplo@exemplo.com">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />
                      </styleClass>
                   </TextField>
                   <Label layoutX="93.0" layoutY="446.0" prefHeight="20.0" prefWidth="37.0" styleClass="font-sm" text="CPF: *" />
-                  <TextField fx:id="idCPF" layoutX="71.0" layoutY="471.0" onKeyPressed="#enterPressedSalvar" onKeyReleased="#tbCpf" prefHeight="60.0" prefWidth="240.0">
+                  <TextField fx:id="idCPF" layoutX="71.0" layoutY="471.0" onKeyPressed="#enterPressedSalvar" onKeyReleased="#tbCpf" prefHeight="60.0" prefWidth="240.0" promptText="000.000.000-00">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />

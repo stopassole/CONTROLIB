@@ -69,7 +69,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane disable="true" layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white;" stylesheets="@../css/Livros.css">
+            <Pane disable="true" layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white;" stylesheets="@../css/CadastroLivros.css">
                <children>
                   <Label disable="true" layoutX="24.0" layoutY="23.0" prefHeight="48.0" prefWidth="167.0" styleClass="font-lg" text="LIVROS" />
                   <TextField disable="true" layoutX="24.0" layoutY="104.0" prefHeight="50.0" prefWidth="750.0" stylesheets="@../css/Livros.css" text="Pesquisar">
@@ -115,10 +115,10 @@
                   <TextField fx:id="idNome" layoutX="35.0" layoutY="127.0" onKeyPressed="#enterPressedSalvar" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <TextField fx:id="idGenero" layoutX="340.0" layoutY="224.0" onKeyPressed="#enterPressedSalvar" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <Label layoutX="51.0" layoutY="300.0" prefHeight="28.0" prefWidth="117.0" styleClass="font-md" text="Publicação:" />
-                  <TextField fx:id="idPublicacao" layoutX="35.0" layoutY="326.0" onKeyPressed="#enterPressedSalvar" onKeyTyped="#tbData" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
-                  <Label layoutX="356.0" layoutY="300.0" prefHeight="28.0" prefWidth="57.0" styleClass="font-md" text="Editora:" />
+                  <TextField fx:id="idPublicacao" layoutX="35.0" layoutY="326.0" onKeyPressed="#enterPressedSalvar" onKeyTyped="#tbData" prefHeight="50.0" prefWidth="275.0" promptText="00/00/0000" styleClass="input-rounded" />
+                  <Label layoutX="356.0" layoutY="300.0" prefHeight="28.0" prefWidth="93.0" styleClass="font-md" text="Editora:" />
                   <TextField fx:id="idEditora" layoutX="340.0" layoutY="326.0" onKeyPressed="#enterPressedSalvar" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
-                  <Label layoutX="51.0" layoutY="420.0" prefHeight="28.0" prefWidth="109.0" styleClass="font-md" text="Quantidade: *" />
+                  <Label layoutX="51.0" layoutY="420.0" prefHeight="28.0" prefWidth="117.0" styleClass="font-md" text="Quantidade: *" />
                   <Button fx:id="btnCancelar" layoutX="343.0" layoutY="451.0" mnemonicParsing="false" onAction="#fechar" onKeyPressed="#enterPressedFechar" prefHeight="50.0" prefWidth="125.0" style="-fx-cursor: hand;" styleClass="button-cancel" text="CANCELAR" />
                   <Button fx:id="btnSalvar" layoutX="487.0" layoutY="451.0" mnemonicParsing="false" onAction="#salvarLivro" onKeyPressed="#enterPressedSalvar" prefHeight="50.0" prefWidth="125.0" style="-fx-cursor: hand;" styleClass="button-salve" text="CADASTRAR" />
                   <Button fx:id="btnFechar" layoutX="615.0" layoutY="14.0" mnemonicParsing="false" onAction="#fechar" prefHeight="18.0" prefWidth="16.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
@@ -130,10 +130,10 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Spinner fx:id="idQuantidade" initialValue="1" layoutX="154.0" layoutY="410.0" max="1000000" min="1" onKeyPressed="#enterPressedSalvar" prefHeight="48.0" prefWidth="156.0" styleClass="input-qtd" />
+                  <Spinner fx:id="idQuantidade" initialValue="1" layoutX="154.0" layoutY="410.0" max="1000000" min="1" onKeyPressed="#enterPressedSalvar" prefHeight="48.0" prefWidth="156.0" styleClass="combobox-rounded" />
                   <Label layoutX="51.0" layoutY="196.0" prefHeight="28.0" prefWidth="66.0" styleClass="font-md" text="Autor: *" />
                   <TextField fx:id="idAutor" layoutX="35.0" layoutY="224.0" onKeyPressed="#enterPressedSalvar" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
-                  <Label layoutX="358.0" layoutY="101.0" prefHeight="28.0" prefWidth="109.0" styleClass="font-md" text=" Ref / Código:" />
+                  <Label layoutX="358.0" layoutY="101.0" prefHeight="28.0" prefWidth="135.0" styleClass="font-md" text=" Ref / Código:" />
                   <TextField fx:id="idCodigo" layoutX="340.0" layoutY="127.0" onInputMethodTextChanged="#configuraQuantidade" onKeyPressed="#enterPressedSalvar" onKeyReleased="#configuraQuantidade" onKeyTyped="#configuraQuantidade" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                </children>
             </Pane>

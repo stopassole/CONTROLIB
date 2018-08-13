@@ -29,6 +29,9 @@ public class CadastroDAO {
 		if (resultSet.next()) {
 			cont = resultSet.getInt(1);
 		}
+
+		conexao.close();
+
 		log.info(END_POINT + "/contcadastro -> Fim");
 
 		return cont;
@@ -39,13 +42,16 @@ public class CadastroDAO {
 		log.info(END_POINT + "/salvarcadastro -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
-		PreparedStatement stmt = conexao.prepareStatement("INSERT INTO cadastro(email,empresa,cpf,senha) VALUES (?, ?, ?, ?)");
+		PreparedStatement stmt = conexao
+				.prepareStatement("INSERT INTO cadastro(email,empresa,cpf,senha) VALUES (?, ?, ?, ?)");
 		stmt.setString(1, cadastro.getEmail());
 		stmt.setString(2, cadastro.getEmpresa());
 		stmt.setString(3, cadastro.getCpf());
 		stmt.setString(4, cadastro.getSenha());
 
 		stmt.executeUpdate();
+
+		conexao.close();
 
 		log.info(END_POINT + "/salvarcadastro-> Fim");
 	}
@@ -61,6 +67,8 @@ public class CadastroDAO {
 		stmt.setString(3, email);
 
 		stmt.executeUpdate();
+
+		conexao.close();
 
 		log.info(END_POINT + "/alterarsenha -> Fim");
 	}
@@ -78,6 +86,10 @@ public class CadastroDAO {
 		if (rs.next()) {
 			valor = rs.getString("_id");
 		}
+		log.info(END_POINT + "/alterarlembrarsenha -> Inicio");
+
+		conexao.close();
+
 		return valor;
 	}
 
@@ -94,6 +106,9 @@ public class CadastroDAO {
 		if (rs.next()) {
 			valor = rs.getString("_id");
 		}
+
+		conexao.close();
+
 		return valor;
 	}
 
@@ -101,13 +116,16 @@ public class CadastroDAO {
 		log.info(END_POINT + "/alterarlembrarsenha -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
-		PreparedStatement stmt = conexao.prepareStatement("UPDATE cadastro SET lembrarSenha = ? WHERE senha = ? AND email = ?");
+		PreparedStatement stmt = conexao
+				.prepareStatement("UPDATE cadastro SET lembrarSenha = ? WHERE senha = ? AND email = ?");
 
 		stmt.setBoolean(1, lembrarSenha);
 		stmt.setString(2, senha);
 		stmt.setString(3, email);
 
 		stmt.executeUpdate();
+
+		conexao.close();
 
 		log.info(END_POINT + "/alterarlembrarsenha -> Fim");
 	}
@@ -131,6 +149,8 @@ public class CadastroDAO {
 			cadastro.setSenha(rs.getString("senha"));
 			cadastro.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 		}
+
+		conexao.close();
 
 		log.info(END_POINT + "/buscarcadastro -> Fim");
 

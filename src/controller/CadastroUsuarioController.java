@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.TextFlow;
@@ -27,6 +28,8 @@ import util.ValidatorTelefone;
 public class CadastroUsuarioController extends DashboardController implements Initializable {
 	@FXML
 	private TextFlow idTextFlow;
+	@FXML
+	private Label idTela;
 	@FXML
 	private TextField idDataNasc;
 	@FXML
@@ -173,6 +176,8 @@ public class CadastroUsuarioController extends DashboardController implements In
 			try {
 				Usuario usuario = dao.getByIdUsuario(InfoUsuarioController.idUsuarioEditar);
 				populaEdicao(usuario);
+				btnSalvar.setText("ATUALIZAR");
+				idTela.setText("EDITAR USUÁRIO");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

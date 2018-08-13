@@ -151,7 +151,7 @@ public class CadastroLivroController extends DashboardController implements Init
 	
 	@FXML
 	public void configuraQuantidade() {
-		if(!idCodigo.getText().isEmpty()) {
+		if(idCodigo.getText() != null && !idCodigo.getText().isEmpty()) {
 			idQuantidade.getValueFactory().setValue(1);
 			idQuantidade.setDisable(true);
 		}else {

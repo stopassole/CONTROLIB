@@ -85,8 +85,7 @@
 }
 
 .font-md {
-    -fx-font: 16px "Segoe UI";
-    -fx-text-fill: black;
+    -fx-font: 18px "Segoe UI";
 }
 
 .font-lg {

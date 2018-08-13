@@ -40,11 +40,13 @@ public class UsuarioDAO {
 
 		stmt.executeUpdate();
 
+		conexao.close();
+
 		log.info(END_POINT + "/salvarusuairo -> Fim");
 	}
 
 	public List<Usuario> buscarUsuarios() throws Exception {
-		
+
 		log.info(END_POINT + "/buscarusuarios -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
@@ -70,9 +72,11 @@ public class UsuarioDAO {
 
 			list.add(u);
 		}
-		
+
+		conexao.close();
+
 		log.info(END_POINT + "/buscarusuarios -> Fim");
-		
+
 		return list;
 	}
 
@@ -101,8 +105,10 @@ public class UsuarioDAO {
 			u.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 			u.setDeletado(rs.getBoolean("deletado"));
 		}
+		conexao.close();
 
 		log.info(END_POINT + "/buscarusuariobyid -> Fim");
+
 		return u;
 	}
 
@@ -128,13 +134,15 @@ public class UsuarioDAO {
 
 		stmt.executeUpdate();
 
+		conexao.close();
+
 		log.info(END_POINT + "/editarusuario -> Fim");
 	}
 
 	public List<Usuario> buscarUsuariosFiltro(String text) throws Exception {
-		
+
 		log.info(END_POINT + "/buscarusuariosfiltro -> Inicio");
-		
+
 		Connection conexao = dao.conexaoUsuario();
 		PreparedStatement stmt = conexao
 				.prepareStatement("SELECT * FROM usuario WHERE deletado = false and usuario.nome LIKE '%" + text
@@ -161,26 +169,28 @@ public class UsuarioDAO {
 
 			list.add(u);
 		}
+
+		conexao.close();
+
 		log.info(END_POINT + "/buscarusuariosfiltro -> Fim");
-		
+
 		return list;
 	}
 
 	public int validaUsuario(Usuario usuario) throws Exception {
-		
+
 		log.info(END_POINT + "/validausuario -> Inicio");
-		
+
 		SimpleDateFormat dataOriginal = new SimpleDateFormat("dd/MM/yyyy");
 		java.util.Date date = dataOriginal.parse(usuario.getDataNascimento());
 		SimpleDateFormat novaData = new SimpleDateFormat("yyyy-MM-dd");
-		
+
 		Connection conexao = dao.conexaoUsuario();
 		String sql = "SELECT count(*) FROM usuario WHERE usuario.nome= \'" + usuario.getNome()
 				+ "\'AND usuario.sobrenome =\'" + usuario.getSobrenome() + "\'AND usuario.email =\'"
 				+ usuario.getEmail() + "\'AND usuario.telefone =\'" + usuario.getTelefone()
-				+ "\'AND usuario.datanascimento =\'" + Date.valueOf(novaData.format(date))
-				+ "\'AND usuario.tipo =\'" + usuario.getTipo()
-				+ "\'AND usuario.deletado =\'" + false + "\';";
+				+ "\'AND usuario.datanascimento =\'" + Date.valueOf(novaData.format(date)) + "\'AND usuario.tipo =\'"
+				+ usuario.getTipo() + "\'AND usuario.deletado =\'" + false + "\';";
 		PreparedStatement stmt = conexao.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE,
 				ResultSet.CONCUR_READ_ONLY);
 		ResultSet resultSet = stmt.executeQuery();
@@ -188,19 +198,24 @@ public class UsuarioDAO {
 		if (resultSet.next()) {
 			cont = resultSet.getInt(1);
 		}
-		
+
+		conexao.close();
+
 		log.info(END_POINT + "/validausuario -> Fim");
-		
+
 		return cont;
 	}
-	
+
 	public void excluirUsuario(String idUsuario) throws Exception {
 		log.info(END_POINT + "/excluirusuario -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
-		PreparedStatement stmt = conexao.prepareStatement("UPDATE usuario SET deletado = true WHERE _id = \'" + idUsuario + "\';");
+		PreparedStatement stmt = conexao
+				.prepareStatement("UPDATE usuario SET deletado = true WHERE _id = \'" + idUsuario + "\';");
 
 		stmt.executeUpdate();
+
+		conexao.close();
 
 		log.info(END_POINT + "/excluirusuario -> Fim");
 	}
