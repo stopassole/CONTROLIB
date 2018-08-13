@@ -78,32 +78,6 @@
                         <String fx:value="font-md-search" />
                      </styleClass>
                   </TextField>
-                  <Button fx:id="btnPesquisar" layoutX="797.0" layoutY="100.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" style="-fx-cursor: hand;" styleClass="bnt-search" stylesheets="@../css/Livros.css">
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="809.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                           <image>
-                              <Image url="@../images/Group%20136.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <TableView layoutX="24.0" layoutY="179.0" prefHeight="427.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="font-md-search">
-                    <columns>
-                      <TableColumn prefWidth="194.0" text="Nome" />
-                      <TableColumn minWidth="0.0" prefWidth="177.0" style="-fx-text-fill: blue;" text="Livro" />
-                        <TableColumn prefWidth="149.0" text="Empréstimo" />
-                        <TableColumn prefWidth="198.0" text="Vencimento" />
-                    </columns>
-                  </TableView>
-                  <Button fx:id="btnNovoEmprestimo" layoutX="797.0" layoutY="18.0" mnemonicParsing="false" onAction="#novoEmprestimo" onKeyPressed="#enterPressedNovoEmprestimo" style="-fx-background-color: trasnparent; -fx-cursor: hand;">
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
-                           <image>
-                              <Image url="@../images/Group%20137.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
                   <TextField fx:id="idDataInicio" layoutX="368.0" layoutY="104.0" prefHeight="50.0" prefWidth="200.0" promptText="00/00/0000">
                      <styleClass>
                         <String fx:value="input-search" />
@@ -116,6 +90,32 @@
                         <String fx:value="font-md-search" />
                      </styleClass>
                   </TextField>
+                  <Button fx:id="btnPesquisar" layoutX="797.0" layoutY="100.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" style="-fx-cursor: hand;" styleClass="bnt-search" stylesheets="@../css/Livros.css">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="809.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <image>
+                              <Image url="@../images/Group%20136.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnNovoEmprestimo" layoutX="797.0" layoutY="18.0" mnemonicParsing="false" onAction="#novoEmprestimo" onKeyPressed="#enterPressedNovoEmprestimo" style="-fx-background-color: trasnparent; -fx-cursor: hand;">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <image>
+                              <Image url="@../images/Group%20137.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <TableView layoutX="24.0" layoutY="179.0" prefHeight="427.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="font-md-search">
+                    <columns>
+                      <TableColumn prefWidth="194.0" text="Nome" />
+                      <TableColumn minWidth="0.0" prefWidth="177.0" style="-fx-text-fill: blue;" text="Livro" />
+                        <TableColumn prefWidth="149.0" text="Empréstimo" />
+                        <TableColumn prefWidth="198.0" text="Vencimento" />
+                    </columns>
+                  </TableView>
                   <Label layoutX="389.0" layoutY="83.0" prefHeight="17.0" prefWidth="72.0" text="Data Inicio:" />
                   <Label layoutX="602.0" layoutY="83.0" prefHeight="17.0" prefWidth="72.0" text="Data Fim:" />
                </children>

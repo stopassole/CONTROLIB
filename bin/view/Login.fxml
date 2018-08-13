@@ -50,9 +50,9 @@
                         <String fx:value="font-md" />
                      </styleClass>
                   </PasswordField>
-                  <Hyperlink fx:id="idCadastro" layoutX="456.0" layoutY="606.0" onAction="#cadastrar" onKeyPressed="#enterPressedCadastar" prefHeight="18.0" prefWidth="92.0" text="Cadastre-se" />
-                  <Hyperlink fx:id="idRecuperarSenha" layoutX="409.0" layoutY="606.0" onAction="#recuperar" onKeyPressed="#enterPressedRecuperar" text="Esqueci minha senha" />
                   <CheckBox fx:id="idLembrarSenha" layoutX="93.0" layoutY="606.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="124.0" styleClass="checkbox" text="Lembrar-me" textFill="WHITE" />
+                  <Hyperlink fx:id="idRecuperarSenha" layoutX="409.0" layoutY="606.0" onAction="#recuperar" onKeyPressed="#enterPressedRecuperar" text="Esqueci minha senha" />
+                  <Hyperlink fx:id="idCadastro" layoutX="456.0" layoutY="606.0" onAction="#cadastrar" onKeyPressed="#enterPressedCadastar" prefHeight="18.0" prefWidth="92.0" text="Cadastre-se" />
                   <Button fx:id="btnEntrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="70.0" layoutY="679.0" mnemonicParsing="false" onAction="#entrar" onKeyPressed="#enterPressedEntrar" prefHeight="60.0" prefWidth="500.0" styleClass="btn-primary" text="ENTRAR">
                      <font>
                         <Font size="27.0" />

@@ -108,6 +108,15 @@
                   <Pane layoutX="85.0" layoutY="-7.0" prefHeight="655.5" prefWidth="691.0" style="-fx-background-color: white; -fx-background-radius: 5;" stylesheets="@../css/CadUsuario.css">
                      <children>
                         <Label fx:id="idTela" layoutX="49.0" layoutY="25.0" prefHeight="30.0" prefWidth="513.0" styleClass="font-lg" text="CADASTRO DE USUÁRIOS" />
+                        <Button fx:id="btnCancelar" layoutX="659.0" layoutY="8.0" mnemonicParsing="false" onAction="#fechar" prefHeight="18.0" prefWidth="16.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="12.0" onKeyPressed="#enterPressedFechar" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/x.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                         <Label layoutX="71.0" layoutY="100.0" prefHeight="30.0" prefWidth="93.0" styleClass="font-md" text="Nome: *" />
                         <TextField fx:id="idNome" layoutX="49.0" layoutY="130.0" onKeyPressed="#enterPressedSalvar" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                         <Label layoutX="374.0" layoutY="100.0" prefHeight="30.0" prefWidth="109.0" styleClass="font-md" text="Sobrenome: *" />
@@ -121,20 +130,11 @@
                         <Label layoutX="71.0" layoutY="400.0" prefHeight="30.0" prefWidth="60.0" styleClass="font-md" text="CPF:" />
                         <TextField fx:id="idCPF" layoutX="49.0" layoutY="430.0" onKeyPressed="#enterPressedSalvar" onKeyReleased="#tbCpf" prefHeight="50.0" prefWidth="275.0" promptText="000.000.000-00" styleClass="input-rounded" />
                         <Label layoutX="374.0" layoutY="400.0" prefHeight="30.0" prefWidth="161.0" styleClass="font-md" text="Data Nascimento: *" />
+                        <TextField fx:id="idDataNasc" layoutX="352.0" layoutY="430.0" onKeyPressed="#enterPressedSalvar" onKeyTyped="#tbData" prefHeight="50.0" prefWidth="275.0" promptText="00/00/0000" styleClass="input-rounded" />
                         <Label layoutX="71.0" layoutY="500.0" prefHeight="30.0" prefWidth="60.0" styleClass="font-md" text="Tipo: *" />
                         <ComboBox fx:id="idTipo" layoutX="49.0" layoutY="530.0" onKeyPressed="#enterPressedSalvar" prefHeight="48.0" prefWidth="275.0" promptText="Selecionar" style="-fx-cursor: hand;" styleClass="combobox-rounded" />
-                        <TextField fx:id="idDataNasc" layoutX="352.0" layoutY="430.0" onKeyPressed="#enterPressedSalvar" onKeyTyped="#tbData" prefHeight="50.0" prefWidth="275.0" promptText="00/00/0000" styleClass="input-rounded" />
                         <Button fx:id="btnCancelar" layoutX="361.0" layoutY="580.0" mnemonicParsing="false" onAction="#fechar" onKeyPressed="#enterPressedFechar" prefHeight="50.0" prefWidth="125.0" style="-fx-cursor: hand;" styleClass="button-cancel" text="CANCELAR" />
                         <Button fx:id="btnSalvar" layoutX="502.0" layoutY="580.0" mnemonicParsing="false" onAction="#salvar" onKeyPressed="#enterPressedSalvar" prefHeight="50.0" prefWidth="125.0" style="-fx-cursor: hand;" styleClass="button-salve" text="SALVAR" />
-                        <Button fx:id="btnCancelar" layoutX="659.0" layoutY="8.0" mnemonicParsing="false" onAction="#fechar" prefHeight="18.0" prefWidth="16.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="12.0" onKeyPressed="#enterPressedFechar" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/x.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
                         </children>
                   </Pane>
                </children></Pane>
