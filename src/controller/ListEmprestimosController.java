@@ -25,11 +25,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import resource.Inicio;
 import util.DateUtil;
 
 public class ListEmprestimosController extends DashboardController implements Initializable {
+	@FXML
+	private TextFlow idTextFlow;
 	@FXML
 	private Button idSair;
 	@FXML
@@ -164,6 +168,71 @@ public class ListEmprestimosController extends DashboardController implements In
 		}
 	}
 
+	@SuppressWarnings("static-access")
+	public void pesquisar() throws Exception {
+		EmprestimoDAO dao = new EmprestimoDAO();
+
+		if (!idPesquisar.getText().isEmpty() && !idDataInicio.getText().isEmpty() && !idDataFim.getText().isEmpty()) {
+			if (date.isValidDate(idDataInicio.getText()) && date.isValidDate(idDataFim.getText())) {
+				if (date.verificaMaiorData(idDataInicio.getText(),idDataFim.getText())) {
+					emprestimos = dao.buscarEmprestimosFiltro(idPesquisar.getText(), idDataInicio.getText(),
+							idDataFim.getText());
+				} else {
+					AlertFalha falha = new AlertFalha();
+					falha.text = "A data de Vencimento deve ser maior que a data de Emprestimo";
+					falha.clicado = idTextFlow;
+					falha.start(new Stage());
+				}
+			} else {
+				AlertFalha falha = new AlertFalha();
+				falha.text = "Informe datas válidas";
+				falha.clicado = idTextFlow;
+				falha.start(new Stage());
+			}
+		} else if (!idPesquisar.getText().isEmpty() && idDataInicio.getText().isEmpty()	&& idDataFim.getText().isEmpty()) {
+			emprestimos = dao.buscarEmprestimosFiltro(idPesquisar.getText());
+		} else if (idPesquisar.getText().isEmpty() && !idDataInicio.getText().isEmpty()	&& !idDataFim.getText().isEmpty()) {
+			if (date.isValidDate(idDataInicio.getText()) && date.isValidDate(idDataFim.getText())) {
+				if (date.verificaMaiorData(idDataInicio.getText(),idDataFim.getText())) {
+					emprestimos = dao.buscarEmprestimosFiltro(idDataInicio.getText(), idDataFim.getText());
+				} else {
+					AlertFalha falha = new AlertFalha();
+					falha.text = "A data de Fim deve ser maior que a data de Inicio";
+					falha.clicado = idTextFlow;
+					falha.start(new Stage());
+				}
+			} else {
+				AlertFalha falha = new AlertFalha();
+				falha.text = "Informe datas válidas";
+				falha.clicado = idTextFlow;
+				falha.start(new Stage());
+			}
+		} else if (idPesquisar.getText().isEmpty() && !idDataInicio.getText().isEmpty() && idDataFim.getText().isEmpty() 
+				|| idPesquisar.getText().isEmpty() && idDataInicio.getText().isEmpty() && !idDataFim.getText().isEmpty()) {
+			AlertFalha falha = new AlertFalha();
+			falha.text = "Preencha os dois campos de datas para filtrar por data.";
+			falha.clicado = idTextFlow;
+			falha.start(new Stage());
+		}
+		else {
+			emprestimos = dao.buscarEmprestimos();
+		}
+		tbEmprestimos.getItems().setAll(emprestimos);
+		confTabela();
+	}
+
+	@SuppressWarnings("static-access")
+	@FXML
+	public void tbDataInicio(KeyEvent event) {
+		date.mascaraData(event, idDataInicio);
+	}
+
+	@SuppressWarnings("static-access")
+	@FXML
+	public void tbDataFim(KeyEvent event) {
+		date.mascaraData(event, idDataFim);
+	}
+
 	public void enterPressedNovoEmprestimo(KeyEvent e) throws Exception {
 		if (e.getCode().toString().equals("ENTER")) {
 			novoEmprestimo();
@@ -172,7 +241,7 @@ public class ListEmprestimosController extends DashboardController implements In
 
 	public void enterPressedPesquisar(KeyEvent e) throws Exception {
 		if (e.getCode().toString().equals("ENTER")) {
-			// pesquisar();
+			pesquisar();
 		}
 	}
 
