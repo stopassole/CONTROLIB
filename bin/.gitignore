@@ -1,10 +1,7 @@
-/css/
 /images/
-/log4j.properties
 /banco/
 /controller/
 /dao/
 /entity/
 /resource/
 /util/
-/view/

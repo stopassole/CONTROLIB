@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.TextFlow?>
+
+<TextFlow fx:id="idTextFlow" prefHeight="794.0" prefWidth="1281.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InfoEmprestimoController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #EEF1F8;">
+         <children>
+            <Pane prefHeight="250.0" prefWidth="1280.0" styleClass="bg-secondary" stylesheets="@../css/InfoEmprestimo.css">
+               <children>
+                  <Label layoutX="348.0" layoutY="40.0" prefHeight="30.0" prefWidth="146.0" styleClass="font-md" text="EMPRÉSTIMOS" />
+                  <Button layoutX="1191.0" layoutY="46.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Group%2038.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="1212.67" layoutY="53.8" mnemonicParsing="false" prefHeight="6.0" prefWidth="10.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="6.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Group%2041.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane prefHeight="800.0" prefWidth="280.0" styleClass="bg-primary" stylesheets="@../css/InfoEmprestimo.css">
+               <children>
+                  <ImageView fitHeight="70.0" fitWidth="90.0" layoutX="95.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Separator layoutX="34.9" layoutY="131.3" prefHeight="5.0" prefWidth="209.6" />
+                  <Button fx:id="btnEmprestimos" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="164.16" mnemonicParsing="false" onAction="#menuEmprestimos" onKeyPressed="#enterPressedEmprestimos" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="EMPRÉSTIMOS              " textAlignment="JUSTIFY" />
+                  <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Group%2035.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnLivros" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="238.0" mnemonicParsing="false" onAction="#menuLivros" onKeyPressed="#enterPressedLivros" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="LIVROS                          " textAlignment="JUSTIFY" />
+                  <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/books-stack.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnUsuarios" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="312.0" mnemonicParsing="false" onAction="#menuUsuarios" onKeyPressed="#enterPressedUsuarios" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="USUÁRIOS                    " textAlignment="JUSTIFY" />
+                  <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/group-profile-users.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white; -fx-background-radius: 10;" stylesheets="@../css/InfoEmprestimo.css">
+               <children>
+                  <Label layoutX="24.0" layoutY="23.0" prefHeight="48.0" prefWidth="199.0" styleClass="font-lg" text="EMPRÉSTIMOS" />
+                  <TextField layoutX="24.0" layoutY="104.0" prefHeight="50.0" prefWidth="320.0" stylesheets="@../css/Emprestimos.css" text="Pesquisar">
+                     <styleClass>
+                        <String fx:value="input-search" />
+                        <String fx:value="font-md-search" />
+                     </styleClass>
+                  </TextField>
+                  <Button layoutX="797.0" layoutY="100.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" styleClass="bnt-search" stylesheets="@../css/Livros.css">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="809.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <image>
+                              <Image url="@../images/Group%20136.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <TableView layoutX="24.0" layoutY="179.0" prefHeight="427.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="font-md-search">
+                    <columns>
+                      <TableColumn prefWidth="194.0" text="Nome" />
+                      <TableColumn minWidth="0.0" prefWidth="177.0" style="-fx-text-fill: blue;" text="Livro" />
+                        <TableColumn prefWidth="149.0" text="Empréstimo" />
+                        <TableColumn prefWidth="198.0" text="Vencimento" />
+                    </columns>
+                  </TableView>
+                  <Button layoutX="797.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: trasnparent;">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <image>
+                              <Image url="@../images/Group%20137.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <TextField layoutX="368.0" layoutY="104.0" prefHeight="50.0" prefWidth="200.0" text="Pesquisar">
+                     <styleClass>
+                        <String fx:value="input-search" />
+                        <String fx:value="font-md-search" />
+                     </styleClass>
+                  </TextField>
+                  <TextField layoutX="585.0" layoutY="104.0" prefHeight="50.0" prefWidth="200.0" text="Pesquisar">
+                     <styleClass>
+                        <String fx:value="input-search" />
+                        <String fx:value="font-md-search" />
+                     </styleClass>
+                  </TextField>
+               </children></Pane>
+            <Pane layoutX="280.0" opacity="0.5" prefHeight="800.0" prefWidth="1003.0" style="-fx-background-color: black;" />
+            <Pane layoutX="338.0" layoutY="102.0" prefHeight="622.0" prefWidth="894.0" style="-fx-background-color: white; -fx-background-radius: 10;" stylesheets="@../css/infoEmprestimo.css">
+               <children>
+                  <Label fx:id="idUsuario" layoutX="46.0" layoutY="43.0" prefHeight="43.0" prefWidth="649.0" styleClass="font-lg" />
+                  <Button fx:id="bntCancelar" layoutX="855.0" layoutY="4.0" mnemonicParsing="false" onAction="#fechar" onKeyPressed="#enterPressedFechar" prefHeight="18.0" prefWidth="16.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="12.0" onKeyPressed="#enterPressedFechar" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/x.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label layoutX="46.0" layoutY="124.0" prefHeight="30.0" prefWidth="66.0" styleClass="font-md-bold" text="E-mail: " />
+                  <Label fx:id="idEmail" layoutX="110.0" layoutY="124.0" prefHeight="30.0" prefWidth="250.0" styleClass="font-md" />
+                  <Label layoutX="373.0" layoutY="124.0" prefHeight="30.0" prefWidth="31.0" styleClass="font-md-bold" text="Tel:" />
+                  <Label fx:id="idTelefone" layoutX="410.0" layoutY="124.0" prefHeight="30.0" prefWidth="171.0" styleClass="font-md" />
+                  <Label layoutX="583.0" layoutY="124.0" prefHeight="30.0" prefWidth="181.0" styleClass="font-md-bold" text="Data de Nascimento:" />
+                  <Label fx:id="idDataNasc" layoutX="762.0" layoutY="124.0" prefHeight="30.0" prefWidth="100.0" styleClass="font-md" />
+                  <Label layoutX="46.0" layoutY="176.0" prefHeight="30.0" prefWidth="45.0" styleClass="font-md-bold" text="CPF:" />
+                  <Label fx:id="idCpf" layoutX="91.0" layoutY="176.0" prefHeight="30.0" prefWidth="133.0" styleClass="font-md" />
+                  <Label layoutX="235.0" layoutY="176.0" prefHeight="30.0" prefWidth="100.0" styleClass="font-md-bold" text="Endereço:" />
+                  <Label fx:id="idEndereco" layoutX="333.0" layoutY="176.0" prefHeight="30.0" prefWidth="374.0" styleClass="font-md" />
+                  <Label layoutX="714.0" layoutY="176.0" prefHeight="30.0" prefWidth="45.0" styleClass="font-md-bold" text="Tipo:" />
+                  <Label fx:id="idTipo" layoutX="759.0" layoutY="176.0" prefHeight="30.0" prefWidth="100.0" styleClass="font-md" />
+                  <Separator layoutX="25.0" layoutY="240.0" prefHeight="5.0" prefWidth="833.0" />
+                  <Label layoutX="46.0" layoutY="276.0" prefHeight="43.0" prefWidth="308.0" styleClass="font-lg" text="Empréstimo" />
+                  <Label layoutX="46.0" layoutY="352.0" prefHeight="30.0" prefWidth="190.0" styleClass="font-md-bold" text="Data de Empréstimo:" />
+                  <Label fx:id="idDataEmprestimo" layoutX="229.0" layoutY="352.0" prefHeight="30.0" prefWidth="133.0" styleClass="font-md" />
+                  <Label layoutX="381.0" layoutY="352.0" prefHeight="30.0" prefWidth="190.0" style="-fx-text-fill: #EB6565;" styleClass="font-md-bold" text="Data de Vencimento:" />
+                  <Label fx:id="idDataVencimento" layoutX="566.0" layoutY="352.0" prefHeight="30.0" prefWidth="154.0" style="-fx-text-fill: #EB6565;" styleClass="font-md" />
+                  <Label layoutX="46.0" layoutY="410.0" prefHeight="30.0" prefWidth="55.0" styleClass="font-md-bold" text="Livro:" />
+                  <Label fx:id="idLivro" layoutX="96.0" layoutY="410.0" prefHeight="30.0" prefWidth="190.0" styleClass="font-md" />
+                  <Label layoutX="295.0" layoutY="410.0" prefHeight="30.0" prefWidth="66.0" styleClass="font-md-bold" text="Autor:" />
+                  <Label fx:id="idAutor" layoutX="353.0" layoutY="410.0" prefHeight="30.0" prefWidth="164.0" styleClass="font-md" />
+                  <Label layoutX="583.0" layoutY="410.0" prefHeight="30.0" prefWidth="74.0" styleClass="font-md-bold" text="Gênero:" />
+                  <Label fx:id="idGenero" layoutX="657.0" layoutY="410.0" prefHeight="30.0" prefWidth="190.0" styleClass="font-md" />
+                  <Label layoutX="46.0" layoutY="463.0" prefHeight="30.0" prefWidth="74.0" styleClass="font-md-bold" text="Editora:" />
+                  <Label fx:id="idEditora" layoutX="120.0" layoutY="463.0" prefHeight="30.0" prefWidth="164.0" styleClass="font-md" />
+                  <Label layoutX="295.0" layoutY="463.0" prefHeight="30.0" prefWidth="100.0" styleClass="font-md-bold" text="Publicação:" />
+                  <Label fx:id="idPublicacao" layoutX="395.0" layoutY="463.0" prefHeight="30.0" prefWidth="220.0" styleClass="font-md" />
+                  <Button fx:id="idDevolver" layoutX="442.0" layoutY="538.0" mnemonicParsing="false" onAction="#devolver" onKeyPressed="#enterPressedDevolver" prefHeight="50.0" prefWidth="200.0" text="DEVOLVER">
+                     <styleClass>
+                        <String fx:value="font-md-button" />
+                        <String fx:value="button-devolver" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="idEditar" layoutX="665.0" layoutY="538.0" mnemonicParsing="false" onAction="#editar" onKeyPressed="#enterPressedEditar" prefHeight="50.0" prefWidth="200.0" text="EDITAR">
+                     <styleClass>
+                        <String fx:value="font-md-button" />
+                        <String fx:value="button-devolver" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</TextFlow>

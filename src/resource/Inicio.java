@@ -20,6 +20,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
+import util.ScheduleEmprestimosAtrasados;
 
 public class Inicio extends Application {
 
@@ -125,11 +126,14 @@ public class Inicio extends Application {
 			myStage.setTitle("CONTROLIB");
 			myStage.centerOnScreen();
 			myStage.show();
-
+			
+			ScheduleEmprestimosAtrasados s = new ScheduleEmprestimosAtrasados();
+			s.scheduleNotifications();
+			
 		} catch (Exception e) {
 			log.error(e);
 		}
-
+		
 		log.info(END_POINT + "/login -> Fim");
 
 	}
