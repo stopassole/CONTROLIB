@@ -156,6 +156,40 @@ public class LivroDAO {
 
 		return list;
 	}
+	
+	public List<Livro> buscarLivrosDisponiveis() throws Exception {
+		log.info(END_POINT + "/buscarlivrosdisponiveis -> Inicio");
+
+		Connection conexao = dao.conexaoUsuario();
+		PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM livro WHERE deletado = false AND livro.quantidadedisponivel > 0;");
+		ResultSet rs = stmt.executeQuery();
+
+		List<Livro> list = new ArrayList<>();
+
+		while (rs.next()) {
+			Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null, null);
+
+			livro.set_id(rs.getString("_id"));
+			livro.setNome(rs.getString("nome"));
+			livro.setCodigo(rs.getString("codigo"));
+			livro.setAutor(rs.getString("autor"));
+			livro.setGenero(rs.getString("genero"));
+			livro.setEditora(rs.getString("editora"));
+			livro.setPublicacao(String.valueOf(rs.getDate("publicacao")));
+			livro.setQuantidadeTotal(rs.getInt("quantidadetotal"));
+			livro.setQuantidadeDisponivel(rs.getInt("quantidadedisponivel"));
+			livro.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
+			livro.setDeletado(rs.getBoolean("deletado"));
+
+			list.add(livro);
+		}
+
+		conexao.close();
+
+		log.info(END_POINT + "/buscarlivrosdisponiveis -> Fim");
+
+		return list;
+	}
 
 	public List<Livro> buscarLivrosFiltro(String text) throws Exception {
 		log.info(END_POINT + "/buscarlivrosfiltro -> Inicio");
@@ -192,7 +226,7 @@ public class LivroDAO {
 
 		return list;
 	}
-
+	
 	public void excluirLivro(String idLivro) throws Exception {
 		log.info(END_POINT + "/excluirlivro -> Inicio");
 

@@ -119,7 +119,6 @@ public class Inicio extends Application {
 		log.info(END_POINT + "/login -> Inicio");
 
 		try {
-
 			Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 			myStage.getIcons().add(new  Image(getClass().getResourceAsStream("../images/logo.png")));
 			myStage.setScene(new Scene(root));

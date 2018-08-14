@@ -48,7 +48,7 @@ public class Cadastro {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
 	public Boolean getLembraSenha() {
 		return lembraSenha;
 	}
@@ -56,15 +56,17 @@ public class Cadastro {
 	public void setLembraSenha(Boolean lembraSenha) {
 		this.lembraSenha = lembraSenha;
 	}
-	
+
 	public String getDataCadastro() {
 		return dataCadastro;
 	}
+
 	public void setDataCadastro(String dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 
-	public Cadastro(String _id, String email, String empresa, String cpf, String senha, Boolean lembraSenha, String dataCadastro) {
+	public Cadastro(String _id, String email, String empresa, String cpf, String senha, Boolean lembraSenha,
+			String dataCadastro) {
 		super();
 		this._id = _id;
 		this.email = email;

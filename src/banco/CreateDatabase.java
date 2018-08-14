@@ -45,8 +45,8 @@ public class CreateDatabase extends Task<Void> {
 		} catch (Exception e) {
 
 		} finally {
-			this.updateProgress(25, 100);
 			createTableUsuario();
+			this.updateProgress(25, 100);
 		}
 	}
 
@@ -76,8 +76,8 @@ public class CreateDatabase extends Task<Void> {
 		} catch (Exception e) {
 
 		} finally {
-			this.updateProgress(50, 100);
 			createTableLivro();
+			this.updateProgress(50, 100);
 		}
 	}
 
@@ -89,7 +89,7 @@ public class CreateDatabase extends Task<Void> {
 			Connection conexao = dao.conexaoUsuario();
 			String sql = "CREATE TABLE livro(_id serial NOT NULL,\r\n"
 					+ "					nome character varying(255) not null,\r\n"
-					+ "					codigo character varying(255),\r\n"	
+					+ "					codigo character varying(255),\r\n"
 					+ "					autor character varying(255) not null,\r\n"
 					+ "					genero character varying(255),\r\n"
 					+ "					editora character varying(255),\r\n"
@@ -107,9 +107,100 @@ public class CreateDatabase extends Task<Void> {
 		} catch (Exception e) {
 
 		} finally {
+			createTableEmprestimo();
+			this.updateProgress(80, 100);
+		}
+	}
+
+	public void createTableEmprestimo() {
+		try {
+
+			log.info(END_POINT + "/criartabelaemprestimo -> Inicio");
+
+			Connection conexao = dao.conexaoUsuario();
+			String sql = "CREATE TABLE emprestimo(_id serial NOT NULL,\r\n"
+					+ "					idUsuario integer not null,\r\n"
+					+ "					idLivro integer not null,\r\n"
+					+ "					dataEmprestimo date not null,\r\n"
+					+ "					dataVencimento date not null,\r\n"
+					+ "					dataCadastro date default now(),\r\n"
+					+ "					deletado boolean default false,\r\n"
+					+ "   				CONSTRAINT fk_livro FOREIGN KEY (idLivro)\r\n"
+					+ "     		    REFERENCES livro (_id) MATCH SIMPLE\r\n" 
+					+ "                 ON UPDATE NO ACTION\r\n"
+					+ "                 ON DELETE SET NULL,\r\n"
+					+ "					CONSTRAINT fk_usuario FOREIGN KEY (idUsuario)\r\n"
+					+ "       		    REFERENCES usuario (_id) MATCH SIMPLE\r\n" 
+					+ "					ON UPDATE NO ACTION\r\n"
+					+ "  		        ON DELETE SET NULL,"
+					+ "					CONSTRAINT emprestimo_pkey PRIMARY KEY (_id)) ";
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+			stmt.executeQuery();
+
+			log.info(END_POINT + "/criartabelaemprestimo -> Fim");
+
+		} catch (Exception e) {
+
+		} finally {
+			createViewAllEmprestimos();
+			this.updateProgress(80, 100);
+		}
+	}
+
+	private void createViewAllEmprestimos() {
+		try {
+			log.info(END_POINT + "/criarviewallemprestimos-> Inicio");
+			
+			Connection conexao = dao.conexaoUsuario();
+			String sql = "create view allEmprestimos as\r\n" + 
+					"select\r\n" + 
+					"emprestimo._id,\r\n" + 
+					"emprestimo.idUsuario,\r\n" + 
+					"emprestimo.idLivro,\r\n" + 
+					"emprestimo.dataVencimento, \r\n" + 
+					"emprestimo.dataEmprestimo,\r\n" + 
+					"emprestimo.dataCadastro as dataCadastroEmprestimo,\r\n" + 
+					"emprestimo.deletado as emprestimoDeletado,\r\n" + 
+					"livro.nome as nomeLivro,\r\n" + 
+					"livro.codigo as codigoLivro,\r\n" + 
+					"livro.autor as autorLivro,\r\n" + 
+					"livro.genero as generoLivro,\r\n" + 
+					"livro.editora as editoraLivro,\r\n" + 
+					"livro.quantidadeTotal as quantidadeTotalLivro,\r\n" + 
+					"livro.quantidadeDisponivel as quantidadeDisponivelLivro,\r\n" + 
+					"livro.dataCadastro as dataCadastroLivro,\r\n" + 
+					"livro.publicacao as publicacaoLivro,\r\n" + 
+					"livro.deletado as livroDeletado,\r\n" + 
+					"usuario.nome as nomeUsuario,\r\n" + 
+					"usuario.sobrenome as sobrenomeUsuario,\r\n" + 
+					"usuario.endereco as enderecoUsuario,\r\n" + 
+					"usuario.email as emailUsuario,\r\n" + 
+					"usuario.telefone as telefoneUsuario,\r\n" + 
+					"usuario.cpf as CPFUsuario,\r\n" + 
+					"usuario.dataNascimento as dataNascimentoUsuario,\r\n" + 
+					"usuario.tipo as tipoUsuario,\r\n" + 
+					"usuario.dataCadastro as dataCadastroUsuario,\r\n" + 
+					"usuario.deletado as usuarioDeletado\r\n" + 
+					"from livro\r\n" + 
+					"join emprestimo on livro._id = emprestimo.idLivro\r\n" + 
+					"join usuario on  usuario._id = emprestimo.idUsuario\r\n" + 
+					"and usuario.deletado = false\r\n" + 
+					"and livro.deletado = false\r\n" + 
+					"and emprestimo.deletado = false\r\n" + 
+					"\r\n" + 
+					"";
+			PreparedStatement stmt = conexao.prepareStatement(sql);
+			stmt.executeQuery();
+
+			log.info(END_POINT + "/criarviewallemprestimos -> Fim");
+
+		} catch (Exception e) {
+
+		} finally {
 			this.updateProgress(100, 100);
 		}
 	}
+	
 
 	@Override
 	protected Void call() throws Exception {

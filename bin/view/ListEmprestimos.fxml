@@ -108,12 +108,13 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TableView layoutX="24.0" layoutY="179.0" prefHeight="427.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="font-md-search">
+                  <TableView fx:id="tbEmprestimos" layoutX="24.0" layoutY="179.0" prefHeight="427.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="font-md-search">
                     <columns>
-                      <TableColumn prefWidth="194.0" text="Nome" />
-                      <TableColumn minWidth="0.0" prefWidth="177.0" style="-fx-text-fill: blue;" text="Livro" />
-                        <TableColumn prefWidth="149.0" text="Empréstimo" />
-                        <TableColumn prefWidth="198.0" text="Vencimento" />
+                      <TableColumn fx:id="columUsuario" prefWidth="194.0" text="Usuário" />
+                      <TableColumn fx:id="columnLivro" minWidth="0.0" prefWidth="177.0" style="-fx-text-fill: blue;" text="Livro" />
+                        <TableColumn fx:id="columnEmprestimo" prefWidth="149.0" text="Empréstimo" />
+                        <TableColumn fx:id="columnVencimento" prefWidth="170.0" text="Vencimento" />
+                        <TableColumn fx:id="columnImage" prefWidth="156.0" />
                     </columns>
                   </TableView>
                   <Label layoutX="389.0" layoutY="83.0" prefHeight="17.0" prefWidth="72.0" text="Data Inicio:" />

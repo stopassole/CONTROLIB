@@ -131,27 +131,27 @@
                      </graphic>
                   </Button>
                   <Label layoutX="54.0" layoutY="138.0" styleClass="font-md" text="Usuário: *" />
-                  <ComboBox editable="true" layoutX="35.0" layoutY="164.0" prefHeight="50.0" prefWidth="275.0" promptText="Digite para pesquisar" styleClass="combobox-rounded" />
+                  <ComboBox fx:id="idUsuarioSelecionar" editable="false" layoutX="35.0" layoutY="164.0" onAction="#preencherUsuario" prefHeight="50.0" prefWidth="275.0" promptText="Digite para pesquisar" styleClass="combobox-rounded" />
                   <Label layoutX="359.0" layoutY="138.0" styleClass="font-md" text=" Livro: *" />
-                  <ComboBox editable="true" layoutX="338.0" layoutY="164.0" prefHeight="50.0" prefWidth="275.0" promptText="Digite para pesquisar" styleClass="combobox-rounded" />
+                  <ComboBox fx:id="idLivroSelecionar" editable="false" layoutX="338.0" layoutY="164.0" onAction="#preencherLivro" prefHeight="50.0" prefWidth="275.0" promptText="Digite para pesquisar" styleClass="combobox-rounded" />
                   <Label layoutX="54.0" layoutY="244.0" styleClass="font-md" text="Nome Usuário:" />
-                  <TextField disable="true" layoutX="33.0" layoutY="270.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
+                  <TextField fx:id="idNomeUsuario" disable="true" layoutX="33.0" layoutY="270.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <Label layoutX="359.0" layoutY="244.0" styleClass="font-md" text="Nome Livro:" />
-                  <TextField disable="true" layoutX="338.0" layoutY="270.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
+                  <TextField fx:id="idNomeLivro" disable="true" layoutX="338.0" layoutY="270.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <Label layoutX="54.0" layoutY="350.0" styleClass="font-md" text="CPF:" />
-                  <TextField disable="true" layoutX="33.0" layoutY="376.0" prefHeight="50.0" prefWidth="275.0" promptText="000.000.000-00" styleClass="input-rounded" />
+                  <TextField fx:id="idCPF" disable="true" layoutX="33.0" layoutY="376.0" prefHeight="50.0" prefWidth="275.0" promptText="000.000.000-00" styleClass="input-rounded" />
                   <Label layoutX="359.0" layoutY="350.0" styleClass="font-md" text="Autor:" />
-                  <TextField disable="true" layoutX="338.0" layoutY="376.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
+                  <TextField fx:id="idAutor" disable="true" layoutX="338.0" layoutY="376.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <Label layoutX="54.0" layoutY="456.0" styleClass="font-md" text="Tipo:" />
-                  <ComboBox disable="true" layoutX="35.0" layoutY="482.0" prefHeight="50.0" prefWidth="275.0" styleClass="combobox-rounded" />
+                  <ComboBox fx:id="idTipo" disable="true" layoutX="35.0" layoutY="482.0" prefHeight="50.0" prefWidth="275.0" styleClass="combobox-rounded" />
                   <Label layoutX="359.0" layoutY="456.0" styleClass="font-md" text="Código:" />
-                  <TextField disable="true" layoutX="338.0" layoutY="482.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
+                  <TextField fx:id="idCodigo" disable="true" layoutX="338.0" layoutY="482.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
                   <Label layoutX="54.0" layoutY="562.0" styleClass="font-md" text="Data Empréstimo: *" />
-                  <TextField layoutX="33.0" layoutY="588.0" prefHeight="50.0" prefWidth="275.0" promptText="00/00/0000" styleClass="input-rounded" />
+                  <TextField fx:id="idDataEmprestimo" layoutX="33.0" layoutY="588.0" onKeyTyped="#tbDataEmprestimo" prefHeight="50.0" prefWidth="275.0" promptText="00/00/0000" styleClass="input-rounded" />
                   <Label layoutX="359.0" layoutY="562.0" styleClass="font-md" text="Data Vencimento: *" />
-                  <TextField layoutX="338.0" layoutY="588.0" prefHeight="50.0" prefWidth="275.0" promptText="00/00/0000" styleClass="input-rounded" />
+                  <TextField fx:id="idDataVencimento" layoutX="338.0" layoutY="588.0" onKeyTyped="#tbDataVencimento" prefHeight="50.0" prefWidth="275.0" promptText="00/00/0000" styleClass="input-rounded" />
                   <Button fx:id="btnCancelar" layoutX="195.0" layoutY="677.0" mnemonicParsing="false" onAction="#fechar" onKeyPressed="#enterPressedFechar" prefHeight="50.0" prefWidth="200.0" style="-fx-cursor: hand;" styleClass="button-cancel" text="CACELAR" />
-                  <Button layoutX="413.0" layoutY="677.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-cursor: hand;" styleClass="button-salve" text="EMPRESTAR" />
+                  <Button layoutX="413.0" layoutY="677.0" mnemonicParsing="false" prefHeight="50.0" onAction="#salvarEmprestimo" onKeyPressed="#enterPressedSalvar" prefWidth="200.0" style="-fx-cursor: hand;" styleClass="button-salve" text="EMPRESTAR" />
                </children>
             </Pane>
          </children>
