@@ -120,7 +120,7 @@
             <Pane layoutX="280.0" opacity="0.5" prefHeight="800.0" prefWidth="1003.0" style="-fx-background-color: black;" />
             <Pane layoutX="473.0" layoutY="22.0" prefHeight="750.0" prefWidth="650.0" style="-fx-background-color: white; -fx-background-radius: 10;" stylesheets="@../css/CadastroEmprestimo.css">
                <children>
-                  <Label layoutX="33.0" layoutY="43.0" prefHeight="43.0" prefWidth="462.0" styleClass="font-lg" text="CADASTRO DE EMPÉSTIMO" />
+                  <Label fx:id="idTela" layoutX="33.0" layoutY="43.0" prefHeight="43.0" prefWidth="462.0" styleClass="font-lg" text="CADASTRO DE EMPÉSTIMO" />
                   <Button fx:id="bntCancelar" layoutX="608.0" layoutY="14.0" mnemonicParsing="false" onAction="#fechar" onKeyPressed="#enterPressedFechar" prefHeight="18.0" prefWidth="16.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="12.0" onKeyPressed="#enterPressedFechar" pickOnBounds="true" preserveRatio="true">
@@ -151,7 +151,7 @@
                   <Label layoutX="359.0" layoutY="562.0" styleClass="font-md" text="Data Vencimento: *" />
                   <TextField fx:id="idDataVencimento" layoutX="338.0" layoutY="588.0" onKeyTyped="#tbDataVencimento" prefHeight="50.0" prefWidth="275.0" promptText="00/00/0000" styleClass="input-rounded" />
                   <Button fx:id="btnCancelar" layoutX="195.0" layoutY="677.0" mnemonicParsing="false" onAction="#fechar" onKeyPressed="#enterPressedFechar" prefHeight="50.0" prefWidth="200.0" style="-fx-cursor: hand;" styleClass="button-cancel" text="CACELAR" />
-                  <Button layoutX="413.0" layoutY="677.0" mnemonicParsing="false" prefHeight="50.0" onAction="#salvarEmprestimo" onKeyPressed="#enterPressedSalvar" prefWidth="200.0" style="-fx-cursor: hand;" styleClass="button-salve" text="EMPRESTAR" />
+                  <Button fx:id="btnSalvar" layoutX="413.0" layoutY="677.0" mnemonicParsing="false" onAction="#salvarEmprestimo" onKeyPressed="#enterPressedSalvar" prefHeight="50.0" prefWidth="200.0" style="-fx-cursor: hand;" styleClass="button-salve" text="EMPRESTAR" />
                </children>
             </Pane>
          </children>

@@ -45,7 +45,60 @@ public class EmprestimoDAO {
 		log.info(END_POINT + "/salvaremprestimo -> Fim");
 
 	}
+	
+	public void editarLivro(String idEmprestimo, Emprestimo emprestimo) throws Exception {
+		log.info(END_POINT + "/editaremprestimo -> Inicio");
 
+		Connection conexao = dao.conexaoUsuario();
+		PreparedStatement stmt = conexao.prepareStatement(
+				"UPDATE emprestimo SET idUsuario = ?, idLivro = ?, dataEmprestimo = ?,  dataVencimento = ?  WHERE _id = \'" + idEmprestimo + "\';");
+		
+		stmt.setInt(1, Integer.valueOf(emprestimo.getIdUsuario()));
+		stmt.setInt(2, Integer.valueOf(emprestimo.getIdLivro()));
+
+		SimpleDateFormat dataOriginal = new SimpleDateFormat("dd/MM/yyyy");
+		java.util.Date date = dataOriginal.parse(emprestimo.getDataEmprestimo());
+		SimpleDateFormat novaData = new SimpleDateFormat("yyyy-MM-dd");
+		stmt.setDate(3, Date.valueOf(novaData.format(date)));
+
+		java.util.Date dateVencimento = dataOriginal.parse(emprestimo.getDataVencimento());
+		stmt.setDate(4, Date.valueOf(novaData.format(dateVencimento)));
+
+		stmt.executeUpdate();
+
+		conexao.close();
+
+		log.info(END_POINT + "/editaremprestimo -> Fim");
+	}
+
+	public Emprestimo getEmprestimoById(String idEmprestimo) throws Exception {
+		log.info(END_POINT + "/buscaremprestimobyid -> Inicio");
+
+		Connection conexao = dao.conexaoUsuario();
+		PreparedStatement stmt = conexao
+				.prepareStatement("SELECT * FROM emprestimo WHERE deletado = false and _id = \'" + idEmprestimo + "\';");
+		ResultSet rs = stmt.executeQuery();
+
+		Emprestimo emprestimo = new Emprestimo(null, null, null, null, null, null, null);
+
+		if (rs.next()) {
+
+			emprestimo.set_id(rs.getString("_id"));
+			emprestimo.setIdLivro(rs.getString("idLivro"));
+			emprestimo.setIdUsuario(rs.getString("idUsuario"));
+			emprestimo.setDataEmprestimo(rs.getString("dataEmprestimo"));
+			emprestimo.setDataVencimento(rs.getString("dataVencimento"));
+			emprestimo.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
+			emprestimo.setDeletado(rs.getBoolean("deletado"));
+		}
+
+		conexao.close();
+
+		log.info(END_POINT + "/buscaremprestimobyid  -> Fim");
+		
+		return emprestimo;
+	}
+	
 	public List<EmprestimoDTO> buscarEmprestimos() throws Exception {
 		log.info(END_POINT + "/buscaremprestimos -> Inicio");
 

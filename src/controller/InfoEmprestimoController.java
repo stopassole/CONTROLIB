@@ -23,6 +23,10 @@ public class InfoEmprestimoController extends DashboardController implements Ini
 	@FXML
 	private Button btnEmprestimos;
 	@FXML
+	private Button idDevolver;
+	@FXML
+	private Button idEditar;
+	@FXML
 	private Button btnLivros;
 	@FXML
 	private Button btnUsuarios;
@@ -67,6 +71,18 @@ public class InfoEmprestimoController extends DashboardController implements Ini
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
 	}
+	
+	@FXML
+	public void editar() throws Exception {
+		Parent root = FXMLLoader.load(getClass().getResource("/view/CadastroEmprestimo.fxml"));
+		Scene scene = new Scene(root);
+		Inicio.myStage.setScene(scene);
+	}
+	
+	@FXML
+	public void devolver() throws Exception{
+		
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -82,6 +98,7 @@ public class InfoEmprestimoController extends DashboardController implements Ini
 
 	@SuppressWarnings("static-access")
 	private void popularInformacao(EmprestimoDTO emprestimo) throws Exception {
+		idEmprestimo = emprestimo.get_id();
 		DateUtil date = new DateUtil();
 		idUsuario.setText(emprestimo.getNomeUsuario() + " " + emprestimo.getSobrenomeUsuario() + " " + emprestimo.getIdUsuario());
 		idEmail.setText(emprestimo.getEmailUsuario());
@@ -107,6 +124,20 @@ public class InfoEmprestimoController extends DashboardController implements Ini
 	public void enterPressedFechar(KeyEvent e) throws Exception {
 		if (e.getCode().toString().equals("ENTER")) {
 			fechar();
+		}
+	}
+	
+	@FXML
+	public void enterPressedEditar(KeyEvent e) throws Exception {
+		if (e.getCode().toString().equals("ENTER")) {
+			editar();
+		}
+	}
+	
+	@FXML
+	public void enterPressedDevolver(KeyEvent e) throws Exception {
+		if (e.getCode().toString().equals("ENTER")) {
+			devolver();
 		}
 	}
 }

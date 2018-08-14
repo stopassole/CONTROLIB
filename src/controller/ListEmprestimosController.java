@@ -85,7 +85,7 @@ public class ListEmprestimosController extends DashboardController implements In
 		populaTabela();
 		confTabela();
 	}
-
+	
 	@SuppressWarnings("static-access")
 	public void confTabela() {
 		columUsuario.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNomeUsuario()));

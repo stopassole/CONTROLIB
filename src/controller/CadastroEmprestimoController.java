@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.TextFlow;
@@ -33,6 +34,8 @@ public class CadastroEmprestimoController extends DashboardController implements
 	@FXML
 	private TextFlow idTextFlow;
 	@FXML
+	private Label idTela;
+	@FXML
 	private Button btnEmprestimos;
 	@FXML
 	private Button btnLivros;
@@ -40,6 +43,8 @@ public class CadastroEmprestimoController extends DashboardController implements
 	private Button btnUsuarios;
 	@FXML
 	private Button bntCancelar;
+	@FXML
+	private Button btnSalvar;
 	@FXML
 	private ComboBox<Usuario> idUsuarioSelecionar;
 	@FXML
@@ -87,35 +92,27 @@ public class CadastroEmprestimoController extends DashboardController implements
 
 		if (!verificaVazio()) {
 			if (date.isValidDate(idDataEmprestimo.getText()) && date.isValidDate(idDataVencimento.getText())) {
-				if (date.verificaMaiorData(idDataEmprestimo.getText(),idDataVencimento.getText())) {
+				if (date.verificaMaiorData(idDataEmprestimo.getText(), idDataVencimento.getText())) {
 					emprestimo.setIdUsuario(idUsuarioSelecionar.getValue().get_id());
 					emprestimo.setIdLivro(idLivroSelecionar.getValue().get_id());
 					emprestimo.setDataEmprestimo(idDataEmprestimo.getText());
 					emprestimo.setDataVencimento(idDataVencimento.getText());
 
-					// if (InfoEmprestimoController.idEmprestimo == null) {
-					// int cont = dao.validaLivro(emprestimo);
-					// if (cont == 0) {
-					dao.salvarEmprestimo(emprestimo);
-					fechar();
-					AlertSucesso sucesso = new AlertSucesso();
-					sucesso.text = "Salvo com sucesso";
-					sucesso.clicado = idTextFlow;
-					sucesso.start(new Stage());
-//					} else {
-//						AlertFalha falha = new AlertFalha();
-//						falha.text = "Emprestimo com estes dados já cadastrado";
-//						falha.clicado = idTextFlow;
-//						falha.start(new Stage());
-//					}
-//				} else {
-//					dao.editarLivro(InfoEmprestimoController.idEmprestimo, emprestimo);
-//					fechar();
-//					AlertSucesso sucesso = new AlertSucesso();
-//					sucesso.text = "Editado com sucesso";
-//					sucesso.clicado = idTextFlow;
-//					sucesso.start(new Stage());
-//				}
+					if (InfoEmprestimoController.idEmprestimo == null) {
+						dao.salvarEmprestimo(emprestimo);
+						fechar();
+						AlertSucesso sucesso = new AlertSucesso();
+						sucesso.text = "Salvo com sucesso";
+						sucesso.clicado = idTextFlow;
+						sucesso.start(new Stage());
+					} else {
+						dao.editarLivro(InfoEmprestimoController.idEmprestimo, emprestimo);
+						fechar();
+						AlertSucesso sucesso = new AlertSucesso();
+						sucesso.text = "Editado com sucesso";
+						sucesso.clicado = idTextFlow;
+						sucesso.start(new Stage());
+					}
 				} else {
 					AlertFalha falha = new AlertFalha();
 					falha.text = "A data de Vencimento deve ser maior que a data de Emprestimo";
@@ -144,6 +141,7 @@ public class CadastroEmprestimoController extends DashboardController implements
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
 		try {
 			livros = livroDAO.buscarLivrosDisponiveis();
 			usuarios = usuarioDAO.buscarUsuarios();
@@ -159,6 +157,32 @@ public class CadastroEmprestimoController extends DashboardController implements
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		String hoje = sdf.format(new Date(System.currentTimeMillis()));
 		idDataEmprestimo.setText(hoje);
+
+		if (InfoEmprestimoController.idEmprestimo != null) {
+			Emprestimo emprestimo = new Emprestimo(null, null, null, null, null, null, null);
+			Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null, null);
+			Usuario usuario = new Usuario(null, null, null, null, null, null, null, null, null, null, null);
+			try {
+				emprestimo = dao.getEmprestimoById(InfoEmprestimoController.idEmprestimo);
+				usuario = usuarioDAO.getByIdUsuario(emprestimo.getIdUsuario());
+				livro = livroDAO.getByIdLivro(emprestimo.getIdLivro());
+				if (emprestimo != null) {
+					populaEdicao(emprestimo, usuario, livro);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@SuppressWarnings("static-access")
+	private void populaEdicao(Emprestimo emprestimo, Usuario usuario, Livro livro) throws Exception {
+			idUsuarioSelecionar.setValue(usuario);
+			idLivroSelecionar.setValue(livro);
+			idDataEmprestimo.setText(date.dataFormatoYYYYMMDD(emprestimo.getDataEmprestimo()));
+			idDataVencimento.setText(date.dataFormatoYYYYMMDD(emprestimo.getDataVencimento()));
+			btnSalvar.setText("ATUALIZAR");
+			idTela.setText("EDITAR EMPRÉSTIMO");
 	}
 
 	@SuppressWarnings("static-access")
