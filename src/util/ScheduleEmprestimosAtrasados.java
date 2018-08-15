@@ -91,8 +91,11 @@ public class ScheduleEmprestimosAtrasados {
 
 									ImageView img = new ImageView("./images/falha.png");
 									Notifications notificationBuilder = Notifications.create()
-											.title("Emprestimo Atrasado").text("Teste").graphic(img)
-											.hideAfter(Duration.seconds(5)).position(Pos.BOTTOM_RIGHT);
+											.title("Emprestimo Atrasado")
+											.text("A devolução do Livro " + dto.getNomeLivro() + " está atrasada."
+													+ " Este livro esá com " + dto.getNomeUsuario() + " "
+													+ dto.getSobrenomeUsuario())
+											.graphic(img).hideAfter(Duration.seconds(5)).position(Pos.BOTTOM_RIGHT);
 
 									notificationBuilder.show();
 
