@@ -183,6 +183,10 @@ public class CadastroEmprestimoController extends DashboardController implements
 			idDataVencimento.setText(date.dataFormatoYYYYMMDD(emprestimo.getDataVencimento()));
 			btnSalvar.setText("ATUALIZAR");
 			idTela.setText("EDITAR EMPRÉSTIMO");
+			livros.add(livro);
+			usuarios.add(usuario);
+			preencherUsuario();
+			preencherLivro();
 	}
 
 	@SuppressWarnings("static-access")
