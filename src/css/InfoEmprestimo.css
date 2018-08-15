@@ -83,22 +83,18 @@
     -fx-font-weight: bold;
     
 }
-.button-devolver{
+.button-editar{
 	-fx-background-color: #6ED1D8;
 	-fx-background-radius:10px;
+}
+
+.button-devolver{
+	-fx-background-color:green;
+	-fx-background-radius:10px;
+	-fx-opacity:0.8;
 }
 .font-lg {
     -fx-font: 36px "Segoe UI";
     -fx-text-fill: black;
 }
 
-.btn-exclud{
-	-fx-cursor:hand;
-    -fx-border-radius:10;
-    -fx-background-radius: 10;
-    -fx-background-color: #FF0000; 
-    -fx-text-fill: white;
-    -fx-font: 20px "Segoe UI";
-    -fx-font-weight: bold;
-    -fx-opacity:0.7;
-}

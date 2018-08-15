@@ -32,3 +32,14 @@
     -fx-font-weight: bold;
     -fx-opacity:0.7;
 }
+
+.btn-devolver{
+	-fx-cursor:hand;
+    -fx-border-radius:10;
+    -fx-background-radius: 10;
+    -fx-background-color: green; 
+    -fx-text-fill: white;
+    -fx-font: 16px "Segoe UI";
+    -fx-font-weight: bold;
+    -fx-opacity:0.7;
+}

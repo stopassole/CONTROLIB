@@ -75,10 +75,8 @@ public class Deletar extends Application implements Initializable {
 	public void deletar() throws Exception {
 		if(classe.equals("Usuario")) {
 			deletarUsuario();
-		}else if(classe.equals("Livro")) {
-			deletarLivro();
 		}else {
-			deletarEmprestimo();
+			deletarLivro();
 		}
 	}
 
@@ -92,25 +90,18 @@ public class Deletar extends Application implements Initializable {
 		if (e.getCode().toString().equals("ENTER")) {
 			if(classe.equals("Usuario")) {
 				deletarUsuario();
-			}else if(classe.equals("Livro")) {
-				deletarLivro();
 			}else {
-				deletarEmprestimo();
+				deletarLivro();
 			}
 
 		}
 	}
-	
 
 	@FXML
 	public void enterPressedCancelar(KeyEvent e) {
 		if (e.getCode().toString().equals("ENTER")) {
 			fechar();
 		}
-	}
-
-	private void deletarEmprestimo() {
-		
 	}
 
 	@SuppressWarnings("static-access")

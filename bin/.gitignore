@@ -1,6 +1,3 @@
-/images/
+/css/
+/view/
 /controller/
-/dao/
-/entity/
-/resource/
-/util/

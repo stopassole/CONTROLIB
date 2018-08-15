@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 import resource.Inicio;
 import util.DateUtil;
 
@@ -79,9 +80,13 @@ public class InfoEmprestimoController extends DashboardController implements Ini
 		Inicio.myStage.setScene(scene);
 	}
 	
+	@SuppressWarnings("static-access")
 	@FXML
 	public void devolver() throws Exception{
-		
+		Devolver devolver = new Devolver();
+		devolver.clicado = idTextFlow;
+		devolver.classe = "Usuario";
+		devolver.start(new Stage());
 	}
 
 	@Override

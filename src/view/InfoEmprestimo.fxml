@@ -117,7 +117,7 @@
                   </TextField>
                </children></Pane>
             <Pane layoutX="280.0" opacity="0.5" prefHeight="800.0" prefWidth="1003.0" style="-fx-background-color: black;" />
-            <Pane layoutX="338.0" layoutY="102.0" prefHeight="622.0" prefWidth="894.0" style="-fx-background-color: white; -fx-background-radius: 10;" stylesheets="@../css/infoEmprestimo.css">
+            <Pane layoutX="338.0" layoutY="102.0" prefHeight="622.0" prefWidth="894.0" style="-fx-background-color: white; -fx-background-radius: 10;" stylesheets="@../css/InfoEmprestimo.css">
                <children>
                   <Label fx:id="idUsuario" layoutX="46.0" layoutY="43.0" prefHeight="43.0" prefWidth="649.0" styleClass="font-lg" />
                   <Button fx:id="bntCancelar" layoutX="855.0" layoutY="4.0" mnemonicParsing="false" onAction="#fechar" onKeyPressed="#enterPressedFechar" prefHeight="18.0" prefWidth="16.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
@@ -166,7 +166,7 @@
                   <Button fx:id="idEditar" layoutX="665.0" layoutY="538.0" mnemonicParsing="false" onAction="#editar" onKeyPressed="#enterPressedEditar" prefHeight="50.0" prefWidth="200.0" text="EDITAR">
                      <styleClass>
                         <String fx:value="font-md-button" />
-                        <String fx:value="button-devolver" />
+                        <String fx:value="button-editar" />
                      </styleClass>
                   </Button>
                </children>
