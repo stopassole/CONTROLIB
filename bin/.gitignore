@@ -1,3 +1,7 @@
-/css/
-/view/
+/images/
+/banco/
 /controller/
+/dao/
+/entity/
+/resource/
+/util/

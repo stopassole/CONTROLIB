@@ -214,6 +214,13 @@ public class ListEmprestimosController extends DashboardController implements In
 			falha.clicado = idTextFlow;
 			falha.start(new Stage());
 		}
+		else if (!idPesquisar.getText().isEmpty() && !idDataInicio.getText().isEmpty() && idDataFim.getText().isEmpty() 
+				|| !idPesquisar.getText().isEmpty() && idDataInicio.getText().isEmpty() && !idDataFim.getText().isEmpty()) {
+			AlertFalha falha = new AlertFalha();
+			falha.text = "Preencha os dois campos de datas para filtrar por data.";
+			falha.clicado = idTextFlow;
+			falha.start(new Stage());
+		}
 		else {
 			emprestimos = dao.buscarEmprestimos();
 		}
