@@ -7,6 +7,5 @@
 	<classpathentry kind="lib" path="C:/CONTROLIB/dependências/log4j-1.2.17.jar"/>
 	<classpathentry kind="lib" path="C:/CONTROLIB/dependências/postgresql-42.2.2.jar"/>
 	<classpathentry kind="lib" path="C:/CONTROLIB/dependências/controlsfx-8.40.14.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Alisson Stopassole/Downloads/Enzo-0.3.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
