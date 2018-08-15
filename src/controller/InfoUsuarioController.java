@@ -3,6 +3,7 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dao.EmprestimoDAO;
 import dao.UsuarioDAO;
 import entity.Usuario;
 import javafx.fxml.FXML;
@@ -100,7 +101,8 @@ public class InfoUsuarioController extends DashboardController implements Initia
 			idNomeCodigo.setText(usuario.getNome() + " " + usuario.getSobrenome() + " - " + usuario.get_id());
 			idTelefone.setText(usuario.getTelefone());
 			idTipo.setText(usuario.getTipo());
-			idTotalEmprestimo.setText("0");
+			EmprestimoDAO emprestimosDao = new EmprestimoDAO();
+			idTotalEmprestimo.setText(String.valueOf(emprestimosDao.countLivrosByIdUsuario(usuario.get_id())));
 		}
 	}
 

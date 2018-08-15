@@ -99,6 +99,27 @@ public class EmprestimoDAO {
 		return emprestimo;
 	}
 	
+	public int countLivrosByIdUsuario(String idUsuario) throws Exception {
+		log.info(END_POINT + "/validalivro -> Inicio");
+
+		Connection conexao = dao.conexaoUsuario();
+		String sql = "SELECT count(*) FROM emprestimo WHERE emprestimo.idUsuario =\'"+idUsuario+"\' AND emprestimo.deletado =\'" + false + "\';";
+		PreparedStatement stmt = conexao.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+		ResultSet resultSet = stmt.executeQuery();
+
+		int cont = 0;
+		if (resultSet.next()) {
+			cont = resultSet.getInt(1);
+		}
+
+		conexao.close();
+
+		log.info(END_POINT + "/validalivro -> Fim");
+
+		return cont;
+	}
+	
 	public List<EmprestimoDTO> buscarEmprestimos() throws Exception {
 		log.info(END_POINT + "/buscaremprestimos -> Inicio");
 
