@@ -25,7 +25,7 @@ public class LivroDAO {
 
 		Connection conexao = dao.conexaoUsuario();
 		PreparedStatement stmt = conexao.prepareStatement(
-				"INSERT INTO livro(nome,codigo,autor,genero,editora, publicacao, quantidadeTotal,quantidadeDisponivel) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+				"INSERT INTO livro(nome,codigo,autor,genero,editora, publicacao) VALUES (?, ?, ?, ?, ?, ?)");
 		stmt.setString(1, livro.getNome());
 		stmt.setString(2, livro.getCodigo());
 		stmt.setString(3, livro.getAutor());
@@ -39,10 +39,7 @@ public class LivroDAO {
 		} else {
 			stmt.setDate(6, null);
 		}
-		stmt.setInt(7, livro.getQuantidadeTotal());
-		// A quantidade disponível Inicial é a mesma da quantidade total;
-		stmt.setInt(8, livro.getQuantidadeTotal());
-
+		
 		stmt.executeUpdate();
 
 		conexao.close();
@@ -53,12 +50,12 @@ public class LivroDAO {
 
 	public void editarLivro(String idLivroEditar, Livro livro) throws Exception {
 		log.info(END_POINT + "/editarlivro -> Inicio");
-
-		Livro usuarioEditar = getByIdLivro(idLivroEditar);
+		
+		Livro livroById = getByIdLivro(idLivroEditar);
 
 		Connection conexao = dao.conexaoUsuario();
 		PreparedStatement stmt = conexao.prepareStatement(
-				"UPDATE livro SET nome = ?, codigo = ?, autor = ?,  genero = ?, editora = ? , publicacao = ?, quantidadeTotal = ?, quantidadeDisponivel = ?  WHERE _id = \'"
+				"UPDATE livro SET nome = ?, codigo = ?, autor = ?,  genero = ?, editora = ? , publicacao = ?,  disponivel = ?  WHERE _id = \'"
 						+ idLivroEditar + "\';");
 
 		stmt.setString(1, livro.getNome());
@@ -74,9 +71,8 @@ public class LivroDAO {
 		} else {
 			stmt.setDate(6, null);
 		}
-		stmt.setInt(7, livro.getQuantidadeTotal());
-		stmt.setInt(8, livro.getQuantidadeTotal()
-				- (usuarioEditar.getQuantidadeTotal() - usuarioEditar.getQuantidadeDisponivel()));
+		stmt.setBoolean(7, livroById.getDisponivel());
+
 
 		stmt.executeUpdate();
 
@@ -85,28 +81,26 @@ public class LivroDAO {
 		log.info(END_POINT + "/editarlivro -> Fim");
 	}
 
-	public void editarQuantidadeDisponivel(String idLivroEditar, Integer quantidade) throws Exception {
-		log.info(END_POINT + "/editarquatidadedisponivel -> Inicio");
+	public void editarDisponivel(String idLivroEditar, Boolean disponivel) throws Exception {
+		log.info(END_POINT + "/editardisponivel -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
 		PreparedStatement stmt = conexao
-				.prepareStatement("UPDATE livro SET quantidadeDisponivel = ? WHERE _id = \'" + idLivroEditar + "\';");
-		stmt.setInt(1, quantidade);
+				.prepareStatement("UPDATE livro SET disponivel = ? WHERE _id = \'" + idLivroEditar + "\';");
+		stmt.setBoolean(1, disponivel);
 
 		stmt.executeUpdate();
 
 		conexao.close();
 
-		log.info(END_POINT + "/editarquatidadedisponivel -> Fim");
+		log.info(END_POINT + "/editardisponivel -> Fim");
 	}
 
 	public int validaLivro(Livro livro) throws Exception {
 		log.info(END_POINT + "/validalivro -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
-		String sql = "SELECT count(*) FROM livro WHERE livro.nome= \'" + livro.getNome() + "\'AND livro.autor =\'"
-				+ livro.getAutor() + "\'AND livro.quantidadetotal =\'" + livro.getQuantidadeTotal()
-				+ "\'AND livro.deletado =\'" + false + "\';";
+		String sql = "SELECT count(*) FROM livro WHERE livro.codigo= \'" + livro.getCodigo() + "\'AND livro.deletado =\'" + false + "\';";
 		PreparedStatement stmt = conexao.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE,
 				ResultSet.CONCUR_READ_ONLY);
 		ResultSet resultSet = stmt.executeQuery();
@@ -133,7 +127,7 @@ public class LivroDAO {
 		List<Livro> list = new ArrayList<>();
 
 		while (rs.next()) {
-			Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null, null);
+			Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null);
 
 			livro.set_id(rs.getString("_id"));
 			livro.setNome(rs.getString("nome"));
@@ -142,8 +136,7 @@ public class LivroDAO {
 			livro.setGenero(rs.getString("genero"));
 			livro.setEditora(rs.getString("editora"));
 			livro.setPublicacao(String.valueOf(rs.getDate("publicacao")));
-			livro.setQuantidadeTotal(rs.getInt("quantidadetotal"));
-			livro.setQuantidadeDisponivel(rs.getInt("quantidadedisponivel"));
+			livro.setDisponivel(rs.getBoolean("disponivel"));
 			livro.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 			livro.setDeletado(rs.getBoolean("deletado"));
 
@@ -161,13 +154,13 @@ public class LivroDAO {
 		log.info(END_POINT + "/buscarlivrosdisponiveis -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
-		PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM livro WHERE deletado = false AND livro.quantidadedisponivel > 0;");
+		PreparedStatement stmt = conexao.prepareStatement("SELECT * FROM livro WHERE deletado = false AND livro.disponivel = true;");
 		ResultSet rs = stmt.executeQuery();
 
 		List<Livro> list = new ArrayList<>();
 
 		while (rs.next()) {
-			Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null, null);
+			Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null);
 
 			livro.set_id(rs.getString("_id"));
 			livro.setNome(rs.getString("nome"));
@@ -176,8 +169,7 @@ public class LivroDAO {
 			livro.setGenero(rs.getString("genero"));
 			livro.setEditora(rs.getString("editora"));
 			livro.setPublicacao(String.valueOf(rs.getDate("publicacao")));
-			livro.setQuantidadeTotal(rs.getInt("quantidadetotal"));
-			livro.setQuantidadeDisponivel(rs.getInt("quantidadedisponivel"));
+			livro.setDisponivel(rs.getBoolean("disponivel"));
 			livro.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 			livro.setDeletado(rs.getBoolean("deletado"));
 
@@ -203,7 +195,7 @@ public class LivroDAO {
 		List<Livro> list = new ArrayList<>();
 
 		while (rs.next()) {
-			Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null, null);
+			Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null);
 
 			livro.set_id(rs.getString("_id"));
 			livro.setNome(rs.getString("nome"));
@@ -212,8 +204,7 @@ public class LivroDAO {
 			livro.setGenero(rs.getString("genero"));
 			livro.setEditora(rs.getString("editora"));
 			livro.setPublicacao(String.valueOf(rs.getDate("publicacao")));
-			livro.setQuantidadeTotal(rs.getInt("quantidadetotal"));
-			livro.setQuantidadeDisponivel(rs.getInt("quantidadedisponivel"));
+			livro.setDisponivel(rs.getBoolean("disponivel"));
 			livro.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 			livro.setDeletado(rs.getBoolean("deletado"));
 
@@ -249,7 +240,7 @@ public class LivroDAO {
 				.prepareStatement("SELECT * FROM livro WHERE deletado = false and _id = \'" + idLivro + "\';");
 		ResultSet rs = stmt.executeQuery();
 
-		Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null, null);
+		Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null);
 
 		if (rs.next()) {
 
@@ -260,8 +251,7 @@ public class LivroDAO {
 			livro.setGenero(rs.getString("genero"));
 			livro.setEditora(rs.getString("editora"));
 			livro.setPublicacao(String.valueOf(rs.getDate("publicacao")));
-			livro.setQuantidadeTotal(rs.getInt("quantidadetotal"));
-			livro.setQuantidadeDisponivel(rs.getInt("quantidadedisponivel"));
+			livro.setDisponivel(rs.getBoolean("disponivel"));
 			livro.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 			livro.setDeletado(rs.getBoolean("deletado"));
 		}

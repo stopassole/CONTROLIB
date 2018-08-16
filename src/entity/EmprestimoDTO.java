@@ -13,8 +13,7 @@ public class EmprestimoDTO {
 	private String autorLivro;
 	private String generoLivro;
 	private String editoraLivro;
-	private Integer quantidadeTotalLivro;
-	private Integer quantidadeDisponivelLivro;
+	private Boolean livroDisponivel;
 	private String dataCadastroLivro;
 	private String publicacaoLivro;
 	private Boolean livroDeletado;
@@ -125,20 +124,12 @@ public class EmprestimoDTO {
 		this.editoraLivro = editoraLivro;
 	}
 
-	public Integer getQuantidadeTotalLivro() {
-		return quantidadeTotalLivro;
+	public Boolean getLivroDisponivel() {
+		return livroDisponivel;
 	}
 
-	public void setQuantidadeTotalLivro(Integer quantidadeTotalLivro) {
-		this.quantidadeTotalLivro = quantidadeTotalLivro;
-	}
-
-	public Integer getQuantidadeDisponivelLivro() {
-		return quantidadeDisponivelLivro;
-	}
-
-	public void setQuantidadeDisponivelLivro(Integer quantidadeDisponivelLivro) {
-		this.quantidadeDisponivelLivro = quantidadeDisponivelLivro;
+	public void setLivroDisponivel(Boolean livroDisponivel) {
+		this.livroDisponivel = livroDisponivel;
 	}
 
 	public String getDataCadastroLivro() {
@@ -247,8 +238,7 @@ public class EmprestimoDTO {
 
 	public EmprestimoDTO(String _id, String idUsuario, String idLivro, String dataEmprestimo, String dataVencimento,
 			String dataCadastroEmprestimo, Boolean emprestimoDeletado, String nomeLivro, String codigoLivro,
-			String autorLivro, String generoLivro, String editoraLivro, Integer quantidadeTotalLivro,
-			Integer quantidadeDisponivelLivro, String dataCadastroLivro, String publicacaoLivro, Boolean livroDeletado,
+			String autorLivro, String generoLivro, String editoraLivro, Boolean livroDisponivel, String dataCadastroLivro, String publicacaoLivro, Boolean livroDeletado,
 			String nomeUsuario, String sobrenomeUsuario, String enderecoUsuario, String emailUsuario,
 			String telefoneUsuario, String CPFUsuario, String dataNascimentoUsuario, String tipoUsuario,
 			String dataCadastroUsuario, Boolean usuarioDeletado) {
@@ -264,8 +254,7 @@ public class EmprestimoDTO {
 		this.autorLivro = autorLivro;
 		this.generoLivro = generoLivro;
 		this.editoraLivro = editoraLivro;
-		this.quantidadeTotalLivro = quantidadeTotalLivro;
-		this.quantidadeDisponivelLivro = quantidadeDisponivelLivro;
+		this.livroDisponivel = livroDisponivel;
 		this.dataCadastroLivro = dataCadastroLivro;
 		this.publicacaoLivro = publicacaoLivro;
 		this.livroDeletado = livroDeletado;

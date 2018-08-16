@@ -46,7 +46,7 @@ public class EmprestimoDAO {
 
 	}
 	
-	public void editarLivro(String idEmprestimo, Emprestimo emprestimo) throws Exception {
+	public void editarEmprestimo(String idEmprestimo, Emprestimo emprestimo) throws Exception {
 		log.info(END_POINT + "/editaremprestimo -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
@@ -71,6 +71,20 @@ public class EmprestimoDAO {
 		log.info(END_POINT + "/editaremprestimo -> Fim");
 	}
 
+	public void devolverEmprestimo(String idEmprestimo) throws Exception {
+		log.info(END_POINT + "/devolveremprestimo -> Inicio");
+
+		Connection conexao = dao.conexaoUsuario();
+		PreparedStatement stmt = conexao.prepareStatement(
+				"UPDATE emprestimo SET deletado = true  WHERE _id = \'" + idEmprestimo + "\';");
+
+		stmt.executeUpdate();
+
+		conexao.close();
+
+		log.info(END_POINT + "/devolveremprestimo -> Fim");
+	}
+	
 	public Emprestimo getEmprestimoById(String idEmprestimo) throws Exception {
 		log.info(END_POINT + "/buscaremprestimobyid -> Inicio");
 
@@ -99,11 +113,32 @@ public class EmprestimoDAO {
 		return emprestimo;
 	}
 	
-	public int countLivrosByIdUsuario(String idUsuario) throws Exception {
+	public int countEmprestimosByIdUsuario(String idUsuario) throws Exception {
 		log.info(END_POINT + "/validalivro -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
 		String sql = "SELECT count(*) FROM emprestimo WHERE emprestimo.idUsuario =\'"+idUsuario+"\' AND emprestimo.deletado =\'" + false + "\';";
+		PreparedStatement stmt = conexao.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+		ResultSet resultSet = stmt.executeQuery();
+
+		int cont = 0;
+		if (resultSet.next()) {
+			cont = resultSet.getInt(1);
+		}
+
+		conexao.close();
+
+		log.info(END_POINT + "/validalivro -> Fim");
+
+		return cont;
+	}
+	
+	public int countEmprestimosByIdLivro(String idLivro) throws Exception {
+		log.info(END_POINT + "/validalivro -> Inicio");
+
+		Connection conexao = dao.conexaoUsuario();
+		String sql = "SELECT count(*) FROM emprestimo WHERE emprestimo.idLivro =\'"+idLivro+"\' AND emprestimo.deletado =\'" + false + "\';";
 		PreparedStatement stmt = conexao.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE,
 				ResultSet.CONCUR_READ_ONLY);
 		ResultSet resultSet = stmt.executeQuery();
@@ -132,7 +167,7 @@ public class EmprestimoDAO {
 
 		while (rs.next()) {
 			EmprestimoDTO dto = new EmprestimoDTO(null, null, null, null, null, null, null, null, null, null, null,
-					null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+					null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 			pupula(dto, rs);
 
@@ -156,7 +191,7 @@ public class EmprestimoDAO {
 		ResultSet rs = stmt.executeQuery();
 
 		EmprestimoDTO dto = new EmprestimoDTO(null, null, null, null, null, null, null, null, null, null, null, null,
-				null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+				null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 		if (rs.next()) {
 			pupula(dto, rs);
@@ -182,7 +217,7 @@ public class EmprestimoDAO {
 
 		while (rs.next()) {
 			EmprestimoDTO dto = new EmprestimoDTO(null, null, null, null, null, null, null, null, null, null, null,
-					null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+					null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 			pupula(dto, rs);
 
@@ -216,7 +251,7 @@ public class EmprestimoDAO {
 
 		while (rs.next()) {
 			EmprestimoDTO dto = new EmprestimoDTO(null, null, null, null, null, null, null, null, null, null, null,
-					null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+					null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 			pupula(dto, rs);
 
@@ -249,7 +284,7 @@ public class EmprestimoDAO {
 
 		while (rs.next()) {
 			EmprestimoDTO dto = new EmprestimoDTO(null, null, null, null, null, null, null, null, null, null, null,
-					null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+					null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 			pupula(dto, rs);
 
@@ -276,8 +311,7 @@ public class EmprestimoDAO {
 		dto.setAutorLivro(rs.getString("autorLivro"));
 		dto.setGeneroLivro(rs.getString("generoLivro"));
 		dto.setEditoraLivro(rs.getString("editoraLivro"));
-		dto.setQuantidadeTotalLivro(rs.getInt("quantidadeTotalLivro"));
-		dto.setQuantidadeDisponivelLivro(rs.getInt("quantidadeDisponivelLivro"));
+		dto.setLivroDisponivel(rs.getBoolean("livroDisponivel"));
 		dto.setDataCadastroLivro(String.valueOf(rs.getDate("dataCadastroLivro")));
 		dto.setPublicacaoLivro(String.valueOf(rs.getDate("publicacaoLivro")));
 		dto.setLivroDeletado(rs.getBoolean("livroDeletado"));

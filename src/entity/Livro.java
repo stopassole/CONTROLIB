@@ -7,8 +7,7 @@ public class Livro {
 	private String autor;
 	private String genero;
 	private String editora;
-	private Integer quantidadeTotal;
-	private Integer quantidadeDisponivel;
+	public Boolean disponivel;
 	private String dataCadastro;
 	private String publicacao;
 	private Boolean deletado;
@@ -61,20 +60,12 @@ public class Livro {
 		this.editora = editora;
 	}
 
-	public Integer getQuantidadeTotal() {
-		return quantidadeTotal;
+	public Boolean getDisponivel() {
+		return disponivel;
 	}
 
-	public void setQuantidadeTotal(Integer quantidadeTotal) {
-		this.quantidadeTotal = quantidadeTotal;
-	}
-
-	public Integer getQuantidadeDisponivel() {
-		return quantidadeDisponivel;
-	}
-
-	public void setQuantidadeDisponivel(Integer quantidadeDisponivel) {
-		this.quantidadeDisponivel = quantidadeDisponivel;
+	public void setDisponivel(Boolean disponivel) {
+		this.disponivel = disponivel;
 	}
 
 	public String getDataCadastro() {
@@ -102,16 +93,14 @@ public class Livro {
 	}
 
 	public Livro(String _id, String nome, String codigo, String autor, String genero, String editora,
-			Integer quantidadeTotal, Integer quantidadeDisponivel, String dataCadastro, String publicacao,
-			Boolean deletado) {
+			Boolean disponivel, String dataCadastro, String publicacao, Boolean deletado) {
 		this._id = _id;
 		this.nome = nome;
 		this.codigo = codigo;
 		this.autor = autor;
 		this.genero = genero;
 		this.editora = editora;
-		this.quantidadeTotal = quantidadeTotal;
-		this.quantidadeDisponivel = quantidadeDisponivel;
+		this.disponivel = disponivel;
 		this.dataCadastro = dataCadastro;
 		this.publicacao = publicacao;
 		this.deletado = deletado;

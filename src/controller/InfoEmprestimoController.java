@@ -63,6 +63,8 @@ public class InfoEmprestimoController extends DashboardController implements Ini
 	private Label idPublicacao;
 
 	public static String idEmprestimo = null;
+	
+	public static String idLivroDevolver = null;
 
 	EmprestimoDAO dao = new EmprestimoDAO();
 
@@ -104,6 +106,7 @@ public class InfoEmprestimoController extends DashboardController implements Ini
 	@SuppressWarnings("static-access")
 	private void popularInformacao(EmprestimoDTO emprestimo) throws Exception {
 		idEmprestimo = emprestimo.get_id();
+		idLivroDevolver = emprestimo.getIdLivro();
 		DateUtil date = new DateUtil();
 		idUsuario.setText(emprestimo.getNomeUsuario() + " " + emprestimo.getSobrenomeUsuario() + " " + emprestimo.getIdUsuario());
 		idEmail.setText(emprestimo.getEmailUsuario());

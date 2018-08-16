@@ -100,13 +100,14 @@ public class CadastroEmprestimoController extends DashboardController implements
 
 					if (InfoEmprestimoController.idEmprestimo == null) {
 						dao.salvarEmprestimo(emprestimo);
+						livroDAO.editarDisponivel(emprestimo.getIdLivro(), false);
 						fechar();
 						AlertSucesso sucesso = new AlertSucesso();
 						sucesso.text = "Salvo com sucesso";
 						sucesso.clicado = idTextFlow;
 						sucesso.start(new Stage());
 					} else {
-						dao.editarLivro(InfoEmprestimoController.idEmprestimo, emprestimo);
+						dao.editarEmprestimo(InfoEmprestimoController.idEmprestimo, emprestimo);
 						fechar();
 						AlertSucesso sucesso = new AlertSucesso();
 						sucesso.text = "Editado com sucesso";
@@ -148,11 +149,6 @@ public class CadastroEmprestimoController extends DashboardController implements
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		idUsuarioSelecionar.getItems().addAll(usuarios);
-		idLivroSelecionar.getItems().addAll(livros);
-
-		new ComboBoxAutoComplete<Usuario>(idUsuarioSelecionar);
-		new ComboBoxAutoComplete<Livro>(idLivroSelecionar);
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		String hoje = sdf.format(new Date(System.currentTimeMillis()));
@@ -160,7 +156,7 @@ public class CadastroEmprestimoController extends DashboardController implements
 
 		if (InfoEmprestimoController.idEmprestimo != null) {
 			Emprestimo emprestimo = new Emprestimo(null, null, null, null, null, null, null);
-			Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null, null);
+			Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null);
 			Usuario usuario = new Usuario(null, null, null, null, null, null, null, null, null, null, null);
 			try {
 				emprestimo = dao.getEmprestimoById(InfoEmprestimoController.idEmprestimo);
@@ -173,6 +169,12 @@ public class CadastroEmprestimoController extends DashboardController implements
 				e.printStackTrace();
 			}
 		}
+		
+		idUsuarioSelecionar.getItems().addAll(usuarios);
+		idLivroSelecionar.getItems().addAll(livros);
+
+		new ComboBoxAutoComplete<Usuario>(idUsuarioSelecionar);
+		new ComboBoxAutoComplete<Livro>(idLivroSelecionar);
 	}
 
 	@SuppressWarnings("static-access")
@@ -184,7 +186,6 @@ public class CadastroEmprestimoController extends DashboardController implements
 			btnSalvar.setText("ATUALIZAR");
 			idTela.setText("EDITAR EMPRÉSTIMO");
 			livros.add(livro);
-			usuarios.add(usuario);
 			preencherUsuario();
 			preencherLivro();
 	}

@@ -106,7 +106,7 @@
                </children>
             </Pane>
             <Pane disable="true" layoutX="280.0" opacity="0.5" prefHeight="801.0" prefWidth="1035.0" style="-fx-background-color: black;" stylesheets="@../css/InfoLivros.css" />
-            <Pane layoutX="458.0" layoutY="175.0" prefHeight="359.0" prefWidth="600.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="-" stylesheets="@../css/InfoLivros.css">
+            <Pane layoutX="458.0" layoutY="175.0" prefHeight="335.0" prefWidth="600.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="-" stylesheets="@../css/InfoLivros.css">
                <children>
                   <Label fx:id="idNome" layoutX="37.0" layoutY="39.0" prefHeight="48.0" prefWidth="520.0" styleClass="font-lg" />
                   <Button fx:id="btnCancelar" layoutX="563.0" layoutY="11.0" mnemonicParsing="false" onAction="#fechar" prefHeight="18.0" prefWidth="16.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
@@ -126,13 +126,8 @@
                   <Label fx:id="idPublicacao" layoutX="139.0" layoutY="170.0" prefHeight="28.0" prefWidth="146.0" styleClass="font-md" />
                   <Label layoutX="322.0" layoutY="170.0" prefHeight="28.0" prefWidth="75.0" style="-fx-font-weight: bold;" styleClass="font-md" text="Editora:" />
                   <Label fx:id="idEditora" layoutX="394.0" layoutY="170.0" prefHeight="28.0" prefWidth="182.0" styleClass="font-md" />
-                  <Separator layoutX="37.0" layoutY="210.0" prefHeight="24.0" prefWidth="530.0" style="-fx-border-color: WHITE;" />
-                  <Label layoutX="41.0" layoutY="251.0" prefHeight="30.0" prefWidth="153.0" style="-fx-font-weight: bold;" styleClass="font-emprestimo" stylesheets="@../css/InfoLivros.css" text="Quantidade total:" />
-                  <Label fx:id="idQuantidadeTotal" layoutX="191.0" layoutY="251.0" prefHeight="30.0" prefWidth="66.0" styleClass="font-emprestimo" />
-                  <Label layoutX="322.0" layoutY="251.0" prefHeight="30.0" prefWidth="202.0" style="-fx-font-weight: bold;" styleClass="font-emprestimo" stylesheets="@../css/InfoLivros.css" text="Quantidade disponivel:" />
-                  <Label fx:id="idQuantidadeDisponivel" layoutX="523.0" layoutY="251.0" prefHeight="30.0" prefWidth="48.0" styleClass="font-emprestimo" />
-                  <Button fx:id="btnExcluir" layoutX="310.0" layoutY="304.0" mnemonicParsing="false" onAction="#excluir" onKeyPressed="#enterPressedExcluir" prefHeight="41.0" prefWidth="121.0" styleClass="btn-exclud" text="Excluir" />
-                  <Button fx:id="btnEditar" layoutX="450.0" layoutY="304.0" mnemonicParsing="false" onAction="#editar" onKeyPressed="#enterPressedEditar" prefHeight="41.0" prefWidth="121.0" styleClass="btn-edit" text="Editar" />
+                  <Button fx:id="btnExcluir" layoutX="310.0" layoutY="259.0" mnemonicParsing="false" onAction="#excluir" onKeyPressed="#enterPressedExcluir" prefHeight="41.0" prefWidth="121.0" styleClass="btn-exclud" text="Excluir" />
+                  <Button fx:id="btnEditar" layoutX="450.0" layoutY="259.0" mnemonicParsing="false" onAction="#editar" onKeyPressed="#enterPressedEditar" prefHeight="41.0" prefWidth="121.0" styleClass="btn-edit" text="Editar" />
                </children>
             </Pane>
          </children>

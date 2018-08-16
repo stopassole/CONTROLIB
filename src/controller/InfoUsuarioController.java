@@ -72,10 +72,20 @@ public class InfoUsuarioController extends DashboardController implements Initia
 	@SuppressWarnings("static-access")
 	@FXML
 	public void excluir() throws Exception {
-		Deletar deletar = new Deletar();
-		deletar.clicado = idTextFlow;
-		deletar.classe = "Usuario";
-		deletar.start(new Stage());
+		EmprestimoDAO dao = new EmprestimoDAO();
+		int cont = dao.countEmprestimosByIdUsuario(idUsuarioEditar);
+		if (cont == 0) {
+			Deletar deletar = new Deletar();
+			deletar.clicado = idTextFlow;
+			deletar.classe = "Usuario";
+			deletar.start(new Stage());
+		} else {
+			fechar();
+			AlertFalha falha = new AlertFalha();
+			falha.text = "Não é possível excluir este Usuário \n Existem emprestimos cadastrados para o mesmo";
+			falha.clicado = idTextFlow;
+			falha.start(new Stage());
+		}
 	}
 
 	@Override
@@ -102,7 +112,7 @@ public class InfoUsuarioController extends DashboardController implements Initia
 			idTelefone.setText(usuario.getTelefone());
 			idTipo.setText(usuario.getTipo());
 			EmprestimoDAO emprestimosDao = new EmprestimoDAO();
-			idTotalEmprestimo.setText(String.valueOf(emprestimosDao.countLivrosByIdUsuario(usuario.get_id())));
+			idTotalEmprestimo.setText(String.valueOf(emprestimosDao.countEmprestimosByIdUsuario(usuario.get_id())));
 		}
 	}
 

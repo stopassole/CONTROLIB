@@ -54,7 +54,7 @@ public class ListLivrosController extends DashboardController implements Initial
 
 	public static String idLivro = null;
 
-	private static Integer disponivel = null;
+	private static Boolean disponivel = null;
 
 	CadastroLivroController cadastroLivro = new CadastroLivroController();
 
@@ -77,7 +77,7 @@ public class ListLivrosController extends DashboardController implements Initial
 		columnTitulo.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNome()));
 		columnAutor.setCellValueFactory(celula -> {
 			idLivro = celula.getValue().get_id();
-			disponivel = celula.getValue().getQuantidadeDisponivel();
+			disponivel = celula.getValue().getDisponivel();
 			return new SimpleStringProperty(celula.getValue().getAutor());
 		});
 		columnGenero.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getGenero()));
@@ -97,7 +97,7 @@ public class ListLivrosController extends DashboardController implements Initial
 					public void updateItem(ImageView img, boolean empty) {
 						super.updateItem(img, empty);
 						if (!empty) {
-							if (disponivel > 0) {
+							if (disponivel) {
 								button.setGraphic(img1);
 							} else {
 								button.setGraphic(img2);

@@ -3,6 +3,7 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dao.EmprestimoDAO;
 import dao.LivroDAO;
 import entity.Livro;
 import javafx.fxml.FXML;
@@ -32,10 +33,6 @@ public class InfoLivroController extends DashboardController implements Initiali
 	@FXML
 	private Label idEditora;
 	@FXML
-	private Label idQuantidadeTotal;
-	@FXML
-	private Label idQuantidadeDisponivel;
-	@FXML
 	private Button btnCancelar;
 	@FXML
 	private Button btnEditar;
@@ -63,10 +60,20 @@ public class InfoLivroController extends DashboardController implements Initiali
 	@SuppressWarnings("static-access")
 	@FXML
 	public void excluir() throws Exception {
-		Deletar deletar = new Deletar();
-		deletar.clicado = idTextFlow;
-		deletar.classe = "Livro";
-		deletar.start(new Stage());
+		EmprestimoDAO dao = new EmprestimoDAO();
+		int cont = dao.countEmprestimosByIdLivro(idLivroEditar);
+		if (cont == 0) {
+			Deletar deletar = new Deletar();
+			deletar.clicado = idTextFlow;
+			deletar.classe = "Livro";
+			deletar.start(new Stage());
+		} else {
+			fechar();
+			AlertFalha falha = new AlertFalha();
+			falha.text = "Não é possível excluir este Livro \n Existem emprestimos cadastrados com o mesmo";
+			falha.clicado = idTextFlow;
+			falha.start(new Stage());
+		}
 	}
 
 	@Override
@@ -96,8 +103,6 @@ public class InfoLivroController extends DashboardController implements Initiali
 			if (!livro.getPublicacao().equals("null")) {
 				idPublicacao.setText(dateUtil.dataFormatoYYYYMMDD(livro.getPublicacao()));
 			}
-			idQuantidadeTotal.setText(String.valueOf(livro.getQuantidadeTotal()));
-			idQuantidadeDisponivel.setText(String.valueOf(livro.getQuantidadeDisponivel()));
 		}
 	}
 

@@ -94,8 +94,7 @@ public class CreateDatabase extends Task<Void> {
 					+ "					genero character varying(255),\r\n"
 					+ "					editora character varying(255),\r\n"
 					+ "					publicacao date,\r\n"
-					+ "					quantidadetotal integer not null,\r\n"
-					+ "					quantidadedisponivel integer not null,\r\n"
+					+ "					disponivel boolean default true,\r\n"
 					+ "					dataCadastro date default now(),\r\n"
 					+ "					deletado boolean default false,\r\n"
 					+ "					CONSTRAINT livro_pkey PRIMARY KEY (_id)) ";
@@ -166,8 +165,7 @@ public class CreateDatabase extends Task<Void> {
 					"livro.autor as autorLivro,\r\n" + 
 					"livro.genero as generoLivro,\r\n" + 
 					"livro.editora as editoraLivro,\r\n" + 
-					"livro.quantidadeTotal as quantidadeTotalLivro,\r\n" + 
-					"livro.quantidadeDisponivel as quantidadeDisponivelLivro,\r\n" + 
+					"livro.disponivel as livroDisponivel,\r\n" + 
 					"livro.dataCadastro as dataCadastroLivro,\r\n" + 
 					"livro.publicacao as publicacaoLivro,\r\n" + 
 					"livro.deletado as livroDeletado,\r\n" + 

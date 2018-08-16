@@ -3,6 +3,8 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dao.EmprestimoDAO;
+import dao.LivroDAO;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -73,8 +75,28 @@ public class Devolver extends Application implements Initializable{
 		fechar();
 	}
 	
-	public void devolver() {
-		
+	@SuppressWarnings("static-access")
+	public void devolver() throws Exception {
+		LivroDAO livroDAO = new LivroDAO();
+		EmprestimoDAO dao = new EmprestimoDAO();
+		InfoEmprestimoController info = new InfoEmprestimoController();
+		try {
+			livroDAO.editarDisponivel(InfoEmprestimoController.idLivroDevolver, true);
+			dao.devolverEmprestimo(InfoEmprestimoController.idEmprestimo);
+			fechar();
+			info.fechar();
+			AlertSucesso sucesso = new AlertSucesso();
+			sucesso.text = "Devolvido com sucesso";
+			sucesso.clicado = clicado;
+			sucesso.start(new Stage());
+		} catch (Exception e) {
+			fechar();
+			info.fechar();
+			AlertFalha sucesso = new AlertFalha();
+			sucesso.text = "Falha ao devolver";
+			sucesso.clicado = clicado;
+			sucesso.start(new Stage());
+		}
 	}
 
 	@FXML

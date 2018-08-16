@@ -11,7 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.TextFlow;
@@ -35,8 +34,6 @@ public class CadastroLivroController extends DashboardController implements Init
 	@FXML
 	private TextField idEditora;
 	@FXML
-	private Spinner<Integer> idQuantidade;
-	@FXML
 	private Button btnCancelar;
 	@FXML
 	private Button btnFechar;
@@ -57,7 +54,7 @@ public class CadastroLivroController extends DashboardController implements Init
 	@SuppressWarnings("static-access")
 	@FXML
 	public void salvarLivro() throws Exception {
-		Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null, null);
+		Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null);
 		Boolean ok = true;
 
 		if (!idPublicacao.getText().isEmpty() && !validaPublicacao()) {
@@ -71,7 +68,6 @@ public class CadastroLivroController extends DashboardController implements Init
 				livro.setPublicacao(idPublicacao.getText());
 				livro.setEditora(idEditora.getText());
 				livro.setGenero(idGenero.getText());
-				livro.setQuantidadeTotal(idQuantidade.getValue());
 
 				if (InfoLivroController.idLivroEditar == null) {
 					int cont = dao.validaLivro(livro);
@@ -84,7 +80,7 @@ public class CadastroLivroController extends DashboardController implements Init
 						sucesso.start(new Stage());
 					} else {
 						AlertFalha falha = new AlertFalha();
-						falha.text = "Livro com estes dados já cadastrado";
+						falha.text = "Livro com este código já cadastrado";
 						falha.clicado = idTextFlow;
 						falha.start(new Stage());
 					}
@@ -119,7 +115,7 @@ public class CadastroLivroController extends DashboardController implements Init
 	}
 
 	private boolean verificaVazio() {
-		return idNome.getText().isEmpty() || idAutor.getText().isEmpty() || idQuantidade.getValue() == null;
+		return idNome.getText().isEmpty() || idAutor.getText().isEmpty();
 	}
 
 	@Override
@@ -145,18 +141,6 @@ public class CadastroLivroController extends DashboardController implements Init
 		idAutor.setText(livro.getAutor());
 		idGenero.setText(livro.getGenero());
 		idEditora.setText(livro.getEditora());
-		idQuantidade.getValueFactory().setValue(livro.getQuantidadeTotal());
-		configuraQuantidade();
-	}
-	
-	@FXML
-	public void configuraQuantidade() {
-		if(idCodigo.getText() != null && !idCodigo.getText().isEmpty()) {
-			idQuantidade.getValueFactory().setValue(1);
-			idQuantidade.setDisable(true);
-		}else {
-			idQuantidade.setDisable(false);
-		}
 	}
 
 	@FXML
