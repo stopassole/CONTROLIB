@@ -74,6 +74,9 @@ public class CadastroDAO {
 	}
 
 	public String getValida(String email, String cpf) throws Exception {
+		
+		log.info(END_POINT + "/validaalterarsenha -> Inicio");
+		
 		Connection conexao = dao.conexaoUsuario();
 		PreparedStatement stmt = conexao
 				.prepareStatement("SELECT _id FROM cadastro WHERE cadastro.email= ? AND cadastro.cpf = ?;");
@@ -86,7 +89,7 @@ public class CadastroDAO {
 		if (rs.next()) {
 			valor = rs.getString("_id");
 		}
-		log.info(END_POINT + "/alterarlembrarsenha -> Inicio");
+		log.info(END_POINT + "/validaalterarsenha -> Inicio");
 
 		conexao.close();
 
@@ -94,6 +97,9 @@ public class CadastroDAO {
 	}
 
 	public String getValidaCadastro(String email, String senha) throws Exception {
+		
+		log.info(END_POINT + "/validalogin -> Inicio");
+		
 		Connection conexao = dao.conexaoUsuario();
 		PreparedStatement stmt = conexao
 				.prepareStatement("SELECT _id FROM cadastro WHERE cadastro.email= ? AND cadastro.senha = ?;");
@@ -108,6 +114,8 @@ public class CadastroDAO {
 		}
 
 		conexao.close();
+		
+		log.info(END_POINT + "/validalogin -> Fim");
 
 		return valor;
 	}

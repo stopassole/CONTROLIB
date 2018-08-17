@@ -21,7 +21,7 @@ public class UsuarioDAO {
 	DAO dao = new DAO();
 
 	public void salvarUsuario(Usuario usuario) throws Exception {
-		log.info(END_POINT + "/salvarusuairo -> Inicio");
+		log.info(END_POINT + "/salvarusuario -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
 		PreparedStatement stmt = conexao.prepareStatement(
@@ -42,7 +42,7 @@ public class UsuarioDAO {
 
 		conexao.close();
 
-		log.info(END_POINT + "/salvarusuairo -> Fim");
+		log.info(END_POINT + "/salvarusuario -> Fim");
 	}
 
 	public List<Usuario> buscarUsuarios() throws Exception {
@@ -177,7 +177,7 @@ public class UsuarioDAO {
 		return list;
 	}
 
-	public int validaUsuario(Usuario usuario) throws Exception {
+	public List<Usuario> validaUsuario(Usuario usuario) throws Exception {
 
 		log.info(END_POINT + "/validausuario -> Inicio");
 
@@ -186,24 +186,40 @@ public class UsuarioDAO {
 		SimpleDateFormat novaData = new SimpleDateFormat("yyyy-MM-dd");
 
 		Connection conexao = dao.conexaoUsuario();
-		String sql = "SELECT count(*) FROM usuario WHERE usuario.nome= \'" + usuario.getNome()
+		String sql = "SELECT * FROM usuario WHERE usuario.nome= \'" + usuario.getNome()
 				+ "\'AND usuario.sobrenome =\'" + usuario.getSobrenome() + "\'AND usuario.email =\'"
 				+ usuario.getEmail() + "\'AND usuario.telefone =\'" + usuario.getTelefone()
 				+ "\'AND usuario.datanascimento =\'" + Date.valueOf(novaData.format(date)) + "\'AND usuario.tipo =\'"
 				+ usuario.getTipo() + "\'AND usuario.deletado =\'" + false + "\';";
 		PreparedStatement stmt = conexao.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE,
 				ResultSet.CONCUR_READ_ONLY);
-		ResultSet resultSet = stmt.executeQuery();
-		int cont = 0;
-		if (resultSet.next()) {
-			cont = resultSet.getInt(1);
+		ResultSet rs = stmt.executeQuery();
+		
+		List<Usuario> list = new ArrayList<>();
+
+		while (rs.next()) {
+			Usuario u = new Usuario(null, null, null, null, null, null, null, null, null, null, null);
+
+			u.set_id(rs.getString("_id"));
+			u.setNome(rs.getString("nome"));
+			u.setSobrenome(rs.getString("sobrenome"));
+			u.setEndereco(rs.getString("endereco"));
+			u.setEmail(rs.getString("email"));
+			u.setTelefone(rs.getString("telefone"));
+			u.setCPF(rs.getString("cpf"));
+			u.setDataNascimento(String.valueOf(rs.getDate("datanascimento")));
+			u.setTipo(rs.getString("tipo"));
+			u.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
+			u.setDeletado(rs.getBoolean("deletado"));
+
+			list.add(u);
 		}
 
 		conexao.close();
 
 		log.info(END_POINT + "/validausuario -> Fim");
 
-		return cont;
+		return list;
 	}
 
 	public void excluirUsuario(String idUsuario) throws Exception {

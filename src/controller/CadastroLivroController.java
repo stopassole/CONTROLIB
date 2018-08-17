@@ -1,6 +1,8 @@
 package controller;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import dao.LivroDAO;
@@ -11,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.TextFlow;
@@ -21,6 +24,8 @@ import util.DateUtil;
 public class CadastroLivroController extends DashboardController implements Initializable {
 	@FXML
 	private TextFlow idTextFlow;
+	@FXML
+	private Label idTela;
 	@FXML
 	private TextField idNome;
 	@FXML
@@ -69,9 +74,13 @@ public class CadastroLivroController extends DashboardController implements Init
 				livro.setEditora(idEditora.getText());
 				livro.setGenero(idGenero.getText());
 
+				List<Livro> l = new ArrayList<>();
+				if (!idCodigo.getText().isEmpty()) {
+					l = dao.validaLivro(livro);
+				}
+				
 				if (InfoLivroController.idLivroEditar == null) {
-					int cont = dao.validaLivro(livro);
-					if (cont == 0) {
+					if (l.isEmpty()) {
 						dao.salvarLivro(livro);
 						fechar();
 						AlertSucesso sucesso = new AlertSucesso();
@@ -85,12 +94,19 @@ public class CadastroLivroController extends DashboardController implements Init
 						falha.start(new Stage());
 					}
 				} else {
-					dao.editarLivro(InfoLivroController.idLivroEditar, livro);
-					fechar();
-					AlertSucesso sucesso = new AlertSucesso();
-					sucesso.text = "Editado com sucesso";
-					sucesso.clicado = idTextFlow;
-					sucesso.start(new Stage());
+					if (l.isEmpty() || l.size() == 1 && l.get(0).get_id().equals(InfoLivroController.idLivroEditar)) {
+						dao.editarLivro(InfoLivroController.idLivroEditar, livro);
+						fechar();
+						AlertSucesso sucesso = new AlertSucesso();
+						sucesso.text = "Editado com sucesso";
+						sucesso.clicado = idTextFlow;
+						sucesso.start(new Stage());
+					} else {
+						AlertFalha falha = new AlertFalha();
+						falha.text = "Livro com este código já cadastrado";
+						falha.clicado = idTextFlow;
+						falha.start(new Stage());
+					}
 				}
 			} else {
 				AlertFalha falha = new AlertFalha();
@@ -107,7 +123,7 @@ public class CadastroLivroController extends DashboardController implements Init
 			return true;
 		} else {
 			AlertFalha falha = new AlertFalha();
-			falha.text = "Infome uma data de nascimento válida";
+			falha.text = "Infome uma data de publicação válida";
 			falha.clicado = idTextFlow;
 			falha.start(new Stage());
 			return false;
@@ -124,6 +140,8 @@ public class CadastroLivroController extends DashboardController implements Init
 			try {
 				Livro livro = dao.getByIdLivro(InfoLivroController.idLivroEditar);
 				populaEdicao(livro);
+				idTela.setText("EDITAR LIVRO");
+				btnSalvar.setText("ATUALIZAR");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

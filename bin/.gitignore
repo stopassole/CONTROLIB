@@ -1,7 +1,6 @@
-/banco/
 /controller/
-/dao/
-/entity/
 /resource/
-/util/
+/banco/
+/dao/
 /view/
+/css/

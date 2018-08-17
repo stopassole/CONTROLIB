@@ -2,7 +2,9 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -20,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -85,9 +88,10 @@ public class ListEmprestimosController extends DashboardController implements In
 		populaTabela();
 		confTabela();
 	}
-	
+
 	@SuppressWarnings("static-access")
 	public void confTabela() {
+
 		columUsuario.setCellValueFactory(celula -> new SimpleStringProperty(celula.getValue().getNomeUsuario()));
 		columnLivro.setCellValueFactory(celula -> {
 			idEmprestimo = celula.getValue().get_id();
@@ -121,7 +125,7 @@ public class ListEmprestimosController extends DashboardController implements In
 							{
 								button.setGraphic(img);
 								button.setMaxSize(50, 50);
-								button.setStyle("-fx-background-color:transparent; -fx-cursor:hand");
+								button.setStyle("-fx-background-color:transparent; -fx-cursor:hand; -fx-text-fill: #FFFFFF; ");
 								button.setOnMouseClicked(visualizar(button));
 							}
 
@@ -136,6 +140,27 @@ public class ListEmprestimosController extends DashboardController implements In
 						};
 					}
 				});
+
+		SimpleDateFormat formatHoje = new SimpleDateFormat("dd/MM/yyyy");
+		String hoje = formatHoje.format(new Date(System.currentTimeMillis()));
+
+		tbEmprestimos.setRowFactory(row -> {
+			return new TableRow<EmprestimoDTO>() {
+				@Override
+				public void updateItem(EmprestimoDTO item, boolean empty) {
+					super.updateItem(item, empty);
+					try {
+						if (!empty && date.getMaiorData(hoje, item.getDataVencimento())) {
+							columnVencimento.setStyle("-fx-text-fill: #FF0000;");
+						}else {
+							columnVencimento.setStyle("-fx-text-fill: green;");
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			};
+		});
 	}
 
 	private EventHandler<? super MouseEvent> visualizar(Button button) {
@@ -174,7 +199,7 @@ public class ListEmprestimosController extends DashboardController implements In
 
 		if (!idPesquisar.getText().isEmpty() && !idDataInicio.getText().isEmpty() && !idDataFim.getText().isEmpty()) {
 			if (date.isValidDate(idDataInicio.getText()) && date.isValidDate(idDataFim.getText())) {
-				if (date.verificaMaiorData(idDataInicio.getText(),idDataFim.getText())) {
+				if (date.verificaMaiorData(idDataInicio.getText(), idDataFim.getText())) {
 					emprestimos = dao.buscarEmprestimosFiltro(idPesquisar.getText(), idDataInicio.getText(),
 							idDataFim.getText());
 				} else {
@@ -189,11 +214,13 @@ public class ListEmprestimosController extends DashboardController implements In
 				falha.clicado = idTextFlow;
 				falha.start(new Stage());
 			}
-		} else if (!idPesquisar.getText().isEmpty() && idDataInicio.getText().isEmpty()	&& idDataFim.getText().isEmpty()) {
+		} else if (!idPesquisar.getText().isEmpty() && idDataInicio.getText().isEmpty()
+				&& idDataFim.getText().isEmpty()) {
 			emprestimos = dao.buscarEmprestimosFiltro(idPesquisar.getText());
-		} else if (idPesquisar.getText().isEmpty() && !idDataInicio.getText().isEmpty()	&& !idDataFim.getText().isEmpty()) {
+		} else if (idPesquisar.getText().isEmpty() && !idDataInicio.getText().isEmpty()
+				&& !idDataFim.getText().isEmpty()) {
 			if (date.isValidDate(idDataInicio.getText()) && date.isValidDate(idDataFim.getText())) {
-				if (date.verificaMaiorData(idDataInicio.getText(),idDataFim.getText())) {
+				if (date.verificaMaiorData(idDataInicio.getText(), idDataFim.getText())) {
 					emprestimos = dao.buscarEmprestimosFiltro(idDataInicio.getText(), idDataFim.getText());
 				} else {
 					AlertFalha falha = new AlertFalha();
@@ -207,21 +234,22 @@ public class ListEmprestimosController extends DashboardController implements In
 				falha.clicado = idTextFlow;
 				falha.start(new Stage());
 			}
-		} else if (idPesquisar.getText().isEmpty() && !idDataInicio.getText().isEmpty() && idDataFim.getText().isEmpty() 
-				|| idPesquisar.getText().isEmpty() && idDataInicio.getText().isEmpty() && !idDataFim.getText().isEmpty()) {
+		} else if (idPesquisar.getText().isEmpty() && !idDataInicio.getText().isEmpty() && idDataFim.getText().isEmpty()
+				|| idPesquisar.getText().isEmpty() && idDataInicio.getText().isEmpty()
+						&& !idDataFim.getText().isEmpty()) {
 			AlertFalha falha = new AlertFalha();
 			falha.text = "Preencha os dois campos de datas para filtrar por data.";
 			falha.clicado = idTextFlow;
 			falha.start(new Stage());
-		}
-		else if (!idPesquisar.getText().isEmpty() && !idDataInicio.getText().isEmpty() && idDataFim.getText().isEmpty() 
-				|| !idPesquisar.getText().isEmpty() && idDataInicio.getText().isEmpty() && !idDataFim.getText().isEmpty()) {
+		} else if (!idPesquisar.getText().isEmpty() && !idDataInicio.getText().isEmpty()
+				&& idDataFim.getText().isEmpty()
+				|| !idPesquisar.getText().isEmpty() && idDataInicio.getText().isEmpty()
+						&& !idDataFim.getText().isEmpty()) {
 			AlertFalha falha = new AlertFalha();
 			falha.text = "Preencha os dois campos de datas para filtrar por data.";
 			falha.clicado = idTextFlow;
 			falha.start(new Stage());
-		}
-		else {
+		} else {
 			emprestimos = dao.buscarEmprestimos();
 		}
 		tbEmprestimos.getItems().setAll(emprestimos);

@@ -84,9 +84,11 @@ public class CadastroUsuarioController extends DashboardController implements In
 				usuario.setDataNascimento(idDataNasc.getText());
 				usuario.setTipo(idTipo.getValue().getDescricao());
 
+				List<Usuario> u  = new ArrayList<>();
+				u = dao.validaUsuario(usuario);
+				
 				if (InfoUsuarioController.idUsuarioEditar == null) {
-					int cont = dao.validaUsuario(usuario);
-					if (cont == 0) {
+					if (u.isEmpty()) {
 						dao.salvarUsuario(usuario);
 						fechar();
 						AlertSucesso sucesso = new AlertSucesso();
@@ -100,12 +102,19 @@ public class CadastroUsuarioController extends DashboardController implements In
 						falha.start(new Stage());
 					}
 				} else {
-					dao.editarUsuario(InfoUsuarioController.idUsuarioEditar, usuario);
-					fechar();
-					AlertSucesso sucesso = new AlertSucesso();
-					sucesso.text = "Editado com sucesso";
-					sucesso.clicado = idTextFlow;
-					sucesso.start(new Stage());
+					if (u.isEmpty() || u.size() == 1 && u.get(0).get_id().equals(InfoUsuarioController.idUsuarioEditar)) {
+						dao.editarUsuario(InfoUsuarioController.idUsuarioEditar, usuario);
+						fechar();
+						AlertSucesso sucesso = new AlertSucesso();
+						sucesso.text = "Editado com sucesso";
+						sucesso.clicado = idTextFlow;
+						sucesso.start(new Stage());
+					} else {
+						AlertFalha falha = new AlertFalha();
+						falha.text = "Usuário com estes dados já cadastrado";
+						falha.clicado = idTextFlow;
+						falha.start(new Stage());
+					}
 				}
 			}
 		} else {

@@ -114,7 +114,7 @@ public class EmprestimoDAO {
 	}
 	
 	public int countEmprestimosByIdUsuario(String idUsuario) throws Exception {
-		log.info(END_POINT + "/validalivro -> Inicio");
+		log.info(END_POINT + "/validausuario -> Inicio");
 
 		Connection conexao = dao.conexaoUsuario();
 		String sql = "SELECT count(*) FROM emprestimo WHERE emprestimo.idUsuario =\'"+idUsuario+"\' AND emprestimo.deletado =\'" + false + "\';";
@@ -129,7 +129,7 @@ public class EmprestimoDAO {
 
 		conexao.close();
 
-		log.info(END_POINT + "/validalivro -> Fim");
+		log.info(END_POINT + "/validausuario -> Fim");
 
 		return cont;
 	}

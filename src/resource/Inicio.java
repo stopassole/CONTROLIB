@@ -33,8 +33,10 @@ public class Inicio extends Application {
 	@SuppressWarnings("unused")
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-
+		
 		try {
+			myStage.resizableProperty().setValue(Boolean.FALSE);
+			
 			@SuppressWarnings({"resource" })
 			FileOutputStream file = new FileOutputStream("C:\\CONTROLIB\\LogCONTROLIB.log");
 
@@ -58,18 +60,22 @@ public class Inicio extends Application {
 			progressBar.setScaleZ(5);
 			String css = this.getClass().getResource("/css/Progress.css").toExternalForm();
 			progressBar.getStylesheets().add(css);
-			progressBar.setTranslateX(650);
+			progressBar.setTranslateX(462);
 			progressBar.setTranslateY(300);
 
 			Button startButton = new Button("Finalizar");
 
-			startButton.setTranslateX(560);
+			startButton.setTranslateX(372);
 			startButton.setTranslateY(500);
-			startButton.setStyle("-fx-cursor:hand; -fx-background-radius: 5; -fx-text-fill: white; -fx-background-color: linear-gradient(to right, rgb(107, 193, 255) 20%, #00b3b8);");
+			startButton.setStyle("-fx-cursor:hand; -fx-border-radius:5;\r\n" + 
+					"    -fx-background-radius: 5;\r\n" + 
+					"    -fx-background-color: #6ED1D8; \r\n" + 
+					"    -fx-text-fill: white;\r\n" + 
+					"    -fx-font-weight: bold;");
 			startButton.setScaleX(3);
 			startButton.setScaleY(2);
-			startButton.setVisible(false);
-
+			startButton.setVisible(false);			
+			
 			startButton.setOnAction(new EventHandler<ActionEvent>() {
 				public void handle(ActionEvent event) {
 					try {
@@ -103,6 +109,7 @@ public class Inicio extends Application {
 
 			Scene scene = new Scene(root, 1024, 700);
 			myStage.setTitle("Carregando");
+			myStage.getIcons().add(new  Image(getClass().getResourceAsStream("../images/logo.png")));
 			myStage.setScene(scene);
 			myStage.centerOnScreen();
 			myStage.show();
@@ -122,6 +129,7 @@ public class Inicio extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 			myStage.getIcons().add(new  Image(getClass().getResourceAsStream("../images/logo.png")));
+			myStage.resizableProperty().setValue(Boolean.TRUE);
 			myStage.setScene(new Scene(root));
 			myStage.setTitle("CONTROLIB");
 			myStage.centerOnScreen();

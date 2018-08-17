@@ -45,8 +45,8 @@ public class CreateDatabase extends Task<Void> {
 		} catch (Exception e) {
 
 		} finally {
+			this.updateProgress(30, 100);
 			createTableUsuario();
-			this.updateProgress(25, 100);
 		}
 	}
 
@@ -76,8 +76,8 @@ public class CreateDatabase extends Task<Void> {
 		} catch (Exception e) {
 
 		} finally {
+			this.updateProgress(40, 100);
 			createTableLivro();
-			this.updateProgress(50, 100);
 		}
 	}
 
@@ -106,8 +106,8 @@ public class CreateDatabase extends Task<Void> {
 		} catch (Exception e) {
 
 		} finally {
+			this.updateProgress(60, 100);
 			createTableEmprestimo();
-			this.updateProgress(80, 100);
 		}
 	}
 
@@ -125,13 +125,11 @@ public class CreateDatabase extends Task<Void> {
 					+ "					dataCadastro date default now(),\r\n"
 					+ "					deletado boolean default false,\r\n"
 					+ "   				CONSTRAINT fk_livro FOREIGN KEY (idLivro)\r\n"
-					+ "     		    REFERENCES livro (_id) MATCH SIMPLE\r\n" 
-					+ "                 ON UPDATE NO ACTION\r\n"
-					+ "                 ON DELETE SET NULL,\r\n"
+					+ "     		    REFERENCES livro (_id) MATCH SIMPLE\r\n"
+					+ "                 ON UPDATE NO ACTION\r\n" + "                 ON DELETE SET NULL,\r\n"
 					+ "					CONSTRAINT fk_usuario FOREIGN KEY (idUsuario)\r\n"
-					+ "       		    REFERENCES usuario (_id) MATCH SIMPLE\r\n" 
-					+ "					ON UPDATE NO ACTION\r\n"
-					+ "  		        ON DELETE SET NULL,"
+					+ "       		    REFERENCES usuario (_id) MATCH SIMPLE\r\n"
+					+ "					ON UPDATE NO ACTION\r\n" + "  		        ON DELETE SET NULL,"
 					+ "					CONSTRAINT emprestimo_pkey PRIMARY KEY (_id)) ";
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 			stmt.executeQuery();
@@ -141,52 +139,32 @@ public class CreateDatabase extends Task<Void> {
 		} catch (Exception e) {
 
 		} finally {
-			createViewAllEmprestimos();
 			this.updateProgress(80, 100);
+			createViewAllEmprestimos();
 		}
 	}
 
 	private void createViewAllEmprestimos() {
 		try {
 			log.info(END_POINT + "/criarviewallemprestimos-> Inicio");
-			
+
 			Connection conexao = dao.conexaoUsuario();
-			String sql = "create view allEmprestimos as\r\n" + 
-					"select\r\n" + 
-					"emprestimo._id,\r\n" + 
-					"emprestimo.idUsuario,\r\n" + 
-					"emprestimo.idLivro,\r\n" + 
-					"emprestimo.dataVencimento, \r\n" + 
-					"emprestimo.dataEmprestimo,\r\n" + 
-					"emprestimo.dataCadastro as dataCadastroEmprestimo,\r\n" + 
-					"emprestimo.deletado as emprestimoDeletado,\r\n" + 
-					"livro.nome as nomeLivro,\r\n" + 
-					"livro.codigo as codigoLivro,\r\n" + 
-					"livro.autor as autorLivro,\r\n" + 
-					"livro.genero as generoLivro,\r\n" + 
-					"livro.editora as editoraLivro,\r\n" + 
-					"livro.disponivel as livroDisponivel,\r\n" + 
-					"livro.dataCadastro as dataCadastroLivro,\r\n" + 
-					"livro.publicacao as publicacaoLivro,\r\n" + 
-					"livro.deletado as livroDeletado,\r\n" + 
-					"usuario.nome as nomeUsuario,\r\n" + 
-					"usuario.sobrenome as sobrenomeUsuario,\r\n" + 
-					"usuario.endereco as enderecoUsuario,\r\n" + 
-					"usuario.email as emailUsuario,\r\n" + 
-					"usuario.telefone as telefoneUsuario,\r\n" + 
-					"usuario.cpf as CPFUsuario,\r\n" + 
-					"usuario.dataNascimento as dataNascimentoUsuario,\r\n" + 
-					"usuario.tipo as tipoUsuario,\r\n" + 
-					"usuario.dataCadastro as dataCadastroUsuario,\r\n" + 
-					"usuario.deletado as usuarioDeletado\r\n" + 
-					"from livro\r\n" + 
-					"join emprestimo on livro._id = emprestimo.idLivro\r\n" + 
-					"join usuario on  usuario._id = emprestimo.idUsuario\r\n" + 
-					"and usuario.deletado = false\r\n" + 
-					"and livro.deletado = false\r\n" + 
-					"and emprestimo.deletado = false\r\n" + 
-					"\r\n" + 
-					"";
+			String sql = "create view allEmprestimos as\r\n" + "select\r\n" + "emprestimo._id,\r\n"
+					+ "emprestimo.idUsuario,\r\n" + "emprestimo.idLivro,\r\n" + "emprestimo.dataVencimento, \r\n"
+					+ "emprestimo.dataEmprestimo,\r\n" + "emprestimo.dataCadastro as dataCadastroEmprestimo,\r\n"
+					+ "emprestimo.deletado as emprestimoDeletado,\r\n" + "livro.nome as nomeLivro,\r\n"
+					+ "livro.codigo as codigoLivro,\r\n" + "livro.autor as autorLivro,\r\n"
+					+ "livro.genero as generoLivro,\r\n" + "livro.editora as editoraLivro,\r\n"
+					+ "livro.disponivel as livroDisponivel,\r\n" + "livro.dataCadastro as dataCadastroLivro,\r\n"
+					+ "livro.publicacao as publicacaoLivro,\r\n" + "livro.deletado as livroDeletado,\r\n"
+					+ "usuario.nome as nomeUsuario,\r\n" + "usuario.sobrenome as sobrenomeUsuario,\r\n"
+					+ "usuario.endereco as enderecoUsuario,\r\n" + "usuario.email as emailUsuario,\r\n"
+					+ "usuario.telefone as telefoneUsuario,\r\n" + "usuario.cpf as CPFUsuario,\r\n"
+					+ "usuario.dataNascimento as dataNascimentoUsuario,\r\n" + "usuario.tipo as tipoUsuario,\r\n"
+					+ "usuario.dataCadastro as dataCadastroUsuario,\r\n" + "usuario.deletado as usuarioDeletado\r\n"
+					+ "from livro\r\n" + "join emprestimo on livro._id = emprestimo.idLivro\r\n"
+					+ "join usuario on  usuario._id = emprestimo.idUsuario\r\n" + "and usuario.deletado = false\r\n"
+					+ "and livro.deletado = false\r\n" + "and emprestimo.deletado = false\r\n" + "\r\n" + "";
 			PreparedStatement stmt = conexao.prepareStatement(sql);
 			stmt.executeQuery();
 
@@ -198,14 +176,12 @@ public class CreateDatabase extends Task<Void> {
 			this.updateProgress(100, 100);
 		}
 	}
-	
 
 	@Override
 	protected Void call() throws Exception {
 		try {
 
 			log.info(END_POINT + "/criardatabase -> Inicio");
-
 			this.updateProgress(10, 100);
 			String url = "jdbc:postgresql://localhost:5432/";
 			String usuario = "postgres";
@@ -222,7 +198,6 @@ public class CreateDatabase extends Task<Void> {
 		} catch (Exception e) {
 
 		} finally {
-			this.updateProgress(10, 100);
 			createTableCadastro();
 			button.setVisible(true);
 		}

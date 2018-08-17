@@ -99,11 +99,11 @@
                   </Button>
                   <TableView fx:id="tbLivros" layoutX="24.0" layoutY="179.0" prefHeight="427.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="font-md-search">
                     <columns>
-                      <TableColumn fx:id="columnTitulo" prefWidth="194.0" text="Título" />
-                      <TableColumn fx:id="columnAutor" minWidth="0.0" prefWidth="207.0" style="-fx-text-fill: blue;" text="Autor" />
-                        <TableColumn fx:id="columnGenero" prefWidth="199.0" text="Gênero" />
-                        <TableColumn fx:id="columnDisponivel" prefWidth="135.0" text="Disponível" />
-                        <TableColumn fx:id="columnImage" prefWidth="114.0" />
+                      <TableColumn fx:id="columnTitulo" prefWidth="194.0" sortable="false" text="Título" />
+                      <TableColumn fx:id="columnAutor" minWidth="0.0" prefWidth="207.0" sortable="false" style="-fx-text-fill: blue;" text="Autor" />
+                        <TableColumn fx:id="columnGenero" prefWidth="199.0" sortable="false" text="Gênero" />
+                        <TableColumn fx:id="columnDisponivel" prefWidth="135.0" sortable="false" text="Disponível" />
+                        <TableColumn fx:id="columnImage" prefWidth="114.0" sortable="false" />
                     </columns>
                   </TableView>
                </children></Pane>

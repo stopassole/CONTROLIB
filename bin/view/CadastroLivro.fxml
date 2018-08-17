@@ -108,7 +108,7 @@
             <Pane disable="true" layoutX="280.0" opacity="0.5" prefHeight="801.0" prefWidth="1035.0" style="-fx-background-color: black;" />
             <Pane layoutX="458.0" layoutY="88.0" prefHeight="505.0" prefWidth="650.0" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="-" stylesheets="@../css/CadastroLivros.css">
                <children>
-                  <Label layoutX="35.0" layoutY="36.0" prefHeight="30.0" prefWidth="305.0" styleClass="font-lg" text="CADASTRO DE LIVROS" />
+                  <Label fx:id="idTela" layoutX="35.0" layoutY="36.0" prefHeight="30.0" prefWidth="305.0" styleClass="font-lg" text="CADASTRO DE LIVROS" />
                   <Button fx:id="btnFechar" layoutX="615.0" layoutY="14.0" mnemonicParsing="false" onAction="#fechar" prefHeight="18.0" prefWidth="16.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="12.0" onKeyPressed="#enterPressedFechar" pickOnBounds="true" preserveRatio="true">

@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="168.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AlertFalha">
    <children>
-      <Pane prefHeight="239.0" prefWidth="560.0" styleClass="background" stylesheets="@../css/Alert.css">
+      <Pane layoutX="-7.0" layoutY="-7.0" prefHeight="239.0" prefWidth="560.0" styleClass="background" stylesheets="@../css/Alert.css">
          <children>
             <Label fx:id="idText" alignment="CENTER" layoutX="80.0" layoutY="104.0" prefHeight="31.0" prefWidth="407.0" style="-fx-font-weight: bold;" textAlignment="CENTER" />
             <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="259.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">

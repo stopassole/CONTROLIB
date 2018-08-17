@@ -11,6 +11,7 @@ import dao.EmprestimoDAO;
 import dao.LivroDAO;
 import dao.UsuarioDAO;
 import entity.Emprestimo;
+import entity.EmprestimoDTO;
 import entity.Livro;
 import entity.Tipo;
 import entity.Usuario;
@@ -107,9 +108,14 @@ public class CadastroEmprestimoController extends DashboardController implements
 						sucesso.clicado = idTextFlow;
 						sucesso.start(new Stage());
 					} else {
+						EmprestimoDTO emprestimoAntesEditar = dao.getByIdEmprestimo(InfoEmprestimoController.idEmprestimo);
 						dao.editarEmprestimo(InfoEmprestimoController.idEmprestimo, emprestimo);
+						if (!emprestimoAntesEditar.getIdLivro().equals(emprestimo.getIdLivro())) {
+							livroDAO.editarDisponivel(emprestimoAntesEditar.getIdLivro(), true);
+							livroDAO.editarDisponivel(emprestimo.getIdLivro(), false);
+						}
 						fechar();
-						AlertSucesso sucesso = new AlertSucesso();
+						AlertSucesso sucesso = new AlertSucesso(); 
 						sucesso.text = "Editado com sucesso";
 						sucesso.clicado = idTextFlow;
 						sucesso.start(new Stage());
@@ -169,7 +175,7 @@ public class CadastroEmprestimoController extends DashboardController implements
 				e.printStackTrace();
 			}
 		}
-		
+
 		idUsuarioSelecionar.getItems().addAll(usuarios);
 		idLivroSelecionar.getItems().addAll(livros);
 
@@ -179,15 +185,15 @@ public class CadastroEmprestimoController extends DashboardController implements
 
 	@SuppressWarnings("static-access")
 	private void populaEdicao(Emprestimo emprestimo, Usuario usuario, Livro livro) throws Exception {
-			idUsuarioSelecionar.setValue(usuario);
-			idLivroSelecionar.setValue(livro);
-			idDataEmprestimo.setText(date.dataFormatoYYYYMMDD(emprestimo.getDataEmprestimo()));
-			idDataVencimento.setText(date.dataFormatoYYYYMMDD(emprestimo.getDataVencimento()));
-			btnSalvar.setText("ATUALIZAR");
-			idTela.setText("EDITAR EMPRÉSTIMO");
-			livros.add(livro);
-			preencherUsuario();
-			preencherLivro();
+		idUsuarioSelecionar.setValue(usuario);
+		idLivroSelecionar.setValue(livro);
+		idDataEmprestimo.setText(date.dataFormatoYYYYMMDD(emprestimo.getDataEmprestimo()));
+		idDataVencimento.setText(date.dataFormatoYYYYMMDD(emprestimo.getDataVencimento()));
+		btnSalvar.setText("ATUALIZAR");
+		idTela.setText("EDITAR EMPRÉSTIMO");
+		livros.add(livro);
+		preencherUsuario();
+		preencherLivro();
 	}
 
 	@SuppressWarnings("static-access")

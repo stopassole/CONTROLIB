@@ -99,10 +99,10 @@
                   </Button>
                   <TableView fx:id="tbUsuarios" layoutX="24.0" layoutY="179.0" prefHeight="427.0" prefWidth="850.0" style="-fx-background-color: white;" styleClass="font-md-search">
                       <columns>
-                      <TableColumn fx:id="columnNome" prefWidth="194.0" text="Nome" />
-                      <TableColumn fx:id="columnEmail" minWidth="0.0" prefWidth="316.0" style="-fx-text-fill: blue;" text="E-mail" />
-                        <TableColumn fx:id="columnTipo" prefWidth="201.0" text="Tipo" />
-                        <TableColumn fx:id="columnImage" prefWidth="137.0" />
+                      <TableColumn fx:id="columnNome" prefWidth="194.0" sortable="false" text="Nome" />
+                      <TableColumn fx:id="columnEmail" minWidth="0.0" prefWidth="316.0" sortable="false" style="-fx-text-fill: blue;" text="E-mail" />
+                        <TableColumn fx:id="columnTipo" prefWidth="201.0" sortable="false" text="Tipo" />
+                        <TableColumn fx:id="columnImage" prefWidth="137.0" sortable="false" />
                     </columns>
                   </TableView>
                </children></Pane>
