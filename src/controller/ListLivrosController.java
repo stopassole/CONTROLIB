@@ -86,8 +86,8 @@ public class ListLivrosController extends DashboardController implements Initial
 			@Override
 			public TableCell<Livro, ImageView> call(TableColumn<Livro, ImageView> columnImage) {
 				return new TableCell<Livro, ImageView>() {
-					ImageView img1 = new ImageView("./images/Group 138.png");
-					ImageView img2 = new ImageView("./images/Group 140.png");
+					ImageView img1 = new ImageView("/images/Group 138.png");
+					ImageView img2 = new ImageView("/images/Group 140.png");
 					Button button = new Button();
 					{
 						button.setMaxSize(50, 50);
@@ -115,7 +115,7 @@ public class ListLivrosController extends DashboardController implements Initial
 			@Override
 			public TableCell<Livro, ImageView> call(TableColumn<Livro, ImageView> columnImage) {
 				return new TableCell<Livro, ImageView>() {
-					ImageView img = new ImageView("./images/Group 131.png");
+					ImageView img = new ImageView("/images/Group 131.png");
 					Button button = new Button();
 					{
 						button.setGraphic(img);

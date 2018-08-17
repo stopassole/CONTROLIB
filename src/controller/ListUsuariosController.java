@@ -82,7 +82,7 @@ public class ListUsuariosController extends DashboardController implements Initi
 			@Override
 			public TableCell<Usuario, ImageView> call(TableColumn<Usuario, ImageView> columnImage) {
 				return new TableCell<Usuario, ImageView>() {
-					ImageView img = new ImageView("./images/Group 131.png");
+					ImageView img = new ImageView("/images/Group 131.png");
 					Button button = new Button();
 					{
 						button.setGraphic(img);

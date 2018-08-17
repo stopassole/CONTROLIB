@@ -120,7 +120,7 @@ public class ListEmprestimosController extends DashboardController implements In
 					@Override
 					public TableCell<EmprestimoDTO, ImageView> call(TableColumn<EmprestimoDTO, ImageView> columnImage) {
 						return new TableCell<EmprestimoDTO, ImageView>() {
-							ImageView img = new ImageView("./images/Group 131.png");
+							ImageView img = new ImageView("/images/Group 131.png");
 							Button button = new Button();
 							{
 								button.setGraphic(img);

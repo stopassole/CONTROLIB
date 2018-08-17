@@ -38,7 +38,7 @@ public class Inicio extends Application {
 			myStage.resizableProperty().setValue(Boolean.FALSE);
 			
 			@SuppressWarnings({"resource" })
-			FileOutputStream file = new FileOutputStream("C:\\CONTROLIB\\LogCONTROLIB.log");
+			FileOutputStream file = new FileOutputStream("C:\\Controlib\\LogCONTROLIB.log");
 
 			log.info(END_POINT + "/verificabanco -> Inicio");
 
@@ -128,7 +128,7 @@ public class Inicio extends Application {
 
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
-			myStage.getIcons().add(new  Image(getClass().getResourceAsStream("../images/logo.png")));
+			myStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/logo.png")));
 			myStage.resizableProperty().setValue(Boolean.TRUE);
 			myStage.setScene(new Scene(root));
 			myStage.setTitle("CONTROLIB");
