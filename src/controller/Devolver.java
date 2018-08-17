@@ -18,7 +18,6 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 public class Devolver extends Application implements Initializable{
@@ -36,9 +35,7 @@ public class Devolver extends Application implements Initializable{
 	static String classe;
 
 	public void start(Stage stage) {
-		
-		stage.initStyle(StageStyle.UNDECORATED);
-
+	
 		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			@Override
 			public void handle(WindowEvent t) {
@@ -51,7 +48,7 @@ public class Devolver extends Application implements Initializable{
 		try {
 			Devolver.stage = stage;
 			Parent root = FXMLLoader.load(getClass().getResource("/view/Devolver.fxml"));
-			stage.getIcons().add(new  Image(getClass().getResourceAsStream("../images/logo.png")));
+			stage.getIcons().add(new  Image(getClass().getResourceAsStream("/images/logo.png")));
 			Scene scene = new Scene(root);
 			stage.setTitle("CONTROLIB - DEVOLVER?");
 			stage.setResizable(false);

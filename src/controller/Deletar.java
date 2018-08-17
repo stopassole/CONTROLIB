@@ -18,7 +18,6 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 public class Deletar extends Application implements Initializable {
@@ -37,8 +36,6 @@ public class Deletar extends Application implements Initializable {
 	static String classe;
 
 	public void start(Stage stage) {
-		
-		stage.initStyle(StageStyle.UNDECORATED);
 
 		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			@Override
@@ -52,7 +49,7 @@ public class Deletar extends Application implements Initializable {
 		try {
 			Deletar.stage = stage;
 			Parent root = FXMLLoader.load(getClass().getResource("/view/Deletar.fxml"));
-			stage.getIcons().add(new  Image(getClass().getResourceAsStream("../images/logo.png")));
+			stage.getIcons().add(new  Image(getClass().getResourceAsStream("/images/logo.png")));
 			Scene scene = new Scene(root);
 			stage.setTitle("CONTROLIB - DELETAR?");
 			stage.setResizable(false);

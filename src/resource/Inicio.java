@@ -109,7 +109,7 @@ public class Inicio extends Application {
 
 			Scene scene = new Scene(root, 1024, 700);
 			myStage.setTitle("Carregando");
-			myStage.getIcons().add(new  Image(getClass().getResourceAsStream("../images/logo.png")));
+			myStage.getIcons().add(new  Image(getClass().getResourceAsStream("/images/logo.png")));
 			myStage.setScene(scene);
 			myStage.centerOnScreen();
 			myStage.show();
