@@ -1,6 +1,5 @@
 package resource;
 
-import java.io.FileOutputStream;
 import java.sql.Connection;
 
 import org.apache.log4j.Logger;
@@ -33,13 +32,11 @@ public class Inicio extends Application {
 	@SuppressWarnings("unused")
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		
+				
 		try {
+				
 			myStage.resizableProperty().setValue(Boolean.FALSE);
-			
-			@SuppressWarnings({"resource" })
-			FileOutputStream file = new FileOutputStream("C:\\Controlib\\LogCONTROLIB.log");
-
+		
 			log.info(END_POINT + "/verificabanco -> Inicio");
 
 			DAO dao = new DAO();

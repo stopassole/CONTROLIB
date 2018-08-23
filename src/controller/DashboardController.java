@@ -15,7 +15,7 @@ public class DashboardController {
 	private Button btnLivros;
 	@FXML
 	private Button btnUsuarios;
-
+	
 	@FXML
 	private void sair() throws Exception {
 		criarBackupBanco();
@@ -70,10 +70,10 @@ public class DashboardController {
 	}
 
 	@SuppressWarnings("unused")
-	public boolean criarBackupBanco() {
+	public boolean criarBackupBanco() {		
 		 {
 	         try{  
-	            ProcessBuilder pb = new ProcessBuilder("C:\\Program Files\\PostgreSQL\\10\\bin\\pg_dump.exe ", "-h", "localhost", "-p", "5432","-U", "postgres", "-F", "c", "-b", "-v" ,"-f", "C:\\Controlib\\bkp.backup", "controlib"); 
+	            ProcessBuilder pb = new ProcessBuilder("C:\\Program Files\\PostgreSQL\\10\\bin\\pg_dump.exe ", "-h", "localhost", "-p", "5432","-U", "postgres", "-F", "c", "-b", "-v" ,"-f", "C:\\Controlib\\bpk.backup", "controlib"); 
 	            pb.environment().put("PGPASSWORD", "postgres");  
 	            pb.redirectErrorStream(true);  
 	            Process p = pb.start();

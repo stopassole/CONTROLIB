@@ -82,32 +82,31 @@ public class ScheduleEmprestimosAtrasados {
 
 						SimpleDateFormat formatHoje = new SimpleDateFormat("dd/MM/yyyy");
 						String hoje = formatHoje.format(new Date(System.currentTimeMillis()));
-
+						int cont = 0;
 						for (EmprestimoDTO dto : list) {
 							try {
 								if (date.getMaiorData(hoje, dto.getDataVencimento())) {
-
-									log.info(END_POINT + "/notificacaoemprestimo -> Inicio");
-
-									ImageView img = new ImageView("./images/falha.png");
-									Notifications notificationBuilder = Notifications.create()
-											.title("Emprestimo Atrasado")
-											.text("A devolução do Livro " + dto.getNomeLivro() + " está atrasada."
-													+ " Este livro esá com " + dto.getNomeUsuario() + " "
-													+ dto.getSobrenomeUsuario())
-											.graphic(img).hideAfter(Duration.seconds(5)).position(Pos.BOTTOM_RIGHT);
-
-									notificationBuilder.show();
-
-									log.info(END_POINT + "/notificacaoemprestimo -> Fim");
+									cont++;
 								}
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
 						}
+
+						log.info(END_POINT + "/notificacaoemprestimo -> Inicio");
+
+						ImageView img = new ImageView("./images/falha.png");
+						Notifications notificationBuilder = Notifications.create().title("Emprestimo Atrasado")
+								.text("Existem " + cont + "emprestimos atrasados").graphic(img)
+								.hideAfter(Duration.seconds(5)).position(Pos.BOTTOM_RIGHT);
+
+						notificationBuilder.show();
+
+						log.info(END_POINT + "/notificacaoemprestimo -> Fim");
 					}
 				}
 			});
+
 			parar();
 		}
 
