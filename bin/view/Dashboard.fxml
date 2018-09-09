@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow prefHeight="800.0" prefWidth="1280.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
+<TextFlow prefHeight="800.0" prefWidth="1280.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #EEF1F8;">
          <children>
@@ -42,19 +42,19 @@
                      </image>
                   </ImageView>
                   <Separator layoutX="34.9" layoutY="131.3" prefHeight="5.0" prefWidth="209.6" />
-                  <Button fx:id="btnEmprestimos" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="164.16" mnemonicParsing="false" onAction="#menuEmprestimos" onKeyPressed="#enterPressedEmprestimos" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="EMPRÉSTIMOS              " textAlignment="JUSTIFY" />
+                  <Button fx:id="btnEmprestimos" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="164.16" mnemonicParsing="false" onAction="#menuEmprestimos" onKeyPressed="#enterPressedEmprestimos" prefHeight="40.0" prefWidth="250.0" styleClass="btn" text="EMPRÉSTIMOS              " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/Group%2035.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnLivros" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="238.0" mnemonicParsing="false" onAction="#menuLivros" onKeyPressed="#enterPressedLivros" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="LIVROS                          " textAlignment="JUSTIFY" />
+                  <Button fx:id="btnLivros" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="238.0" mnemonicParsing="false" onAction="#menuLivros" onKeyPressed="#enterPressedLivros" prefHeight="40.0" prefWidth="250.0" styleClass="btn" text="LIVROS                          " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/books-stack.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnUsuarios" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="312.16" mnemonicParsing="false" onAction="#menuUsuarios" onKeyPressed="#enterPressedUsuarios" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="USUÁRIOS                    " textAlignment="JUSTIFY" />
+                  <Button fx:id="btnUsuarios" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="312.16" mnemonicParsing="false" onAction="#menuUsuarios" onKeyPressed="#enterPressedUsuarios" prefHeight="40.0" prefWidth="250.0" styleClass="btn" text="USUÁRIOS                    " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/group-profile-users.png" />

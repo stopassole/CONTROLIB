@@ -12,12 +12,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="684.0" prefWidth="640.0" styleClass="bg-primary" stylesheets="@../css/Recuperar.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RecuperarController">
+<AnchorPane prefHeight="634.0" prefWidth="640.0" styleClass="bg-primary" stylesheets="@../css/Recuperar.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RecuperarController">
    <children>
-      <Pane layoutY="6.0" prefHeight="687.0" prefWidth="640.0">
+      <Pane prefHeight="643.0" prefWidth="640.0">
          <children>
-            <Button fx:id="btnVoltarLogin" layoutX="71.0" layoutY="61.58" mnemonicParsing="false" onAction="#voltar" onKeyPressed="#enterPressedVoltar" prefHeight="30.0" prefWidth="18.0" style="-fx-cursor: hand;" styleClass="btn">
+            <Button fx:id="btnVoltarLogin" layoutX="71.0" layoutY="51.58" mnemonicParsing="false" onAction="#voltar" onKeyPressed="#enterPressedVoltar" prefHeight="30.0" prefWidth="18.0" style="-fx-cursor: hand;" styleClass="btn">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="18.0" onMouseClicked="#voltar" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
  						<image>
@@ -26,47 +25,47 @@
                   </ImageView>
                </graphic>
             </Button>
-            <ImageView fitHeight="140.0" fitWidth="180.0" layoutX="230.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="140.0" fitWidth="180.0" layoutX="230.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/logo.png" />
                </image>
             </ImageView>
-            <Separator layoutX="70.5" layoutY="261.0" prefHeight="5.0" prefWidth="110.0" />
-            <Label alignment="TOP_CENTER" layoutX="213.0" layoutY="244.0" prefHeight="44.0" prefWidth="214.0" styleClass="text-primary" text="RECUPERAR" textAlignment="CENTER">
+            <Separator layoutX="70.5" layoutY="256.0" prefHeight="5.0" prefWidth="110.0" />
+            <Label alignment="TOP_CENTER" layoutX="213.0" layoutY="239.0" prefHeight="44.0" prefWidth="214.0" styleClass="text-primary" text="RECUPERAR" textAlignment="CENTER">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Separator layoutX="460.5" layoutY="261.0" prefHeight="5.0" prefWidth="110.0" />
-            <Label layoutX="93.0" layoutY="309.0" prefHeight="20.0" prefWidth="170.0" styleClass="font-sm" text="E-mail: *" />
-            <TextField fx:id="idEmail" layoutX="70.0" layoutY="333.0" onKeyPressed="#enterPressedAlterar" prefHeight="40.0" prefWidth="500.0" promptText="exemplo@exemplo.com">
+            <Separator layoutX="460.5" layoutY="256.0" prefHeight="5.0" prefWidth="110.0" />
+            <Label layoutX="93.0" layoutY="284.0" prefHeight="20.0" prefWidth="170.0" styleClass="font-sm" text="E-mail: *" />
+            <TextField fx:id="idEmail" layoutX="70.0" layoutY="308.0" onKeyPressed="#enterPressedAlterar" prefHeight="40.0" prefWidth="500.0" promptText="exemplo@exemplo.com">
                <styleClass>
                   <String fx:value="input-rounded" />
                   <String fx:value="font-md" />
                </styleClass>
             </TextField>
-            <Label layoutX="93.0" layoutY="398.0" prefHeight="20.0" prefWidth="150.0" styleClass="font-sm" text="CPF: *" />
-            <TextField fx:id="idCPF" layoutX="71.0" layoutY="423.0" onKeyPressed="#enterPressedAlterar" onKeyReleased="#tbCpf" prefHeight="40.0" prefWidth="500.0" promptText="000.000.000-00">
+            <Label layoutX="93.0" layoutY="363.0" prefHeight="20.0" prefWidth="150.0" styleClass="font-sm" text="CPF: *" />
+            <TextField fx:id="idCPF" layoutX="71.0" layoutY="388.0" onKeyPressed="#enterPressedAlterar" onKeyReleased="#tbCpf" prefHeight="40.0" prefWidth="500.0" promptText="000.000.000-00">
                <styleClass>
                   <String fx:value="input-rounded" />
                   <String fx:value="font-md" />
                </styleClass>
             </TextField>
-            <Label layoutX="93.0" layoutY="493.0" prefHeight="20.0" prefWidth="143.0" styleClass="font-sm" text="Informe sua nova senha: *" />
-            <PasswordField fx:id="idSenha" layoutX="71.0" layoutY="518.0" onKeyPressed="#enterPressedAlterar" prefHeight="40.0" prefWidth="240.0">
+            <Label layoutX="93.0" layoutY="448.0" prefHeight="20.0" prefWidth="143.0" styleClass="font-sm" text="Informe sua nova senha: *" />
+            <PasswordField fx:id="idSenha" layoutX="71.0" layoutY="473.0" onKeyPressed="#enterPressedAlterar" prefHeight="40.0" prefWidth="240.0">
                <styleClass>
                   <String fx:value="input-rounded" />
                   <String fx:value="font-md" />
                </styleClass>
             </PasswordField>
-            <Label layoutX="350.0" layoutY="493.0" prefHeight="20.0" prefWidth="159.0" styleClass="font-sm" text="Confirme sua nova senha: *" />
-            <PasswordField fx:id="idConfirmaSenha" layoutX="330.0" layoutY="518.0" onKeyPressed="#enterPressedAlterar" prefHeight="40.0" prefWidth="240.0">
+            <Label layoutX="350.0" layoutY="448.0" prefHeight="20.0" prefWidth="159.0" styleClass="font-sm" text="Confirme sua nova senha: *" />
+            <PasswordField fx:id="idConfirmaSenha" layoutX="330.0" layoutY="473.0" onKeyPressed="#enterPressedAlterar" prefHeight="40.0" prefWidth="240.0">
                <styleClass>
                   <String fx:value="input-rounded" />
                   <String fx:value="font-md" />
                </styleClass>
             </PasswordField>
-            <Button fx:id="btnCadastrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="70.0" layoutY="596.0" mnemonicParsing="false" onAction="#alterarSenha" onKeyPressed="#enterPressedAlterar" prefHeight="60.0" prefWidth="500.0" styleClass="btn-primary" text="CONFIRMAR">
+            <Button fx:id="btnCadastrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="70.0" layoutY="546.0" mnemonicParsing="false" onAction="#alterarSenha" onKeyPressed="#enterPressedAlterar" prefHeight="40.0" prefWidth="500.0" styleClass="btn-primary" text="CONFIRMAR">
                <font>
                   <Font size="30.0" />
                </font>

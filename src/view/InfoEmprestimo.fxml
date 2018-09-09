@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow fx:id="idTextFlow" prefHeight="794.0" prefWidth="1281.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InfoEmprestimoController">
+<TextFlow fx:id="idTextFlow" prefHeight="794.0" prefWidth="1281.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InfoEmprestimoController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #EEF1F8;">
          <children>
@@ -48,19 +48,19 @@
                      </image>
                   </ImageView>
                   <Separator layoutX="34.9" layoutY="131.3" prefHeight="5.0" prefWidth="209.6" />
-                  <Button fx:id="btnEmprestimos" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="164.16" mnemonicParsing="false" onAction="#menuEmprestimos" onKeyPressed="#enterPressedEmprestimos" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="EMPRÉSTIMOS              " textAlignment="JUSTIFY" />
+                  <Button fx:id="btnEmprestimos" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="164.16" mnemonicParsing="false" onAction="#menuEmprestimos" onKeyPressed="#enterPressedEmprestimos" prefHeight="40.0" prefWidth="250.0" styleClass="btn" text="EMPRÉSTIMOS              " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/Group%2035.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnLivros" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="238.0" mnemonicParsing="false" onAction="#menuLivros" onKeyPressed="#enterPressedLivros" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="LIVROS                          " textAlignment="JUSTIFY" />
+                  <Button fx:id="btnLivros" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="238.0" mnemonicParsing="false" onAction="#menuLivros" onKeyPressed="#enterPressedLivros" prefHeight="40.0" prefWidth="250.0" styleClass="btn" text="LIVROS                          " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/books-stack.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnUsuarios" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="312.0" mnemonicParsing="false" onAction="#menuUsuarios" onKeyPressed="#enterPressedUsuarios" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="USUÁRIOS                    " textAlignment="JUSTIFY" />
+                  <Button fx:id="btnUsuarios" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="312.0" mnemonicParsing="false" onAction="#menuUsuarios" onKeyPressed="#enterPressedUsuarios" prefHeight="40.0" prefWidth="250.0" styleClass="btn" text="USUÁRIOS                    " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/group-profile-users.png" />
@@ -70,16 +70,16 @@
             </Pane>
             <Pane layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white; -fx-background-radius: 10;" stylesheets="@../css/InfoEmprestimo.css">
                <children>
-                  <Label layoutX="24.0" layoutY="23.0" prefHeight="48.0" prefWidth="199.0" styleClass="font-lg" text="EMPRÉSTIMOS" />
-                  <TextField layoutX="24.0" layoutY="104.0" prefHeight="50.0" prefWidth="320.0" stylesheets="@../css/Emprestimos.css" text="Pesquisar">
+                  <Label layoutX="24.0" layoutY="23.0" prefHeight="40.0" prefWidth="199.0" styleClass="font-lg" text="EMPRÉSTIMOS" />
+                  <TextField layoutX="24.0" layoutY="104.0" prefHeight="40.0" prefWidth="320.0" stylesheets="@../css/Emprestimos.css" text="Pesquisar">
                      <styleClass>
                         <String fx:value="input-search" />
                         <String fx:value="font-md-search" />
                      </styleClass>
                   </TextField>
-                  <Button layoutX="797.0" layoutY="100.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" styleClass="bnt-search" stylesheets="@../css/Livros.css">
+                  <Button layoutX="797.0" layoutY="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="bnt-search" stylesheets="@../css/Livros.css">
                      <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="809.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="809.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@../images/Group%20136.png" />
                            </image>
@@ -96,20 +96,20 @@
                   </TableView>
                   <Button layoutX="797.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: trasnparent;">
                      <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@../images/Group%20137.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TextField layoutX="368.0" layoutY="104.0" prefHeight="50.0" prefWidth="200.0" text="Pesquisar">
+                  <TextField layoutX="368.0" layoutY="104.0" prefHeight="40.0" prefWidth="200.0" text="Pesquisar">
                      <styleClass>
                         <String fx:value="input-search" />
                         <String fx:value="font-md-search" />
                      </styleClass>
                   </TextField>
-                  <TextField layoutX="585.0" layoutY="104.0" prefHeight="50.0" prefWidth="200.0" text="Pesquisar">
+                  <TextField layoutX="585.0" layoutY="104.0" prefHeight="40.0" prefWidth="200.0" text="Pesquisar">
                      <styleClass>
                         <String fx:value="input-search" />
                         <String fx:value="font-md-search" />
@@ -157,13 +157,13 @@
                   <Label fx:id="idEditora" layoutX="120.0" layoutY="463.0" prefHeight="30.0" prefWidth="164.0" styleClass="font-md" />
                   <Label layoutX="295.0" layoutY="463.0" prefHeight="30.0" prefWidth="100.0" styleClass="font-md-bold" text="Publicação:" />
                   <Label fx:id="idPublicacao" layoutX="395.0" layoutY="463.0" prefHeight="30.0" prefWidth="220.0" styleClass="font-md" />
-                  <Button fx:id="idDevolver" layoutX="442.0" layoutY="538.0" mnemonicParsing="false" onAction="#devolver" onKeyPressed="#enterPressedDevolver" prefHeight="50.0" prefWidth="200.0" style="-fx-cursor: hand;" text="DEVOLVER">
+                  <Button fx:id="idDevolver" layoutX="442.0" layoutY="538.0" mnemonicParsing="false" onAction="#devolver" onKeyPressed="#enterPressedDevolver" prefHeight="40.0" prefWidth="200.0" style="-fx-cursor: hand;" text="DEVOLVER">
                      <styleClass>
                         <String fx:value="font-md-button" />
                         <String fx:value="button-devolver" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="idEditar" layoutX="665.0" layoutY="538.0" mnemonicParsing="false" onAction="#editar" onKeyPressed="#enterPressedEditar" prefHeight="50.0" prefWidth="200.0" style="-fx-cursor: hand;" text="EDITAR">
+                  <Button fx:id="idEditar" layoutX="665.0" layoutY="538.0" mnemonicParsing="false" onAction="#editar" onKeyPressed="#enterPressedEditar" prefHeight="40.0" prefWidth="200.0" style="-fx-cursor: hand;" text="EDITAR">
                      <styleClass>
                         <String fx:value="font-md-button" />
                         <String fx:value="button-editar" />

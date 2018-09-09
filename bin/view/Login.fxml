@@ -15,33 +15,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow fx:id="idTextFlow" styleClass="bg-primary" stylesheets="@../css/Login.css" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<TextFlow fx:id="idTextFlow" styleClass="bg-primary" stylesheets="@../css/Login.css" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="640.0" styleClass="bg-primary" stylesheets="@../css/login.css">
+      <AnchorPane id="AnchorPane" prefHeight="637.0" prefWidth="640.0" styleClass="bg-primary" stylesheets="@../css/login.css">
          <children>
-            <Pane prefHeight="800.0" prefWidth="640.0">
+            <Pane prefHeight="637.0" prefWidth="640.0">
                <children>
-                  <ImageView fitHeight="140.0" fitWidth="180.0" layoutX="230.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="140.0" fitWidth="180.0" layoutX="230.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/logo.png" />
                      </image>
                   </ImageView>
-                  <Separator layoutX="70.5" layoutY="298.0" prefHeight="5.0" prefWidth="159.0" />
-                  <Separator layoutX="411.5" layoutY="298.0" prefHeight="5.0" prefWidth="159.0" />
-                  <Label alignment="CENTER" layoutX="263.0" layoutY="276.0" prefHeight="44.0" prefWidth="115.0" styleClass="text-primary" text="LOGIN" textAlignment="CENTER">
+                  <Separator layoutX="70.5" layoutY="256.0" prefHeight="5.0" prefWidth="159.0" />
+                  <Separator layoutX="411.5" layoutY="256.0" prefHeight="5.0" prefWidth="159.0" />
+                  <Label alignment="CENTER" layoutX="263.0" layoutY="237.0" prefHeight="44.0" prefWidth="115.0" styleClass="text-primary" text="LOGIN" textAlignment="CENTER">
                      <font>
                         <Font size="32.0" />
                      </font>
                   </Label>
-                  <Label layoutX="93.0" layoutY="372.0" prefHeight="20.0" prefWidth="62.0" styleClass="font-sm" text="E-mail:" />
-                  <TextField fx:id="idEmail" layoutX="70.0" layoutY="400.0" onKeyPressed="#enterPressedEntrar" prefHeight="60.0" prefWidth="500.0" promptText="exemplo@exemplo.com">
+                  <Label layoutX="93.0" layoutY="301.0" prefHeight="20.0" prefWidth="62.0" styleClass="font-sm" text="E-mail:" />
+                  <TextField fx:id="idEmail" layoutX="70.0" layoutY="321.0" onKeyPressed="#enterPressedEntrar" prefHeight="40.0" prefWidth="500.0" promptText="exemplo@exemplo.com">
                      <styleClass>
                         <String fx:value="input-rounded" />
                         <String fx:value="font-md" />
                      </styleClass>
                   </TextField>
-                  <Label layoutX="93.0" layoutY="489.0" prefHeight="20.0" prefWidth="62.0" styleClass="font-sm" text="Senha:" />
-                  <PasswordField fx:id="idSenha" layoutX="70.0" layoutY="517.0" onKeyPressed="#enterPressedEntrar" prefHeight="60.0" prefWidth="500.0">
+                  <Label layoutX="93.0" layoutY="389.0" prefHeight="20.0" prefWidth="62.0" styleClass="font-sm" text="Senha:" />
+                  <PasswordField fx:id="idSenha" layoutX="70.0" layoutY="409.0" onKeyPressed="#enterPressedEntrar" prefHeight="40.0" prefWidth="500.0">
                      <font>
                         <Font name="Bell MT" size="12.0" />
                      </font>
@@ -50,10 +50,10 @@
                         <String fx:value="font-md" />
                      </styleClass>
                   </PasswordField>
-                  <CheckBox fx:id="idLembrarSenha" layoutX="93.0" layoutY="606.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="124.0" styleClass="checkbox" text="Lembrar-me" textFill="WHITE" />
-                  <Hyperlink fx:id="idRecuperarSenha" layoutX="409.0" layoutY="606.0" onAction="#recuperar" onKeyPressed="#enterPressedRecuperar" text="Esqueci minha senha" />
-                  <Hyperlink fx:id="idCadastro" layoutX="456.0" layoutY="606.0" onAction="#cadastrar" onKeyPressed="#enterPressedCadastar" prefHeight="18.0" prefWidth="92.0" text="Cadastre-se" />
-                  <Button fx:id="btnEntrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="70.0" layoutY="679.0" mnemonicParsing="false" onAction="#entrar" onKeyPressed="#enterPressedEntrar" prefHeight="60.0" prefWidth="500.0" styleClass="btn-primary" text="ENTRAR">
+                  <CheckBox fx:id="idLembrarSenha" layoutX="93.0" layoutY="457.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="124.0" styleClass="checkbox" text="Lembrar-me" textFill="WHITE" />
+                  <Hyperlink fx:id="idRecuperarSenha" layoutX="409.0" layoutY="457.0" onAction="#recuperar" onKeyPressed="#enterPressedRecuperar" text="Esqueci minha senha" />
+                  <Hyperlink fx:id="idCadastro" layoutX="456.0" layoutY="457.0" onAction="#cadastrar" onKeyPressed="#enterPressedCadastar" prefHeight="18.0" prefWidth="92.0" text="Cadastre-se" />
+                  <Button fx:id="btnEntrar" alignment="TOP_CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="70.0" layoutY="546.0" mnemonicParsing="false" onAction="#entrar" onKeyPressed="#enterPressedEntrar" prefHeight="40.0" prefWidth="500.0" styleClass="btn-primary" text="ENTRAR">
                      <font>
                         <Font size="27.0" />
                      </font>

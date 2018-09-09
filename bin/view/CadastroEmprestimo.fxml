@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow fx:id="idTextFlow" prefHeight="794.0" prefWidth="1281.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroEmprestimoController">
+<TextFlow fx:id="idTextFlow" prefHeight="794.0" prefWidth="1281.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroEmprestimoController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #EEF1F8;">
          <children>
@@ -49,19 +49,19 @@
                      </image>
                   </ImageView>
                   <Separator layoutX="34.9" layoutY="131.3" prefHeight="5.0" prefWidth="209.6" />
-                  <Button fx:id="btnEmprestimos" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="164.16" mnemonicParsing="false" onAction="#menuEmprestimos" onKeyPressed="#enterPressedEmprestimos" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="EMPRÉSTIMOS              " textAlignment="JUSTIFY" />
+                  <Button fx:id="btnEmprestimos" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="15.0" layoutY="164.16" mnemonicParsing="false" onAction="#menuEmprestimos" onKeyPressed="#enterPressedEmprestimos" prefHeight="40.0" prefWidth="250.0" styleClass="btn" text="EMPRÉSTIMOS              " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/Group%2035.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnLivros" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="238.0" mnemonicParsing="false" onAction="#menuLivros" onKeyPressed="#enterPressedLivros" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="LIVROS                          " textAlignment="JUSTIFY" />
+                  <Button fx:id="btnLivros" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="238.0" mnemonicParsing="false" onAction="#menuLivros" onKeyPressed="#enterPressedLivros" prefHeight="40.0" prefWidth="250.0" styleClass="btn" text="LIVROS                          " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/books-stack.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnUsuarios" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="312.0" mnemonicParsing="false" onAction="#menuUsuarios" onKeyPressed="#enterPressedUsuarios" prefHeight="50.0" prefWidth="250.0" styleClass="btn" text="USUÁRIOS                    " textAlignment="JUSTIFY" />
+                  <Button fx:id="btnUsuarios" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="13.0" layoutY="312.0" mnemonicParsing="false" onAction="#menuUsuarios" onKeyPressed="#enterPressedUsuarios" prefHeight="40.0" prefWidth="250.0" styleClass="btn" text="USUÁRIOS                    " textAlignment="JUSTIFY" />
                   <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="37.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/group-profile-users.png" />
@@ -71,28 +71,28 @@
             </Pane>
             <Pane disable="true" layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white; -fx-background-radius: 10;" stylesheets="@../css/CadastroEmprestimo.css">
                <children>
-                  <Label disable="true" layoutX="24.0" layoutY="23.0" prefHeight="48.0" prefWidth="199.0" styleClass="font-lg" text="EMPRÉSTIMOS" />
-                  <TextField disable="true" layoutX="24.0" layoutY="104.0" prefHeight="50.0" prefWidth="320.0" stylesheets="@../css/Emprestimos.css" text="Pesquisar">
+                  <Label disable="true" layoutX="24.0" layoutY="23.0" prefHeight="40.0" prefWidth="199.0" styleClass="font-lg" text="EMPRÉSTIMOS" />
+                  <TextField disable="true" layoutX="24.0" layoutY="104.0" prefHeight="40.0" prefWidth="320.0" stylesheets="@../css/Emprestimos.css" text="Pesquisar">
                      <styleClass>
                         <String fx:value="input-search" />
                         <String fx:value="font-md-search" />
                      </styleClass>
                   </TextField>
-                  <TextField disable="true" layoutX="368.0" layoutY="104.0" prefHeight="50.0" prefWidth="200.0" text="Pesquisar">
+                  <TextField disable="true" layoutX="368.0" layoutY="104.0" prefHeight="40.0" prefWidth="200.0" text="Pesquisar">
                      <styleClass>
                         <String fx:value="input-search" />
                         <String fx:value="font-md-search" />
                      </styleClass>
                   </TextField>
-                  <TextField disable="true" layoutX="585.0" layoutY="104.0" prefHeight="50.0" prefWidth="200.0" text="Pesquisar">
+                  <TextField disable="true" layoutX="585.0" layoutY="104.0" prefHeight="40.0" prefWidth="200.0" text="Pesquisar">
                      <styleClass>
                         <String fx:value="input-search" />
                         <String fx:value="font-md-search" />
                      </styleClass>
                   </TextField>
-                  <Button disable="true" layoutX="797.0" layoutY="100.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="58.0" styleClass="bnt-search" stylesheets="@../css/Livros.css">
+                  <Button disable="true" layoutX="797.0" layoutY="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="bnt-search" stylesheets="@../css/Livros.css">
                      <graphic>
-                        <ImageView disable="true" fitHeight="50.0" fitWidth="50.0" layoutX="809.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                        <ImageView disable="true" fitHeight="40.0" fitWidth="40.0" layoutX="809.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@../images/Group%20136.png" />
                            </image>
@@ -109,7 +109,7 @@
                   </TableView>
                   <Button disable="true" layoutX="797.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: trasnparent;">
                      <graphic>
-                        <ImageView disable="true" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                        <ImageView disable="true" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@../images/Group%20137.png" />
                            </image>
@@ -118,9 +118,9 @@
                   </Button>
                </children></Pane>
             <Pane layoutX="280.0" opacity="0.5" prefHeight="800.0" prefWidth="1003.0" style="-fx-background-color: black;" />
-            <Pane layoutX="473.0" layoutY="22.0" prefHeight="750.0" prefWidth="650.0" style="-fx-background-color: white; -fx-background-radius: 10;" stylesheets="@../css/CadastroEmprestimo.css">
+            <Pane layoutX="473.0" layoutY="22.0" prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: white; -fx-background-radius: 10;" stylesheets="@../css/CadastroEmprestimo.css">
                <children>
-                  <Label fx:id="idTela" layoutX="33.0" layoutY="43.0" prefHeight="43.0" prefWidth="462.0" styleClass="font-lg" text="CADASTRO DE EMPÉSTIMO" />
+                  <Label fx:id="idTela" layoutX="33.0" layoutY="43.0" prefHeight="40.0" prefWidth="462.0" styleClass="font-lg" text="CADASTRO DE EMPÉSTIMO" />
                   <Button fx:id="bntCancelar" layoutX="608.0" layoutY="14.0" mnemonicParsing="false" onAction="#fechar" onKeyPressed="#enterPressedFechar" prefHeight="18.0" prefWidth="16.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="12.0" onKeyPressed="#enterPressedFechar" pickOnBounds="true" preserveRatio="true">
@@ -130,28 +130,28 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Label layoutX="54.0" layoutY="138.0" styleClass="font-md" text="Usuário: *" />
-                  <ComboBox fx:id="idUsuarioSelecionar" editable="false" layoutX="35.0" layoutY="164.0" onAction="#preencherUsuario" prefHeight="50.0" prefWidth="275.0" promptText="Digite para pesquisar" styleClass="combobox-rounded" />
-                  <Label layoutX="359.0" layoutY="138.0" styleClass="font-md" text=" Livro: *" />
-                  <ComboBox fx:id="idLivroSelecionar" editable="false" layoutX="338.0" layoutY="164.0" onAction="#preencherLivro" prefHeight="50.0" prefWidth="275.0" promptText="Digite para pesquisar" styleClass="combobox-rounded" />
-                  <Label layoutX="54.0" layoutY="244.0" styleClass="font-md" text="Nome Usuário:" />
-                  <TextField fx:id="idNomeUsuario" disable="true" layoutX="33.0" layoutY="270.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
-                  <Label layoutX="359.0" layoutY="244.0" styleClass="font-md" text="Nome Livro:" />
-                  <TextField fx:id="idNomeLivro" disable="true" layoutX="338.0" layoutY="270.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
-                  <Label layoutX="54.0" layoutY="350.0" styleClass="font-md" text="CPF:" />
-                  <TextField fx:id="idCPF" disable="true" layoutX="33.0" layoutY="376.0" prefHeight="50.0" prefWidth="275.0" promptText="000.000.000-00" styleClass="input-rounded" />
-                  <Label layoutX="359.0" layoutY="350.0" styleClass="font-md" text="Autor:" />
-                  <TextField fx:id="idAutor" disable="true" layoutX="338.0" layoutY="376.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
-                  <Label layoutX="54.0" layoutY="456.0" styleClass="font-md" text="Tipo:" />
-                  <ComboBox fx:id="idTipo" disable="true" layoutX="35.0" layoutY="482.0" prefHeight="50.0" prefWidth="275.0" styleClass="combobox-rounded" />
-                  <Label layoutX="359.0" layoutY="456.0" styleClass="font-md" text="Código:" />
-                  <TextField fx:id="idCodigo" disable="true" layoutX="338.0" layoutY="482.0" prefHeight="50.0" prefWidth="275.0" styleClass="input-rounded" />
-                  <Label layoutX="54.0" layoutY="562.0" styleClass="font-md" text="Data Empréstimo: *" />
-                  <TextField fx:id="idDataEmprestimo" layoutX="33.0" layoutY="588.0" onKeyTyped="#tbDataEmprestimo" prefHeight="50.0" prefWidth="275.0" promptText="00/00/0000" styleClass="input-rounded" />
-                  <Label layoutX="359.0" layoutY="562.0" styleClass="font-md" text="Data Vencimento: *" />
-                  <TextField fx:id="idDataVencimento" layoutX="338.0" layoutY="588.0" onKeyTyped="#tbDataVencimento" prefHeight="50.0" prefWidth="275.0" promptText="00/00/0000" styleClass="input-rounded" />
-                  <Button fx:id="btnCancelar" layoutX="195.0" layoutY="677.0" mnemonicParsing="false" onAction="#fechar" onKeyPressed="#enterPressedFechar" prefHeight="50.0" prefWidth="200.0" style="-fx-cursor: hand;" styleClass="button-cancel" text="CANCELAR" />
-                  <Button fx:id="btnSalvar" layoutX="413.0" layoutY="677.0" mnemonicParsing="false" onAction="#salvarEmprestimo" onKeyPressed="#enterPressedSalvar" prefHeight="50.0" prefWidth="200.0" style="-fx-cursor: hand;" styleClass="button-salve" text="EMPRESTAR" />
+                  <Label layoutX="54.0" layoutY="122.0" styleClass="font-md" text="Usuário: *" />
+                  <ComboBox fx:id="idUsuarioSelecionar" editable="false" layoutX="35.0" layoutY="148.0" onAction="#preencherUsuario" prefHeight="40.0" prefWidth="275.0" promptText="Digite para pesquisar" styleClass="combobox-rounded" />
+                  <Label layoutX="359.0" layoutY="122.0" styleClass="font-md" text=" Livro: *" />
+                  <ComboBox fx:id="idLivroSelecionar" editable="false" layoutX="338.0" layoutY="148.0" onAction="#preencherLivro" prefHeight="40.0" prefWidth="275.0" promptText="Digite para pesquisar" styleClass="combobox-rounded" />
+                  <Label layoutX="54.0" layoutY="212.0" styleClass="font-md" text="Nome Usuário:" />
+                  <TextField fx:id="idNomeUsuario" disable="true" layoutX="33.0" layoutY="238.0" prefHeight="40.0" prefWidth="275.0" styleClass="input-rounded" />
+                  <Label layoutX="359.0" layoutY="212.0" styleClass="font-md" text="Nome Livro:" />
+                  <TextField fx:id="idNomeLivro" disable="true" layoutX="338.0" layoutY="238.0" prefHeight="40.0" prefWidth="275.0" styleClass="input-rounded" />
+                  <Label layoutX="54.0" layoutY="302.0" styleClass="font-md" text="CPF:" />
+                  <TextField fx:id="idCPF" disable="true" layoutX="33.0" layoutY="328.0" prefHeight="40.0" prefWidth="275.0" promptText="000.000.000-00" styleClass="input-rounded" />
+                  <Label layoutX="359.0" layoutY="302.0" styleClass="font-md" text="Autor:" />
+                  <TextField fx:id="idAutor" disable="true" layoutX="338.0" layoutY="328.0" prefHeight="40.0" prefWidth="275.0" styleClass="input-rounded" />
+                  <Label layoutX="54.0" layoutY="392.0" styleClass="font-md" text="Tipo:" />
+                  <ComboBox fx:id="idTipo" disable="true" layoutX="35.0" layoutY="418.0" prefHeight="40.0" prefWidth="275.0" styleClass="combobox-rounded" />
+                  <Label layoutX="359.0" layoutY="392.0" styleClass="font-md" text="Código:" />
+                  <TextField fx:id="idCodigo" disable="true" layoutX="338.0" layoutY="418.0" prefHeight="40.0" prefWidth="275.0" styleClass="input-rounded" />
+                  <Label layoutX="54.0" layoutY="482.0" styleClass="font-md" text="Data Empréstimo: *" />
+                  <TextField fx:id="idDataEmprestimo" layoutX="33.0" layoutY="508.0" onKeyTyped="#tbDataEmprestimo" prefHeight="40.0" prefWidth="275.0" promptText="00/00/0000" styleClass="input-rounded" />
+                  <Label layoutX="359.0" layoutY="482.0" styleClass="font-md" text="Data Vencimento: *" />
+                  <TextField fx:id="idDataVencimento" layoutX="338.0" layoutY="508.0" onKeyTyped="#tbDataVencimento" prefHeight="40.0" prefWidth="275.0" promptText="00/00/0000" styleClass="input-rounded" />
+                  <Button fx:id="btnCancelar" layoutX="195.0" layoutY="581.0" mnemonicParsing="false" onAction="#fechar" onKeyPressed="#enterPressedFechar" prefHeight="40.0" prefWidth="200.0" style="-fx-cursor: hand;" styleClass="button-cancel" text="CANCELAR" />
+                  <Button fx:id="btnSalvar" layoutX="413.0" layoutY="581.0" mnemonicParsing="false" onAction="#salvarEmprestimo" onKeyPressed="#enterPressedSalvar" prefHeight="40.0" prefWidth="200.0" style="-fx-cursor: hand;" styleClass="button-salve" text="EMPRESTAR" />
                </children>
             </Pane>
          </children>
