@@ -63,6 +63,7 @@ public class CadastroController {
 						Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 						Scene scene = new Scene(root);
 						Inicio.myStage.setScene(scene);
+						Inicio.myStage.centerOnScreen();
 
 						AlertSucesso sucesso = new AlertSucesso();
 						sucesso.text = "Salvo com sucesso";
@@ -94,6 +95,7 @@ public class CadastroController {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 
 	private boolean verificaVazio() {

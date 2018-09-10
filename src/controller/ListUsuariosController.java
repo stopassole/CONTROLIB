@@ -60,6 +60,7 @@ public class ListUsuariosController extends DashboardController implements Initi
 		Parent root = FXMLLoader.load(getClass().getResource("/view/CadastroUsuario.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 
 	@Override

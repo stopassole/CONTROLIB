@@ -84,6 +84,7 @@ public class CadastroEmprestimoController extends DashboardController implements
 		Parent root = FXMLLoader.load(getClass().getResource("/view/ListEmprestimos.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 
 	@SuppressWarnings("static-access")

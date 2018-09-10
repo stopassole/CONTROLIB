@@ -80,6 +80,7 @@ public class ListEmprestimosController extends DashboardController implements In
 		Parent root = FXMLLoader.load(getClass().getResource("/view/CadastroEmprestimo.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 
 	@Override

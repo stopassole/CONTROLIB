@@ -22,6 +22,7 @@ public class DashboardController {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 
 	@FXML
@@ -29,6 +30,7 @@ public class DashboardController {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/ListUsuario.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 
 	@FXML
@@ -36,6 +38,7 @@ public class DashboardController {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/ListEmprestimos.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 
 	@FXML
@@ -43,6 +46,7 @@ public class DashboardController {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/ListLivros.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 
 	public void enterPressedLivros(KeyEvent e) throws Exception {

@@ -89,6 +89,7 @@ public class LoginController implements Initializable {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/Cadastro.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 
 	@FXML
@@ -96,6 +97,7 @@ public class LoginController implements Initializable {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/Recuperar.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 
 	@SuppressWarnings("static-access")
@@ -117,6 +119,7 @@ public class LoginController implements Initializable {
 					Parent root = FXMLLoader.load(getClass().getResource("/view/ListEmprestimos.fxml"));
 					Scene scene = new Scene(root);
 					Inicio.myStage.setScene(scene);
+					Inicio.myStage.centerOnScreen();
 				} else {
 					AlertFalha falha = new AlertFalha();
 					falha.text = "Usuário não encontrado";

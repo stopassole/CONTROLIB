@@ -60,6 +60,7 @@ public class InfoUsuarioController extends DashboardController implements Initia
 		Parent root = FXMLLoader.load(getClass().getResource("/view/ListUsuario.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 
 	@FXML
@@ -67,6 +68,7 @@ public class InfoUsuarioController extends DashboardController implements Initia
 		Parent root = FXMLLoader.load(getClass().getResource("/view/CadastroUsuario.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 
 	@SuppressWarnings("static-access")

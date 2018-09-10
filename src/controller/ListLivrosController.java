@@ -64,6 +64,7 @@ public class ListLivrosController extends DashboardController implements Initial
 		Parent root = FXMLLoader.load(getClass().getResource("/view/CadastroLivro.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 
 	@Override

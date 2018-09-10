@@ -66,6 +66,7 @@ public class CadastroUsuarioController extends DashboardController implements In
 		Parent root = FXMLLoader.load(getClass().getResource("/view/ListUsuario.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 
 	@SuppressWarnings("static-access")

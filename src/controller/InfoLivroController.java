@@ -55,6 +55,7 @@ public class InfoLivroController extends DashboardController implements Initiali
 		Parent root = FXMLLoader.load(getClass().getResource("/view/CadastroLivro.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 
 	@SuppressWarnings("static-access")

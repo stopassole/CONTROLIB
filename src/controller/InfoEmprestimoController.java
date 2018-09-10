@@ -73,6 +73,7 @@ public class InfoEmprestimoController extends DashboardController implements Ini
 		Parent root = FXMLLoader.load(getClass().getResource("/view/ListEmprestimos.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 	
 	@FXML
@@ -80,6 +81,7 @@ public class InfoEmprestimoController extends DashboardController implements Ini
 		Parent root = FXMLLoader.load(getClass().getResource("/view/CadastroEmprestimo.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 	
 	@SuppressWarnings("static-access")

@@ -39,6 +39,7 @@ public class RecuperarController {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 		Scene scene = new Scene(root);
 		Inicio.myStage.setScene(scene);
+		Inicio.myStage.centerOnScreen();
 	}
 
 	@FXML
@@ -67,6 +68,7 @@ public class RecuperarController {
 						Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
 						Scene scene = new Scene(root);
 						Inicio.myStage.setScene(scene);
+						Inicio.myStage.centerOnScreen();
 
 						AlertSucesso sucesso = new AlertSucesso();
 						sucesso.text = "Salvo com sucesso";
