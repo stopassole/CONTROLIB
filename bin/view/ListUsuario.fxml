@@ -70,7 +70,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="348.0" layoutY="56.0" prefHeight="643.0" prefWidth="884.0" style="-fx-background-color: white;" stylesheets="@../css/Usuarios.css">
+            <Pane layoutX="348.0" layoutY="57.0" prefHeight="643.0" prefWidth="884.0" style="-fx-background-color: white;" stylesheets="@../css/Usuarios.css">
                <children>
                   <Label layoutX="24.0" layoutY="23.0" prefHeight="40.0" prefWidth="199.0" styleClass="font-lg" text="USUÁRIOS" />
                   <TextField fx:id="idPesquisar" layoutX="24.0" layoutY="104.0" onKeyPressed="#enterPressedPesquisar" prefHeight="40.0" prefWidth="750.0" promptText="Pesquisar" stylesheets="@../css/Livros.css">
