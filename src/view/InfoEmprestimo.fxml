@@ -13,14 +13,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow fx:id="idTextFlow" prefHeight="794.0" prefWidth="1281.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InfoEmprestimoController">
+<TextFlow fx:id="idTextFlow" prefHeight="735.0" prefWidth="1281.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InfoEmprestimoController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #EEF1F8;">
+      <AnchorPane id="AnchorPane" prefHeight="735.0" prefWidth="1280.0" style="-fx-background-color: #EEF1F8;">
          <children>
             <Pane prefHeight="250.0" prefWidth="1280.0" styleClass="bg-secondary" stylesheets="@../css/InfoEmprestimo.css">
                <children>
-                  <Label layoutX="348.0" layoutY="40.0" prefHeight="30.0" prefWidth="146.0" styleClass="font-md" text="EMPRÉSTIMOS" />
-                  <Button layoutX="1191.0" layoutY="46.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                  <Label layoutX="348.0" layoutY="25.0" prefHeight="30.0" prefWidth="146.0" styleClass="font-md" text="EMPRÉSTIMOS" />
+                  <Button layoutX="1191.0" layoutY="35.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -29,7 +29,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="1212.67" layoutY="53.8" mnemonicParsing="false" prefHeight="6.0" prefWidth="10.0" style="-fx-background-color: transparent;">
+                  <Button layoutX="1212.67" layoutY="40.0" mnemonicParsing="false" prefHeight="6.0" prefWidth="10.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fitHeight="6.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -40,7 +40,7 @@
                   </Button>
                </children>
             </Pane>
-            <Pane prefHeight="800.0" prefWidth="280.0" styleClass="bg-primary" stylesheets="@../css/InfoEmprestimo.css">
+            <Pane prefHeight="735.0" prefWidth="280.0" styleClass="bg-primary" stylesheets="@../css/InfoEmprestimo.css">
                <children>
                   <ImageView fitHeight="70.0" fitWidth="90.0" layoutX="95.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -68,7 +68,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="348.0" layoutY="102.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white; -fx-background-radius: 10;" stylesheets="@../css/InfoEmprestimo.css">
+            <Pane layoutX="348.0" layoutY="84.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white; -fx-background-radius: 10;" stylesheets="@../css/InfoEmprestimo.css">
                <children>
                   <Label layoutX="24.0" layoutY="23.0" prefHeight="40.0" prefWidth="199.0" styleClass="font-lg" text="EMPRÉSTIMOS" />
                   <TextField layoutX="24.0" layoutY="104.0" prefHeight="40.0" prefWidth="320.0" stylesheets="@../css/Emprestimos.css" text="Pesquisar">
@@ -116,7 +116,7 @@
                      </styleClass>
                   </TextField>
                </children></Pane>
-            <Pane layoutX="280.0" opacity="0.5" prefHeight="800.0" prefWidth="1003.0" style="-fx-background-color: black;" />
+            <Pane layoutX="280.0" opacity="0.5" prefHeight="735.0" prefWidth="1003.0" style="-fx-background-color: black;" />
             <Pane layoutX="338.0" layoutY="102.0" prefHeight="622.0" prefWidth="894.0" style="-fx-background-color: white; -fx-background-radius: 10;" stylesheets="@../css/InfoEmprestimo.css">
                <children>
                   <Label fx:id="idUsuario" layoutX="46.0" layoutY="43.0" prefHeight="43.0" prefWidth="649.0" styleClass="font-lg" />
