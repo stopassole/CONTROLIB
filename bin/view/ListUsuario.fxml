@@ -13,14 +13,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.TextFlow?>
 
-<TextFlow prefHeight="750.0" prefWidth="1280.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListUsuariosController">
+<TextFlow prefHeight="700.0" prefWidth="1280.0" textAlignment="CENTER" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListUsuariosController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1280.0" style="-fx-background-color: #EEF1F8;">
+      <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1280.0" style="-fx-background-color: #EEF1F8;">
          <children>
             <Pane prefHeight="250.0" prefWidth="1280.0" styleClass="bg-secondary" stylesheets="@../css/Usuarios.css">
                <children>
-                  <Label layoutX="348.0" layoutY="25.0" prefHeight="30.0" prefWidth="146.0" styleClass="font-md" text="USUÁRIOS" />
-                    <Button layoutX="1191.0" layoutY="31.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                  <Label layoutX="348.0" layoutY="19.0" prefHeight="30.0" prefWidth="146.0" styleClass="font-md" text="USUÁRIOS" />
+                    <Button layoutX="1191.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -29,7 +29,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="1212.67" layoutY="39.8" mnemonicParsing="false" onAction="#change" prefHeight="6.0" prefWidth="10.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
+                  <Button layoutX="1212.67" layoutY="5.0" mnemonicParsing="false" onAction="#change" prefHeight="6.0" prefWidth="10.0" style="-fx-background-color: transparent; -fx-cursor: hand;">
                      <graphic>
                         <ImageView fitHeight="6.0" fitWidth="10.0" onMouseClicked="#change" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
@@ -38,11 +38,11 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="idSair" layoutX="1181.0" layoutY="56.0" mnemonicParsing="false" onAction="#sair" prefHeight="25.0" prefWidth="52.0" style="-fx-background-color: white; -fx-font-weight: bold; -fx-cursor: hand;" text="SAIR" />
+                  <Button fx:id="idSair" layoutX="1181.0" layoutY="25.0" mnemonicParsing="false" onAction="#sair" prefHeight="25.0" prefWidth="52.0" style="-fx-background-color: white; -fx-font-weight: bold; -fx-cursor: hand;" text="SAIR" />
                
                </children>
             </Pane>
-            <Pane prefHeight="750.0" prefWidth="280.0" styleClass="bg-primary" stylesheets="@../css/Usuarios.css">
+            <Pane prefHeight="700.0" prefWidth="280.0" styleClass="bg-primary" stylesheets="@../css/Usuarios.css">
                <children>
                   <ImageView fitHeight="70.0" fitWidth="90.0" layoutX="95.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,7 +70,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="348.0" layoutY="87.0" prefHeight="651.0" prefWidth="884.0" style="-fx-background-color: white;" stylesheets="@../css/Usuarios.css">
+            <Pane layoutX="348.0" layoutY="56.0" prefHeight="643.0" prefWidth="884.0" style="-fx-background-color: white;" stylesheets="@../css/Usuarios.css">
                <children>
                   <Label layoutX="24.0" layoutY="23.0" prefHeight="40.0" prefWidth="199.0" styleClass="font-lg" text="USUÁRIOS" />
                   <TextField fx:id="idPesquisar" layoutX="24.0" layoutY="104.0" onKeyPressed="#enterPressedPesquisar" prefHeight="40.0" prefWidth="750.0" promptText="Pesquisar" stylesheets="@../css/Livros.css">
