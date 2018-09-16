@@ -34,8 +34,8 @@ public class ScheduleEmprestimosAtrasados {
 
 		Calendar calendar = Calendar.getInstance();
 
-		calendar.set(Calendar.HOUR_OF_DAY, 14);
-		calendar.set(Calendar.MINUTE, 8);
+		calendar.set(Calendar.HOUR_OF_DAY, 10);
+		calendar.set(Calendar.MINUTE, 15);
 		calendar.set(Calendar.SECOND, 0);
 
 		Date time = calendar.getTime();
