@@ -1,10 +1,8 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,14 +29,7 @@ public class LivroDAO {
 		stmt.setString(3, livro.getAutor());
 		stmt.setString(4, livro.getGenero());
 		stmt.setString(5, livro.getEditora());
-		if (livro.getPublicacao() != null && !livro.getPublicacao().equals("")) {
-			SimpleDateFormat dataOriginal = new SimpleDateFormat("dd/MM/yyyy");
-			java.util.Date date = dataOriginal.parse(livro.getPublicacao());
-			SimpleDateFormat novaData = new SimpleDateFormat("yyyy-MM-dd");
-			stmt.setDate(6, Date.valueOf(novaData.format(date)));
-		} else {
-			stmt.setDate(6, null);
-		}
+		stmt.setString(6, livro.getPublicacao());
 
 		stmt.executeUpdate();
 
@@ -63,14 +54,7 @@ public class LivroDAO {
 		stmt.setString(3, livro.getAutor());
 		stmt.setString(4, livro.getGenero());
 		stmt.setString(5, livro.getEditora());
-		if (livro.getPublicacao() != null && !livro.getPublicacao().equals("")) {
-			SimpleDateFormat dataOriginal = new SimpleDateFormat("dd/MM/yyyy");
-			java.util.Date date = dataOriginal.parse(livro.getPublicacao());
-			SimpleDateFormat novaData = new SimpleDateFormat("yyyy-MM-dd");
-			stmt.setDate(6, Date.valueOf(novaData.format(date)));
-		} else {
-			stmt.setDate(6, null);
-		}
+		stmt.setString(6, livro.getPublicacao());
 		stmt.setBoolean(7, livroById.getDisponivel());
 
 		stmt.executeUpdate();
@@ -115,7 +99,7 @@ public class LivroDAO {
 			livro.setAutor(rs.getString("autor"));
 			livro.setGenero(rs.getString("genero"));
 			livro.setEditora(rs.getString("editora"));
-			livro.setPublicacao(String.valueOf(rs.getDate("publicacao")));
+			livro.setPublicacao(rs.getString("publicacao"));
 			livro.setDisponivel(rs.getBoolean("disponivel"));
 			livro.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 			livro.setDeletado(rs.getBoolean("deletado"));
@@ -148,7 +132,7 @@ public class LivroDAO {
 			livro.setAutor(rs.getString("autor"));
 			livro.setGenero(rs.getString("genero"));
 			livro.setEditora(rs.getString("editora"));
-			livro.setPublicacao(String.valueOf(rs.getDate("publicacao")));
+			livro.setPublicacao(rs.getString("publicacao"));
 			livro.setDisponivel(rs.getBoolean("disponivel"));
 			livro.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 			livro.setDeletado(rs.getBoolean("deletado"));
@@ -182,7 +166,7 @@ public class LivroDAO {
 			livro.setAutor(rs.getString("autor"));
 			livro.setGenero(rs.getString("genero"));
 			livro.setEditora(rs.getString("editora"));
-			livro.setPublicacao(String.valueOf(rs.getDate("publicacao")));
+			livro.setPublicacao(rs.getString("publicacao"));
 			livro.setDisponivel(rs.getBoolean("disponivel"));
 			livro.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 			livro.setDeletado(rs.getBoolean("deletado"));
@@ -217,7 +201,7 @@ public class LivroDAO {
 			livro.setAutor(rs.getString("autor"));
 			livro.setGenero(rs.getString("genero"));
 			livro.setEditora(rs.getString("editora"));
-			livro.setPublicacao(String.valueOf(rs.getDate("publicacao")));
+			livro.setPublicacao(rs.getString("publicacao"));
 			livro.setDisponivel(rs.getBoolean("disponivel"));
 			livro.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 			livro.setDeletado(rs.getBoolean("deletado"));
@@ -264,7 +248,7 @@ public class LivroDAO {
 			livro.setAutor(rs.getString("autor"));
 			livro.setGenero(rs.getString("genero"));
 			livro.setEditora(rs.getString("editora"));
-			livro.setPublicacao(String.valueOf(rs.getDate("publicacao")));
+			livro.setPublicacao(rs.getString("publicacao"));
 			livro.setDisponivel(rs.getBoolean("disponivel"));
 			livro.setDataCadastro(String.valueOf(rs.getDate("datacadastro")));
 			livro.setDeletado(rs.getBoolean("deletado"));

@@ -313,7 +313,7 @@ public class EmprestimoDAO {
 		dto.setEditoraLivro(rs.getString("editoraLivro"));
 		dto.setLivroDisponivel(rs.getBoolean("livroDisponivel"));
 		dto.setDataCadastroLivro(String.valueOf(rs.getDate("dataCadastroLivro")));
-		dto.setPublicacaoLivro(String.valueOf(rs.getDate("publicacaoLivro")));
+		dto.setPublicacaoLivro(rs.getString("publicacaoLivro"));
 		dto.setLivroDeletado(rs.getBoolean("livroDeletado"));
 		dto.setNomeUsuario(rs.getString("nomeUsuario"));
 		dto.setSobrenomeUsuario(rs.getString("sobrenomeUsuario"));

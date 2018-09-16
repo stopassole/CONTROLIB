@@ -47,8 +47,8 @@ public class ComboBoxAutoComplete<T> {
 			itens.filter(el -> el.toString().toLowerCase().contains(txtUsr)).forEach(filteredList::add);
 			cmb.getTooltip().setText(txtUsr);
 			Window stage = cmb.getScene().getWindow();
-			double posX = cmb.getLayoutX() + cmb.getPrefWidth() + 220;
-			double posY = cmb.getLayoutY() + cmb.getPrefHeight() + 8;
+			double posX = cmb.getLayoutX() + cmb.getPrefWidth() + 260;
+			double posY = cmb.getLayoutY() + cmb.getPrefHeight() + 30;
 			cmb.getTooltip().show(stage, posX, posY);
 			cmb.show();
 		}

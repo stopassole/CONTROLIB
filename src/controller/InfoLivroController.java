@@ -17,7 +17,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import resource.Inicio;
-import util.DateUtil;
 
 public class InfoLivroController extends DashboardController implements Initializable {
 	@FXML
@@ -88,10 +87,8 @@ public class InfoLivroController extends DashboardController implements Initiali
 		}
 	}
 
-	@SuppressWarnings("static-access")
 	private void popularInformacao(Livro livro) throws Exception {
 		if (livro != null) {
-			DateUtil dateUtil = new DateUtil();
 			idLivroEditar = livro.get_id();
 			if (livro.getCodigo() != null && !livro.getCodigo().equals("")) {
 				idNome.setText(livro.getNome() + " - " + livro.getCodigo());
@@ -101,9 +98,7 @@ public class InfoLivroController extends DashboardController implements Initiali
 			idAutor.setText(livro.getAutor());
 			idGenero.setText(livro.getGenero());
 			idEditora.setText(livro.getEditora());
-			if (!livro.getPublicacao().equals("null")) {
-				idPublicacao.setText(dateUtil.dataFormatoYYYYMMDD(livro.getPublicacao()));
-			}
+			idPublicacao.setText(livro.getPublicacao());
 		}
 	}
 

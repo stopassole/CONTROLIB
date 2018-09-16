@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import dao.LivroDAO;
 import entity.Livro;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -63,9 +64,10 @@ public class CadastroLivroController extends DashboardController implements Init
 		Livro livro = new Livro(null, null, null, null, null, null, null, null, null, null);
 		Boolean ok = true;
 
-		if (!idPublicacao.getText().isEmpty() && !validaPublicacao()) {
+		if (idPublicacao.getText().length() != 0 && idPublicacao.getText().length() != 4) {
 			ok = false;
 		}
+
 		if (ok) {
 			if (!verificaVazio()) {
 				livro.setNome(idNome.getText());
@@ -79,7 +81,7 @@ public class CadastroLivroController extends DashboardController implements Init
 				if (!idCodigo.getText().isEmpty()) {
 					l = dao.validaLivro(livro);
 				}
-				
+
 				if (InfoLivroController.idLivroEditar == null) {
 					if (l.isEmpty()) {
 						dao.salvarLivro(livro);
@@ -115,19 +117,11 @@ public class CadastroLivroController extends DashboardController implements Init
 				falha.clicado = idTextFlow;
 				falha.start(new Stage());
 			}
-		}
-	}
-
-	@SuppressWarnings("static-access")
-	private boolean validaPublicacao() {
-		if (date.isValidDate(idPublicacao.getText())) {
-			return true;
 		} else {
 			AlertFalha falha = new AlertFalha();
-			falha.text = "Infome uma data de publicação válida";
+			falha.text = "Data de publicação inválida";
 			falha.clicado = idTextFlow;
 			falha.start(new Stage());
-			return false;
 		}
 	}
 
@@ -149,17 +143,33 @@ public class CadastroLivroController extends DashboardController implements Init
 		}
 	}
 
-	@SuppressWarnings("static-access")
 	private void populaEdicao(Livro livro) throws Exception {
-		DateUtil dateUtil = new DateUtil();
-		if (!livro.getPublicacao().equals("null")) {
-			idPublicacao.setText(dateUtil.dataFormatoYYYYMMDD(livro.getPublicacao()));
-		}
+		idPublicacao.setText(livro.getPublicacao());
 		idNome.setText(livro.getNome());
 		idCodigo.setText(livro.getCodigo());
 		idAutor.setText(livro.getAutor());
 		idGenero.setText(livro.getGenero());
 		idEditora.setText(livro.getEditora());
+	}
+
+	@FXML
+	private void tbNumber(KeyEvent event) {
+		idPublicacao.lengthProperty().addListener(new javafx.beans.value.ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+				if (newValue.intValue() > oldValue.intValue()) {
+					char ch = idPublicacao.getText().charAt(oldValue.intValue());
+					if (!(ch >= '0' && ch <= '9') && idPublicacao.getText().length() <= 4) {
+						idPublicacao.setText(idPublicacao.getText().substring(0, idPublicacao.getText().length() - 1));
+					} else {
+						if (idPublicacao.getText().length() > 4) {
+							idPublicacao
+									.setText(idPublicacao.getText().substring(0, idPublicacao.getText().length() - 1));
+						}
+					}
+				}
+			}
+		});
 	}
 
 	@FXML
@@ -174,11 +184,5 @@ public class CadastroLivroController extends DashboardController implements Init
 		if (e.getCode().toString().equals("ENTER")) {
 			salvarLivro();
 		}
-	}
-
-	@SuppressWarnings("static-access")
-	@FXML
-	public void tbData(KeyEvent event) {
-		date.mascaraData(event, idPublicacao);
 	}
 }

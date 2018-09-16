@@ -63,7 +63,7 @@ public class InfoEmprestimoController extends DashboardController implements Ini
 	private Label idPublicacao;
 
 	public static String idEmprestimo = null;
-	
+
 	public static String idLivroDevolver = null;
 
 	EmprestimoDAO dao = new EmprestimoDAO();
@@ -75,7 +75,7 @@ public class InfoEmprestimoController extends DashboardController implements Ini
 		Inicio.myStage.setScene(scene);
 		Inicio.myStage.centerOnScreen();
 	}
-	
+
 	@FXML
 	public void editar() throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/view/CadastroEmprestimo.fxml"));
@@ -83,10 +83,10 @@ public class InfoEmprestimoController extends DashboardController implements Ini
 		Inicio.myStage.setScene(scene);
 		Inicio.myStage.centerOnScreen();
 	}
-	
+
 	@SuppressWarnings("static-access")
 	@FXML
-	public void devolver() throws Exception{
+	public void devolver() throws Exception {
 		Devolver devolver = new Devolver();
 		devolver.clicado = idTextFlow;
 		devolver.classe = "Usuario";
@@ -110,7 +110,8 @@ public class InfoEmprestimoController extends DashboardController implements Ini
 		idEmprestimo = emprestimo.get_id();
 		idLivroDevolver = emprestimo.getIdLivro();
 		DateUtil date = new DateUtil();
-		idUsuario.setText(emprestimo.getNomeUsuario() + " " + emprestimo.getSobrenomeUsuario() + " " + emprestimo.getIdUsuario());
+		idUsuario.setText(
+				emprestimo.getNomeUsuario() + " " + emprestimo.getSobrenomeUsuario() + " " + emprestimo.getIdUsuario());
 		idEmail.setText(emprestimo.getEmailUsuario());
 		idTelefone.setText(emprestimo.getTelefoneUsuario());
 		idDataNasc.setText(date.dataFormatoYYYYMMDD(emprestimo.getDataNascimentoUsuario()));
@@ -124,9 +125,9 @@ public class InfoEmprestimoController extends DashboardController implements Ini
 		idGenero.setText(emprestimo.getGeneroLivro());
 
 		idEditora.setText(emprestimo.getEditoraLivro());
-		
+
 		if (!emprestimo.getPublicacaoLivro().equals("null")) {
-			idPublicacao.setText(date.dataFormatoYYYYMMDD(emprestimo.getPublicacaoLivro()));
+			idPublicacao.setText(emprestimo.getPublicacaoLivro());
 		}
 	}
 
@@ -136,14 +137,14 @@ public class InfoEmprestimoController extends DashboardController implements Ini
 			fechar();
 		}
 	}
-	
+
 	@FXML
 	public void enterPressedEditar(KeyEvent e) throws Exception {
 		if (e.getCode().toString().equals("ENTER")) {
 			editar();
 		}
 	}
-	
+
 	@FXML
 	public void enterPressedDevolver(KeyEvent e) throws Exception {
 		if (e.getCode().toString().equals("ENTER")) {

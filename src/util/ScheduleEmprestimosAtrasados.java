@@ -16,7 +16,6 @@ import dao.EmprestimoDAO;
 import entity.EmprestimoDTO;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
-import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 public class ScheduleEmprestimosAtrasados {
@@ -35,8 +34,8 @@ public class ScheduleEmprestimosAtrasados {
 
 		Calendar calendar = Calendar.getInstance();
 
-		calendar.set(Calendar.HOUR_OF_DAY, 10);
-		calendar.set(Calendar.MINUTE, 15);
+		calendar.set(Calendar.HOUR_OF_DAY, 14);
+		calendar.set(Calendar.MINUTE, 8);
 		calendar.set(Calendar.SECOND, 0);
 
 		Date time = calendar.getTime();
@@ -95,12 +94,11 @@ public class ScheduleEmprestimosAtrasados {
 
 						log.info(END_POINT + "/notificacaoemprestimo -> Inicio");
 
-						ImageView img = new ImageView("./images/falha.png");
 						Notifications notificationBuilder = Notifications.create().title("Emprestimo Atrasado")
-								.text("Existem " + cont + "emprestimos atrasados").graphic(img)
-								.hideAfter(Duration.seconds(5)).position(Pos.BOTTOM_RIGHT);
+								.text("Existem " + cont + " emprestimo(s) atrasado(s)")
+								.hideAfter(Duration.seconds(15)).position(Pos.BOTTOM_RIGHT);
 
-						notificationBuilder.show();
+						notificationBuilder.showInformation();
 
 						log.info(END_POINT + "/notificacaoemprestimo -> Fim");
 					}

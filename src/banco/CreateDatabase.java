@@ -93,7 +93,7 @@ public class CreateDatabase extends Task<Void> {
 					+ "					autor character varying(255) not null,\r\n"
 					+ "					genero character varying(255),\r\n"
 					+ "					editora character varying(255),\r\n"
-					+ "					publicacao date,\r\n"
+					+ "					publicacao character varying(255),\r\n"
 					+ "					disponivel boolean default true,\r\n"
 					+ "					dataCadastro date default now(),\r\n"
 					+ "					deletado boolean default false,\r\n"
