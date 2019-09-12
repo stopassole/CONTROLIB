@@ -2,6 +2,8 @@
 
 Projeto Desktop para gerenciamento de pequenas bibliotecas.
 
+SOMENTE SUPORTADO EM WINDOWS.
+
 Criado em JavaFX com banco SQL PostgresSQL.
 
 O banco de dados é criado na instalação.
